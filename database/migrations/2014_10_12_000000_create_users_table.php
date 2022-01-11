@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('description', 1000)->nullable();
-            $table->integer('zipcode');
+            $table->string('postcode');  // string pour gérer plus facilement les codes commençant par un zero
             // Vérifier que le chemin fonctionne bien une fois le projet plus avancé :
             $table->string('avatar', 2048)->default('storage/app/public/images/default_avatar.png');
             $table->string('status');
