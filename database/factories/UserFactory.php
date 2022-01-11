@@ -24,7 +24,7 @@ class UserFactory extends Factory
             'postcode'          => $this->faker->postcode(),
             'status'            => 'verified',
             'role_id'           => rand(1, 3),
-            'last_connexion'    => now()
+            'last_connexion'    => now(),
         ];
     }
 
