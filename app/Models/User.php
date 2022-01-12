@@ -26,7 +26,7 @@ class User extends Authenticatable
         'postcode',
         'status',
         'role_id',
-        'last_connexion'
+        'last_connexion',
     ];
 
     /**

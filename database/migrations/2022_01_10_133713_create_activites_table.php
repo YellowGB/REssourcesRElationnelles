@@ -17,7 +17,7 @@ class CreateActivitesTable extends Migration
             $table->id();
             $table->string('description', 1000);
             $table->timestamp('starting_date');
-            $table->unsignedInteger('duration');
+            $table->unsignedInteger('duration'); // en minutes
         });
     }
 

@@ -11,4 +11,11 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
+
+    public $timestamps = false; // pas de timestamps sur les tables de contenus
+
+    protected $fillable = [
+        'file_uri',
+        'file_name',
+    ];
 }

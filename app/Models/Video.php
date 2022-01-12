@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Video extends Model
 {
     use HasFactory;
+
+    public $timestamps = false; // pas de timestamps sur les tables de contenus
+
+    protected $fillable = [
+        'file_uri',
+        'link',
+        'legend',
+    ];
 }

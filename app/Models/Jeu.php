@@ -9,5 +9,12 @@ class Jeu extends Model
 {
     use HasFactory;
 
-    protected $table = 'jeux';
+    public $timestamps = false; // pas de timestamps sur les tables de contenus
+
+    protected $table    = 'jeux';
+    protected $fillable = [
+        'description',
+        'starting_date',
+        'link',
+    ];
 }
