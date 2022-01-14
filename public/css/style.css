@@ -1,0 +1,14 @@
+input,
+textarea {
+    border: 2px solid black;
+}
+
+.ressource-container,
+.ressource-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.ressource-container {
+    margin: 1rem;
+}
