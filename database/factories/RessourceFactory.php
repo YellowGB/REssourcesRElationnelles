@@ -14,39 +14,39 @@ class RessourceFactory extends Factory
     public function definition()
     {
         return [
-            'title'         => $this->faker->sentence(),
-            'type'          => $this->faker->randomElement([
-                'Activité',
-                'Jeu en ligne',
-                'Vidéo',
-                'Photo',
-                'Atelier',
-                'Cours',
-                'Fiche de lecture',
-                'Défi',
-                'Article',
+            'title'                 => $this->faker->sentence(),
+            'ressourceable_type'    => $this->faker->randomElement([
+                'App\Models\Activite',
+                'App\Models\Jeu',
+                'App\Models\Video',
+                'App\Models\Photo',
+                'App\Models\Atelier',
+                'App\Models\Course',
+                'App\Models\Lecture',
+                'App\Models\Defi',
+                'App\Models\Article',
                 ]),
-            'relation'      => $this->faker->randomElement([
+            'ressourceable_id'      => rand(1, 3),
+            'relation'              => $this->faker->randomElement([
                 'Soi',
                 'Conjoints',
                 'Famille',
                 'Professionnelle',
                 'Amis et communautés',
-                'Inconnus'
+                'Inconnus',
                 ]),
-            'user_id'       => rand(1, 10),
-            'categorie_id'  => rand(1, 8),
-            'status'        => $this->faker->randomElement([
+            'user_id'               => rand(1, 10),
+            'categorie_id'          => rand(1, 8),
+            'status'                => $this->faker->randomElement([
                 'draft',
                 'pending',
                 'published',
                 'deleted',
                 ]),
-            'restriction'   => $this->faker->randomElement([
+            'restriction'           => $this->faker->randomElement([
                 'public',
                 'private',
                 ]),
-            'content'       => rand(1, 3),
         ];
     }
 }

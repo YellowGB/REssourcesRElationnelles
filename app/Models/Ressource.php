@@ -11,12 +11,12 @@ class Ressource extends Model
 
     protected $fillable = [
         'title',
-        'type',
+        'ressourceable_type',
+        'ressourceable_id',
         'relation',
         'user_id',
         'categorie_id',
         'status',
         'restriction',
-        'content',
     ];
 }
