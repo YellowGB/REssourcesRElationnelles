@@ -24,3 +24,4 @@ Route::get('/', function () {
 Route::get('roles', [RoleController::class, 'index'])->name('roles');
 Route::get('users', [UserController::class, 'index'])->name('users');
 Route::get('catalogue', [RessourceController::class, 'index'])->name('catalogue');
+Route::get('ressources/{id}', [RessourceController::class, 'show'])->name('ressources.show');
