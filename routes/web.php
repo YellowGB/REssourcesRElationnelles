@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Ressource;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RessourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,4 @@ Route::get('/', function () {
 
 Route::get('roles', [RoleController::class, 'index'])->name('roles');
 Route::get('users', [UserController::class, 'index'])->name('users');
+Route::get('catalogue', [RessourceController::class, 'index'])->name('catalogue');
