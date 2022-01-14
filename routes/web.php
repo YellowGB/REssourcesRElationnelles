@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Ressource;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -25,4 +24,5 @@ Route::get('roles', [RoleController::class, 'index'])->name('roles');
 Route::get('users', [UserController::class, 'index'])->name('users');
 Route::get('catalogue', [RessourceController::class, 'index'])->name('catalogue');
 Route::get('ressources/create', [RessourceController::class, 'create'])->name('ressources.create');
+Route::post('ressources/create', [RessourceController::class, 'store'])->name('ressources.store');
 Route::get('ressources/{id}', [RessourceController::class, 'show'])->name('ressources.show');
