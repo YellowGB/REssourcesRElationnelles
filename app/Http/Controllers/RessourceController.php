@@ -10,12 +10,15 @@ class RessourceController extends Controller
 {
     public function index() {
 
-        $activite   = Activite::find(1);
-        $content    = $activite->ressource;
+        $ressources = Ressource::all();
+        $contents   = array();
+        foreach ($ressources as $ressource) {
+            array_push($contents, $ressource->ressourceable);
+        }
 
         return view('catalogue', compact(
-            'activite',
-            'content',
+            'ressources',
+            'contents',
         ));
     }
 }
