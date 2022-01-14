@@ -16,4 +16,12 @@ class Activite extends Model
         'starting_date',
         'duration',
     ];
+
+    /**
+     * Récupérer la ressource associée
+     */
+    public function ressource() {
+
+        return $this->morphOne(Ressource::class, 'ressourceable');
+    }
 }

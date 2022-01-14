@@ -16,4 +16,12 @@ class Photo extends Model
         'photo_author',
         'legend',
     ];
+
+    /**
+     * Récupérer la ressource associée
+     */
+    public function ressource() {
+
+        return $this->morphOne(Ressource::class, 'ressourceable');
+    }
 }

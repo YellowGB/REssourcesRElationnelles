@@ -14,4 +14,12 @@ class Article extends Model
     protected $fillable = [
         'source_url',
     ];
+
+    /**
+     * Récupérer la ressource associée
+     */
+    public function ressource() {
+
+        return $this->morphOne(Ressource::class, 'ressourceable');
+    }
 }

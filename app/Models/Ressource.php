@@ -19,4 +19,12 @@ class Ressource extends Model
         'status',
         'restriction',
     ];
+
+    /**
+     * Récupérer le modèle de contenu (Activité, Jeu, Défi, etc.) en fonction du type
+     */
+    public function ressourceable() {
+
+        return $this->morphTo();
+    }
 }

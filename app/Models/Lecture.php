@@ -19,4 +19,12 @@ class Lecture extends Model
         'analysis',
         'review',
     ];
+
+    /**
+     * Récupérer la ressource associée
+     */
+    public function ressource() {
+
+        return $this->morphOne(Ressource::class, 'ressourceable');
+    }
 }

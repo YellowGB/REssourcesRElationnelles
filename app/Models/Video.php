@@ -16,4 +16,12 @@ class Video extends Model
         'link',
         'legend',
     ];
+
+    /**
+     * Récupérer la ressource associée
+     */
+    public function ressource() {
+
+        return $this->morphOne(Ressource::class, 'ressourceable');
+    }
 }

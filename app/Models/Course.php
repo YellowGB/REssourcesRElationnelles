@@ -18,4 +18,12 @@ class Course extends Model
         'file_uri',
         'file_name',
     ];
+
+    /**
+     * Récupérer la ressource associée
+     */
+    public function ressource() {
+
+        return $this->morphOne(Ressource::class, 'ressourceable');
+    }
 }

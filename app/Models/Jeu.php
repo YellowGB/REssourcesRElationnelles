@@ -17,4 +17,12 @@ class Jeu extends Model
         'starting_date',
         'link',
     ];
+
+    /**
+     * Récupérer la ressource associée
+     */
+    public function ressource() {
+
+        return $this->morphOne(Ressource::class, 'ressourceable');
+    }
 }
