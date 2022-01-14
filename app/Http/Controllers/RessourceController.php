@@ -31,4 +31,8 @@ class RessourceController extends Controller
             'content'   => $content,
         ]);
     }
+
+    public function create() {
+        return view('creation-ressource');
+    }
 }
