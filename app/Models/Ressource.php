@@ -27,4 +27,12 @@ class Ressource extends Model
 
         return $this->morphTo();
     }
+
+    public function categorie() {
+        return $this->belongsTo(Categorie::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
