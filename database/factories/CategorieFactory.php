@@ -14,7 +14,21 @@ class CategorieFactory extends Factory
     public function definition()
     {
         return [
-            'name'  => $this->faker->unique()->word(),
+            'name'  => $this->faker->randomElement([
+                'communication',
+                'culture',
+                'development',
+                'emotion',
+                'hobby',
+                'pro',
+                'parent',
+                'quality',
+                'sense',
+                'physical',
+                'psychological',
+                'spirit',
+                'love',
+            ]),
         ];
     }
 }

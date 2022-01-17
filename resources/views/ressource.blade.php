@@ -3,40 +3,40 @@
 @section('content')
 
     <h1>{{ $ressource->title }}</h1>
-    <p>Type : {{ get_ressource_type($ressource->ressourceable_type) }}</p>
-    <p>Catégorie : {{ $ressource->categorie->name }}</p>
-    <p>Relation : {{ $ressource->relation }}</p>
+    <p>{{ __('titles.section.type') }} : {{ __('titles.type.' . $ressource->ressourceable_type) }}</p>
+    <p>{{ __('titles.section.category') }} : {{ __('titles.category.' . $ressource->categorie->name) }}</p>
+    <p>{{ __('titles.section.relation') }} : {{ __('titles.relation.' . $ressource->relation) }}</p>
     <p>
-        Créée le
+        {{ trans_choice('titles.created', 2) }}
         {{ \Carbon\Carbon::parse($ressource->created_at)->format('d/m/Y') }}
-        à
+        {{ __('titles.at') }}
         {{ \Carbon\Carbon::parse($ressource->created_at)->format('H:i') }}
     </p>
     <p>
-        Modifiée le
+        {{ trans_choice('titles.updated', 2) }}
         {{ \Carbon\Carbon::parse($ressource->updated_at)->format('d/m/Y') }}
-        à
+        {{ __('titles.at') }}
         {{ \Carbon\Carbon::parse($ressource->updated_at)->format('H:i') }}
     </p>
     @if (is_null($ressource->user->nickname))
-        <p>Par {{ $ressource->user->firstname }} {{ $ressource->user->name }}</p>
+        <p>{{ __('titles.by') }} {{ $ressource->user->firstname }} {{ $ressource->user->name }}</p>
     @else
-        <p>Par {{ $ressource->user->nickname }}</p>
+        <p>{{ __('titles.by') }} {{ $ressource->user->nickname }}</p>
     @endif
 
     {{-- Contenu --}}
     @switch($ressource->ressourceable_type)
         {{-- Début Activite --}}
         @case('App\Models\Activite')
-            <h3>Description</h3>
+            <h3>{{ __('titles.content.description') }}</h3>
             <p>{{ $content->description }}</p>
             <p>
-                Démarre le
+                {{ __('titles.content.starting') }}
                 {{ \Carbon\Carbon::parse($content->starting_date)->format('d/m/Y') }}
-                à
+                {{ __('titles.at') }}
                 {{ \Carbon\Carbon::parse($content->starting_date)->format('H:i') }}
             </p>
-            <p>Durée : {{ $content->duration }}min</p>
+            <p>{{ __('titles.content.duration') }} : {{ $content->duration }}min</p>
             @break
         {{-- Fin Activite --}}
         {{-- Début Article --}}
@@ -46,7 +46,7 @@
         {{-- Fin Article --}}
         {{-- Début Atelier --}}
         @case('App\Models\Atelier')
-            <h3>Description</h3>
+            <h3>{{ __('titles.content.description') }}</h3>
             <p>{{ $content->description }}</p>
             @break
         {{-- Fin Atelier --}}

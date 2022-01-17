@@ -3,6 +3,10 @@ textarea {
     border: 2px solid black;
 }
 
+textarea {
+    resize: vertical;
+}
+
 .ressource-container,
 .ressource-content {
     display: flex;
