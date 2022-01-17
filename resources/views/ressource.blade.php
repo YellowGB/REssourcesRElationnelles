@@ -60,8 +60,10 @@
         @case('App\Models\Defi')
             <h3>{{ __('titles.content.description') }}</h3>
             <p>{{ $content->description }}</p>
-            <h4>{{ __('titles.content.bonus') }}</h4>
-            <p>{{ $content->bonus }}</p>
+            @if ( ! is_null($content->bonus))
+                <h4>{{ __('titles.content.bonus') }}</h4>
+                <p>{{ $content->bonus }}</p>
+            @endif
             @break
         {{-- Fin Defi --}}
         {{-- Début Jeu --}}
@@ -79,7 +81,7 @@
         {{-- Fin Jeu --}}
         {{-- Début Lecture --}}
         @case('App\Models\Lecture')
-            <h2>{{ __('titles.title') }} : {{ $content->title }}</h2>
+            <h2>{{ __('titles.content.title') }} : {{ $content->title }}</h2>
             <p>{{ trans_choice('titles.author', 1) }} : {{ $content->author }}</p>
             <p>{{ __('titles.content.publication') }} : {{ $content->year }}</p>
             <p>{{ __('titles.content.summary') }} : {{ $content->summary }}</p>
@@ -90,8 +92,12 @@
         {{-- Début Photo --}}
         @case('App\Models\Photo')
             <p>{{ __('titles.link.uri') }} : {{ $content->file_uri }}</p>
-            <p>{{ trans_choice('titles.author', 1) }} : {{ $content->photo_author }}</p>
-            <p>{{ __('titles.content.legend') }} : {{ $content->legend }}</p>
+            @if ( ! is_null($content->photo_author))
+                <p>{{ trans_choice('titles.author', 1) }} : {{ $content->photo_author }}</p>
+            @endif
+            @if ( ! is_null($content->legend))
+                <p>{{ __('titles.content.legend') }} : {{ $content->legend }}</p>
+            @endif
             @break
         {{-- Fin Photo --}}
         {{-- Début Video --}}
@@ -101,7 +107,9 @@
             @else
                 <p>{{ __('titles.link.link') }} : {{ $content->link }}</p>
             @endif
-            <p>{{ __('titles.content.legend') }} : {{ $content->legend }}</p>
+            @if ( ! is_null($content->legend))
+                <p>{{ __('titles.content.legend') }} : {{ $content->legend }}</p>
+            @endif
             @break
         {{-- Fin Video --}}
         @default

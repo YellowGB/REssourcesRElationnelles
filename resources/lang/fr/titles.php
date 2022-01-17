@@ -82,6 +82,7 @@ return [
         'bonus'         => 'Bonus',
         'starting'      => 'Démarre le',
         'duration'      => 'Durée',
+        'title'         => 'Titre',
         'publication'   => 'Année de parution',
         'summary'       => 'Résumé',
         'analysis'      => 'Analyse',

@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Activite;
 use App\Models\Article;
 use App\Models\Atelier;
+use App\Models\Course;
+use App\Models\Defi;
+use App\Models\Jeu;
+use App\Models\Lecture;
+use App\Models\Photo;
+use App\Models\Video;
 use App\Models\Categorie;
 use App\Models\Ressource;
 use Illuminate\Http\Request;
@@ -68,16 +74,47 @@ class RessourceController extends Controller
                 ]);
                 break;
             case 'App\Models\Course':
+                $content = Course::create([
+                    'file_uri'  => $request->course_file_uri,
+                    'file_name' => $request->course_file_name,
+                ]);
                 break;
             case 'App\Models\Defi':
+                $content = Defi::create([
+                    'description'   => $request->defi_description,
+                    'bonus'         => $request->defi_bonus,
+                ]);
                 break;
             case 'App\Models\Jeu':
+                $content = Jeu::create([
+                    'description'   => $request->jeu_description,
+                    'starting_date' => $request->jeu_starting_date,
+                    'link'          => $request->jeu_link,
+                ]);
                 break;
             case 'App\Models\Lecture':
+                $content = Lecture::create([
+                    'title'     => $request->lecture_title,
+                    'author'    => $request->lecture_author,
+                    'year'      => $request->lecture_year,
+                    'summary'   => $request->lecture_summary,
+                    'analysis'  => $request->lecture_analysis,
+                    'review'    => $request->lecture_review,
+                ]);
                 break;
             case 'App\Models\Photo':
+                $content = Photo::create([
+                    'file_uri'      => $request->photo_file_uri,
+                    'photo_author'  => $request->photo_author,
+                    'legend'        => $request->photo_legend,
+                ]);
                 break;
             case 'App\Models\Video':
+                $content = Video::create([
+                    'file_uri'  => $request->video_file_uri,
+                    'link'      => $request->video_link,
+                    'legend'    => $request->video_legend,
+                ]);
                 break;
         }
 
