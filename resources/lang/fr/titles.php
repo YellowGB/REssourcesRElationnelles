@@ -106,7 +106,7 @@ return [
         'ressource' => 'Créer une ressource',
         'category'  => 'Créer une nouvelle catégorie',
         'role'      => 'Créer un nouveau role',
-        'user'      => 'Créer un nouvel utilisateur',
+        'user'      => 'Créer un nouveau compte',
     ],
 
 ];
