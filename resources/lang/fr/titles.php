@@ -77,6 +77,7 @@ return [
     ],
     'btn' => [
         'create'    => 'Créer',
+        'edit'      => 'Éditer',
     ],
     'section' => [
         'relation'  => 'Type de relation',
@@ -107,6 +108,11 @@ return [
         'category'  => 'Créer une nouvelle catégorie',
         'role'      => 'Créer un nouveau role',
         'user'      => 'Créer un nouveau compte',
+    ],
+    'edit' => [
+        'ressource' => 'Éditer une ressource',
+        'category'  => 'Éditer une nouvelle catégorie',
+        'role'      => 'Éditer un nouveau role',
     ],
 
 ];
