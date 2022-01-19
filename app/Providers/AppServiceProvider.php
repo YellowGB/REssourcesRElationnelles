@@ -35,5 +35,14 @@ class AppServiceProvider extends ServiceProvider
             'App\Models\Photo',
             'App\Models\Video',
         ]);
+        
+        View::share('relations', [
+            'self',
+            'spouse',
+            'family',
+            'pro',
+            'friend',
+            'stranger',
+        ]);
     }
 }

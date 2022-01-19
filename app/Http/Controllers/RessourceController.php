@@ -143,31 +143,11 @@ class RessourceController extends Controller
         $ressource  = Ressource::findOrFail($id);
         $content    = $ressource->ressourceable;
         $categories = Categorie::all();
-        $relations  = [
-            'self',
-            'spouse',
-            'family',
-            'pro',
-            'friend',
-            'stranger',
-        ];
-        $types      = [
-            'App\Models\Activite',
-            'App\Models\Article',
-            'App\Models\Atelier',
-            'App\Models\Course',
-            'App\Models\Defi',
-            'App\Models\Jeu',
-            'App\Models\Lecture',
-            'App\Models\Photo',
-            'App\Models\Video',
-        ];
 
-        return view('edition-ressource', [
+        return view('creation-ressource', [
             'ressource'     => $ressource,
             'content'       => $content,
             'categories'    => $categories,
-            'relations'     => $relations,
         ]
     );
     }
