@@ -81,6 +81,7 @@ return [
     'section' => [
         'relation'  => 'Type de relation',
         'category'  => 'Catégorie',
+        'role'      => 'Rôle',
         'type'      => 'Type de ressource',
     ],
     'content' => [
@@ -105,6 +106,7 @@ return [
         'ressource' => 'Créer une ressource',
         'category'  => 'Créer une nouvelle catégorie',
         'role'      => 'Créer un nouveau role',
+        'user'      => 'Créer un nouvel utilisateur',
     ],
 
 ];

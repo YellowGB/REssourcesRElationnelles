@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::get('roles', [RoleController::class, 'index'])->name('roles');
 Route::get('users', [UserController::class, 'index'])->name('users');
+Route::get('users/create', [UserController::class, 'create'])->name('users.create');
 Route::get('catalogue', [RessourceController::class, 'index'])->name('catalogue');
 Route::get('ressources/create', [RessourceController::class, 'create'])->name('ressources.create');
 Route::post('ressources/create', [RessourceController::class, 'store'])->name('ressources.store');
