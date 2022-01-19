@@ -29,7 +29,7 @@ return [
     ],
     'type' => [
         'App\Models\Activite'   => 'Activité',
-        'App\Models\Article'    =>  'Article',
+        'App\Models\Article'    => 'Article',
         'App\Models\Atelier'    => 'Atelier',
         'App\Models\Course'     => 'Cours',
         'App\Models\Defi'       => 'Défi',
