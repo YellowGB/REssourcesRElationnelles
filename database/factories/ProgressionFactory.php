@@ -15,7 +15,7 @@ class ProgressionFactory extends Factory
     {
         return [
             'user_id'       => rand(1, 10),
-            'ressource_id'  => rand(1, 27),
+            'ressource_id'  => rand(1, 9),
             'is_favorite'   => $this->faker->boolean(),
             'is_used'       => $this->faker->boolean(),
             'is_saved'      => $this->faker->boolean(),

@@ -15,7 +15,7 @@ class RessourceFactory extends Factory
     {
         return [
             'title'                 => $this->faker->sentence(),
-            'ressourceable_type'    => $this->faker->randomElement([
+            'ressourceable_type'    => $this->faker->unique()->randomElement([
                 'App\Models\Activite',
                 'App\Models\Jeu',
                 'App\Models\Video',
@@ -26,7 +26,7 @@ class RessourceFactory extends Factory
                 'App\Models\Defi',
                 'App\Models\Article',
                 ]),
-            'ressourceable_id'      => rand(1, 3),
+            'ressourceable_id'      => 1,
             'relation'              => $this->faker->randomElement([
                 'self',
                 'spouse',

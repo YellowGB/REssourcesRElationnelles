@@ -63,6 +63,12 @@ return [
         'spirit'        => 'Spiritualité',
         'love'          => 'Vie affective',
     ],
+    'role' => [
+        'citoyen'               => 'Citoyen',
+        'moderateur'            => 'Modérateur',
+        'administrateur'        => 'Administrateur',
+        'superadministrateur'   => 'Super-administrateur',
+    ],
     'link' => [
         'link'      => 'Lien',
         'source'    => 'Source',

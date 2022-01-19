@@ -14,7 +14,7 @@ class CategorieFactory extends Factory
     public function definition()
     {
         return [
-            'name'  => $this->faker->randomElement([
+            'name'  => $this->faker->unique()->randomElement([
                 'communication',
                 'culture',
                 'development',
