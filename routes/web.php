@@ -27,5 +27,5 @@ Route::get('catalogue', [RessourceController::class, 'index'])->name('catalogue'
 Route::get('ressources/create', [RessourceController::class, 'create'])->name('ressources.create');
 Route::post('ressources/create', [RessourceController::class, 'store'])->name('ressources.store');
 Route::get('ressources/{id}/edit', [RessourceController::class, 'edit'])->name('ressources.edit');
-Route::post('ressources/{id}/edit', [RessourceController::class, 'change'])->name('ressources.change');
+Route::post('ressources/{id}/edit', [RessourceController::class, 'update'])->name('ressources.update');
 Route::get('ressources/{id}', [RessourceController::class, 'show'])->name('ressources.show');

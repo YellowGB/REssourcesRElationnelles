@@ -118,8 +118,8 @@
     @endswitch
     {{-- Fin du contenu --}}
     {{-- Edition --}}
-    <form action="http://ressourcesrelationnelles.test/ressources/{{ $ressource->id }}/edit">
-        <input type="submit" value="Editer la ressource" />
+    <form action="{{ route('ressources.edit', ['id' => $ressource->id]) }}">
+        <input type="submit" value="Editer la ressource">
     </form>
 
 @endsection

@@ -137,23 +137,48 @@ class RessourceController extends Controller
 
         $ressource  = Ressource::findOrFail($id);
         $content    = $ressource->ressourceable;
+        $categories = Categorie::all();
+        $relations  = [
+            'self',
+            'spouse',
+            'family',
+            'pro',
+            'friend',
+            'stranger',
+        ];
+        $types      = [
+            'App\Models\Activite',
+            'App\Models\Article',
+            'App\Models\Atelier',
+            'App\Models\Course',
+            'App\Models\Defi',
+            'App\Models\Jeu',
+            'App\Models\Lecture',
+            'App\Models\Photo',
+            'App\Models\Video',
+        ];
 
         return view('edition-ressource', [
-            'ressources' => $ressource,
+            'ressource'     => $ressource,
+            'content'       => $content,
+            'categories'    => $categories,
+            'relations'     => $relations,
         ]
     );
     }
 
-    public function change( Request $request ) {
+    public function update( Request $request, $id ) {
 
         switch ($request->ressourceable_type) {
 
             case 'App\Models\Activite':
-                $content = Activite::edit([
-                    'description'   => $request->activite_description,
-                    'starting_date' => $request->activite_starting_date,
-                    'duration'      => $request->activite_duration,
-                ]);
+                $content = Activite::findOrFail($request->ressourceable_id);
+
+                $content->description   = $request->activite_description;
+                $content->starting_date = $request->activite_starting_date;
+                $content->duration      = $request->activite_duration;
+
+                $content->update();
                 break;
             case 'App\Models\Article':
                 $content = Article::edit([
@@ -210,17 +235,16 @@ class RessourceController extends Controller
                 break;
         }
 
-        Ressource::edit([
-            'title'                 => $request->title,
-            'ressourceable_type'    => $request->ressourceable_type,
-            'ressourceable_id'      => $content->id, // on récupère l'id du contenu créé précédemment dans le switch
-            'relation'              => $request->relation,
-            'user_id'               => 1,
-            'categorie_id'          => $request->categorie_id,
-            'status'                => 'pending',
-            'restriction'           => 'public',
-            'created_at'            => now(),
-            'updated_at'            => now(),
-        ]);
+        $ressource = Ressource::findOrFail($id);
+
+        $ressource->title           = $request->title;
+        $ressource->relation        = $request->relation;
+        $ressource->categorie_id    = $request->categorie_id;
+        $ressource->status          = 'pending';
+        $ressource->restriction     = 'public';
+        $ressource->updated_at      = now();
+        
+        $ressource->update();
+        return redirect()->back()->with('status', 'Ressource modifiée avec succès.');
     }
 }

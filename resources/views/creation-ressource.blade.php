@@ -3,7 +3,7 @@
 @section('content')
 
     <h1>{{ __('titles.create.ressource') }}</h1>
-    <form action="{{ route( 'ressources.store' ) }}" method="post">
+    <form action="{{ route('ressources.store') }}" method="post">
         @csrf
         <div class="ressource-container">
             {{-- Partie commune --}}
@@ -15,25 +15,19 @@
                 <option value="family">{{ __('titles.relation.family') }}</option>
                 <option value="pro">{{ __('titles.relation.pro') }}</option>
                 <option value="friend">{{ __('titles.relation.friend') }}</option>
-                <option value="stranger">{{ __('titles.relation.stranger') }}</option></optgroup>
+                <option value="stranger">{{ __('titles.relation.stranger') }}</option>
             </select>
             <select name="categorie_id">
                 <option selected disabled>{{ __('titles.select.category') }}</option>
                 @foreach ($categories as $categorie)
-                    <option value="{{ $categorie->id }}">{{ __(/*'titles.category.' . */$categorie->name) }}</option>
+                    <option value="{{ $categorie->id }}">{{ __('titles.category.' . $categorie->name) }}</option>
                 @endforeach
             </select>
             <select name="ressourceable_type" id="select">
                 <option selected disabled>{{ __('titles.select.type') }}</option>
-                <option value="App\Models\Activite">{{ __('titles.type.App\Models\Activite') }}</option>
-                <option value="App\Models\Article">{{ __('titles.type.App\Models\Article') }}</option>
-                <option value="App\Models\Atelier">{{ __('titles.type.App\Models\Atelier') }}</option>
-                <option value="App\Models\Course">{{ __('titles.type.App\Models\Course') }}</option>
-                <option value="App\Models\Defi">{{ __('titles.type.App\Models\Defi') }}</option>
-                <option value="App\Models\Jeu">{{ __('titles.type.App\Models\Jeu') }}</option>
-                <option value="App\Models\Lecture">{{ __('titles.type.App\Models\Lecture') }}</option>
-                <option value="App\Models\Photo">{{ __('titles.type.App\Models\Photo') }}</option>
-                <option value="App\Models\Video">{{ __('titles.type.App\Models\Video') }}</option>
+                @foreach ($types as $type) {{-- types est défini dans AppServiceProvider --}}
+                    <option value="{{ $type }}">{{ __('titles.type.' . $type) }}</option>
+                @endforeach
             </select>
 
             {{-- Contenu --}}
