@@ -131,4 +131,96 @@ class RessourceController extends Controller
             'updated_at'            => now(),
         ]);
     }
+
+
+    public function edit($id) {
+
+        $ressource  = Ressource::findOrFail($id);
+        $content    = $ressource->ressourceable;
+
+        return view('edition-ressource', [
+            'ressources' => $ressource,
+        ]
+    );
+    }
+
+    public function change( Request $request ) {
+
+        switch ($request->ressourceable_type) {
+
+            case 'App\Models\Activite':
+                $content = Activite::edit([
+                    'description'   => $request->activite_description,
+                    'starting_date' => $request->activite_starting_date,
+                    'duration'      => $request->activite_duration,
+                ]);
+                break;
+            case 'App\Models\Article':
+                $content = Article::edit([
+                    'source_url' => $request->article_source_url,
+                ]);
+                break;
+            case 'App\Models\Atelier':
+                $content = Atelier::edit([
+                    'description' => $request->atelier_description,
+                ]);
+                break;
+            case 'App\Models\Course':
+                $content = Course::edit([
+                    'file_uri'  => $request->course_file_uri,
+                    'file_name' => $request->course_file_name,
+                ]);
+                break;
+            case 'App\Models\Defi':
+                $content = Defi::edit([
+                    'description'   => $request->defi_description,
+                    'bonus'         => $request->defi_bonus,
+                ]);
+                break;
+            case 'App\Models\Jeu':
+                $content = Jeu::edit([
+                    'description'   => $request->jeu_description,
+                    'starting_date' => $request->jeu_starting_date,
+                    'link'          => $request->jeu_link,
+                ]);
+                break;
+            case 'App\Models\Lecture':
+                $content = Lecture::edit([
+                    'title'     => $request->lecture_title,
+                    'author'    => $request->lecture_author,
+                    'year'      => $request->lecture_year,
+                    'summary'   => $request->lecture_summary,
+                    'analysis'  => $request->lecture_analysis,
+                    'review'    => $request->lecture_review,
+                ]);
+                break;
+            case 'App\Models\Photo':
+                $content = Photo::edit([
+                    'file_uri'      => $request->photo_file_uri,
+                    'photo_author'  => $request->photo_author,
+                    'legend'        => $request->photo_legend,
+                ]);
+                break;
+            case 'App\Models\Video':
+                $content = Video::edit([
+                    'file_uri'  => $request->video_file_uri,
+                    'link'      => $request->video_link,
+                    'legend'    => $request->video_legend,
+                ]);
+                break;
+        }
+
+        Ressource::edit([
+            'title'                 => $request->title,
+            'ressourceable_type'    => $request->ressourceable_type,
+            'ressourceable_id'      => $content->id, // on récupère l'id du contenu créé précédemment dans le switch
+            'relation'              => $request->relation,
+            'user_id'               => 1,
+            'categorie_id'          => $request->categorie_id,
+            'status'                => 'pending',
+            'restriction'           => 'public',
+            'created_at'            => now(),
+            'updated_at'            => now(),
+        ]);
+    }
 }

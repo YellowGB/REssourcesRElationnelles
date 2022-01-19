@@ -29,7 +29,7 @@ return [
     ],
     'type' => [
         'App\Models\Activite'   => 'Activité',
-        'App\Models\Article'    =>  'Article',
+        'App\Models\Article'    => 'Article',
         'App\Models\Atelier'    => 'Atelier',
         'App\Models\Course'     => 'Cours',
         'App\Models\Defi'       => 'Défi',
@@ -71,6 +71,7 @@ return [
     ],
     'btn' => [
         'create'    => 'Créer',
+        'edit'      => 'Éditer',
     ],
     'section' => [
         'relation'  => 'Type de relation',
@@ -99,6 +100,11 @@ return [
         'ressource' => 'Créer une ressource',
         'category'  => 'Créer une nouvelle catégorie',
         'role'      => 'Créer un nouveau role',
+    ],
+    'edit' => [
+        'ressource' => 'Éditer une ressource',
+        'category'  => 'Éditer une nouvelle catégorie',
+        'role'      => 'Éditer un nouveau role',
     ],
 
 ];
