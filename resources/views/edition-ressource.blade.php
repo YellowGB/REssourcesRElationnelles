@@ -1,10 +1,9 @@
 @extends('layout.app')
 
 @section('content')
-{{-- <p></p> --}}
 
     <h1>{{ __('titles.edit.ressource') }}</h1>
-    <form action="{{ route('ressources.update', ['id' => $ressource->id] ) }}" method="post">
+    <form action="{{ route('ressources.update', ['id' => $ressource->id]) }}" method="post">
         @csrf
         <div class="ressource-container">
             {{-- Partie commune --}}
@@ -29,6 +28,7 @@
                     @endif
                 @endforeach
             </select>
+            <input type="text" name="ressourceable_id" value="{{ $content->id }}" hidden>
             <select name="ressourceable_type" id="select">
                 @foreach ($types as $type) {{-- types est défini dans AppServiceProvider --}}
                     @if ($ressource->ressourceable_type === $type)
