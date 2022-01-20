@@ -17,4 +17,12 @@ class Commentaire extends Model
         'reports',
         'replies_to'
     ];
+
+    public function ressources() {
+        return $this->belongsTo(Ressource::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

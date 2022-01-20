@@ -122,4 +122,44 @@
         <input type="submit" value="Editer la ressource">
     </form>
 
+    {{-- Commentaires --}}
+    <h2>Espace commentaire</h2>
+    @foreach ($commentaires as $commentaire)
+        @if (is_null($commentaire->replies_to))
+            <div class="comment" style="border: 1px solid black; background-color:lightgrey; cursor: pointer;">
+                @if (is_null($commentaire->user->nickname))
+                    <p>{{ __('titles.by') }} {{ $commentaire->user->firstname }} {{ $commentaire->user->name }}</p>
+                @else
+                    <p>{{ __('titles.by') }} {{ $commentaire->user->nickname }}</p>
+                @endif
+                <textarea disabled>{{ $commentaire->content }}</textarea>
+                <p>
+                    {{ trans_choice('titles.created', 1) }}
+                    {{ \Carbon\Carbon::parse($commentaire->created_at)->format('d/m/Y') }}
+                    {{ __('titles.at') }}
+                    {{ \Carbon\Carbon::parse($commentaire->created_at)->format('H:i') }}
+                </p>
+                {{-- Réponses --}}
+                @foreach ($commentaires as $reponse)
+                    @if (isset($reponse->replies_to) && $commentaire->id == $reponse->replies_to)
+                        <div class="reponse" style="margin: 5rem;">
+                            @if (is_null($reponse->user->nickname))
+                            <p>{{ __('titles.by') }} {{ $reponse->user->firstname }} {{ $reponse->user->name }}</p>
+                            @else
+                                <p>{{ __('titles.by') }} {{ $reponse->user->nickname }}</p>
+                            @endif
+                            <textarea disabled>{{ $reponse->content }}</textarea>
+                            <p>
+                                {{ trans_choice('titles.created', 1) }}
+                                {{ \Carbon\Carbon::parse($reponse->created_at)->format('d/m/Y') }}
+                                {{ __('titles.at') }}
+                                {{ \Carbon\Carbon::parse($reponse->created_at)->format('H:i') }}
+                            </p>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+        @endif
+    @endforeach
+
 @endsection

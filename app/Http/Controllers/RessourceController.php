@@ -13,6 +13,7 @@ use App\Models\Atelier;
 use App\Models\Lecture;
 use App\Models\Activite;
 use App\Models\Categorie;
+use App\Models\Commentaire;
 use App\Models\Ressource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -37,12 +38,14 @@ class RessourceController extends Controller
 
     public function show($id) {
 
-        $ressource  = Ressource::findOrFail($id);
-        $content    = $ressource->ressourceable;
+        $ressource      = Ressource::findOrFail($id);
+        $content        = $ressource->ressourceable;
+        $commentaires   = Commentaire::all();
 
         return view('ressource', [
-            'ressource' => $ressource,
-            'content'   => $content,
+            'ressource'     => $ressource,
+            'content'       => $content,
+            'commentaires'  => $commentaires,
         ]);
     }
 
