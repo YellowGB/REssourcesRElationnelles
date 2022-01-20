@@ -4,6 +4,13 @@
 
     {{-- Si $ressource existe et n'est pas null, on est sur une édition et non une création --}}
     <h1>{{ isset($ressource) ? __('titles.edit.ressource') : __('titles.create.ressource') }}</h1>
+    
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+    @endif
+    
     <form action="{{ isset($ressource) ? route('ressources.update', ['id' => $ressource->id]) : route('ressources.store') }}" method="post">
         @csrf
         <div class="ressource-container">
