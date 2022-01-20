@@ -50,10 +50,12 @@
             {{-- Contenu --}}
             <div id="activite" class="ressource-content" style="display: none;">
                 <textarea name="activite_description" cols="30" rows="10" placeholder="{{ __('titles.content.description') }}">{{ $content->description ?? '' }}</textarea>
-                <p class="input-title">{{ __('titles.content.starting') }}</p>
-                <input type="datetime-local" name="activite_starting_date" value="{{ isset($content) ? substr(str_replace(' ', 'T', $content->starting_date), 0, strlen($content->starting_date) - 3) : '' }}"></input>
-                <p class="input-title">{{ __('titles.content.duration') }}</p>
-                <input type="number" step="1" name="activite_duration" value="{{ $content->duration ?? '' }}"></input>
+                
+                <label for="activite_starting_date" class="input-title">{{ __('titles.content.starting') }}</label>
+                <input type="datetime-local" id="activite_starting_date" name="activite_starting_date" value="{{ isset($content) ? substr(str_replace(' ', 'T', $content->starting_date), 0, strlen($content->starting_date) - 3) : '' }}"></input>
+                
+                <label for="activite_duration" class="input-title">{{ __('titles.content.duration') }}</label>
+                <input type="number" step="1" id="activite_duration" name="activite_duration" value="{{ $content->duration ?? '' }}"></input>
             </div>
             <div id="article" class="ressource-content" style="display: none;">
                 <input type="text" name="article_source_url" placeholder="{{ __('titles.link.source') }}" value="{{ $content->source_url ?? '' }}"></input>
@@ -71,15 +73,19 @@
             </div>
             <div id="jeu" class="ressource-content" style="display: none;">
                 <textarea name="jeu_description" cols="30" rows="10" placeholder="{{ __('titles.content.description') }}">{{ $content->description ?? '' }}</textarea>
-                <p class="input-title">{{ __('titles.content.starting') }}</p>
-                <input type="datetime-local" name="jeu_starting_date" value="{{ isset($content) ? substr(str_replace(' ', 'T', $content->starting_date), 0, strlen($content->starting_date) - 3) : '' }}"></input>
+                
+                <label for="jeu_starting_date" class="input-title">{{ __('titles.content.starting') }}</label>
+                <input type="datetime-local" id="jeu_starting_date" name="jeu_starting_date" value="{{ isset($content) ? substr(str_replace(' ', 'T', $content->starting_date), 0, strlen($content->starting_date) - 3) : '' }}"></input>
+                
                 <input type="text" name="jeu_link" placeholder="{{ __('titles.link.link') }}" value="{{ $content->link ?? '' }}"></input>
             </div>
             <div id="lecture" class="ressource-content" style="display: none;">
                 <input type="text" name="lecture_title" placeholder="{{ __('titles.content.title') }}" value="{{ $content->title ?? '' }}"></input>
                 <input type="text" name="lecture_author" placeholder="{{ trans_choice('titles.author', 1) }}" value="{{ $content->author ?? '' }}"></input>
-                <p class="input-title">{{ __('titles.content.publication') }}</p>
-                <input type="number" name="lecture_year" min="1000" max="2099" step="1" value="{{ $content->year ?? '' }}"></input>
+                
+                <label for="lecture_year" class="input-title">{{ __('titles.content.publication') }}</label>
+                <input type="number" id="lecture_year" name="lecture_year" min="1000" max="2099" step="1" value="{{ $content->year ?? '' }}"></input>
+                
                 <textarea name="lecture_summary" cols="30" rows="10" placeholder="{{ __('titles.content.summary') }}">{{ $content->summary ?? '' }}</textarea>
                 <textarea name="lecture_analysis" cols="30" rows="10" placeholder="{{ __('titles.content.analysis') }}">{{ $content->analysis ?? '' }}</textarea>
                 <textarea name="lecture_review" cols="30" rows="10" placeholder="{{ __('titles.content.review') }}">{{ $content->review ?? '' }}</textarea>
