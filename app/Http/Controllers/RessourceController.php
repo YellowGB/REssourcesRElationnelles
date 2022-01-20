@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activite;
-use App\Models\Article;
-use App\Models\Atelier;
-use App\Models\Course;
-use App\Models\Defi;
 use App\Models\Jeu;
-use App\Models\Lecture;
+use App\Models\Defi;
+use App\Models\User;
 use App\Models\Photo;
 use App\Models\Video;
+use App\Models\Course;
+use App\Models\Article;
+use App\Models\Atelier;
+use App\Models\Lecture;
+use App\Models\Activite;
 use App\Models\Categorie;
 use App\Models\Ressource;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class RessourceController extends Controller
     public function index() {
 
         $ressources = Ressource::all();
+        $users = User::all();
         // $contents   = array();
         // foreach ($ressources as $ressource) {
         //     array_push($contents, $ressource->ressourceable);
@@ -28,6 +30,7 @@ class RessourceController extends Controller
 
         return view('catalogue', compact(
             'ressources',
+            'users',
             // 'contents',
         ));
     }
