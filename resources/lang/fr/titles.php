@@ -102,6 +102,7 @@ return [
         'relation'  => 'Sélectionnez un type de relation',
         'category'  => 'Sélectionnez une catégorie',
         'type'      => 'Sélectionnez le type de ressource',
+        'catalogue' => 'Catalogue',
     ],
     'create' => [
         'ressource' => 'Créer une ressource',
@@ -114,5 +115,27 @@ return [
         'category'  => 'Éditer une nouvelle catégorie',
         'role'      => 'Éditer un nouveau role',
     ],
+    'sidebar' => [
+        'home' => 'Acceuil',
+        'notifications' => 'Notifications',
+        'messages' => 'Messages',
+        'themes' => 'Thèmes',
+        'settings' => 'Paramètres'
+    ],
+    'notification' => [
+        'messages' => 'Changer le thème',
+        'color' => 'Couleur primaires',
+        'background' => 'Changement du thème',
+        'light' => 'Clair',
+        'dark' => 'Sombre',
+        'dim' => 'Dim'
+    ],
+    'messages' => [
+        'title' => 'Messages',
+        'search' => 'Rechercher une ressources',
+        'primary' => 'Principal',
+        'general' => 'Général',
+        'request' => 'Demandes',
+    ]
 
 ];
