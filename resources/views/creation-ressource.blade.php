@@ -11,7 +11,7 @@
         @endforeach
     @endif
     
-    <form action="{{ isset($ressource) ? route('ressources.update', ['id' => $ressource->id]) : route('ressources.store') }}" method="post">
+    <form action="{{ isset($ressource) ? route('ressources.update', ['id' => $ressource->id]) : route('ressources.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="ressource-container">
             {{-- Partie commune --}}
@@ -71,8 +71,11 @@
                 <textarea name="atelier_description" cols="30" rows="10" placeholder="{{ __('titles.content.description') }}">{{ $content->description ?? '' }}</textarea>
             </div>
             <div id="course" class="ressource-content" style="display: none;">
-                <input type="text" name="course_file_uri" placeholder="{{ __('titles.link.uri') }}" value="{{ $content->file_uri ?? '' }}"></input>
-                <input type="text" name="course_file_name" placeholder="{{ __('titles.filename') }}" value="{{ $content->file_name ?? '' }}"></input>
+                <input type="file" name="course_file" accept=".pdf">
+                @if (isset($content))
+                    <label for="course_file_name" class="input-title">{{ __('titles.link.current') }}</label>
+                    <input type="text" name="course_file_name" placeholder="{{ __('titles.filename') }}" value="{{ $content->file_name ?? '' }}" disabled></input>
+                @endif
             </div>
             <div id="defi" class="ressource-content" style="display: none;">
                 <textarea name="defi_description" cols="30" rows="10" placeholder="{{ __('titles.content.description') }}">{{ $content->description ?? '' }}</textarea>
@@ -98,12 +101,12 @@
                 <textarea name="lecture_review" cols="30" rows="10" placeholder="{{ __('titles.content.review') }}">{{ $content->review ?? '' }}</textarea>
             </div>
             <div id="photo" class="ressource-content" style="display: none;">
-                <input type="text" name="photo_file_uri" placeholder="{{ __('titles.link.uri') }}" value="{{ $content->file_uri ?? '' }}"></input>
+                <input type="file" name="photo_file" accept="image/*" value="{{ $content->file_uri ?? '' }}">
                 <input type="text" name="photo_author" placeholder="{{ trans_choice('titles.author', 1) }}" value="{{ $content->photo_author ?? '' }}"></input>
                 <input type="text" name="photo_legend" placeholder="{{ __('titles.content.legend') }}" value="{{ $content->legend ?? '' }}"></input>
             </div>
             <div id="video" class="ressource-content" style="display: none;">
-                <input type="text" name="video_file_uri" placeholder="{{ __('titles.link.uri') }}" value="{{ $content->file_uri ?? '' }}""></input>
+                <input type="file" name="video_file" accept="video/mp4" value="{{ $content->file_uri ?? '' }}">
                 <input type="text" name="video_link" placeholder="{{ __('titles.link.link') }}" value="{{ $content->link ?? '' }}"></input>
                 <input type="text" name="video_legend" placeholder="{{ __('titles.content.legend') }}" value="{{ $content->legend ?? '' }}"></input>
             </div>

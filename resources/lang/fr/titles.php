@@ -19,6 +19,7 @@ return [
     'updated'   => '{1} Modifié le|{2} Modifiée le|{3} Modifiés le|{4} Modifiées le',
     'at'        => 'à',
     'by'        => 'Par',
+    'readfile'  => 'Lire le fichier',
     'relation' => [
         'self'      => 'Soi',
         'spouse'    => 'Conjoints',
@@ -74,6 +75,7 @@ return [
         'source'    => 'Source',
         'url'       => 'URL',
         'uri'       => 'Emplacement du fichier',
+        'current'   => 'Fichier actuellement enregistré',
     ],
     'btn' => [
         'create'    => 'Créer',
@@ -110,9 +112,9 @@ return [
         'user'      => 'Créer un nouveau compte',
     ],
     'edit' => [
-        'ressource' => 'Éditer une ressource',
-        'category'  => 'Éditer une nouvelle catégorie',
-        'role'      => 'Éditer un nouveau role',
+        'ressource' => 'Éditer la ressource',
+        'category'  => 'Éditer la catégorie',
+        'role'      => 'Éditer le role',
     ],
 
 ];

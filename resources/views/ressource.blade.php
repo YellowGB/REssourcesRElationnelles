@@ -52,8 +52,11 @@
         {{-- Fin Atelier --}}
         {{-- Début Course --}}
         @case('App\Models\Course')
-            <p>{{ __('titles.link.uri') }} : {{ $content->file_uri }}</p>
-            <p>{{ __('titles.filename') }} : {{ $content->file_name }}</p>
+            {{-- <p>{{ __('titles.link.uri') }} : {{ $content->file_uri }}</p> --}}
+            {{-- <p>{{ __('titles.filename') }} : {{ $content->file_name }}</p> --}}
+            <form action="{{ route('courses.show', ['id' => $content->id]) }}">
+                <input type="submit" value="{{ __('titles.readfile') . ' ' . $content->file_name }}">
+            </form>
             @break
         {{-- Fin Course --}}
         {{-- Début Defi --}}
@@ -91,7 +94,8 @@
         {{-- Fin Lecture --}}
         {{-- Début Photo --}}
         @case('App\Models\Photo')
-            <p>{{ __('titles.link.uri') }} : {{ $content->file_uri }}</p>
+            {{-- <p>{{ __('titles.link.uri') }} : {{ $content->file_uri }}</p> --}}
+            <img src="{{ asset('storage/' . $content->file_uri) }}" alt="{{ __('titles.type.photo') }}">
             @if ( ! is_null($content->photo_author))
                 <p>{{ trans_choice('titles.author', 1) }} : {{ $content->photo_author }}</p>
             @endif
@@ -103,7 +107,14 @@
         {{-- Début Video --}}
         @case('App\Models\Video')
             @if (is_null($content->link))
-                <p>{{ __('titles.link.uri') }} : {{ $content->file_uri }}</p>
+                {{-- <p>{{ __('titles.link.uri') }} : {{ $content->file_uri }}</p> --}}
+                <video controls>
+                    <source src="{{ asset('storage/' . $content->file_uri) }}" type="video/mp4">
+                    {{-- <p>
+                        Votre navigateur ne prend pas en charge les vidéos HTML5.
+                        Voici <a href="{{ asset('storage/' . $content->file_uri) }}">un lien pour télécharger la vidéo</a>.
+                    </p> --}}
+                </video>
             @else
                 <p>{{ __('titles.link.link') }} : {{ $content->link }}</p>
             @endif
@@ -119,7 +130,7 @@
     {{-- Fin du contenu --}}
     {{-- Edition --}}
     <form action="{{ route('ressources.edit', ['id' => $ressource->id]) }}">
-        <input type="submit" value="Editer la ressource">
+        <input type="submit" value="{{ __('titles.edit.ressource') }}">
     </form>
 
 @endsection

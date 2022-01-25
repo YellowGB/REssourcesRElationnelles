@@ -15,6 +15,7 @@ use App\Models\Categorie;
 use App\Models\Ressource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class RessourceController extends Controller
 {
@@ -49,8 +50,7 @@ class RessourceController extends Controller
 
         return view('creation-ressource', [
             'categories' => $categories,
-        ]
-    );
+        ]);
     }
 
     public function store( Request $request ) {
@@ -99,13 +99,15 @@ class RessourceController extends Controller
                 break;
             case 'App\Models\Course':
                 $request->validate([
-                    'course_file_uri'   => 'required|max:2048',
-                    'course_file_name'  => 'required|between:5,500',
+                    'course_file' => 'required|mimes:pdf',
                 ]);
+
+                $file_uri   = Storage::disk('public')->put('courses', $request->course_file);
+                $file_name  = $request->file('course_file')->getClientOriginalName();
                 
                 $content = Course::create([
-                    'file_uri'  => $request->course_file_uri,
-                    'file_name' => $request->course_file_name,
+                    'file_uri'  => $file_uri,
+                    'file_name' => substr($file_name, 0, strlen($file_name) - 4), // -4 pour retirer l'extension '.pdf'
                 ]);
                 break;
             case 'App\Models\Defi':
@@ -153,26 +155,26 @@ class RessourceController extends Controller
                 break;
             case 'App\Models\Photo':
                 $request->validate([
-                    'photo_file_uri'    => 'required|max:2048',
-                    'photo_author'      => 'nullable|max:255',
-                    'photo_legend'      => 'nullable|max:500',
+                    'photo_file'    => 'required|image',
+                    'photo_author'  => 'nullable|max:255',
+                    'photo_legend'  => 'nullable|max:500',
                 ]);
                 
                 $content = Photo::create([
-                    'file_uri'      => $request->photo_file_uri,
+                    'file_uri'      => Storage::disk('public')->put('photos', $request->photo_file),
                     'photo_author'  => $request->photo_author,
                     'legend'        => $request->photo_legend,
                 ]);
                 break;
             case 'App\Models\Video':
                 $request->validate([
-                    'video_file_uri'    => 'required_without:video_link|prohibited_unless:video_link,null|max:2048',
-                    'video_link'        => 'required_without:video_file_uri|prohibited_unless:video_file_uri,null|max:2048',
-                    'video_legend'      => 'nullable|max:500',
+                    'video_file'    => 'required_without:video_link|prohibited_unless:video_link,null|mimetypes:video/mp4',
+                    'video_link'    => 'required_without:video_file|prohibited_unless:video_file,null|max:2048',
+                    'video_legend'  => 'nullable|max:500',
                 ]);
                 
                 $content = Video::create([
-                    'file_uri'  => $request->video_file_uri,
+                    'file_uri'  => !is_null($request->video_file) ? Storage::disk('public')->put('videos', $request->video_file) : null,
                     'link'      => $request->video_link,
                     'legend'    => $request->video_legend,
                 ]);
@@ -257,14 +259,16 @@ class RessourceController extends Controller
                 break;
             case 'App\Models\Course':
                 $request->validate([
-                    'course_file_uri'   => 'required|max:2048',
-                    'course_file_name'  => 'required|between:5,500',
+                    'course_file' => 'required|mimes:pdf',
                 ]);
                 
                 $content = Course::findOrFail($request->ressourceable_id);
 
-                $content->file_uri  = $request->course_file_uri;
-                $content->file_name = $request->course_file_name;
+                // On supprime l'ancien fichier
+                Storage::disk('public')->delete($content->file_uri);
+
+                $content->file_uri  = Storage::disk('public')->put('courses', $request->course_file);
+                $content->file_name = $request->file('course_file')->getClientOriginalName();
                 break;
             case 'App\Models\Defi':
                 $request->validate([
@@ -311,27 +315,33 @@ class RessourceController extends Controller
                 break;
             case 'App\Models\Photo':
                 $request->validate([
-                    'photo_file_uri'    => 'required|max:2048',
-                    'photo_author'      => 'nullable|max:255',
-                    'photo_legend'      => 'nullable|max:500',
+                    'photo_file'    => 'required|image',
+                    'photo_author'  => 'nullable|max:255',
+                    'photo_legend'  => 'nullable|max:500',
                 ]);
                 
                 $content = Photo::findOrFail($request->ressourceable_id);
 
-                $content->file_uri      = $request->photo_file_uri;
+                // On supprime l'ancien fichier
+                Storage::disk('public')->delete($content->file_uri);
+
+                $content->file_uri      = Storage::disk('public')->put('photos', $request->photo_file);
                 $content->photo_author  = $request->photo_author;
                 $content->legend        = $request->photo_legend;
                 break;
             case 'App\Models\Video':
                 $request->validate([
-                    'video_file_uri'    => 'required_without:video_link|prohibited_unless:video_link,null|max:2048',
-                    'video_link'        => 'required_without:video_file_uri|prohibited_unless:video_file_uri,null|max:2048',
-                    'video_legend'      => 'nullable|max:500',
+                    'video_file'    => 'required_without:video_link|prohibited_unless:video_link,null|mimetypes:video/mp4',
+                    'video_link'    => 'required_without:video_file|prohibited_unless:video_file,null|max:2048',
+                    'video_legend'  => 'nullable|max:500',
                 ]);
                 
                 $content = Video::findOrFail($request->ressourceable_id);
 
-                $content->file_uri  = $request->video_file_uri;
+                // On supprime l'ancien fichier
+                Storage::disk('public')->delete($content->file_uri);
+
+                $content->file_uri  = Storage::disk('public')->put('videos', $request->video_file);
                 $content->link      = $request->video_link;
                 $content->legend    = $request->video_legend;
                 break;
