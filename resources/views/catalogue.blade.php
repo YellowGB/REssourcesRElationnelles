@@ -1,7 +1,6 @@
 @extends('layout.app')
 
 @section('content') 
-<script src="js/catalogue.js"></script>
 <nav class="nav-bar">
     <div class="container">
         <h2 class="logo">{{__('titles.select.catalogue')}}</h2>
@@ -65,9 +64,6 @@
                     </div>
                 </a>
                 <!-----------------------------------End of the Notification Popup ------------------->
-                <a class="menu-item" id="notification-message">
-                    <span><i class="uil uil-envelope-check"><small class="notification-count">3</small></i></span><h3>Messages</h3>
-                </a>
                 <a class="menu-item">
                     <span><i class="uil uil-palette"></i></span>
                     <h3>{{__('titles.sidebar.themes')}}</h3>
@@ -213,3 +209,4 @@
 </div> --}}
 
 @endsection
+<script src="{{url('js/catalogue.js')}}"></script>
