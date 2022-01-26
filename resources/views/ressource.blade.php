@@ -123,38 +123,38 @@
     </form>
 
     {{-- Commentaires --}}
-    <h2>Espace commentaire</h2>
+    <h2>{{ __('titles.comment.area') }}</h2>
     @foreach ($commentaires as $commentaire)
         @if (is_null($commentaire->replies_to))
-            <div class="comment" style="border: 1px solid black; background-color:lightgrey; cursor: pointer;">
+            <div class="comment">
                 @if (is_null($commentaire->user->nickname))
-                    <p>{{ __('titles.by') }} {{ $commentaire->user->firstname }} {{ $commentaire->user->name }}</p>
+                    <b>{{ __('titles.by') }} {{ $commentaire->user->firstname }} {{ $commentaire->user->name }}</b>
                 @else
-                    <p>{{ __('titles.by') }} {{ $commentaire->user->nickname }}</p>
+                    <b>{{ __('titles.by') }} {{ $commentaire->user->nickname }}</b>
                 @endif
-                <textarea disabled>{{ $commentaire->content }}</textarea>
-                <p>
+                <p>{{ $commentaire->content }}</p>
+                <i>
                     {{ trans_choice('titles.created', 1) }}
                     {{ \Carbon\Carbon::parse($commentaire->created_at)->format('d/m/Y') }}
                     {{ __('titles.at') }}
                     {{ \Carbon\Carbon::parse($commentaire->created_at)->format('H:i') }}
-                </p>
+                </i>
                 {{-- Réponses --}}
                 @foreach ($commentaires as $reponse)
                     @if (isset($reponse->replies_to) && $commentaire->id == $reponse->replies_to)
-                        <div class="reponse" style="margin: 5rem;">
+                        <div class="reponse" style="margin-left: 5rem;">
                             @if (is_null($reponse->user->nickname))
-                            <p>{{ __('titles.by') }} {{ $reponse->user->firstname }} {{ $reponse->user->name }}</p>
+                                <b>{{ __('titles.by') }} {{ $reponse->user->firstname }} {{ $reponse->user->name }}</b>
                             @else
-                                <p>{{ __('titles.by') }} {{ $reponse->user->nickname }}</p>
+                                <b>{{ __('titles.by') }} {{ $reponse->user->nickname }}</b>
                             @endif
-                            <textarea disabled>{{ $reponse->content }}</textarea>
-                            <p>
+                            <p>{{ $reponse->content }}</p>
+                            <i>
                                 {{ trans_choice('titles.created', 1) }}
                                 {{ \Carbon\Carbon::parse($reponse->created_at)->format('d/m/Y') }}
                                 {{ __('titles.at') }}
                                 {{ \Carbon\Carbon::parse($reponse->created_at)->format('H:i') }}
-                            </p>
+                            </i>
                         </div>
                     @endif
                 @endforeach

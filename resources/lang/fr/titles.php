@@ -114,5 +114,7 @@ return [
         'category'  => 'Éditer une nouvelle catégorie',
         'role'      => 'Éditer un nouveau role',
     ],
-
+    'comment' => [
+        'area'  => 'Espace Commentaires',
+    ],
 ];

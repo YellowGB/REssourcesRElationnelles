@@ -16,3 +16,12 @@ textarea {
 .ressource-container {
     margin: 1rem;
 }
+
+.comment {
+    border: 1px solid black;
+    background-color:lightgrey;
+}
+
+.reponse {
+    margin-left: 5rem;
+}

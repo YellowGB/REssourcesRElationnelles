@@ -38,9 +38,9 @@ class RessourceController extends Controller
 
     public function show($id) {
 
-        $ressource      = Ressource::findOrFail($id);
-        $content        = $ressource->ressourceable;
-        $commentaires   = Commentaire::all();
+        $ressource          = Ressource::findOrFail($id);
+        $content            = $ressource->ressourceable;
+        $commentaires       = Commentaire::where('ressource_id', $id)->get();
 
         return view('ressource', [
             'ressource'     => $ressource,
