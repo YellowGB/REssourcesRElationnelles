@@ -12,8 +12,8 @@ function get_ressource_type(Ressource $ressource) {
 
     $types = Config::get('constants.models');
 
-    foreach ($types as $type_k => $type_v) {
-        if ($ressource->ressourceable_type === $type_k) return $type_v;
+    foreach ($types as $kType => $vType) {
+        if ($ressource->ressourceable_type === $kType) return $vType;
     }
 }
 
