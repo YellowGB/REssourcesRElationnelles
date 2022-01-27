@@ -133,8 +133,7 @@ return [
     'messages' => [
         'title' => 'Messages',
         'search' => 'Rechercher une ressources',
-        'primary' => 'Principal',
-        'general' => 'Général',
+        'general' => 'General',
         'request' => 'Demandes',
     ]
 

@@ -1,17 +1,7 @@
-// Sidebar 
-const menuItems = document.querySelector('.menu-items');
+const menuItems = document.querySelectorAll('.menu-item');
 
-//remove active class from all menu items
-
-const changeActionItem = () => {
-    menuItems.forEach(item => {
-        item.classList.remove('active');
-    })
-}
-
-menuItems.forEach(item => {
+menuItem.forEach(item => {
     item.addEventListener('click', () => {
-        changeActionItem();
         item.classList.add('active');
     })
 })

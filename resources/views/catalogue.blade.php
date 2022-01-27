@@ -9,7 +9,6 @@
             <input type="search" placeholder="Search any posts here">
         </div>
         <div class="create">
-            <label class="btn btn-color"for="create-post">{{__('titles.create.ressource')}}</label>
             <div class="profile-photo">
                 <img src="image/me.jpg">
             </div>
@@ -34,6 +33,7 @@
                 </div>
             </a>
             <!--------------------Side bar --------------------------->
+            
             <div class="sidebar">
                 <a class="menu-item active">
                     <span><i class="uil uil-home"></i></span>
@@ -41,29 +41,6 @@
                 </a>
                 <a class="menu-item" id="notification">
                     <span><i class="uil uil-bell"><small class="notification-count">+9</small></i></span><h3>{{__('titles.sidebar.notifications')}}</h3>
-                    <!---------------------------Notification popup ------------------------>
-                    <div class="notification-popup">
-                        <div>
-                            <div class="profile-photo">
-                                <img src="image/me.jpg">
-                            </div>
-                            <div class="notification-body">
-                                <b>Pierre</b>
-                                <small class="text-muted">2 days ago</small>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="profile-photo">
-                                <img src="image/me.jpg">
-                            </div>
-                            <div class="notification-body">
-                                <b>Henry</b>
-                                <small class="text-muted">2 days ago</small>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-----------------------------------End of the Notification Popup ------------------->
                 <a class="menu-item">
                     <span><i class="uil uil-palette"></i></span>
                     <h3>{{__('titles.sidebar.themes')}}</h3>
@@ -73,8 +50,9 @@
                     <h3>{{__('titles.sidebar.settings')}}</h3>
                 </a>
             </div>
+
             <!----------------------End of the Side bar ------------------->
-            <label for="create-post" class="btn btn-color">{{__('titles.create.ressource')}}</label>
+            <button class="btn btn-color">{{__('titles.create.ressource')}}</button>
         </div>
 
         <!------------------------------- Middle ---------------------------------->
@@ -138,8 +116,7 @@
                 </div>
                 <!---------------Messages Category ----------->
                 <div class="category">
-                    <h6 class="active">{{__('titles.messages.primary')}}</h6>
-                    <h6>{{__('titles.messages.general')}}</h6>
+                    <h6 class="active">{{__('titles.messages.general')}}</h6>
                     <h6 class="message-requests">{{__('titles.messages.request')}}</h6>
                 </div>
                 <!------------------ Message ------------------>
@@ -165,6 +142,7 @@
             </div>
         </div>
         <!--------------------------- End of the Right ------------------->
+        <!--------------------------- Customize theme modal ------------------->
         <div class="customize-theme">
             <div class="card">
                 <h2>{{__('titles.notification.messages')}}</h2>
@@ -199,14 +177,44 @@
                 </div>
             </div>
         </div>
+        <!----------------------  End of modal -------------------------->
+        
+        <!--------------------- Creating ressources modal --------------->
+        {{--<div class="container-ressources">
+            <div class="card">
+                <h2>Choix de la ressources</h2>
+                <button class="btn btn-color" id="btn1">
+                    {{__('titles.type.App\Models\Article')}}
+                </button>
+                <button class="btn btn-color" id="btn2">
+                    {{__('titles.type.App\Models\Activite')}}
+                </button>
+                <button class="btn btn-color" id="btn3">
+                    {{__('titles.type.App\Models\Atelier')}}
+                </button>
+                <button class="btn btn-color" id="btn4">
+                    {{__('titles.type.App\Models\Defi')}}
+                </button>
+                <button class="btn btn-color" id="btn5">
+                    {{__('titles.type.App\Models\Jeu')}}
+                </button>
+                <button class="btn btn-color" id="btn6">
+                    {{__('titles.type.App\Models\Lecture')}}
+                </button>
+                <button class="btn btn-color" id="btn7">
+                    {{__('titles.type.App\Models\Photo')}}
+                </button>
+                <button class="btn btn-color" id="btn8">
+                    {{__('titles.type.App\Models\Video')}}
+                </button>
+                <button class="btn btn-color" id="btn9">
+                    {{__('titles.type.App\Models\Course')}}
+                </button>
+            </div>
+        </div>--}}
+        
     </div>
 </main>
-{{--
-<div class="style-catalogue" onclick="location.href='{{ route('ressources.show', ['id' => $ressource->id]) }}'">
-    <h2>{{ get_ressource_type($ressource->ressourceable_type) }}</h2>
-    <h3>{{ $ressource->relation }}</h3>
-    <h1>{{ $ressource->title }}</h1>
-</div> --}}
 
 @endsection
 <script src="{{url('js/catalogue.js')}}"></script>
