@@ -12,6 +12,7 @@ return [
     |
     */
 
+    'site'      => 'Ressources Relationnelles',
     'title'     => 'Titre',
     'author'    => '{1} Auteur|{2} Auteure', // 1 et 2 basés sur le chiffre correspondant au sexe de la sécurité sociale
     'filename'  => 'Nom du fichier',
@@ -80,12 +81,19 @@ return [
     'btn' => [
         'create'    => 'Créer',
         'edit'      => 'Éditer',
+        'login'     => 'Se connecter',
+        'register'  => "S'inscrire",
     ],
     'section' => [
         'relation'  => 'Type de relation',
         'category'  => 'Catégorie',
         'role'      => 'Rôle',
         'type'      => 'Type de ressource',
+        'catalogue' => 'Catalogue',
+        'dashboard' => 'Tableau de bord',
+        'login'     => 'Connexion',
+        'register'  => 'Inscription',
+        'users'     => 'Les utilisateurs',
     ],
     'content' => [
         'description'   => 'Description',
@@ -115,6 +123,17 @@ return [
         'ressource' => 'Éditer la ressource',
         'category'  => 'Éditer la catégorie',
         'role'      => 'Éditer le role',
+    ],
+    'form' => [
+        'name'          => 'Nom',
+        'firstname'     => 'Prénom',
+        'nickname'      => 'Pseudonyme',
+        'email'         => 'Email',
+        'password'      => 'Mot de passe',
+        'pwdconfirm'    => 'Confirmez le mot de passe',
+        'bio'           => 'Quelques mots à propos de vous',
+        'postcode'      => 'Code postal',
+        'avatar'        => 'Sélectionnez un avatar',
     ],
 
 ];

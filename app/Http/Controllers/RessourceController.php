@@ -14,11 +14,20 @@ use App\Models\Video;
 use App\Models\Categorie;
 use App\Models\Ressource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
 class RessourceController extends Controller
 {
+    public function __construct() {
+        
+        $this->middleware('auth')->except([
+            'index',
+            'show',
+        ]);
+    }
+
     public function index() {
 
         $ressources = Ressource::all();
@@ -45,6 +54,10 @@ class RessourceController extends Controller
     }
 
     public function create() {
+
+        if (! Gate::allows('create-ressources')) {
+            abort(403);
+        }
 
         $categories = Categorie::all();
 
@@ -200,10 +213,14 @@ class RessourceController extends Controller
 
 
     public function edit($id) {
-
+        
         $ressource  = Ressource::findOrFail($id);
         $content    = $ressource->ressourceable;
         $categories = Categorie::all();
+
+        if (! Gate::allows('update-ressources', $ressource)) {
+            abort(403);
+        }
 
         return view('creation-ressource', [
             'ressource'     => $ressource,

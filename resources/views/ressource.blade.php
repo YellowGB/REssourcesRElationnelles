@@ -63,7 +63,7 @@
         @case('App\Models\Defi')
             <h3>{{ __('titles.content.description') }}</h3>
             <p>{{ $content->description }}</p>
-            @if ( ! is_null($content->bonus))
+            @if (! is_null($content->bonus))
                 <h4>{{ __('titles.content.bonus') }}</h4>
                 <p>{{ $content->bonus }}</p>
             @endif
@@ -96,10 +96,10 @@
         @case('App\Models\Photo')
             {{-- <p>{{ __('titles.link.uri') }} : {{ $content->file_uri }}</p> --}}
             <img src="{{ asset('storage/' . $content->file_uri) }}" alt="{{ __('titles.type.photo') }}">
-            @if ( ! is_null($content->photo_author))
+            @if (! is_null($content->photo_author))
                 <p>{{ trans_choice('titles.author', 1) }} : {{ $content->photo_author }}</p>
             @endif
-            @if ( ! is_null($content->legend))
+            @if (! is_null($content->legend))
                 <p>{{ __('titles.content.legend') }} : {{ $content->legend }}</p>
             @endif
             @break
@@ -118,7 +118,7 @@
             @else
                 <p>{{ __('titles.link.link') }} : {{ $content->link }}</p>
             @endif
-            @if ( ! is_null($content->legend))
+            @if (! is_null($content->legend))
                 <p>{{ __('titles.content.legend') }} : {{ $content->legend }}</p>
             @endif
             @break

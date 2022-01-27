@@ -16,11 +16,12 @@ class RoleFactory extends Factory
         return [
             'name'          => $this->faker->unique()->randomElement([
                 'citoyen',
+                'citoyenverifie',
                 'moderateur',
                 'administrateur',
                 'superadministrateur',
             ]),
-            'permissions'   => '{"can_publish_ressources": "1"}',
+            'permissions'   => '{"can_create_ressources": "1"}',
         ];
     }
 }
