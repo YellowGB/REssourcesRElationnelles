@@ -35,6 +35,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('update-ressources', function (User $user, Ressource $ressource) {
+            
             $permissions = json_decode($user->role->permissions, true);
             
             if ($permissions['can_update_ressources_others']) return true;

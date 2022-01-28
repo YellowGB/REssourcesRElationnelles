@@ -61,6 +61,7 @@ class CreateRolesTable extends Migration
                     break;
             }
 
+            // On ajout le rôle avec ses permissions dans la table
             DB::table('roles')->insert([
                 'name'          => $role,
                 'permissions'   => json_encode($arrayPermissions),
