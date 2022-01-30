@@ -241,6 +241,15 @@ class RessourceController extends Controller
     public function destroy($id) {
         $ressource = Ressource::findOrFail($id);
         switch ($ressource->ressourceable_type) {
+            case 'App\Models\Activite':    
+                $content = Activite::findOrFail($ressource->ressourceable_id);
+                break;
+            case 'App\Models\Article':    
+                $content = Article::findOrFail($ressource->ressourceable_id);
+                break;
+            case 'App\Models\Atelier':    
+                $content = Atelier::findOrFail($ressource->ressourceable_id);
+                break;
             case 'App\Models\Course':    
                 $content = Course::findOrFail($ressource->ressourceable_id);
                 if(file_exists($content->file_uri)) {
@@ -249,6 +258,15 @@ class RessourceController extends Controller
                     // File::delete($file_path);
                     Storage::delete($file_path);
                 }
+                break;
+            case 'App\Models\Defi':    
+                $content = Defi::findOrFail($ressource->ressourceable_id);
+                break;
+            case 'App\Models\Jeu':    
+                $content = Jeu::findOrFail($ressource->ressourceable_id);
+                break;
+            case 'App\Models\Lecture':    
+                $content = Lecture::findOrFail($ressource->ressourceable_id);
                 break;
             case 'App\Models\Photo':
                 $content = Photo::findOrFail($ressource->ressourceable_id);
