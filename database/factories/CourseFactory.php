@@ -14,7 +14,7 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
-            'file_uri'  => 'var/www/public/' . rand(145672, 9999445332) . '.' . $this->faker->fileExtension(),
+            'file_uri'  => rand(145672, 9999445332) . '.' . $this->faker->fileExtension(),
             'file_name' => $this->faker->sentence(),
         ];
     }

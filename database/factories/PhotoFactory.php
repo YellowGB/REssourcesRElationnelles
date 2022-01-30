@@ -14,7 +14,7 @@ class PhotoFactory extends Factory
     public function definition()
     {
         return [
-            'file_uri'      => 'var/www/public/images/' . rand(145672, 9999445332) . '.jpg',
+            'file_uri'      => rand(145672, 9999445332) . '.jpg',
             'photo_author'  => $this->faker->name(),
             'legend'        => $this->faker->sentence(),
         ];

@@ -121,5 +121,11 @@
     <form action="{{ route('ressources.edit', ['id' => $ressource->id]) }}">
         <input type="submit" value="Editer la ressource">
     </form>
+    <form action="{{ route('ressources.destroy', ['id' => $ressource->id]) }}" method="POST">
+        {{-- <input type="hidden" name="_method" value="DELETE"> --}}
+        <input type="hidden" name="_method" value="POST">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="submit" value="Supprimer la ressource">
+    </form>
 
 @endsection

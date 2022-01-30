@@ -17,7 +17,7 @@ class CreateCommentairesTable extends Migration
             $table->id();
             $table->string('content');
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('ressource_id')->constrained();
+            $table->foreignId('ressource_id')->references('id')->on('ressources')->onDelete('cascade');
             $table->string('status');
             $table->unsignedInteger('reports')->nullable();         // le nombre de fois où le commentaire a été signalé, s'incrémente à chaque nouveau signalement
             $table->unsignedBigInteger('replies_to')->nullable();   // ID du commentaire auquel ce commentaire répond si c'est le cas

@@ -16,7 +16,7 @@ class CreateProgressionsTable extends Migration
         Schema::create('progressions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('ressource_id')->constrained();
+            $table->foreignId('ressource_id')->references('id')->on('ressources')->onDelete('cascade');
             $table->boolean('is_favorite')->default(false); // Favoris
             $table->boolean('is_used')->default(false);     // Exploitée
             $table->boolean('is_saved')->default(false);    // Mise de côté

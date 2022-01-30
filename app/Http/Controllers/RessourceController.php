@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activite;
-use App\Models\Article;
-use App\Models\Atelier;
-use App\Models\Course;
-use App\Models\Defi;
 use App\Models\Jeu;
-use App\Models\Lecture;
+use App\Models\Defi;
 use App\Models\Photo;
 use App\Models\Video;
+use App\Models\Course;
+use App\Models\Article;
+use App\Models\Atelier;
+use App\Models\Lecture;
+use App\Models\Activite;
 use App\Models\Categorie;
 use App\Models\Ressource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
 class RessourceController extends Controller
@@ -235,4 +237,41 @@ class RessourceController extends Controller
 
         return Redirect::to('ressources/' . $id)->with('success', 'Ressource modifiée avec succès.');
     }
+
+    public function destroy($id) {
+        $ressource = Ressource::findOrFail($id);
+        switch ($ressource->ressourceable_type) {
+            case 'App\Models\Course':    
+                $content = Course::findOrFail($ressource->ressourceable_id);
+                if(file_exists($content->file_uri)) {
+                    $file_path = public_path($content->file_uri);
+                    // unlink($file_path);
+                    // File::delete($file_path);
+                    Storage::delete($file_path);
+                }
+                break;
+            case 'App\Models\Photo':
+                $content = Photo::findOrFail($ressource->ressourceable_id);
+                if(file_exists($content->file_uri)) {
+                    $file_path = public_path('images/' . $content->file_uri);
+                    // unlink($file_path);
+                    // File::delete($file_path);
+                    Storage::delete($file_path);
+                }
+                break;
+            case 'App\Models\Video':
+                $content = Video::findOrFail($ressource->ressourceable_id);
+                if(file_exists($content->file_uri)) {
+                    $file_path = public_path($content->file_uri);
+                    // unlink($file_path);
+                    // File::delete($file_path);
+                    Storage::delete($file_path);
+                }
+                break;
+        }
+        $content->delete();
+        $ressource->delete();
+        return Redirect::to('catalogue')->with('success', 'Ressource supprimée avec succès.');
+    }
+    
 }
