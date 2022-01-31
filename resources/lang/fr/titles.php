@@ -135,5 +135,10 @@ return [
         'postcode'      => 'Code postal',
         'avatar'        => 'Sélectionnez un avatar',
     ],
+    'auth' => [
+        'resend'    => "Renvoyer l'email de vérification", // 'Resend Verification Email'
+        'login'     => 'Se connecter',
+        'logout'    => 'Se déconnecter',
+    ],
 
 ];

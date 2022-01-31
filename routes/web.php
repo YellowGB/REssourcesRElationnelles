@@ -23,38 +23,45 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 //------------ Utilisateurs ------------\\
 Route::get('roles', [RoleController::class, 'index'])
-                ->name('roles');
+                ->name('roles')
+                ->middleware('verified');
 
 Route::get('users', [UserController::class, 'index'])
-                ->name('users');
+                ->name('users')
+                ->middleware('verified');
 
 Route::get('users/create', [UserController::class, 'create'])
-                ->name('users.create');
+                ->name('users.create')
+                ->middleware('verified');
 
 //------------ Ressources ------------\\
 Route::get('catalogue', [RessourceController::class, 'index'])
                 ->name('catalogue');
 
 Route::get('ressources/create', [RessourceController::class, 'create'])
-                ->name('ressources.create');
+                ->name('ressources.create')
+                ->middleware('verified');
 
 Route::post('ressources/create', [RessourceController::class, 'store'])
-                ->name('ressources.store');
+                ->name('ressources.store')
+                ->middleware('verified');
 
 Route::get('ressources/courses/{id}', [CourseController::class, 'show'])
                 ->name('courses.show');
 
 Route::get('ressources/{id}/edit', [RessourceController::class, 'edit'])
-                ->name('ressources.edit');
+                ->name('ressources.edit')
+                ->middleware('verified');
 
 Route::post('ressources/{id}/edit', [RessourceController::class, 'update'])
-                ->name('ressources.update');
+                ->name('ressources.update')
+                ->middleware('verified');
 
 Route::get('ressources/{id}', [RessourceController::class, 'show'])
                 ->name('ressources.show');
