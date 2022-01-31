@@ -78,6 +78,7 @@ return [
     'btn' => [
         'create'    => 'Créer',
         'edit'      => 'Éditer',
+        'home'      => 'Home',
     ],
     'section' => [
         'relation'  => 'Type de relation',
