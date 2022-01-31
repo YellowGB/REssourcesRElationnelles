@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -52,7 +53,7 @@ class RegisteredUserController extends Controller
             'description'    => $request->description,
             'postcode'       => $request->postcode,
             'status'         => 'pending',
-            'role_id'        => 1,
+            'role_id'        => Role::findId('citoyen'),
             'last_connexion' => now(),
         ]);
 
