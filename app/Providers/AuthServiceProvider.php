@@ -34,12 +34,15 @@ class AuthServiceProvider extends ServiceProvider
             return $permissions['can_create_ressources'];
         });
 
+        Gate::define('publish-ressources', function (User $user) {
+            $permissions = json_decode($user->role->permissions, true);
+            return $permissions['can_publish_ressources'];
+        });
+
         Gate::define('update-ressources', function (User $user, Ressource $ressource) {
-            
             $permissions = json_decode($user->role->permissions, true);
             
             if ($permissions['can_update_ressources_others']) return true;
-            
             return $user->id === $ressource->user_id && $permissions['can_update_ressources_self'];
         });
     }
