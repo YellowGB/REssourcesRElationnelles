@@ -12,13 +12,6 @@ return [
         'App\Models\Photo'      => 'photo',
         'App\Models\Video'      => 'video',
     ],
-    'roles' => [
-        'citoyen',
-        'citoyenverifie',
-        'moderateur',
-        'administrateur',
-        'superadministrateur',
-    ],
     'permissions' => [
         'can_create_ressources' => 0,
         'can_publish_ressources' => 0,
@@ -29,6 +22,7 @@ return [
         'can_create_users' => 0,
         'can_update_users' => 0,
         'can_delete_users' => 0,
+        'can_remove_users' => 0, // Supprimer définitivement
         'can_create_categories' => 0,
         'can_update_categories' => 0,
         'can_delete_categories' => 0,

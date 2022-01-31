@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Enums\RessourceStatus;
+use App\Enums\RessourceRestriction;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateRessourcesTable extends Migration
 {
@@ -21,8 +23,8 @@ class CreateRessourcesTable extends Migration
             $table->string('relation');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('categorie_id')->constrained();
-            $table->string('status');
-            $table->string('restriction');
+            $table->string('status')->default(RessourceStatus::Pending->value);
+            $table->string('restriction')->default(RessourceRestriction::Public->value);
             $table->timestamps();
         });
     }

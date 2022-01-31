@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Enums\UserStatus;
+use App\Enums\UserStatus as EnumsUserStatus;
+use App\Enums\UserStatus as AppEnumsUserStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -23,12 +26,12 @@ class UserFactory extends Factory
             'remember_token'    => Str::random(10),
             'postcode'          => $this->faker->postcode(),
             'status'            => $this->faker->randomElement([
-                'pending',
-                'verified',
-                'suspended',
-                'deleted',
+                UserStatus::Pending,
+                UserStatus::Verified,
+                UserStatus::Suspended,
+                UserStatus::Deleted,
                 ]),
-            'role_id'           => rand(1, 3),
+            'role_id'           => rand(1, 5),
             'last_connexion'    => now(),
         ];
     }

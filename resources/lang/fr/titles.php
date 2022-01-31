@@ -67,6 +67,7 @@ return [
     ],
     'role' => [
         'citoyen'               => 'Citoyen',
+        'citoyenverifie'        => 'Citoyen vérifié',
         'moderateur'            => 'Modérateur',
         'administrateur'        => 'Administrateur',
         'superadministrateur'   => 'Super-administrateur',

@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Config;
+use App\Enums\UserRole;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateRolesTable extends Migration
 {
@@ -24,7 +25,7 @@ class CreateRolesTable extends Migration
         });
 
         // On récupère la liste des roles et des permissions
-        $roles       = Config::get('constants.roles');
+        $roles       = UserRole::cases();
         $permissions = Config::get('constants.permissions');
 
         // On ajoute les rôles par défaut dans la table avec les autorisations correspondantes
@@ -33,20 +34,20 @@ class CreateRolesTable extends Migration
             $arrayPermissions = $permissions;
             
             switch ($role) {
-                case 'superadministrateur':
+                case UserRole::SuperAdmin:
                     // le superadmin a tous les droits
                     foreach ($permissions as $kPermission => $vPermission) {
                         $arrayPermissions[$kPermission] = 1;
                     }
                     break;
-                case 'administrateur':
+                case UserRole::Admin:
                     // l'admin n'a pas le droit de supprimer définitivement un utilisateur
                     foreach ($permissions as $kPermission => $vPermission) {
                         $arrayPermissions[$kPermission] = 1;
                     }
                     $arrayPermissions['can_delete_users'] = 0;
                     break;
-                case 'moderateur':
+                case UserRole::Moderator:
                     $arrayPermissions['can_create_ressources'] = 1;
                     $arrayPermissions['can_publish_ressources'] = 1;
                     $arrayPermissions['can_update_ressources_self'] = 1;
@@ -54,7 +55,7 @@ class CreateRolesTable extends Migration
                     $arrayPermissions['can_delete_ressources_self'] = 1;
                     $arrayPermissions['can_delete_ressources_others'] = 1;
                     break;
-                case 'citoyenverifie':
+                case UserRole::VerifCitizen:
                     $arrayPermissions['can_create_ressources'] = 1;
                     $arrayPermissions['can_update_ressources_self'] = 1;
                     $arrayPermissions['can_delete_ressources_self'] = 1;

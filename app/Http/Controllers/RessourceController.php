@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\RessourceRestriction;
+use App\Enums\RessourceStatus;
 use App\Models\Activite;
 use App\Models\Article;
 use App\Models\Atelier;
@@ -202,8 +204,8 @@ class RessourceController extends Controller
             'relation'              => $request->relation,
             'user_id'               => 1,
             'categorie_id'          => $request->categorie_id,
-            'status'                => 'pending',
-            'restriction'           => 'public',
+            'status'                => RessourceStatus::Pending,
+            'restriction'           => RessourceRestriction::Public,
             'created_at'            => now(),
             'updated_at'            => now(),
         ]);
@@ -372,8 +374,8 @@ class RessourceController extends Controller
         $ressource->title           = $request->title;
         $ressource->relation        = $request->relation;
         $ressource->categorie_id    = $request->categorie_id;
-        $ressource->status          = 'pending';
-        $ressource->restriction     = 'public';
+        $ressource->status          = RessourceStatus::Pending;
+        $ressource->restriction     = RessourceRestriction::Public;
         $ressource->updated_at      = now();
 
         $ressource->update();

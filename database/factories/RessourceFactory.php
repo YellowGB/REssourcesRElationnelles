@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\RessourceRestriction;
+use App\Enums\RessourceStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RessourceFactory extends Factory
@@ -38,14 +40,14 @@ class RessourceFactory extends Factory
             'user_id'               => rand(1, 10),
             'categorie_id'          => rand(1, 13),
             'status'                => $this->faker->randomElement([
-                'draft',
-                'pending',
-                'published',
-                'deleted',
+                RessourceStatus::Draft,
+                RessourceStatus::Pending,
+                RessourceStatus::Published,
+                RessourceStatus::Deleted,
                 ]),
             'restriction'           => $this->faker->randomElement([
-                'public',
-                'private',
+                RessourceRestriction::Private,
+                RessourceRestriction::Public,
                 ]),
         ];
     }
