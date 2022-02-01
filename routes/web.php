@@ -19,7 +19,7 @@ use App\Http\Controllers\RessourceController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -28,17 +28,19 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 //------------ Utilisateurs ------------\\
+// UserController indique d'une manière générale que les accès
+// à ces pages nécessitent avant toute chose une authentification
 Route::get('roles', [RoleController::class, 'index'])
                 ->name('roles')
-                ->middleware('verified');
+                ->middleware('admin');
 
 Route::get('users', [UserController::class, 'index'])
                 ->name('users')
-                ->middleware('verified');
+                ->middleware('admin');
 
 Route::get('users/create', [UserController::class, 'create'])
                 ->name('users.create')
-                ->middleware('verified');
+                ->middleware('admin');
 
 //------------ Ressources ------------\\
 Route::get('catalogue', [RessourceController::class, 'index'])

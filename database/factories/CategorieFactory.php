@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\RessourceCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CategorieFactory extends Factory
@@ -14,20 +15,20 @@ class CategorieFactory extends Factory
     public function definition()
     {
         return [
-            'name'  => $this->faker->unique()->randomElement([
-                'communication',
-                'culture',
-                'development',
-                'emotion',
-                'hobby',
-                'pro',
-                'parent',
-                'quality',
-                'sense',
-                'physical',
-                'psychological',
-                'spirit',
-                'love',
+            'name' => $this->faker->unique()->randomElement([
+                RessourceCategory::Communication->value,
+                RessourceCategory::Culture->value,
+                RessourceCategory::Development->value,
+                RessourceCategory::Emotion->value,
+                RessourceCategory::Hobby->value,
+                RessourceCategory::Pro->value,
+                RessourceCategory::Parent->value,
+                RessourceCategory::Quality->value,
+                RessourceCategory::Sense->value,
+                RessourceCategory::Physical->value,
+                RessourceCategory::Psychological->value,
+                RessourceCategory::Spirit->value,
+                RessourceCategory::Love->value,
             ]),
         ];
     }

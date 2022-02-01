@@ -51,4 +51,19 @@ class User extends Authenticatable implements MustVerifyEmail
     public function role() {
         return $this->belongsTo(Role::class);
     }
+
+    /**
+     * Récupère une ou toutes les permissions d'un utilisateur
+     * 
+     * @return array<string,bool>|bool L'ensemble des permissions ou la permission demandée
+     * 
+     * @since 0.6.5-alpha
+     */
+    public static function getPermission(User $user, string $filter = 'all') {
+
+        $permissions = json_decode($user->role->permissions, true);
+
+        if ($filter !== 'all') return $permissions[$filter];
+        return $permissions;
+    }
 }
