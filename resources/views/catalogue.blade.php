@@ -4,41 +4,31 @@
 
     @guest 
         @foreach ($ressources as $ressource)
-            @if ($ressource->restriction == "public")
-                <div style="border: 1px solid black; background-color:lightgrey; cursor: pointer;" onclick="location.href='{{ route('ressources.show', ['id' => $ressource->id]) }}'">
-                    <h2>{{ __('titles.type.' . $ressource->ressourceable_type) }}</h2>
-                    <h3>{{ __('titles.relation.' . $ressource->relation) }}</h3>
-                    <h1>{{ $ressource->title }}</h1>
-                </div>
+            @if ($ressource->restriction === 'public')
+                {{ display_ressource_preview($ressource) }}
             @endif
         @endforeach
     @endguest
     @auth
-        @foreach ($ressources as $ressource)
-            @if ($ressource->user_id == Auth::user()->id || $ressource->restriction == "public")
-                <div style="border: 1px solid black; background-color:lightgrey; cursor: pointer;" onclick="location.href='{{ route('ressources.show', ['id' => $ressource->id]) }}'">
-                    <h2>{{ __('titles.type.' . $ressource->ressourceable_type) }}</h2>
-                    <h3>{{ __('titles.relation.' . $ressource->relation) }}</h3>
-                    <h1>{{ $ressource->title }}</h1>
-                </div>
-            @endif
-        @endforeach
+        @can('access-admin')
+            @foreach ($ressources as $ressource)
+                {{ display_ressource_preview($ressource) }}
+            @endforeach
+        @else
+            @foreach ($ressources as $ressource)
+                @if ($ressource->user_id === Auth::user()->id || $ressource->restriction === 'public')
+                    {{ display_ressource_preview($ressource) }}
+                @endif
+            @endforeach
+        @endcan
     @endauth
-    {{-- @auth('admin')
-        @foreach ($ressources as $ressource)
-                <div style="border: 1px solid black; background-color:lightgrey; cursor: pointer;" onclick="location.href='{{ route('ressources.show', ['id' => $ressource->id]) }}'">
-                    <h2>{{ __('titles.type.' . $ressource->ressourceable_type) }}</h2>
-                    <h3>{{ __('titles.relation.' . $ressource->relation) }}</h3>
-                    <h1>{{ $ressource->title }}</h1>
-                </div>
-        @endforeach
-    @endauth --}}
     
-    {{-- @for ($i = 0; $i < count($ressources); $i++)
-        <h2>{{ __('titles.type.' . $ressources[$i]->ressourceable_type) }}</h2>
-        <h3>{{ $ressources[$i]->relation }}</h3>
-        <h1>{{ $ressources[$i]->title }}</h1>
-        <p>{{ $contents[$i]->description }}</p>
-    @endfor --}}
+    {{-- Pour modifier facilement la chaine qui est echo dans display_ressource_preview() --}}
+    {{-- <div style="border: 1px solid black; background-color:lightgrey; cursor: pointer;" onclick="location.href='{{ route('ressources.show', ['id' => $ressource->id]) }}'">
+        <h2>{{ __('titles.type.' . $ressource->ressourceable_type) }}</h2>
+        <h3>{{ __('titles.relation.' . $ressource->relation) }}</h3>
+        <h1>{{ $ressource->title }}</h1>
+    </div> --}}
+    
 
 @endsection

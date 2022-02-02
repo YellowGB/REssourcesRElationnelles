@@ -139,4 +139,19 @@ function dbfill_faker() {
 
 }
 
+/**
+ * Affiche un carton d'aperçu d'une ressource
+ * 
+ * @since 0.6.8-alpha
+ */
+function display_ressource_preview(Ressource $ressource) {
+
+    echo    '<div style="border: 1px solid black; background-color:lightgrey; cursor: pointer;" onclick="location.href=\'' . route('ressources.show', ['id' => $ressource->id]) . '\'">
+                <h2>' . __('titles.type.' . $ressource->ressourceable_type) . '</h2>
+                <h3>'. __('titles.relation.' . $ressource->relation) . '</h3>
+                <h1>' . $ressource->title . '</h1>
+            </div>';
+
+}
+
 ?>

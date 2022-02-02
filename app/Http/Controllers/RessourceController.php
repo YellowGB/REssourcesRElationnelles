@@ -203,7 +203,7 @@ class RessourceController extends Controller
             'ressourceable_type'    => $request->ressourceable_type,
             'ressourceable_id'      => $content->id, // on récupère l'id du contenu créé précédemment dans le switch
             'relation'              => $request->relation,
-            'user_id'               => 1,
+            'user_id'               => auth()->user()->id,
             'categorie_id'          => $request->categorie_id,
             'status'                => RessourceStatus::Pending->value,
             'restriction'           => RessourceRestriction::Public->value,

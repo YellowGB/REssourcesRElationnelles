@@ -58,6 +58,11 @@ class AuthServiceProvider extends ServiceProvider
             return User::getPermission($user, UserPermission::DeleteCategories->value);
         });
 
+        //------------ Administration ------------\\
+        Gate::define('access-admin', function (User $user) {
+            return User::getPermission($user, UserPermission::AccessAdmin->value);
+        });
+
         //------------ Ressources ------------\\
         Gate::define('create-ressources', function (User $user) {
             return User::getPermission($user, UserPermission::CreateRessources->value);
