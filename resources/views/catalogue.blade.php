@@ -2,13 +2,37 @@
 
 @section('content')
 
-    @foreach ($ressources as $ressource)
-        <div style="border: 1px solid black; background-color:lightgrey; cursor: pointer;" onclick="location.href='{{ route('ressources.show', ['id' => $ressource->id]) }}'">
-            <h2>{{ __('titles.type.' . $ressource->ressourceable_type) }}</h2>
-            <h3>{{ __('titles.relation.' . $ressource->relation) }}</h3>
-            <h1>{{ $ressource->title }}</h1>
-        </div>
-    @endforeach
+    @guest 
+        @foreach ($ressources as $ressource)
+            @if ($ressource->restriction == "public")
+                <div style="border: 1px solid black; background-color:lightgrey; cursor: pointer;" onclick="location.href='{{ route('ressources.show', ['id' => $ressource->id]) }}'">
+                    <h2>{{ __('titles.type.' . $ressource->ressourceable_type) }}</h2>
+                    <h3>{{ __('titles.relation.' . $ressource->relation) }}</h3>
+                    <h1>{{ $ressource->title }}</h1>
+                </div>
+            @endif
+        @endforeach
+    @endguest
+    @auth
+        @foreach ($ressources as $ressource)
+            @if ($ressource->user_id == Auth::user()->id || $ressource->restriction == "public")
+                <div style="border: 1px solid black; background-color:lightgrey; cursor: pointer;" onclick="location.href='{{ route('ressources.show', ['id' => $ressource->id]) }}'">
+                    <h2>{{ __('titles.type.' . $ressource->ressourceable_type) }}</h2>
+                    <h3>{{ __('titles.relation.' . $ressource->relation) }}</h3>
+                    <h1>{{ $ressource->title }}</h1>
+                </div>
+            @endif
+        @endforeach
+    @endauth
+    {{-- @auth('admin')
+        @foreach ($ressources as $ressource)
+                <div style="border: 1px solid black; background-color:lightgrey; cursor: pointer;" onclick="location.href='{{ route('ressources.show', ['id' => $ressource->id]) }}'">
+                    <h2>{{ __('titles.type.' . $ressource->ressourceable_type) }}</h2>
+                    <h3>{{ __('titles.relation.' . $ressource->relation) }}</h3>
+                    <h1>{{ $ressource->title }}</h1>
+                </div>
+        @endforeach
+    @endauth --}}
     
     {{-- @for ($i = 0; $i < count($ressources); $i++)
         <h2>{{ __('titles.type.' . $ressources[$i]->ressourceable_type) }}</h2>
