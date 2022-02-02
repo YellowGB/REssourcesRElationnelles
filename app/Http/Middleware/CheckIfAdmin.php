@@ -2,9 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Enums\UserPermission;
 
 class CheckIfAdmin
 {
@@ -17,7 +18,7 @@ class CheckIfAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (User::getPermission(auth()->user(), 'can_access_admin')) {
+        if (User::getPermission(auth()->user(), UserPermission::AccessAdmin->value)) {
             return $next($request);
         }
         else abort(403);

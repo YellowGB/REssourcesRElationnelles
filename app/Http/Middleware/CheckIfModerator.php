@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Enums\UserPermission;
 
 class CheckIfModerator
 {
@@ -17,7 +18,7 @@ class CheckIfModerator
      */
     public function handle(Request $request, Closure $next)
     {
-        if (User::getPermission(auth()->user(), 'can_update_ressources_others')) {
+        if (User::getPermission(auth()->user(), UserPermission::UpdateRessourcesOthers->value)) {
             return $next($request);
         }
         else abort(403);

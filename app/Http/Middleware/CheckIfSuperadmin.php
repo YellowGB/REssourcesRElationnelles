@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Enums\UserPermission;
 
 class CheckIfSuperadmin
 {
@@ -17,7 +18,7 @@ class CheckIfSuperadmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (User::getPermission(auth()->user(), 'can_remove_users')) {
+        if (User::getPermission(auth()->user(), UserPermission::RemoveUsers->value)) {
             return $next($request);
         }
         else abort(403);

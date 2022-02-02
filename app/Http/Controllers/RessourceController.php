@@ -205,8 +205,8 @@ class RessourceController extends Controller
             'relation'              => $request->relation,
             'user_id'               => 1,
             'categorie_id'          => $request->categorie_id,
-            'status'                => RessourceStatus::Pending,
-            'restriction'           => RessourceRestriction::Public,
+            'status'                => RessourceStatus::Pending->value,
+            'restriction'           => RessourceRestriction::Public->value,
             'created_at'            => now(),
             'updated_at'            => now(),
         ]);

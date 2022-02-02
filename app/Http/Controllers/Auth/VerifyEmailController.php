@@ -27,7 +27,7 @@ class VerifyEmailController extends Controller
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
 
-            $request->user()->status = UserStatus::Verified;
+            $request->user()->status  = UserStatus::Verified;
             $request->user()->role_id = Role::findId(UserRole::VerifCitizen);
             $request->user()->update();
         }
