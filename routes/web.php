@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -17,15 +18,52 @@ use App\Http\Controllers\RessourceController;
 */
 
 Route::get('/', function () {
-    return view('home');
-});
+    return view('welcome');
+})->name('home');
 
-Route::get('roles', [RoleController::class, 'index'])->name('roles');
-Route::get('users', [UserController::class, 'index'])->name('users');
-Route::get('users/create', [UserController::class, 'create'])->name('users.create');
-Route::get('catalogue', [RessourceController::class, 'index'])->name('catalogue');
-Route::get('ressources/create', [RessourceController::class, 'create'])->name('ressources.create');
-Route::post('ressources/create', [RessourceController::class, 'store'])->name('ressources.store');
-Route::get('ressources/{id}/edit', [RessourceController::class, 'edit'])->name('ressources.edit');
-Route::post('ressources/{id}/edit', [RessourceController::class, 'update'])->name('ressources.update');
-Route::get('ressources/{id}', [RessourceController::class, 'show'])->name('ressources.show');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+//------------ Utilisateurs ------------\\
+// UserController indique d'une manière générale que les accès
+// à ces pages nécessitent avant toute chose une authentification
+Route::get('roles', [RoleController::class, 'index'])
+                ->name('roles')
+                ->middleware('admin');
+
+Route::get('users', [UserController::class, 'index'])
+                ->name('users')
+                ->middleware('admin');
+
+Route::get('users/create', [UserController::class, 'create'])
+                ->name('users.create')
+                ->middleware('admin');
+
+//------------ Ressources ------------\\
+Route::get('catalogue', [RessourceController::class, 'index'])
+                ->name('catalogue');
+
+Route::get('ressources/create', [RessourceController::class, 'create'])
+                ->name('ressources.create')
+                ->middleware('verified');
+
+Route::post('ressources/create', [RessourceController::class, 'store'])
+                ->name('ressources.store')
+                ->middleware('verified');
+
+Route::get('ressources/courses/{id}', [CourseController::class, 'show'])
+                ->name('courses.show');
+
+Route::get('ressources/{id}/edit', [RessourceController::class, 'edit'])
+                ->name('ressources.edit')
+                ->middleware('verified');
+
+Route::post('ressources/{id}/edit', [RessourceController::class, 'update'])
+                ->name('ressources.update')
+                ->middleware('verified');
+
+Route::get('ressources/{id}', [RessourceController::class, 'show'])
+                ->name('ressources.show');

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\UserRole;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RoleFactory extends Factory
@@ -15,12 +16,13 @@ class RoleFactory extends Factory
     {
         return [
             'name'          => $this->faker->unique()->randomElement([
-                'citoyen',
-                'moderateur',
-                'administrateur',
-                'superadministrateur',
+                UserRole::Citizen,
+                UserRole::VerifCitizen,
+                UserRole::Moderator,
+                UserRole::Admin,
+                UserRole::SuperAdmin,
             ]),
-            'permissions'   => '{"can_publish_ressources": "1"}',
+            'permissions'   => '{"can_create_ressources": "1"}',
         ];
     }
 }

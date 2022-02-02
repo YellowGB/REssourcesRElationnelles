@@ -9,7 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -50,5 +50,20 @@ class User extends Authenticatable
 
     public function role() {
         return $this->belongsTo(Role::class);
+    }
+
+    /**
+     * Récupère une ou toutes les permissions d'un utilisateur
+     * 
+     * @return array<string,bool>|bool L'ensemble des permissions ou la permission demandée
+     * 
+     * @since 0.6.5-alpha
+     */
+    public static function getPermission(User $user, string $filter = 'all') {
+
+        $permissions = json_decode($user->role->permissions, true);
+
+        if ($filter !== 'all') return $permissions[$filter];
+        return $permissions;
     }
 }
