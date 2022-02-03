@@ -2,6 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Enums\RessourceType;
+use App\Enums\RessourceStatus;
+use App\Enums\RessourceRelation;
+use App\Enums\RessourceRestriction;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RessourceFactory extends Factory
@@ -16,36 +20,36 @@ class RessourceFactory extends Factory
         return [
             'title'                 => $this->faker->sentence(),
             'ressourceable_type'    => $this->faker->unique()->randomElement([
-                'App\Models\Activite',
-                'App\Models\Jeu',
-                'App\Models\Video',
-                'App\Models\Photo',
-                'App\Models\Atelier',
-                'App\Models\Course',
-                'App\Models\Lecture',
-                'App\Models\Defi',
-                'App\Models\Article',
+                RessourceType::Activite->value,
+                RessourceType::Article->value,
+                RessourceType::Atelier->value,
+                RessourceType::Course->value,
+                RessourceType::Defi->value,
+                RessourceType::Jeu->value,
+                RessourceType::Lecture->value,
+                RessourceType::Photo->value,
+                RessourceType::Video->value,
                 ]),
             'ressourceable_id'      => 1,
             'relation'              => $this->faker->randomElement([
-                'self',
-                'spouse',
-                'family',
-                'pro',
-                'friend',
-                'stranger',
+                RessourceRelation::Self->value,
+                RessourceRelation::Spouse->value,
+                RessourceRelation::Family->value,
+                RessourceRelation::Pro->value,
+                RessourceRelation::Friend->value,
+                RessourceRelation::Stranger->value,
                 ]),
             'user_id'               => rand(1, 10),
             'categorie_id'          => rand(1, 13),
             'status'                => $this->faker->randomElement([
-                'draft',
-                'pending',
-                'published',
-                'deleted',
+                RessourceStatus::Draft,
+                RessourceStatus::Pending,
+                RessourceStatus::Published,
+                RessourceStatus::Deleted,
                 ]),
             'restriction'           => $this->faker->randomElement([
-                'public',
-                'private',
+                RessourceRestriction::Private,
+                RessourceRestriction::Public,
                 ]),
         ];
     }

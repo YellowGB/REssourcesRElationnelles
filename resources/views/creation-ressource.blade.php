@@ -1,10 +1,17 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
 
     {{-- Si $ressource existe et n'est pas null, on est sur une édition et non une création --}}
     <h1>{{ isset($ressource) ? __('titles.edit.ressource') : __('titles.create.ressource') }}</h1>
-    <form action="{{ isset($ressource) ? route('ressources.update', ['id' => $ressource->id]) : route('ressources.store') }}" method="post">
+    
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+    @endif
+    
+    <form action="{{ isset($ressource) ? route('ressources.update', ['id' => $ressource->id]) : route('ressources.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="ressource-container">
             {{-- Partie commune --}}
@@ -50,10 +57,12 @@
             {{-- Contenu --}}
             <div id="activite" class="ressource-content" style="display: none;">
                 <textarea name="activite_description" cols="30" rows="10" placeholder="{{ __('titles.content.description') }}">{{ $content->description ?? '' }}</textarea>
-                <p class="input-title">{{ __('titles.content.starting') }}</p>
-                <input type="datetime-local" name="activite_starting_date" value="{{ isset($content) ? substr(str_replace(' ', 'T', $content->starting_date), 0, strlen($content->starting_date) - 3) : '' }}"></input>
-                <p class="input-title">{{ __('titles.content.duration') }}</p>
-                <input type="number" step="1" name="activite_duration" value="{{ $content->duration ?? '' }}"></input>
+                
+                <label for="activite_starting_date" class="input-title">{{ __('titles.content.starting') }}</label>
+                <input type="datetime-local" id="activite_starting_date" name="activite_starting_date" value="{{ isset($content) ? substr(str_replace(' ', 'T', $content->starting_date), 0, strlen($content->starting_date) - 3) : '' }}"></input>
+                
+                <label for="activite_duration" class="input-title">{{ __('titles.content.duration') }}</label>
+                <input type="number" step="1" id="activite_duration" name="activite_duration" value="{{ $content->duration ?? '' }}"></input>
             </div>
             <div id="article" class="ressource-content" style="display: none;">
                 <input type="text" name="article_source_url" placeholder="{{ __('titles.link.source') }}" value="{{ $content->source_url ?? '' }}"></input>
@@ -62,8 +71,11 @@
                 <textarea name="atelier_description" cols="30" rows="10" placeholder="{{ __('titles.content.description') }}">{{ $content->description ?? '' }}</textarea>
             </div>
             <div id="course" class="ressource-content" style="display: none;">
-                <input type="text" name="course_file_uri" placeholder="{{ __('titles.link.uri') }}" value="{{ $content->file_uri ?? '' }}"></input>
-                <input type="text" name="course_file_name" placeholder="{{ __('titles.filename') }}" value="{{ $content->file_name ?? '' }}"></input>
+                <input type="file" name="course_file" accept=".pdf">
+                @if (isset($content))
+                    <label for="course_file_name" class="input-title">{{ __('titles.link.current') }}</label>
+                    <input type="text" name="course_file_name" placeholder="{{ __('titles.filename') }}" value="{{ $content->file_name ?? '' }}" disabled></input>
+                @endif
             </div>
             <div id="defi" class="ressource-content" style="display: none;">
                 <textarea name="defi_description" cols="30" rows="10" placeholder="{{ __('titles.content.description') }}">{{ $content->description ?? '' }}</textarea>
@@ -71,26 +83,30 @@
             </div>
             <div id="jeu" class="ressource-content" style="display: none;">
                 <textarea name="jeu_description" cols="30" rows="10" placeholder="{{ __('titles.content.description') }}">{{ $content->description ?? '' }}</textarea>
-                <p class="input-title">{{ __('titles.content.starting') }}</p>
-                <input type="datetime-local" name="jeu_starting_date" value="{{ isset($content) ? substr(str_replace(' ', 'T', $content->starting_date), 0, strlen($content->starting_date) - 3) : '' }}"></input>
+                
+                <label for="jeu_starting_date" class="input-title">{{ __('titles.content.starting') }}</label>
+                <input type="datetime-local" id="jeu_starting_date" name="jeu_starting_date" value="{{ isset($content) ? substr(str_replace(' ', 'T', $content->starting_date), 0, strlen($content->starting_date) - 3) : '' }}"></input>
+                
                 <input type="text" name="jeu_link" placeholder="{{ __('titles.link.link') }}" value="{{ $content->link ?? '' }}"></input>
             </div>
             <div id="lecture" class="ressource-content" style="display: none;">
                 <input type="text" name="lecture_title" placeholder="{{ __('titles.content.title') }}" value="{{ $content->title ?? '' }}"></input>
                 <input type="text" name="lecture_author" placeholder="{{ trans_choice('titles.author', 1) }}" value="{{ $content->author ?? '' }}"></input>
-                <p class="input-title">{{ __('titles.content.publication') }}</p>
-                <input type="number" name="lecture_year" min="1000" max="2099" step="1" value="{{ $content->year ?? '' }}"></input>
+                
+                <label for="lecture_year" class="input-title">{{ __('titles.content.publication') }}</label>
+                <input type="number" id="lecture_year" name="lecture_year" min="1000" max="2099" step="1" value="{{ $content->year ?? '' }}"></input>
+                
                 <textarea name="lecture_summary" cols="30" rows="10" placeholder="{{ __('titles.content.summary') }}">{{ $content->summary ?? '' }}</textarea>
                 <textarea name="lecture_analysis" cols="30" rows="10" placeholder="{{ __('titles.content.analysis') }}">{{ $content->analysis ?? '' }}</textarea>
                 <textarea name="lecture_review" cols="30" rows="10" placeholder="{{ __('titles.content.review') }}">{{ $content->review ?? '' }}</textarea>
             </div>
             <div id="photo" class="ressource-content" style="display: none;">
-                <input type="text" name="photo_file_uri" placeholder="{{ __('titles.link.uri') }}" value="{{ $content->file_uri ?? '' }}"></input>
+                <input type="file" name="photo_file" accept="image/*" value="{{ $content->file_uri ?? '' }}">
                 <input type="text" name="photo_author" placeholder="{{ trans_choice('titles.author', 1) }}" value="{{ $content->photo_author ?? '' }}"></input>
                 <input type="text" name="photo_legend" placeholder="{{ __('titles.content.legend') }}" value="{{ $content->legend ?? '' }}"></input>
             </div>
             <div id="video" class="ressource-content" style="display: none;">
-                <input type="text" name="video_file_uri" placeholder="{{ __('titles.link.uri') }}" value="{{ $content->file_uri ?? '' }}""></input>
+                <input type="file" name="video_file" accept="video/mp4" value="{{ $content->file_uri ?? '' }}">
                 <input type="text" name="video_link" placeholder="{{ __('titles.link.link') }}" value="{{ $content->link ?? '' }}"></input>
                 <input type="text" name="video_legend" placeholder="{{ __('titles.content.legend') }}" value="{{ $content->legend ?? '' }}"></input>
             </div>

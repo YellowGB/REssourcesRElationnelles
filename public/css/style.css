@@ -1,6 +1,42 @@
+:root {
+    /* Elements de la charte graphiuque */
+    --charte-background-darkest: var(--noir-nuit);
+    --charte-background-dark: var(--bleu-nuit);
+    --charte-texte-dark: var(--noir-nuit);
+    --charte-texte-lightest: var(--blanc);
+    --charte-texte-light: var(--gris-light);
+    --charte-element-dark: var(--noir-nuit);
+    --charte-element-bg-light: var(--bleu-light);
+    /* Couleurs */
+    --blanc: rgb(243, 242, 242);
+    --gris-light: #cbd5e0;
+    --noir: rgb(8, 8, 8);
+    --noir-nuit: #1a202c;
+    --bleu-nuit: #2d3748;
+    --bleu-light: #a0aec0;
+}
+
+body {
+    background-color: var(--charte-background-darkest);
+    color: var(--charte-texte-dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--charte-texte-dark);
+}
+
 input,
+select,
 textarea {
-    border: 2px solid black;
+    color: var(--charte-texte-dark);
+    background-color: var(--charte-element-bg-light);
+    border: 2px solid var(--charte-element-dark);
+}
+
+input[type="submit" i],
+button {
+    color: var(--charte-texte-dark);
+    background-color: var(--charte-element-bg-light);
 }
 
 textarea {

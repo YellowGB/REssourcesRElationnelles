@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Jeu;
 use App\Models\Defi;
-use App\Models\User;
 use App\Models\Photo;
 use App\Models\Video;
 use App\Models\Course;
@@ -13,26 +12,30 @@ use App\Models\Atelier;
 use App\Models\Lecture;
 use App\Models\Activite;
 use App\Models\Categorie;
-use App\Models\Commentaire;
 use App\Models\Ressource;
+use App\Models\Commentaire;
+use App\Enums\RessourceType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
 class RessourceController extends Controller
 {
+    public function __construct() {
+        
+        $this->middleware('auth')->except([
+            'index',
+            'show',
+        ]);
+    }
+
     public function index() {
 
         $ressources = Ressource::all();
-        $users = User::all();
-        // $contents   = array();
-        // foreach ($ressources as $ressource) {
-        //     array_push($contents, $ressource->ressourceable);
-        // }
 
         return view('catalogue', compact(
             'ressources',
-            'users',
-            // 'contents',
         ));
     }
 
@@ -51,56 +54,108 @@ class RessourceController extends Controller
 
     public function create() {
 
+        if (! Gate::allows('create-ressources')) {
+            abort(403);
+        }
+
         $categories = Categorie::all();
 
         return view('creation-ressource', [
             'categories' => $categories,
-        ]
-    );
+        ]);
     }
 
     public function store( Request $request ) {
 
-        // On crée d'abord le contenu
+        // On valide les champs de la ressource
+        $request->validate([
+            'title'                 => 'required|between:5,255',
+            'ressourceable_type'    => 'required',
+            'relation'              => 'required',
+            'categorie_id'          => 'required',
+        ]);
+
+        // On crée d'abord le contenu (après avoir validé ses champs également)
         switch ($request->ressourceable_type) {
 
-            case 'App\Models\Activite':
+            case RessourceType::Activite->value:
+                $request->validate([
+                    'activite_description'      => 'required|between:20,1000',
+                    'activite_starting_date'    => 'required|date|after:today',
+                    'activite_duration'         => 'required|integer|gt:10|lte:240',
+                ]);
+
                 $content = Activite::create([
                     'description'   => $request->activite_description,
                     'starting_date' => $request->activite_starting_date,
                     'duration'      => $request->activite_duration,
                 ]);
                 break;
-            case 'App\Models\Article':
+            case RessourceType::Article->value:
+                $request->validate([
+                    'article_source_url' => 'required',
+                ]);
+                
                 $content = Article::create([
                     'source_url' => $request->article_source_url,
                 ]);
                 break;
-            case 'App\Models\Atelier':
+            case RessourceType::Atelier->value:
+                $request->validate([
+                    'atelier_description' => 'required|between:50,2000',
+                ]);
+                
                 $content = Atelier::create([
                     'description' => $request->atelier_description,
                 ]);
                 break;
-            case 'App\Models\Course':
+            case RessourceType::Course->value:
+                $request->validate([
+                    'course_file' => 'required|mimes:pdf',
+                ]);
+
+                $file_uri   = Storage::disk('public')->put('courses', $request->course_file);
+                $file_name  = $request->file('course_file')->getClientOriginalName();
+                
                 $content = Course::create([
-                    'file_uri'  => $request->course_file_uri,
-                    'file_name' => $request->course_file_name,
+                    'file_uri'  => $file_uri,
+                    'file_name' => substr($file_name, 0, strlen($file_name) - 4), // -4 pour retirer l'extension '.pdf'
                 ]);
                 break;
-            case 'App\Models\Defi':
+            case RessourceType::Defi->value:
+                $request->validate([
+                    'defi_description'  => 'required|between:50,1000',
+                    'defi_bonus'        => 'nullable',
+                ]);
+                
                 $content = Defi::create([
                     'description'   => $request->defi_description,
                     'bonus'         => $request->defi_bonus,
                 ]);
                 break;
-            case 'App\Models\Jeu':
+            case RessourceType::Jeu->value:
+                $request->validate([
+                    'jeu_description'   => 'required|between:10,1000',
+                    'jeu_starting_date' => 'required|date|after:today',
+                    'jeu_link'          => 'required|max:2048',
+                ]);
+                
                 $content = Jeu::create([
                     'description'   => $request->jeu_description,
                     'starting_date' => $request->jeu_starting_date,
                     'link'          => $request->jeu_link,
                 ]);
                 break;
-            case 'App\Models\Lecture':
+            case RessourceType::Lecture->value:
+                $request->validate([
+                    'lecture_title'     => 'required|max:255',
+                    'lecture_author'    => 'required|max:255',
+                    'lecture_year'      => 'required|integer|between:1000,2099',
+                    'lecture_summary'   => 'required|between:50,2000',
+                    'lecture_analysis'  => 'required|between:50,2000',
+                    'lecture_review'    => 'required|between:50,2000',
+                ]);
+                
                 $content = Lecture::create([
                     'title'     => $request->lecture_title,
                     'author'    => $request->lecture_author,
@@ -110,16 +165,28 @@ class RessourceController extends Controller
                     'review'    => $request->lecture_review,
                 ]);
                 break;
-            case 'App\Models\Photo':
+            case RessourceType::Photo->value:
+                $request->validate([
+                    'photo_file'    => 'required|image',
+                    'photo_author'  => 'nullable|max:255',
+                    'photo_legend'  => 'nullable|max:500',
+                ]);
+                
                 $content = Photo::create([
-                    'file_uri'      => $request->photo_file_uri,
+                    'file_uri'      => Storage::disk('public')->put('photos', $request->photo_file),
                     'photo_author'  => $request->photo_author,
                     'legend'        => $request->photo_legend,
                 ]);
                 break;
-            case 'App\Models\Video':
+            case RessourceType::Video->value:
+                $request->validate([
+                    'video_file'    => 'required_without:video_link|prohibited_unless:video_link,null|mimetypes:video/mp4',
+                    'video_link'    => 'required_without:video_file|prohibited_unless:video_file,null|max:2048',
+                    'video_legend'  => 'nullable|max:500',
+                ]);
+                
                 $content = Video::create([
-                    'file_uri'  => $request->video_file_uri,
+                    'file_uri'  => !is_null($request->video_file) ? Storage::disk('public')->put('videos', $request->video_file) : null,
                     'link'      => $request->video_link,
                     'legend'    => $request->video_legend,
                 ]);
@@ -132,10 +199,10 @@ class RessourceController extends Controller
             'ressourceable_type'    => $request->ressourceable_type,
             'ressourceable_id'      => $content->id, // on récupère l'id du contenu créé précédemment dans le switch
             'relation'              => $request->relation,
-            'user_id'               => 1,
+            'user_id'               => auth()->user()->id,
             'categorie_id'          => $request->categorie_id,
-            'status'                => 'pending',
-            'restriction'           => 'public',
+            'status'                => RessourceStatus::Pending->value,
+            'restriction'           => RessourceRestriction::Public->value,
             'created_at'            => now(),
             'updated_at'            => now(),
         ]);
@@ -145,10 +212,14 @@ class RessourceController extends Controller
 
 
     public function edit($id) {
-
+        
         $ressource  = Ressource::findOrFail($id);
         $content    = $ressource->ressourceable;
         $categories = Categorie::all();
+
+        if (! Gate::allows('update-ressources', $ressource)) {
+            abort(403);
+        }
 
         return view('creation-ressource', [
             'ressource'     => $ressource,
@@ -160,46 +231,95 @@ class RessourceController extends Controller
 
     public function update( Request $request, $id ) {
 
+        // On valide les champs de la ressource (après avoir validé ses champs également)
+        $request->validate([
+            'title'                 => 'required|between:5,255',
+            'ressourceable_type'    => 'required',
+            'relation'              => 'required',
+            'categorie_id'          => 'required',
+        ]);
+
         // On prépare la mise à jour du contenu
         switch ($request->ressourceable_type) {
 
-            case 'App\Models\Activite':
+            case RessourceType::Activite->value:
+                $request->validate([
+                    'activite_description'      => 'required|min:20',
+                    'activite_starting_date'    => 'required|date|after:today',
+                    'activite_duration'         => 'required|integer|gt:10|lte:240',
+                ]);
+
                 $content = Activite::findOrFail($request->ressourceable_id);
 
                 $content->description   = $request->activite_description;
                 $content->starting_date = $request->activite_starting_date;
                 $content->duration      = $request->activite_duration;
                 break;
-            case 'App\Models\Article':
+            case RessourceType::Article->value:
+                $request->validate([
+                    'article_source_url' => 'required',
+                ]);
+                
                 $content = Article::findOrFail($request->ressourceable_id);
 
                 $content->source_url = $request->article_source_url;
                 break;
-            case 'App\Models\Atelier':
+            case RessourceType::Atelier->value:
+                $request->validate([
+                    'atelier_description' => 'required|between:50,2000',
+                ]);
+                
                 $content = Atelier::findOrFail($request->ressourceable_id);
 
                 $content->description = $request->atelier_description;
                 break;
-            case 'App\Models\Course':
+            case RessourceType::Course->value:
+                $request->validate([
+                    'course_file' => 'required|mimes:pdf',
+                ]);
+                
                 $content = Course::findOrFail($request->ressourceable_id);
 
-                $content->file_uri  = $request->course_file_uri;
-                $content->file_name = $request->course_file_name;
+                // On supprime l'ancien fichier
+                Storage::disk('public')->delete($content->file_uri);
+
+                $content->file_uri  = Storage::disk('public')->put('courses', $request->course_file);
+                $content->file_name = $request->file('course_file')->getClientOriginalName();
                 break;
-            case 'App\Models\Defi':
+            case RessourceType::Defi->value:
+                $request->validate([
+                    'defi_description'  => 'required|between:50,1000',
+                    'defi_bonus'        => 'nullable',
+                ]);
+                
                 $content = Defi::findOrFail($request->ressourceable_id);
 
                 $content->description   = $request->defi_description;
                 $content->bonus         = $request->defi_bonus;
                 break;
-            case 'App\Models\Jeu':
+            case RessourceType::Jeu->value:
+                $request->validate([
+                    'jeu_description'   => 'required|between:10,1000',
+                    'jeu_starting_date' => 'required|date|after:today',
+                    'jeu_link'          => 'required|max:2048',
+                ]);
+                
                 $content = Jeu::findOrFail($request->ressourceable_id);
 
                 $content->description   = $request->jeu_description;
                 $content->starting_date = $request->jeu_starting_date;
                 $content->link          = $request->jeu_link;
                 break;
-            case 'App\Models\Lecture':
+            case RessourceType::Lecture->value:
+                $request->validate([
+                    'lecture_title'     => 'required|max:255',
+                    'lecture_author'    => 'required|max:255',
+                    'lecture_year'      => 'required|integer|between:1000,2099',
+                    'lecture_summary'   => 'required|between:50,2000',
+                    'lecture_analysis'  => 'required|between:50,2000',
+                    'lecture_review'    => 'required|between:50,2000',
+                ]);
+                
                 $content = Lecture::findOrFail($request->ressourceable_id);
 
                 $content->title     = $request->lecture_title;
@@ -209,17 +329,35 @@ class RessourceController extends Controller
                 $content->analysis  = $request->lecture_analysis;
                 $content->review    = $request->lecture_review;
                 break;
-            case 'App\Models\Photo':
+            case RessourceType::Photo->value:
+                $request->validate([
+                    'photo_file'    => 'required|image',
+                    'photo_author'  => 'nullable|max:255',
+                    'photo_legend'  => 'nullable|max:500',
+                ]);
+                
                 $content = Photo::findOrFail($request->ressourceable_id);
 
-                $content->file_uri      = $request->photo_file_uri;
+                // On supprime l'ancien fichier
+                Storage::disk('public')->delete($content->file_uri);
+
+                $content->file_uri      = Storage::disk('public')->put('photos', $request->photo_file);
                 $content->photo_author  = $request->photo_author;
                 $content->legend        = $request->photo_legend;
                 break;
-            case 'App\Models\Video':
+            case RessourceType::Video->value:
+                $request->validate([
+                    'video_file'    => 'required_without:video_link|prohibited_unless:video_link,null|mimetypes:video/mp4',
+                    'video_link'    => 'required_without:video_file|prohibited_unless:video_file,null|max:2048',
+                    'video_legend'  => 'nullable|max:500',
+                ]);
+                
                 $content = Video::findOrFail($request->ressourceable_id);
 
-                $content->file_uri  = $request->video_file_uri;
+                // On supprime l'ancien fichier
+                Storage::disk('public')->delete($content->file_uri);
+
+                $content->file_uri  = Storage::disk('public')->put('videos', $request->video_file);
                 $content->link      = $request->video_link;
                 $content->legend    = $request->video_legend;
                 break;
@@ -233,12 +371,13 @@ class RessourceController extends Controller
         $ressource->title           = $request->title;
         $ressource->relation        = $request->relation;
         $ressource->categorie_id    = $request->categorie_id;
-        $ressource->status          = 'pending';
-        $ressource->restriction     = 'public';
+        $ressource->status          = RessourceStatus::Pending;
+        $ressource->restriction     = RessourceRestriction::Public;
         $ressource->updated_at      = now();
 
         $ressource->update();
 
         return Redirect::to('ressources/' . $id)->with('success', 'Ressource modifiée avec succès.');
     }
+
 }

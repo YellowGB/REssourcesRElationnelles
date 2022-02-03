@@ -36,7 +36,7 @@ class Ressource extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function commentaire() {
+    public function commentaires() {
         return $this->hasMany(Commentaire::class);
     }
 }
