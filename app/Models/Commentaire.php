@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Commentaire extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'content',
@@ -17,4 +18,12 @@ class Commentaire extends Model
         'reports',
         'replies_to'
     ];
+
+    public function ressource() {
+        return $this->belongsTo(Ressource::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

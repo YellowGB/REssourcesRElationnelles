@@ -18,5 +18,5 @@ return [
         UserPermission::UpdateCategories->value         => 0,
         UserPermission::DeleteCategories->value         => 0,
         UserPermission::AccessAdmin->value              => 0,
-    ],
+    ]
 ];

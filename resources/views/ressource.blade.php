@@ -6,23 +6,9 @@
     <p>{{ __('titles.section.type') }} : {{ __('titles.type.' . $ressource->ressourceable_type) }}</p>
     <p>{{ __('titles.section.category') }} : {{ __('titles.category.' . $ressource->categorie->name) }}</p>
     <p>{{ __('titles.section.relation') }} : {{ __('titles.relation.' . $ressource->relation) }}</p>
-    <p>
-        {{ trans_choice('titles.created', 2) }}
-        {{ \Carbon\Carbon::parse($ressource->created_at)->format('d/m/Y') }}
-        {{ __('titles.at') }}
-        {{ \Carbon\Carbon::parse($ressource->created_at)->format('H:i') }}
-    </p>
-    <p>
-        {{ trans_choice('titles.updated', 2) }}
-        {{ \Carbon\Carbon::parse($ressource->updated_at)->format('d/m/Y') }}
-        {{ __('titles.at') }}
-        {{ \Carbon\Carbon::parse($ressource->updated_at)->format('H:i') }}
-    </p>
-    @if (is_null($ressource->user->nickname))
-        <p>{{ __('titles.by') }} {{ $ressource->user->firstname }} {{ $ressource->user->name }}</p>
-    @else
-        <p>{{ __('titles.by') }} {{ $ressource->user->nickname }}</p>
-    @endif
+    <p>{{ format_horodatage($ressource, 'created', \App\Enums\LocGenderNumber::FeminineSingular) }}</p>
+    <p>{{ format_horodatage($ressource, 'updated', \App\Enums\LocGenderNumber::FeminineSingular) }}</p>
+    <p>{{ __('titles.by') }} {{ get_user_display_name($ressource->user) }}</p>
 
     {{-- Contenu --}}
     @switch($ressource->ressourceable_type)
@@ -30,12 +16,7 @@
         @case($types['Activite'])
             <h3>{{ __('titles.content.description') }}</h3>
             <p>{{ $content->description }}</p>
-            <p>
-                {{ __('titles.content.starting') }}
-                {{ \Carbon\Carbon::parse($content->starting_date)->format('d/m/Y') }}
-                {{ __('titles.at') }}
-                {{ \Carbon\Carbon::parse($content->starting_date)->format('H:i') }}
-            </p>
+            <p>{{ format_starting_date($content) }}</p>
             <p>{{ __('titles.content.duration') }} : {{ $content->duration }}min</p>
             @break
         {{-- Fin Activite --}}
@@ -73,12 +54,7 @@
         @case($types['Jeu'])
             <h3>{{ __('titles.content.description') }}</h3>
             <p>{{ $content->description }}</p>
-            <p>
-                {{ __('titles.content.starting') }}
-                {{ \Carbon\Carbon::parse($content->starting_date)->format('d/m/Y') }}
-                {{ __('titles.at') }}
-                {{ \Carbon\Carbon::parse($content->starting_date)->format('H:i') }}
-            </p>
+            <p>{{ format_starting_date($content) }}</p>
             <p>{{ __('titles.link.link') }} : {{ $content->link }}</p>
             @break
         {{-- Fin Jeu --}}
@@ -132,5 +108,23 @@
     <form action="{{ route('ressources.edit', ['id' => $ressource->id]) }}">
         <input type="submit" value="{{ __('titles.edit.ressource') }}">
     </form>
+
+    {{-- Commentaires --}}
+    <h2>{{ __('titles.section.comments') }}</h2>
+    @foreach ($ressource->commentaires as $commentaire)
+        @if (is_null($commentaire->replies_to))
+            <div class="comment">
+               {{ display_commentaire($commentaire) }}
+                {{-- Réponses --}}
+                @foreach ($ressource->commentaires as $reponse)
+                    @if (isset($reponse->replies_to) && $commentaire->id === $reponse->replies_to)
+                        <div class="reponse" style="margin-left: 5rem;">
+                            {{ display_commentaire($reponse) }}
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+        @endif
+    @endforeach
 
 @endsection

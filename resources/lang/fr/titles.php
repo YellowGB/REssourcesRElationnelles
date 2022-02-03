@@ -23,6 +23,8 @@ return [
     'filename'  => 'Nom du fichier',
     'created'   => '{1} Créé le|{2} Créée le|{3} Créés le|{4} Créées le', // 1 et 2 basés sur le chiffre correspondant au sexe de la sécurité sociale, 3 et 4 l'équivalent au pluriel
     'updated'   => '{1} Modifié le|{2} Modifiée le|{3} Modifiés le|{4} Modifiées le',
+    'deleted'   => '{1} Supprimé le|{2} Supprimée le|{3} Supprimés le|{4} Supprimées le',
+    'written'   => '{1} Écrit le|{2} Écrite le|{3} Écrits le|{4} Écrites le',
     'at'        => 'à',
     'by'        => 'Par',
     'readfile'  => 'Lire le fichier',
@@ -100,6 +102,7 @@ return [
         'login'     => 'Connexion',
         'register'  => 'Inscription',
         'users'     => 'Les utilisateurs',
+        'comments'  => 'Commentaires',
     ],
     'content' => [
         'description'   => 'Description',

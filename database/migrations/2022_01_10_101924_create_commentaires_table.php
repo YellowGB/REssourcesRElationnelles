@@ -24,6 +24,7 @@ class CreateCommentairesTable extends Migration
             $table->unsignedBigInteger('replies_to')->nullable();   // ID du commentaire auquel ce commentaire répond si c'est le cas
             $table->foreign('replies_to')->references('id')->on('commentaires')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\LocGenderNumber;
 use App\Models\Jeu;
 use App\Models\Defi;
 use App\Models\User;
@@ -17,6 +18,8 @@ use App\Models\Ressource;
 use App\Models\Commentaire;
 use App\Models\Progression;
 use App\Enums\RessourceType;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Détermine le type d'une ressource
@@ -152,6 +155,65 @@ function display_ressource_preview(Ressource $ressource) {
                 <h1>' . $ressource->title . '</h1>
             </div>';
 
+}
+
+/**
+ * Affiche un commentaire
+ * 
+ * @since 0.6.9-alpha
+ */
+function display_commentaire(Commentaire $commentaire) {
+
+    $commentateur   = get_user_display_name($commentaire->user);
+    $horodatage     = format_horodatage($commentaire, 'written');
+    
+    $display = "<b>$commentateur :</b>";
+    $display .= "<p>$commentaire->content</p>";
+    $display .= "<i>$horodatage</i>";
+
+    echo $display;
+}
+
+/**
+ * Formatte la date de création d'un élément de la base de données
+ * en une chaîne de type Créé le xx/xx/xxx à xx:xx
+ * 
+ * @param Model $element Un modèle eloquent disposant de la colonne 'created_at'
+ * @param string $qualifying created, updated, deleted, written
+ * @param LocGenderNumber $locGenderNumber Le genre et le nombre du participe passé
+ * 
+ * @since 0.6.9-alpha
+ */
+function format_horodatage(Model $element, string $qualifying = 'created', LocGenderNumber $locGenderNumber = LocGenderNumber::MasculineSingular) {
+
+    return  trans_choice("titles.$qualifying", $locGenderNumber->value).' '.
+            Carbon::parse($element->created_at)->format('d/m/Y').' '.
+            __('titles.at').' '.
+            Carbon::parse($element->created_at)->format('H:i');
+}
+/**
+ * Formatte la date de démarrage d'un contenu
+ * en une chaîne de type Créé le xx/xx/xxx à xx:xx
+ * 
+ * @param Model $content Un modèle de contenu de ressource disposant de la colonne 'starting_date'
+ * 
+ * @since 0.6.9-alpha
+ */
+function format_starting_date(Model $content) {
+
+    return  __('titles.content.starting').' '.
+            Carbon::parse($content->starting_date)->format('d/m/Y').' '.
+            __('titles.at').' '.
+            Carbon::parse($content->starting_date)->format('H:i');
+}
+
+/**
+ * Retourne le pseudonyme ou le nom complet de l'utilisateur en fonction de ce qu'il a choisi d'indiquer
+ * 
+ * @since 0.6.9-alpha
+ */
+function get_user_display_name(User $user) {
+    return $user->nickname ?? $user->firstname.' '.$user->name;
 }
 
 ?>
