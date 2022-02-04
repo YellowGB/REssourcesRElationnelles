@@ -378,4 +378,21 @@ class RessourceController extends Controller
 
         return Redirect::to('ressources/' . $id)->with('success', 'Ressource modifiée avec succès.');
     }
+
+    /**
+     * @since 0.7.0-alpha
+     */
+    public function delete($id) {
+
+        $ressource = Ressource::findOrFail($id);
+
+        $ressource->commentaires()->delete(); // onDelete('cascade') ne fonctionne pas avec une relation hasMany
+        $ressource->ressourceable()->delete();
+
+        $ressource->status = RessourceStatus::Deleted->value;
+        $ressource->update();
+        $ressource->delete();
+        
+        return Redirect::to('catalogue')->with('success', 'Ressource supprimée avec succès.');
+    }
 }

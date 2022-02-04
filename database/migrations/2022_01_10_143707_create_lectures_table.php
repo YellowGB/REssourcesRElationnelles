@@ -21,6 +21,7 @@ class CreateLecturesTable extends Migration
             $table->string('summary', 2000);
             $table->string('analysis', 2000);
             $table->string('review', 2000);
+            $table->softDeletes();
         });
     }
 

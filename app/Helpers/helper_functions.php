@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\LocGenderNumber;
+use Carbon\Carbon;
 use App\Models\Jeu;
 use App\Models\Defi;
 use App\Models\User;
@@ -18,7 +18,7 @@ use App\Models\Ressource;
 use App\Models\Commentaire;
 use App\Models\Progression;
 use App\Enums\RessourceType;
-use Carbon\Carbon;
+use App\Enums\LocGenderNumber;
 use Illuminate\Database\Eloquent\Model;
 
 /**

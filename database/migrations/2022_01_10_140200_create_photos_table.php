@@ -18,6 +18,7 @@ class CreatePhotosTable extends Migration
             $table->string('file_uri', 2048);
             $table->string('photo_author')->nullable();
             $table->string('legend', 500)->nullable();
+            $table->softDeletes();
         });
     }
 

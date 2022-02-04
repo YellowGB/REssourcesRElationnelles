@@ -26,6 +26,7 @@ class CreateRessourcesTable extends Migration
             $table->string('status')->default(RessourceStatus::Pending->value);
             $table->string('restriction')->default(RessourceRestriction::Public->value);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

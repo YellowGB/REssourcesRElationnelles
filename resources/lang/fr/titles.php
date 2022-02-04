@@ -89,6 +89,7 @@ return [
     'btn' => [
         'create'    => 'Créer',
         'edit'      => 'Éditer',
+        'delete'    => 'Supprimer',
         'login'     => 'Se connecter',
         'register'  => "S'inscrire",
     ],
@@ -132,6 +133,13 @@ return [
         'ressource' => 'Éditer la ressource',
         'category'  => 'Éditer la catégorie',
         'role'      => 'Éditer le role',
+        'user'      => 'Éditer le compte',
+    ],
+    'delete' => [
+        'ressource' => 'Supprimer la ressource',
+        'category'  => 'Supprimer la catégorie',
+        'role'      => 'Supprimer le role',
+        'user'      => 'Supprimer le compte',
     ],
     'form' => [
         'name'          => 'Nom',

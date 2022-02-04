@@ -115,6 +115,12 @@
         </div>
     </form>
 
+    @can('delete-ressources', $ressource)
+        <form action="{{ route('ressources.delete', $ressource->id) }}" method="get">
+            <button type="submit">{{ __('titles.btn.delete') }}</button>
+        </form>
+    @endcan
+
     <script>
         const activite      = document.getElementById('activite');
         const article       = document.getElementById('article');

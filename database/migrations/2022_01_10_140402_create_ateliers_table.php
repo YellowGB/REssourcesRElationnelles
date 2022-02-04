@@ -16,6 +16,7 @@ class CreateAteliersTable extends Migration
         Schema::create('ateliers', function (Blueprint $table) {
             $table->id();
             $table->string('description', 2000);
+            $table->softDeletes();
         });
     }
 

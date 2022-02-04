@@ -17,6 +17,7 @@ class CreateDefisTable extends Migration
             $table->id();
             $table->string('description', 1000);
             $table->string('bonus')->nullable();
+            $table->softDeletes();
         });
     }
 

@@ -1,8 +1,12 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Role;
+use App\Models\User;
+use App\Enums\UserRole;
+use App\Enums\UserStatus;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersTable extends Migration
 {
@@ -31,6 +35,60 @@ class CreateUsersTable extends Migration
             $table->timestamp('last_connexion');
             $table->timestamps();
         });
+
+        // On créer un compte de chaque type de base pour faciliter les tests
+        $user = User::create([
+            'name'              => 'Dupont',
+            'firstname'         => 'Germaine',
+            'email'             => 'cit@test.fr',
+            'email_verified_at' => now(),
+            'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token'    => 'adcountdcp',
+            'postcode'          => '69100',
+            'status'            => UserStatus::Verified,
+            'role_id'           => Role::findId(UserRole::VerifCitizen),
+            'last_connexion'    => now(),
+        ]);
+        $user->markEmailAsVerified();
+        $user = User::create([
+            'name'              => 'Durand',
+            'firstname'         => 'André',
+            'email'             => 'modo@test.fr',
+            'email_verified_at' => now(),
+            'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token'    => 'adcountdcp',
+            'postcode'          => '71340',
+            'status'            => UserStatus::Verified,
+            'role_id'           => Role::findId(UserRole::Moderator),
+            'last_connexion'    => now(),
+        ]);
+        $user->markEmailAsVerified();
+        $user = User::create([
+            'name'              => 'Fichter',
+            'firstname'         => 'Cindy',
+            'email'             => 'admin@test.fr',
+            'email_verified_at' => now(),
+            'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token'    => 'adcountdcp',
+            'postcode'          => '42300',
+            'status'            => UserStatus::Verified,
+            'role_id'           => Role::findId(UserRole::Admin),
+            'last_connexion'    => now(),
+        ]);
+        $user->markEmailAsVerified();
+        $user = User::create([
+            'name'              => 'Elba',
+            'firstname'         => 'Karim',
+            'email'             => 'superadmin@test.fr',
+            'email_verified_at' => now(),
+            'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token'    => 'adcountdcp',
+            'postcode'          => '75001',
+            'status'            => UserStatus::Verified,
+            'role_id'           => Role::findId(UserRole::SuperAdmin),
+            'last_connexion'    => now(),
+        ]);
+        $user->markEmailAsVerified();
     }
 
     /**

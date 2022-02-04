@@ -14,7 +14,7 @@ class Commentaire extends Model
         'content',
         'user_id',
         'ressource_id',
-        'status',
+        // 'status',
         'reports',
         'replies_to'
     ];

@@ -65,5 +65,9 @@ Route::post('ressources/{id}/edit', [RessourceController::class, 'update'])
                 ->name('ressources.update')
                 ->middleware('verified');
 
+Route::get('ressources/{id}/delete', [RessourceController::class, 'delete'])
+                ->name('ressources.delete')
+                ->middleware('moderator');
+
 Route::get('ressources/{id}', [RessourceController::class, 'show'])
                 ->name('ressources.show');

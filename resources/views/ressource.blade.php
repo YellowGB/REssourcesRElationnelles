@@ -105,9 +105,11 @@
     @endswitch
     {{-- Fin du contenu --}}
     {{-- Edition --}}
-    <form action="{{ route('ressources.edit', ['id' => $ressource->id]) }}">
-        <input type="submit" value="{{ __('titles.edit.ressource') }}">
-    </form>
+    @can('update-ressources', $ressource)
+        <form action="{{ route('ressources.edit', ['id' => $ressource->id]) }}">
+            <input type="submit" value="{{ __('titles.edit.ressource') }}">
+        </form>
+    @endcan
 
     {{-- Commentaires --}}
     <h2>{{ __('titles.section.comments') }}</h2>

@@ -18,6 +18,7 @@ class CreateActivitesTable extends Migration
             $table->string('description', 1000);
             $table->timestamp('starting_date');
             $table->unsignedInteger('duration'); // en minutes
+            $table->softDeletes();
         });
     }
 
