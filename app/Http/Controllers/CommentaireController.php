@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class CommentaireController extends Controller
 {
-    public function store(Request $request, $id, $commentaire) {
+    public function store(Request $request, $id, $commentaire = null) {
 
         $request->validate([
             'content'                 => 'required|between:1,255',

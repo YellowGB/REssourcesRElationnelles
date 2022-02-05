@@ -151,9 +151,11 @@ return [
     ],
     'comment' => [
         'area'          => 'Espace Commentaires',
-        'comment'       => 'Commenter',
-        'respond'       => 'Répondre',
-        'add_comment'   => 'Ajouter un commentaire',
-        'add_response'  => 'Ajouter une réponse',
-    ],
+        'action'        => 'Commenter',
+        'add'           => 'Ajouter un commentaire',
+    ], 
+    'response' =>  [
+        'action'        => 'Répondre',
+        'add'           => 'Ajouter une réponse',
+    ]
 ];
