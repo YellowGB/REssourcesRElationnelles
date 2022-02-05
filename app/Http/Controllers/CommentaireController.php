@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class CommentaireController extends Controller
 {
-    public function store(Request $request, $id, $commentaire = null) {
+    public function store(Request $request) {
 
         $request->validate([
             'content'                 => 'required|between:1,255',
@@ -17,15 +17,15 @@ class CommentaireController extends Controller
         $comment = Commentaire::create([
             'content'       => $request->content,
             'user_id'       => auth()->user()->id,
-            'ressource_id'  => $id,
+            'ressource_id'  => $request->id,
             // 'status'        => CommentaireStatus::Published->value,
-            'replies_to'    => $commentaire,
+            'replies_to'    => $request->commentaire,
             'reports'       => 0,
             'created_at'    => now(),
             'updated_at'    => now(),
         ]);
 
-        return Redirect::to('ressources/' . $id)->with('success', 'Réponse ajoutée avec succès.');
+        return Redirect::to('ressources/' . $request->id)->with('success', 'Réponse ajoutée avec succès.');
     }
 
 }

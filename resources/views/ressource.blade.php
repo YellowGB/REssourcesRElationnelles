@@ -112,7 +112,7 @@
     {{-- Commentaires --}}
     <h2>{{ __('titles.section.comments') }}</h2>
 
-    <form method="post" action="{{ route('commentaires.store', ['id' => $ressource->id]) }}">
+    <form method="post" action="{{ route('commentaires.store', ['id' => $ressource->id, 'commentaire' => null]) }}">
         @csrf
         <input type="text" name="content" placeholder="{{ __('titles.comment.action') }}" min="1" max="255">
         <input type="submit" value="{{ __('titles.comment.add') }}">
