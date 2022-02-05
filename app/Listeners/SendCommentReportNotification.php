@@ -10,6 +10,9 @@ use App\Notifications\CommentReportedNotification;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * @since 0.7.0-alpha
+ */
 class SendCommentReportNotification
 {
     /**

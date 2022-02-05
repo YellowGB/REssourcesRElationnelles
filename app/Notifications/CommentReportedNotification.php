@@ -8,6 +8,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
+/**
+ * @since 0.7.0-alpha
+ */
 class CommentReportedNotification extends Notification
 {
     use Queueable;

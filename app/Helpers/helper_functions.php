@@ -171,40 +171,6 @@ function dbfill_faker() {
 }
 
 /**
- * Affiche un carton d'aperçu d'une ressource
- * 
- * @since 0.6.8-alpha
- */
-function display_ressource_preview(Ressource $ressource) {
-
-    echo    '<div style="border: 1px solid black; background-color:lightgrey; cursor: pointer;" onclick="location.href=\'' . route('ressources.show', ['id' => $ressource->id]) . '\'">
-                <h2>' . __('titles.type.' . $ressource->ressourceable_type) . '</h2>
-                <h3>'. __('titles.relation.' . $ressource->relation) . '</h3>
-                <h1>' . $ressource->title . '</h1>
-            </div>';
-
-}
-
-/**
- * Affiche un commentaire
- * 
- * @since 0.6.9-alpha
- */
-function display_commentaire(Commentaire $commentaire) {
-
-    $commentateur   = get_user_display_name($commentaire->user);
-    $horodatage     = format_horodatage($commentaire, 'written');
-    
-    $display = "<b>$commentateur :</b>";
-    $display .= "<p>$commentaire->content</p>";
-    $display .= "<i>$horodatage</i>";
-
-    $display .= is_moderator() ? '<br><i>' . trans_choice('titles.comment.reports', $commentaire->reports) . " : $commentaire->reports</i>" : '';
-
-    echo $display;
-}
-
-/**
  * Formatte la date de création d'un élément de la base de données
  * en une chaîne de type Créé le xx/xx/xxx à xx:xx
  * 

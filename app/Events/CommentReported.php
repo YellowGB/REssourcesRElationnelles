@@ -11,6 +11,9 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
+/**
+ * @since 0.7.0-alpha
+ */
 class CommentReported
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
