@@ -1,7 +1,5 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
 
     <h1>{{ __('titles.create.user') }}</h1>
 
-@endsection
+</x-app-layout>

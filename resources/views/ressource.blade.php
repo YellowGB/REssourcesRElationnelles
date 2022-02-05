@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
 
     <h1>{{ $ressource->title }}</h1>
     <p>{{ __('titles.section.type') }} : {{ __('titles.type.' . $ressource->ressourceable_type) }}</p>
@@ -134,4 +132,4 @@
         @endif
     @endforeach
 
-@endsection
+</x-app-layout>

@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
 
     {{-- Si $ressource existe et n'est pas null, on est sur une édition et non une création --}}
     <h1>{{ isset($ressource) ? __('titles.edit.ressource') : __('titles.create.ressource') }}</h1>
@@ -229,4 +227,4 @@
         }
     </script>
 
-@endsection
+</x-app-layout>

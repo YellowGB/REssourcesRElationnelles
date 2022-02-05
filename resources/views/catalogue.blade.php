@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
 
     @guest 
         @foreach ($ressources as $ressource)
@@ -31,4 +29,4 @@
     </div> --}}
     
 
-@endsection
+</x-app-layout>

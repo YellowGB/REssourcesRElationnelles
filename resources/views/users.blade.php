@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
     
     <h1>{{ __('titles.section.users') }}</h1>
     @foreach ($users as $user)
@@ -8,4 +6,4 @@
         <p>{{__('titles.section.role')}} : {{ __('titles.role.' . $user->role->name) }}</p>
     @endforeach
 
-@endsection
+</x-app-layout>
