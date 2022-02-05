@@ -27,6 +27,6 @@ class CommentaireReplyDisplay extends Component
      */
     public function render()
     {
-        return view('components.commentaire-reply-display');
+        return view('components.commentaires.reply-display');
     }
 }

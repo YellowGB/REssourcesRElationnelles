@@ -27,6 +27,6 @@ class ContentPhoto extends Component
      */
     public function render()
     {
-        return view('components.content-photo');
+        return view('components.ressources.content.photo');
     }
 }

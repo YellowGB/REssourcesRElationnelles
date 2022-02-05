@@ -28,6 +28,6 @@ class ContentDisplay extends Component
      */
     public function render()
     {
-        return view('components.content-display');
+        return view('components.ressources.content.display');
     }
 }

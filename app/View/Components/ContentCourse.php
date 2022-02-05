@@ -27,6 +27,6 @@ class ContentCourse extends Component
      */
     public function render()
     {
-        return view('components.content-course');
+        return view('components.ressources.content.course');
     }
 }

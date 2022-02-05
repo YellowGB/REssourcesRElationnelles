@@ -57,11 +57,7 @@ class RessourceController extends Controller
             abort(403);
         }
 
-        $categories = Categorie::all();
-
-        return view('creation-ressource', [
-            'categories' => $categories,
-        ]);
+        return view('creation-ressource');
     }
 
     public function store( Request $request ) {
@@ -214,16 +210,14 @@ class RessourceController extends Controller
         
         $ressource  = Ressource::findOrFail($id);
         $content    = $ressource->ressourceable;
-        $categories = Categorie::all();
 
         if (! Gate::allows('update-ressources', $ressource)) {
             abort(403);
         }
 
         return view('creation-ressource', [
-            'ressource'     => $ressource,
-            'content'       => $content,
-            'categories'    => $categories,
+            'ressource' => $ressource,
+            'content'   => $content,
         ]
     );
     }

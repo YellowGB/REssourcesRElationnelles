@@ -27,6 +27,6 @@ class ContentArticle extends Component
      */
     public function render()
     {
-        return view('components.content-article');
+        return view('components.ressources.content.article');
     }
 }

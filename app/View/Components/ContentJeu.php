@@ -27,6 +27,6 @@ class ContentJeu extends Component
      */
     public function render()
     {
-        return view('components.content-jeu');
+        return view('components.ressources.content.jeu');
     }
 }

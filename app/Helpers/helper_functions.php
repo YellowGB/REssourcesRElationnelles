@@ -187,6 +187,7 @@ function format_horodatage(Model $element, string $qualifying = 'created', LocGe
             __('titles.at').' '.
             Carbon::parse($element->created_at)->format('H:i');
 }
+
 /**
  * Formatte la date de démarrage d'un contenu
  * en une chaîne de type Créé le xx/xx/xxx à xx:xx

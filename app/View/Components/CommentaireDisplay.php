@@ -27,7 +27,7 @@ class CommentaireDisplay extends Component
      */
     public function render()
     {
-        return view('components.commentaire-display', [
+        return view('components.commentaires.display', [
             'commentateur'  => get_user_display_name($this->commentaire->user),
             'horodatage'    => format_horodatage($this->commentaire, 'written'),
             'reports'       => trans_choice('titles.comment.reports', $this->commentaire->reports) . ' : '. $this->commentaire->reports,

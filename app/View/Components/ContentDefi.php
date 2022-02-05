@@ -27,6 +27,6 @@ class ContentDefi extends Component
      */
     public function render()
     {
-        return view('components.content-defi');
+        return view('components.ressources.content.defi');
     }
 }

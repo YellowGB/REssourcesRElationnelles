@@ -27,6 +27,6 @@ class ContentActivite extends Component
      */
     public function render()
     {
-        return view('components.content-activite');
+        return view('components.ressources.content.activite');
     }
 }

@@ -2,20 +2,17 @@
 
 namespace App\View\Components;
 
-use App\Models\Ressource;
+use App\Models\Video;
 use Illuminate\View\Component;
 
-/**
- * @since 0.7.0-alpha
- */
-class RessourceHeader extends Component
+class RessourceCreationVideo extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(public Ressource $ressource)
+    public function __construct(public Video|null $content)
     {
         //
     }
@@ -27,6 +24,6 @@ class RessourceHeader extends Component
      */
     public function render()
     {
-        return view('components.ressources.header');
+        return view('components.ressources.creation.video');
     }
 }

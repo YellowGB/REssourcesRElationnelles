@@ -27,6 +27,6 @@ class ContentVideo extends Component
      */
     public function render()
     {
-        return view('components.content-video');
+        return view('components.ressources.content.video');
     }
 }

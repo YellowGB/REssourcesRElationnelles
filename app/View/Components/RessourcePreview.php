@@ -27,6 +27,6 @@ class RessourcePreview extends Component
      */
     public function render()
     {
-        return view('components.ressource-preview');
+        return view('components.ressources.preview');
     }
 }

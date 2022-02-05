@@ -27,6 +27,6 @@ class ContentLecture extends Component
      */
     public function render()
     {
-        return view('components.content-lecture');
+        return view('components.ressources.content.lecture');
     }
 }

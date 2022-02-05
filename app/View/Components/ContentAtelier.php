@@ -27,6 +27,6 @@ class ContentAtelier extends Component
      */
     public function render()
     {
-        return view('components.content-atelier');
+        return view('components.ressources.content.atelier');
     }
 }
