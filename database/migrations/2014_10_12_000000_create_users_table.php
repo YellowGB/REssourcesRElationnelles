@@ -42,7 +42,7 @@ class CreateUsersTable extends Migration
             'firstname'         => 'Germaine',
             'email'             => 'cit@test.fr',
             'email_verified_at' => now(),
-            'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
             'remember_token'    => 'adcountdcp',
             'postcode'          => '69100',
             'status'            => UserStatus::Verified,
@@ -55,7 +55,7 @@ class CreateUsersTable extends Migration
             'firstname'         => 'André',
             'email'             => 'modo@test.fr',
             'email_verified_at' => now(),
-            'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
             'remember_token'    => 'adcountdcp',
             'postcode'          => '71340',
             'status'            => UserStatus::Verified,
@@ -68,7 +68,7 @@ class CreateUsersTable extends Migration
             'firstname'         => 'Cindy',
             'email'             => 'admin@test.fr',
             'email_verified_at' => now(),
-            'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
             'remember_token'    => 'adcountdcp',
             'postcode'          => '42300',
             'status'            => UserStatus::Verified,
@@ -81,7 +81,7 @@ class CreateUsersTable extends Migration
             'firstname'         => 'Karim',
             'email'             => 'superadmin@test.fr',
             'email_verified_at' => now(),
-            'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
             'remember_token'    => 'adcountdcp',
             'postcode'          => '75001',
             'status'            => UserStatus::Verified,
