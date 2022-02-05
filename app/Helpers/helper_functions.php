@@ -199,7 +199,7 @@ function display_commentaire(Commentaire $commentaire) {
     $display .= "<p>$commentaire->content</p>";
     $display .= "<i>$horodatage</i>";
 
-    $display .= is_moderator() ? '<br><i>' . __('titles.comments.reports') . ' :' . $commentaire->reports . '</i>' : '';
+    $display .= is_moderator() ? '<br><i>' . trans_choice('titles.comment.reports', $commentaire->reports) . " : $commentaire->reports</i>" : '';
 
     echo $display;
 }

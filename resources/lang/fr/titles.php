@@ -158,8 +158,8 @@ return [
         'login'     => 'Se connecter',
         'logout'    => 'Se déconnecter',
     ],
-    'comments' => [
-        'reports' => 'Signalements',
+    'comment' => [
+        'reports' => 'Signalement|Signalements',
     ],
 
 ];
