@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
@@ -41,6 +42,11 @@ Route::get('users', [UserController::class, 'index'])
 Route::get('users/create', [UserController::class, 'create'])
                 ->name('users.create')
                 ->middleware('admin');
+
+//------------ Commentaires ------------\\
+Route::get('commentaire/{id}/report', [CommentaireController::class, 'report'])
+                ->name('comment.report')
+                ->middleware('verified');
 
 //------------ Ressources ------------\\
 Route::get('catalogue', [RessourceController::class, 'index'])

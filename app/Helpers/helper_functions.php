@@ -20,6 +20,7 @@ use App\Models\Progression;
 use App\Enums\RessourceType;
 use App\Enums\LocGenderNumber;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
 
 /**
  * Détermine le type d'une ressource
@@ -117,6 +118,33 @@ function is_video(Ressource $ressource) {
 }
 
 /**
+ * Détermine si l'utilisateur connecté est un modérateur ou plus
+ * 
+ * @since 0.7.0-alpha
+ */
+function is_moderator() {
+    return null !== auth() ? Gate::allows('publish-ressources') : false;
+}
+
+/**
+ * Détermine si l'utilisateur connecté est un administrateur ou plus
+ * 
+ * @since 0.7.0-alpha
+ */
+function is_admin() {
+    return null !== auth() ? Gate::allows('access-admin') : false;
+}
+
+/**
+ * Détermine si l'utilisateur connecté est un super-administrateur
+ * 
+ * @since 0.7.0-alpha
+ */
+function is_superadmin() {
+    return null !== auth() ? Gate::allows('remove-users') : false;
+}
+
+/**
  * Remplit la base de données avec faker pour avoir une base complète rapidement pour effectuer des tests
  * 
  * @since 0.6.6-alpha
@@ -170,6 +198,8 @@ function display_commentaire(Commentaire $commentaire) {
     $display = "<b>$commentateur :</b>";
     $display .= "<p>$commentaire->content</p>";
     $display .= "<i>$horodatage</i>";
+
+    $display .= is_moderator() ? '<br><i>' . __('titles.comments.reports') . ' :' . $commentaire->reports . '</i>' : '';
 
     echo $display;
 }

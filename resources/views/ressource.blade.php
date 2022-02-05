@@ -117,6 +117,11 @@
         @if (is_null($commentaire->replies_to))
             <div class="comment">
                {{ display_commentaire($commentaire) }}
+               @auth
+                    <form action="{{ route('comment.report', ['id' => $commentaire->id]) }}">
+                        <input type="submit" value="{{ __('titles.btn.report') }}">
+                    </form>
+               @endauth
                 {{-- Réponses --}}
                 @foreach ($ressource->commentaires as $reponse)
                     @if (isset($reponse->replies_to) && $commentaire->id === $reponse->replies_to)

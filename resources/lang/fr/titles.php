@@ -92,6 +92,7 @@ return [
         'delete'    => 'Supprimer',
         'login'     => 'Se connecter',
         'register'  => "S'inscrire",
+        'report'    => "Signaler",
     ],
     'section' => [
         'relation'  => 'Type de relation',
@@ -156,6 +157,9 @@ return [
         'resend'    => "Renvoyer l'email de vérification", // 'Resend Verification Email'
         'login'     => 'Se connecter',
         'logout'    => 'Se déconnecter',
+    ],
+    'comments' => [
+        'reports' => 'Signalements',
     ],
 
 ];
