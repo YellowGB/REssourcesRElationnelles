@@ -4,7 +4,7 @@
 
     @guest 
         @foreach ($ressources as $ressource)
-            @if ($ressource->restriction === 'public')
+            @if ($ressource->status === 'published' && $ressource->restriction === 'public')
                 {{ display_ressource_preview($ressource) }}
             @endif
         @endforeach
@@ -16,7 +16,7 @@
             @endforeach
         @else
             @foreach ($ressources as $ressource)
-                @if ($ressource->user_id === Auth::user()->id || $ressource->restriction === 'public')
+                @if ($ressource->user_id === Auth::user()->id || $ressource->status === 'published' && $ressource->restriction === 'public')
                     {{ display_ressource_preview($ressource) }}
                 @endif
             @endforeach

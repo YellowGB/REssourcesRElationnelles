@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\RessourceController;
 
 /*
@@ -66,21 +66,9 @@ Route::post('ressources/{id}/edit', [RessourceController::class, 'update'])
                 ->name('ressources.update')
                 ->middleware('verified');
 
-Route::get('ressources/{id}/comment', [CommentController::class, 'comment_create'])
-                ->name('ressources.comment_create')
+Route::post('ressources/{id}/comment', [CommentaireController::class, 'store'])
+                ->name('commentaires.store')
                 ->middleware('verified');
-
-Route::post('ressources/{id}/comment', [CommentController::class, 'comment_store'])
-                ->name('ressources.comment_store')
-                ->middleware('verified');
-
-Route::get('ressources/{id}/respond', [CommentController::class, 'response_create'])
-                ->name('ressources.response_create')
-                ->middleware('verified');
-
-Route::post('ressources/{id}/respond', [CommentController::class, 'response_store'])
-                ->name('ressources.response_store')
-                ->middleware('verified');
-
+                
 Route::get('ressources/{id}', [RessourceController::class, 'show'])
                 ->name('ressources.show');

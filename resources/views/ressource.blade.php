@@ -112,17 +112,19 @@
     {{-- Commentaires --}}
     <h2>{{ __('titles.section.comments') }}</h2>
 
-    <form method="post" action="{{ route('ressources.comment_create', ['id' => $ressource->id]) }}">
-            <input type="text" name="contenu" placeholder="{{ __('titles.comment.comment') }}" min="1" max="255"><br>
-            <input type="submit" value="{{ __('titles.comment.add_comment') }}">
+    <form method="post" action="{{ route('commentaires.store', ['id' => $ressource->id, 'commentaire' => null]) }}">
+        @csrf
+        <input type="text" name="content" placeholder="{{ __('titles.comment.comment') }}" min="1" max="255">
+        <input type="submit" value="{{ __('titles.comment.add_comment') }}">
     </form>
     @foreach ($ressource->commentaires as $commentaire)
         @if (is_null($commentaire->replies_to))
             <div class="comment">
                {{ display_commentaire($commentaire) }}
-                <form method="post" action="{{ route('ressources.response_create', ['id' => $ressource->id]) }}">
-                        <input type="text" name="content" placeholder="{{ __('titles.comment.respond') }}" min="1" max="255">
-                        <input type="submit" value="{{ __('titles.comment.add_response') }}">
+                <form method="post" action="{{ route('commentaires.store', ['id' => $ressource->id, 'commentaire' => $commentaire->id]) }}">
+                    @csrf
+                    <input type="text" name="content" placeholder="{{ __('titles.comment.respond') }}" min="1" max="255">
+                    <input type="submit" value="{{ __('titles.comment.add_response') }}">
                 </form>
                 {{-- Réponses --}}
                 @foreach ($ressource->commentaires as $reponse)

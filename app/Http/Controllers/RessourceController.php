@@ -16,6 +16,8 @@ use App\Models\Ressource;
 use App\Models\Commentaire;
 use App\Enums\RessourceType;
 use Illuminate\Http\Request;
+use App\Enums\RessourceStatus;
+use App\Enums\RessourceRestriction;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
