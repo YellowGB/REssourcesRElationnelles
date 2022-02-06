@@ -4,6 +4,8 @@ use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RessourceController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +32,8 @@ require __DIR__.'/auth.php';
 Route::group(
     ['middleware' => ['auth', 'admin']],
     function () {
-        Route::resource('users', '\App\Http\Controllers\UserController'); // crée une route pour chaque CRUD + la page dédiée, users.index, users.show, users.create, users.store, users.edit, users.update, users.destroy
-        Route::resource('roles', '\App\Http\Controllers\RoleController')
+        Route::resource('users', UserController::class); // crée une route pour chaque CRUD + la page dédiée, users.index, users.show, users.create, users.store, users.edit, users.update, users.destroy
+        Route::resource('roles', RoleController::class)
                         ->only('index');
     }
 );
