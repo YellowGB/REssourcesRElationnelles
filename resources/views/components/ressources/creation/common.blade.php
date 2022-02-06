@@ -20,13 +20,10 @@
             @endif
         @endforeach
     </select>
-    @if (isset($content)) {{-- Pour l'édition, on a besoin de faire passer l'id du contenu lors de l'update --}}
-        <input type="text" name="ressourceable_id" value="{{ $content->id }}" hidden>
-    @endif
     {{-- Dans le cas d'un édition, on affiche le nom du type et on cache la possibilité de changer la sélection --}}
-    @if (isset($ressource))
+    @edit($ressource)
         <p>{{ __('titles.type.' . $ressource->ressourceable_type) }}</p>
-    @endif
+    @endedit
     <select name="ressourceable_type" id="select" {{ isset($ressource) ? 'hidden' : '' }}>
         <option {{ isset($ressource) ? '' : 'selected' }} disabled>{{ __('titles.select.type') }}</option>
         @foreach ($types as $type) {{-- types est défini dans AppServiceProvider --}}

@@ -22,13 +22,13 @@
         </div>
     </form>
 
-    @if (isset($ressource))
+    @edit($ressource)
         @can('delete-ressources', $ressource)
             <form action="{{ route('ressources.delete', $ressource->id) }}" method="get">
                 <button type="submit">{{ __('titles.btn.delete') }}</button>
             </form>
         @endcan
-    @endif
+    @endedit
 
     <script src="{{ asset('js/creation-ressource.js') }}" defer></script>
 

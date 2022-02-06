@@ -1,4 +1,4 @@
-@if (isset($content))
+@edit($content)
     @switch($content)
         @case($content instanceof App\Models\Activite)
             <x-ressource-creation-activite :content="$content" />
@@ -39,4 +39,4 @@
     <x-ressource-creation-lecture />
     <x-ressource-creation-photo />
     <x-ressource-creation-video />
-@endif
+@endedit
