@@ -2,10 +2,14 @@
 
 namespace App\Listeners;
 
+use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * @since 0.7.1-alpha
+ */
 class AuthorizeLogin
 {
     /**
@@ -24,7 +28,7 @@ class AuthorizeLogin
      * @param  object  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(Authenticated $event)
     {
         if (! is_null($event->user->deleted_at)) {
             Auth::logout();

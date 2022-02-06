@@ -2,9 +2,13 @@
 
 namespace App\Listeners;
 
+use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
+/**
+ * @since 0.7.1-alpha
+ */
 class UpdateLastConnexion
 {
     /**
@@ -23,7 +27,7 @@ class UpdateLastConnexion
      * @param  object  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(Authenticated $event)
     {
         $event->user->last_connexion = now();
         $event->user->update();
