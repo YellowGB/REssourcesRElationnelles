@@ -41,7 +41,7 @@ class CreateUsersTable extends Migration
         $user = User::create([
             'name'              => 'Dupont',
             'firstname'         => 'Germaine',
-            'email'             => 'cit@test.fr',
+            'email'             => 'cit@a',
             'email_verified_at' => now(),
             'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
             'remember_token'    => 'adcountdcp',
@@ -54,7 +54,7 @@ class CreateUsersTable extends Migration
         $user = User::create([
             'name'              => 'Durand',
             'firstname'         => 'André',
-            'email'             => 'modo@test.fr',
+            'email'             => 'modo@a',
             'email_verified_at' => now(),
             'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
             'remember_token'    => 'adcountdcp',
@@ -67,7 +67,7 @@ class CreateUsersTable extends Migration
         $user = User::create([
             'name'              => 'Fichter',
             'firstname'         => 'Cindy',
-            'email'             => 'admin@test.fr',
+            'email'             => 'admin@a',
             'email_verified_at' => now(),
             'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
             'remember_token'    => 'adcountdcp',
@@ -80,7 +80,7 @@ class CreateUsersTable extends Migration
         $user = User::create([
             'name'              => 'Elba',
             'firstname'         => 'Karim',
-            'email'             => 'superadmin@test.fr',
+            'email'             => 'superadmin@a',
             'email_verified_at' => now(),
             'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
             'remember_token'    => 'adcountdcp',

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use App\Listeners\SendCommentReportNotification;
 use App\Listeners\UpdateLastConnexion;
+use App\Models\Ressource;
+use App\Observers\RessourceObserver;
 use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -39,6 +41,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Ressource::observe(RessourceObserver::class);
     }
 }

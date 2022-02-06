@@ -14,12 +14,14 @@ use App\Models\Activite;
 use App\Models\Ressource;
 use App\Enums\RessourceType;
 use Illuminate\Http\Request;
-use App\Enums\RessourceStatus;
 use App\Enums\RessourceRestriction;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
+/**
+ * @since 0.7.1-alpha Les statuts sont gérés dans RessourceObserver
+ */
 class RessourceController extends Controller
 {
     public function __construct() {
@@ -195,7 +197,6 @@ class RessourceController extends Controller
             'relation'              => $request->relation,
             'user_id'               => auth()->user()->id,
             'categorie_id'          => $request->categorie_id,
-            'status'                => RessourceStatus::Pending->value,
             'restriction'           => RessourceRestriction::Public->value,
             'created_at'            => now(),
             'updated_at'            => now(),
@@ -363,9 +364,7 @@ class RessourceController extends Controller
         $ressource->title           = $request->title;
         $ressource->relation        = $request->relation;
         $ressource->categorie_id    = $request->categorie_id;
-        $ressource->status          = RessourceStatus::Pending;
         $ressource->restriction     = RessourceRestriction::Public;
-        $ressource->updated_at      = now();
 
         $ressource->update();
 
@@ -382,7 +381,6 @@ class RessourceController extends Controller
         $ressource->commentaires()->delete(); // onDelete('cascade') ne fonctionne pas avec une relation hasMany
         $ressource->ressourceable()->delete();
 
-        $ressource->status = RessourceStatus::Deleted->value;
         $ressource->update();
         $ressource->delete();
         
