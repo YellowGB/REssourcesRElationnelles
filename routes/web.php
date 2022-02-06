@@ -29,19 +29,14 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 //------------ Utilisateurs ------------\\
-// UserController indique d'une manière générale que les accès
-// à ces pages nécessitent avant toute chose une authentification
-Route::get('roles', [RoleController::class, 'index'])
-                ->name('roles')
-                ->middleware('admin');
-
-Route::get('users', [UserController::class, 'index'])
-                ->name('users')
-                ->middleware('admin');
-
-Route::get('users/create', [UserController::class, 'create'])
-                ->name('users.create')
-                ->middleware('admin');
+Route::group(
+    ['middleware' => ['auth', 'admin']],
+    function () {
+        Route::resource('users', '\App\Http\Controllers\UserController'); // crée une route pour chaque CRUD + la page dédiée, users.index, users.show, users.create, users.store, users.edit, users.update, users.destroy
+        Route::resource('roles', '\App\Http\Controllers\RoleController')
+                        ->only('index');
+    }
+);
 
 //------------ Commentaires ------------\\
 Route::get('commentaire/{id}/report', [CommentaireController::class, 'report'])
@@ -71,8 +66,8 @@ Route::post('ressources/{id}/edit', [RessourceController::class, 'update'])
                 ->name('ressources.update')
                 ->middleware('verified');
 
-Route::get('ressources/{id}/delete', [RessourceController::class, 'delete'])
-                ->name('ressources.delete')
+Route::get('ressources/{id}/delete', [RessourceController::class, 'destroy'])
+                ->name('ressources.destroy')
                 ->middleware('moderator');
 
 Route::get('ressources/{id}', [RessourceController::class, 'show'])

@@ -24,7 +24,7 @@
 
     @edit($ressource)
         @can('delete-ressources', $ressource)
-            <form action="{{ route('ressources.delete', $ressource->id) }}" method="get">
+            <form action="{{ route('ressources.destroy', $ressource->id) }}" method="get">
                 <button type="submit">{{ __('titles.btn.delete') }}</button>
             </form>
         @endcan

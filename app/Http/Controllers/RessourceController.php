@@ -11,7 +11,6 @@ use App\Models\Article;
 use App\Models\Atelier;
 use App\Models\Lecture;
 use App\Models\Activite;
-use App\Models\Categorie;
 use App\Models\Ressource;
 use App\Enums\RessourceType;
 use Illuminate\Http\Request;
@@ -376,7 +375,7 @@ class RessourceController extends Controller
     /**
      * @since 0.7.0-alpha
      */
-    public function delete($id) {
+    public function destroy($id) {
 
         $ressource = Ressource::findOrFail($id);
 
