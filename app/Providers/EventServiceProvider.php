@@ -3,9 +3,12 @@
 namespace App\Providers;
 
 use App\Events\CommentReported;
+use App\Listeners\AuthorizeLogin;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use App\Listeners\SendCommentReportNotification;
+use App\Listeners\UpdateLastConnexion;
+use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -22,6 +25,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         CommentReported::class => [
             SendCommentReportNotification::class,
+        ],
+        Authenticated::class => [
+            UpdateLastConnexion::class,
+            AuthorizeLogin::class,
         ],
     ];
 

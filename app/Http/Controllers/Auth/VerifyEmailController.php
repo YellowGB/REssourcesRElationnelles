@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\Role;
 use App\Enums\UserRole;
-use App\Enums\UserStatus;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Verified;
 use App\Providers\RouteServiceProvider;
@@ -27,7 +26,7 @@ class VerifyEmailController extends Controller
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
 
-            $request->user()->status  = UserStatus::Verified;
+            // $request->user()->status  = UserStatus::Verified;
             $request->user()->role_id = Role::findId(UserRole::VerifCitizen);
             $request->user()->update();
         }

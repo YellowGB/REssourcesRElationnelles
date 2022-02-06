@@ -3,8 +3,6 @@
 use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\RessourceController;
 
 /*

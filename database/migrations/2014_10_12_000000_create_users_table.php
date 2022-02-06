@@ -3,7 +3,6 @@
 use App\Models\Role;
 use App\Models\User;
 use App\Enums\UserRole;
-use App\Enums\UserStatus;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -29,11 +28,13 @@ class CreateUsersTable extends Migration
             $table->string('postcode');  // string pour gérer plus facilement les codes commençant par un zero
             // Vérifier que le chemin fonctionne bien une fois le projet plus avancé :
             $table->string('avatar', 2048)->default('storage/app/public/images/default_avatar.png');
-            $table->string('status');
+            // $table->string('status');
             $table->foreignId('role_id')->constrained();
             $table->rememberToken();
             $table->timestamp('last_connexion');
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('suspended_at')->nullable();
         });
 
         // On créer un compte de chaque type de base pour faciliter les tests
@@ -45,7 +46,7 @@ class CreateUsersTable extends Migration
             'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
             'remember_token'    => 'adcountdcp',
             'postcode'          => '69100',
-            'status'            => UserStatus::Verified,
+            // 'status'            => UserStatus::Verified,
             'role_id'           => Role::findId(UserRole::VerifCitizen),
             'last_connexion'    => now(),
         ]);
@@ -58,7 +59,7 @@ class CreateUsersTable extends Migration
             'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
             'remember_token'    => 'adcountdcp',
             'postcode'          => '71340',
-            'status'            => UserStatus::Verified,
+            // 'status'            => UserStatus::Verified,
             'role_id'           => Role::findId(UserRole::Moderator),
             'last_connexion'    => now(),
         ]);
@@ -71,7 +72,7 @@ class CreateUsersTable extends Migration
             'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
             'remember_token'    => 'adcountdcp',
             'postcode'          => '42300',
-            'status'            => UserStatus::Verified,
+            // 'status'            => UserStatus::Verified,
             'role_id'           => Role::findId(UserRole::Admin),
             'last_connexion'    => now(),
         ]);
@@ -84,7 +85,7 @@ class CreateUsersTable extends Migration
             'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
             'remember_token'    => 'adcountdcp',
             'postcode'          => '75001',
-            'status'            => UserStatus::Verified,
+            // 'status'            => UserStatus::Verified,
             'role_id'           => Role::findId(UserRole::SuperAdmin),
             'last_connexion'    => now(),
         ]);

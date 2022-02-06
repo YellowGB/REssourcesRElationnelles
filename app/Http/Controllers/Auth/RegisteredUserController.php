@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Models\Role;
 use App\Models\User;
 use App\Enums\UserRole;
-use App\Enums\UserStatus;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
@@ -54,7 +53,7 @@ class RegisteredUserController extends Controller
             'password'       => Hash::make($request->password),
             'description'    => $request->description,
             'postcode'       => $request->postcode,
-            'status'         => UserStatus::Pending,
+            // 'status'         => UserStatus::Pending,
             'role_id'        => Role::findId(UserRole::Citizen),
             'last_connexion' => now(),
         ]);
