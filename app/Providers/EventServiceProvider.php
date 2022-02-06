@@ -6,7 +6,7 @@ use App\Events\CommentReported;
 use App\Listeners\AuthorizeLogin;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
-use App\Listeners\SendCommentReportNotification;
+use App\Listeners\TriggerCommentReportNotification;
 use App\Listeners\UpdateLastConnexion;
 use App\Models\Ressource;
 use App\Observers\RessourceObserver;
@@ -26,7 +26,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         CommentReported::class => [
-            SendCommentReportNotification::class,
+            TriggerCommentReportNotification::class,
         ],
         Authenticated::class => [
             UpdateLastConnexion::class,

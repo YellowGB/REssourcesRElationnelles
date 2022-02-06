@@ -2,18 +2,15 @@
 
 namespace App\Listeners;
 
-use App\Models\Role;
-use App\Models\User;
-use App\Enums\UserRole;
 use App\Events\CommentReported;
-use App\Notifications\CommentReportedNotification;
+use App\Jobs\SendCommentReportNotification;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
  * @since 0.7.0-alpha
  */
-class SendCommentReportNotification
+class TriggerCommentReportNotification
 {
     /**
      * Create the event listener.
@@ -33,11 +30,6 @@ class SendCommentReportNotification
      */
     public function handle(CommentReported $event)
     {
-        $role = Role::where('name', UserRole::Moderator->value)->firstOrFail();
-        $moderators = User::where('role_id', $role->id)->get();
-
-        foreach ($moderators as $moderator) {
-            $moderator->notify(new CommentReportedNotification($event->commentaire));
-        }
+        SendCommentReportNotification::dispatch($event);
     }
 }
