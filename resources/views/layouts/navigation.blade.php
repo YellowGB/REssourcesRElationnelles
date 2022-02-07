@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white dark:bg-black border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -15,6 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('titles.section.dashboard') }}
                     </x-nav-link>
+                </div>
+
+                {{-- Theme icon --}}
+                <div class="flex items-center ml-4">
+                    <x-button class="bg-black dark:bg-white text-white dark:text-black rounded-full hover:rounded-lg transition-all duration-100 ease-in-out" id="theme-toggler">
+                        <x-icons.sun />
+                        <x-icons.moon class="hidden" />
+                        <span class="ml-2">{{ __('titles.section.theme') }}</span>
+                    </x-button>
                 </div>
             </div>
 

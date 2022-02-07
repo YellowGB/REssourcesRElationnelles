@@ -72,3 +72,5 @@ Route::get('ressources/{id}/delete', [RessourceController::class, 'destroy'])
 
 Route::get('ressources/{id}', [RessourceController::class, 'show'])
                 ->name('ressources.show');
+
+//------------ Système ------------\\
