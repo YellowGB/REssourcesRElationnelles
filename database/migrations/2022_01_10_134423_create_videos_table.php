@@ -18,6 +18,7 @@ class CreateVideosTable extends Migration
             $table->string('file_uri', 2048)->nullable();
             $table->string('link', 2048)->nullable();
             $table->string('legend', 500)->nullable();
+            $table->softDeletes();
         });
     }
 

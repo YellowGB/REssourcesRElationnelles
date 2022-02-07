@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('file_uri', 2048);   // afin d'éviter tout problème avec des noms identiques qui pourraient écraser des fichiers existants, les fichiers uploadés auront tous un nom unique généré automatiquement
             $table->string('file_name', 500);   // Le nom à afficher pour les utilisateurs
+            $table->softDeletes();
         });
     }
 

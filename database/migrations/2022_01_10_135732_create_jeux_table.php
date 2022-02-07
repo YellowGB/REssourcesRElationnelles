@@ -18,6 +18,7 @@ class CreateJeuxTable extends Migration
             $table->string('description', 1000);
             $table->timestamp('starting_date');
             $table->string('link', 2048);
+            $table->softDeletes();
         });
     }
 

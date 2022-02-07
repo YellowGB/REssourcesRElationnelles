@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\CommentaireStatus;
+// use App\Enums\CommentaireStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CommentaireFactory extends Factory
@@ -18,7 +18,7 @@ class CommentaireFactory extends Factory
             'content'       => $this->faker->sentence(),
             'user_id'       => rand(1, 10),
             'ressource_id'  => 1,
-            'status'        => CommentaireStatus::Published->value,
+            // 'status'        => CommentaireStatus::Published->value,
             'reports'       => $this->faker->randomElement([
                 0,
                 0,

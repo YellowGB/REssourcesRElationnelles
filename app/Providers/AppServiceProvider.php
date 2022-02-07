@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Enums\RessourceType;
 use App\Enums\RessourceRelation;
+use App\Models\Categorie;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -46,5 +47,7 @@ class AppServiceProvider extends ServiceProvider
             RessourceRelation::Friend->value,
             RessourceRelation::Stranger->value,
         ]);
+
+        View::share('categories', Categorie::all());
     }
 }

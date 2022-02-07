@@ -2,10 +2,17 @@
 
 namespace App\Providers;
 
+use App\Events\CommentReported;
+use App\Listeners\AuthorizeLogin;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
+use App\Listeners\TriggerCommentReportNotification;
+use App\Listeners\UpdateLastConnexion;
+use App\Models\Ressource;
+use App\Observers\RessourceObserver;
+use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +25,13 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        CommentReported::class => [
+            TriggerCommentReportNotification::class,
+        ],
+        Authenticated::class => [
+            UpdateLastConnexion::class,
+            AuthorizeLogin::class,
+        ],
     ];
 
     /**
@@ -27,6 +41,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Ressource::observe(RessourceObserver::class);
     }
 }

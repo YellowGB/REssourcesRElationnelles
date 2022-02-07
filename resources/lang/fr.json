@@ -15,5 +15,11 @@
 	"Whoops!": "Oups !",
 	"Hello!": "Bonjour !",
 	"Regards": "Bien à vous",
-	"All rights reserved.": "Tous droits réservés."
+	"All rights reserved.": "Tous droits réservés.",
+	"Whoops! Something went wrong.": "Oups ! Un problème est survenu.",
+	"Thank you for using our application!": "Merci d'utiliser notre application !",
+	"A comment has been reported:": "Un commentaire a été signalé :",
+	"Look it up": "Le consulter",
+	"This account has been deleted. If you wish to restore it, please contact an administrator.": "Ce compte a été supprimé. Si vous souhaitez le restaurer, merci de contacter un administrateur.",
+	"This account has been suspended. For more information, please contact an administrator.": "Ce compte a été suspendu. Pour plus d'informations, merci de contacter un administrateur."
 }

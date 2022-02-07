@@ -1,34 +1,30 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
+    @can('publish-ressources')
+        <form action="{{ route('catalogue.moderation', $manage = 'true') }}">
+            <input type="submit" value="{{ __('titles.moderation.ressource') }}">
+        </form>
+    @endcan
 
     @guest 
         @foreach ($ressources as $ressource)
-            @if ($ressource->status === 'published' && $ressource->restriction === 'public')
-                {{ display_ressource_preview($ressource) }}
+            @if ($ressource->restriction === 'public')
+                <x-ressource-preview :ressource="$ressource" />
             @endif
         @endforeach
     @endguest
     @auth
         @can('access-admin')
             @foreach ($ressources as $ressource)
-                {{ display_ressource_preview($ressource) }}
+                <x-ressource-preview :ressource="$ressource" />
             @endforeach
         @else
             @foreach ($ressources as $ressource)
-                @if ($ressource->user_id === Auth::user()->id || $ressource->status === 'published' && $ressource->restriction === 'public')
-                    {{ display_ressource_preview($ressource) }}
+                @if ($ressource->user_id === Auth::user()->id || $ressource->restriction === 'public')
+                    <x-ressource-preview :ressource="$ressource" />
                 @endif
             @endforeach
         @endcan
     @endauth
-    
-    {{-- Pour modifier facilement la chaine qui est echo dans display_ressource_preview() --}}
-    {{-- <div style="border: 1px solid black; background-color:lightgrey; cursor: pointer;" onclick="location.href='{{ route('ressources.show', ['id' => $ressource->id]) }}'">
-        <h2>{{ __('titles.type.' . $ressource->ressourceable_type) }}</h2>
-        <h3>{{ __('titles.relation.' . $ressource->relation) }}</h3>
-        <h1>{{ $ressource->title }}</h1>
-    </div> --}}
-    
 
-@endsection
+</x-app-layout>

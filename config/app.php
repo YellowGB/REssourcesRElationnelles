@@ -25,7 +25,7 @@ return [
     | or any other location as required by the application or its packages.
     */
 
-    'version' => env('APP_VERSION', '0.6.9-alpha'),
+    'version' => env('APP_VERSION', '0.7.2-alpha'),
 
     /*
     |--------------------------------------------------------------------------
@@ -173,6 +173,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        App\Providers\BladeServiceProvider::class,
 
         /*
          * Package Service Providers...

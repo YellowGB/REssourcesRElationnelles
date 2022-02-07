@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\CommentaireController;
+use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RessourceController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\CommentaireController;
-use App\Http\Controllers\RessourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,21 +29,26 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 //------------ Utilisateurs ------------\\
-// UserController indique d'une manière générale que les accès
-// à ces pages nécessitent avant toute chose une authentification
-Route::get('roles', [RoleController::class, 'index'])
-                ->name('roles')
-                ->middleware('admin');
+Route::group(
+    ['middleware' => ['auth', 'admin']],
+    function () {
+        Route::resource('users', UserController::class); // crée une route pour chaque CRUD + la page dédiée, users.index, users.show, users.create, users.store, users.edit, users.update, users.destroy
+        Route::resource('roles', RoleController::class)
+                        ->only('index');
+    }
+);
 
-Route::get('users', [UserController::class, 'index'])
-                ->name('users')
-                ->middleware('admin');
+//------------ Commentaires ------------\\
 
-Route::get('users/create', [UserController::class, 'create'])
-                ->name('users.create')
-                ->middleware('admin');
+Route::get('commentaire/{id}/report', [CommentaireController::class, 'report'])
+                ->name('comment.report')
+                ->middleware('verified');
 
 //------------ Ressources ------------\\
+Route::get('catalogue/moderation', [RessourceController::class, 'index'])
+                ->name('catalogue.moderation')
+                ->middleware('moderator');
+
 Route::get('catalogue', [RessourceController::class, 'index'])
                 ->name('catalogue');
 
@@ -66,9 +71,13 @@ Route::post('ressources/{id}/edit', [RessourceController::class, 'update'])
                 ->name('ressources.update')
                 ->middleware('verified');
 
-Route::post('ressources/{id}/comment', [CommentaireController::class, 'store'])
-                ->name('commentaires.store')
-                ->middleware('verified');
-                
+Route::post('ressources/{id}/validate', [RessourceController::class, 'valider'])
+                ->name('ressources.valider')
+                ->middleware('moderator');
+
+Route::get('ressources/{id}/delete', [RessourceController::class, 'destroy'])
+                ->name('ressources.destroy')
+                ->middleware('moderator');
+
 Route::get('ressources/{id}', [RessourceController::class, 'show'])
                 ->name('ressources.show');

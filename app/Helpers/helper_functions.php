@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\LocGenderNumber;
+use Carbon\Carbon;
 use App\Models\Jeu;
 use App\Models\Defi;
 use App\Models\User;
@@ -18,8 +18,9 @@ use App\Models\Ressource;
 use App\Models\Commentaire;
 use App\Models\Progression;
 use App\Enums\RessourceType;
-use Carbon\Carbon;
+use App\Enums\LocGenderNumber;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
 
 /**
  * Détermine le type d'une ressource
@@ -117,6 +118,33 @@ function is_video(Ressource $ressource) {
 }
 
 /**
+ * Détermine si l'utilisateur connecté est un modérateur ou plus
+ * 
+ * @since 0.7.0-alpha
+ */
+function is_moderator() {
+    return null !== auth() ? Gate::allows('publish-ressources') : false;
+}
+
+/**
+ * Détermine si l'utilisateur connecté est un administrateur ou plus
+ * 
+ * @since 0.7.0-alpha
+ */
+function is_admin() {
+    return null !== auth() ? Gate::allows('access-admin') : false;
+}
+
+/**
+ * Détermine si l'utilisateur connecté est un super-administrateur
+ * 
+ * @since 0.7.0-alpha
+ */
+function is_superadmin() {
+    return null !== auth() ? Gate::allows('remove-users') : false;
+}
+
+/**
  * Remplit la base de données avec faker pour avoir une base complète rapidement pour effectuer des tests
  * 
  * @since 0.6.6-alpha
@@ -143,38 +171,6 @@ function dbfill_faker() {
 }
 
 /**
- * Affiche un carton d'aperçu d'une ressource
- * 
- * @since 0.6.8-alpha
- */
-function display_ressource_preview(Ressource $ressource) {
-
-    echo    '<div style="border: 1px solid black; background-color:lightgrey; cursor: pointer;" onclick="location.href=\'' . route('ressources.show', ['id' => $ressource->id]) . '\'">
-                <h2>' . __('titles.type.' . $ressource->ressourceable_type) . '</h2>
-                <h3>'. __('titles.relation.' . $ressource->relation) . '</h3>
-                <h1>' . $ressource->title . '</h1>
-            </div>';
-
-}
-
-/**
- * Affiche un commentaire
- * 
- * @since 0.6.9-alpha
- */
-function display_commentaire(Commentaire $commentaire) {
-
-    $commentateur   = get_user_display_name($commentaire->user);
-    $horodatage     = format_horodatage($commentaire, 'written');
-    
-    $display = "<b>$commentateur :</b>";
-    $display .= "<p>$commentaire->content</p>";
-    $display .= "<i>$horodatage</i>";
-
-    echo $display;
-}
-
-/**
  * Formatte la date de création d'un élément de la base de données
  * en une chaîne de type Créé le xx/xx/xxx à xx:xx
  * 
@@ -191,6 +187,7 @@ function format_horodatage(Model $element, string $qualifying = 'created', LocGe
             __('titles.at').' '.
             Carbon::parse($element->created_at)->format('H:i');
 }
+
 /**
  * Formatte la date de démarrage d'un contenu
  * en une chaîne de type Créé le xx/xx/xxx à xx:xx

@@ -11,17 +11,20 @@ use App\Models\Article;
 use App\Models\Atelier;
 use App\Models\Lecture;
 use App\Models\Activite;
-use App\Models\Categorie;
 use App\Models\Ressource;
 use App\Models\Commentaire;
 use App\Enums\RessourceType;
 use Illuminate\Http\Request;
-use App\Enums\RessourceStatus;
 use App\Enums\RessourceRestriction;
+use App\Enums\RessourceStatus;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
+use SebastianBergmann\Type\NullType;
 
+/**
+ * @since 0.7.1-alpha Les statuts sont gérés dans RessourceObserver
+ */
 class RessourceController extends Controller
 {
     public function __construct() {
@@ -32,13 +35,22 @@ class RessourceController extends Controller
         ]);
     }
 
-    public function index() {
+    public function index($manage = null) {
+
+        // dd($manage);
 
         $ressources = Ressource::all();
 
-        return view('catalogue', compact(
-            'ressources',
-        ));
+        if (!$manage) {
+            return view('catalogue-moderation', compact(
+                'ressources',
+            ));
+        }
+        else {
+            return view('catalogue', compact(
+                'ressources',
+            ));
+        }
     }
 
     public function show($id) {
@@ -60,11 +72,7 @@ class RessourceController extends Controller
             abort(403);
         }
 
-        $categories = Categorie::all();
-
-        return view('creation-ressource', [
-            'categories' => $categories,
-        ]);
+        return view('creation-ressource');
     }
 
     public function store( Request $request ) {
@@ -203,7 +211,6 @@ class RessourceController extends Controller
             'relation'              => $request->relation,
             'user_id'               => auth()->user()->id,
             'categorie_id'          => $request->categorie_id,
-            'status'                => RessourceStatus::Pending->value,
             'restriction'           => RessourceRestriction::Public->value,
             'created_at'            => now(),
             'updated_at'            => now(),
@@ -217,16 +224,14 @@ class RessourceController extends Controller
         
         $ressource  = Ressource::findOrFail($id);
         $content    = $ressource->ressourceable;
-        $categories = Categorie::all();
 
         if (! Gate::allows('update-ressources', $ressource)) {
             abort(403);
         }
 
         return view('creation-ressource', [
-            'ressource'     => $ressource,
-            'content'       => $content,
-            'categories'    => $categories,
+            'ressource' => $ressource,
+            'content'   => $content,
         ]
     );
     }
@@ -373,13 +378,38 @@ class RessourceController extends Controller
         $ressource->title           = $request->title;
         $ressource->relation        = $request->relation;
         $ressource->categorie_id    = $request->categorie_id;
-        $ressource->status          = RessourceStatus::Pending;
         $ressource->restriction     = RessourceRestriction::Public;
-        $ressource->updated_at      = now();
 
         $ressource->update();
 
         return Redirect::to('ressources/' . $id)->with('success', 'Ressource modifiée avec succès.');
+    }
+
+    /**
+     * @since 0.7.0-alpha
+     */
+    public function destroy($id) {
+
+        $ressource = Ressource::findOrFail($id);
+
+        $ressource->commentaires()->delete(); // onDelete('cascade') ne fonctionne pas avec une relation hasMany
+        $ressource->ressourceable()->delete();
+
+        $ressource->update();
+        $ressource->delete();
+        
+        return Redirect::to('catalogue')->with('success', 'Ressource supprimée avec succès.');
+    }
+
+    public function valider($id) {
+
+        $ressource = Ressource::findOrfail($id);
+
+        $ressource->status = RessourceStatus::Published;
+
+        $ressource->update();
+
+        return Redirect::to('catalogue/moderation')->with('success', 'Ressource validée avec succès.');
     }
 
 }

@@ -89,8 +89,10 @@ return [
     'btn' => [
         'create'    => 'Créer',
         'edit'      => 'Éditer',
+        'delete'    => 'Supprimer',
         'login'     => 'Se connecter',
         'register'  => "S'inscrire",
+        'report'    => "Signaler",
     ],
     'section' => [
         'relation'  => 'Type de relation',
@@ -132,6 +134,13 @@ return [
         'ressource' => 'Éditer la ressource',
         'category'  => 'Éditer la catégorie',
         'role'      => 'Éditer le role',
+        'user'      => 'Éditer le compte',
+    ],
+    'delete' => [
+        'ressource' => 'Supprimer la ressource',
+        'category'  => 'Supprimer la catégorie',
+        'role'      => 'Supprimer le role',
+        'user'      => 'Supprimer le compte',
     ],
     'form' => [
         'name'          => 'Nom',
@@ -150,12 +159,17 @@ return [
         'logout'    => 'Se déconnecter',
     ],
     'comment' => [
-        'area'          => 'Espace Commentaires',
-        'action'        => 'Commenter',
-        'add'           => 'Ajouter un commentaire',
-    ], 
+        'reports' => 'Signalement|Signalements',
+    ],
     'response' =>  [
         'action'        => 'Répondre',
         'add'           => 'Ajouter une réponse',
-    ]
+    ],
+    'moderation' => [
+        'ressource'     => 'Modérer les ressources',
+        'pendings'      => 'Ressources en attente de modération',
+        'validate'      => 'Valider la ressource',
+        'dismiss'       => 'Rejeter la ressource',
+        'commentaire'   => 'Modérer le commentaire',
+    ],
 ];
