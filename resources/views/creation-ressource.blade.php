@@ -9,7 +9,7 @@
         @endforeach
     @endif
     
-    <form action="{{ isset($ressource) ? route('ressources.update', ['id' => $ressource->id, 'ressourceable_id' => $ressource->ressourceable_id]) : route('ressources.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ isset($ressource) ? route('resources.update', ['id' => $ressource->id, 'ressourceable_id' => $ressource->ressourceable_id]) : route('resources.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="ressource-container">
             {{-- Partie commune --}}
@@ -24,7 +24,7 @@
 
     @edit($ressource)
         @can('delete-ressources', $ressource)
-            <form action="{{ route('ressources.destroy', $ressource->id) }}" method="get">
+            <form action="{{ route('resources.destroy', $ressource->id) }}" method="get">
                 <button type="submit">{{ __('titles.btn.delete') }}</button>
             </form>
         @endcan

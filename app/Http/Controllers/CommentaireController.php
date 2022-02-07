@@ -19,6 +19,6 @@ class CommentaireController extends Controller
         event(new CommentReported($commentaire));
 
         // On rafraichit simplement la page pour le moment (AJAX à l'avenir)
-        return redirect()->route('ressources.show', ['id' => $commentaire->ressource_id]);
+        return redirect()->route('resources.show', ['id' => $commentaire->ressource_id]);
     }
 }

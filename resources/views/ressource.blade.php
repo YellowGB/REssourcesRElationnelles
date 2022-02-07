@@ -6,7 +6,7 @@
     
     {{-- Edition --}}
     @can('update-ressources', $ressource)
-        <form action="{{ route('ressources.edit', ['id' => $ressource->id]) }}">
+        <form action="{{ route('resources.edit', ['id' => $ressource->id]) }}">
             <input type="submit" value="{{ __('titles.edit.ressource') }}">
         </form>
     @endcan
