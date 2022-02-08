@@ -170,6 +170,7 @@ return [
         'pendings'      => 'Ressources en attente de modération',
         'validate'      => 'Valider la ressource',
         'dismiss'       => 'Rejeter la ressource',
+        'suspend'       => 'Suspendre la ressource',
         'commentaire'   => 'Modérer le commentaire',
     ],
 ];

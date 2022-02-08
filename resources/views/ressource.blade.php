@@ -13,6 +13,16 @@
             @endif
         @endcan
     @endauth
+    @auth
+        @can('publish-ressources')
+            @if($ressource->status == \App\Enums\RessourceStatus::Published->value)
+                <form action="{{ route('ressources.destroy', $ressource->id) }}" method="GET">
+                    @csrf
+                    <input type="submit" value="{{ __('titles.moderation.suspend') }}" />
+                </form>
+            @endif
+        @endcan
+    @endauth
 
     <x-ressource-header :ressource="$ressource" />
 

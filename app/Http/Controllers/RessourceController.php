@@ -41,13 +41,13 @@ class RessourceController extends Controller
 
         $ressources = Ressource::all();
 
-        if (!$manage) {
-            return view('catalogue-moderation', compact(
+        if ($manage === null) {
+            return view('catalogue', compact(
                 'ressources',
             ));
         }
         else {
-            return view('catalogue', compact(
+            return view('catalogue-moderation', compact(
                 'ressources',
             ));
         }
