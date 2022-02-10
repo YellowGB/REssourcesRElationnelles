@@ -14,6 +14,27 @@ const select        = document.getElementById('select');
 // Au chargement de la page, charger les champs de contenu correspondant à la ressource à éditer
 displayContentFields();
 
+// On écoute l'évènement envoyé par la modale de sélection du type
+window.addEventListener('typePicked', event => {
+    // on récupère le type envoyé depuis RessourceTypePicker.php et on sélectionne l'index correspondant
+    options = select.options;
+    for (var i = 0; i < options.length; i++) {
+        if (options[i].value === event.detail.type) {
+            options[i].selected = true;
+            break;
+        }
+    }
+    
+    // On déclenche l'évènement 'change'
+    const change = new Event('change');
+    select.dispatchEvent(change);
+
+    // Comme closeModal() ne fonctionne pas dans le contrôleur RessourceTypePicker, on simule la pression de la touche Esc
+    // window.dispatchEvent( new KeyboardEvent('keydown', {
+    //     'key': 'Escape'
+    // }));
+});
+
 select.addEventListener("change", (e) => { displayContentFields(); });
 
 function displayContentFields() {
@@ -57,7 +78,7 @@ function displayContentFields() {
 
             course.style.display = "flex";
 
-            document.getElementsByName('course_file_uri')[0].required = true;
+            // document.getElementsByName('course_file_uri')[0].required = true;
             document.getElementsByName('course_file_name')[0].required = true;
 
             break;
@@ -93,7 +114,7 @@ function displayContentFields() {
 
             photo.style.display = "flex";
 
-            document.getElementsByName('photo_file_uri')[0].required = true;
+            // document.getElementsByName('photo_file_uri')[0].required = true;
 
             break;
         case 'App\\Models\\Video':

@@ -1,3 +1,6 @@
+{{-- SVG sous licence gratuite
+    Obtenu sur https://www.vecteezy.com/free-vector/unisex-avatar --}}
+
 <svg
     {{
         $attributes->merge([

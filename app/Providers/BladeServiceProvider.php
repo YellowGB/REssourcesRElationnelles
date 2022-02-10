@@ -24,6 +24,16 @@ class BladeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Creation
+        Blade::directive('create', function ($expression) {
+            return "<?php if (! isset($expression)) : ?>";
+        });
+
+        Blade::directive('endcreate', function () {
+            return "<?php endif; ?>";
+        });
+
+        // Edition
         Blade::directive('edit', function ($expression) {
             return "<?php if (isset($expression)) : ?>";
         });

@@ -83,3 +83,10 @@ Route::group(
 require __DIR__.'/auth.php';
 
 //------------ Système ------------\\
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect']
+], function () {
+    // some routes with livewire components...
+    Route::post('livewire/message/{name}', '\Livewire\Controllers\HttpConnectionHandler');   
+});

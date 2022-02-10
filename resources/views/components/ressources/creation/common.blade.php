@@ -24,7 +24,7 @@
     @edit($ressource)
         <p>{{ __('titles.type.' . $ressource->ressourceable_type) }}</p>
     @endedit
-    <select name="ressourceable_type" id="select" {{ isset($ressource) ? 'hidden' : '' }}>
+    <select name="ressourceable_type" id="select" hidden>
         <option {{ isset($ressource) ? '' : 'selected' }} disabled>{{ __('titles.select.type') }}</option>
         @foreach ($types as $type) {{-- types est défini dans AppServiceProvider --}}
             @if (isset($ressource->ressourceable_type) && $ressource->ressourceable_type === $type)
