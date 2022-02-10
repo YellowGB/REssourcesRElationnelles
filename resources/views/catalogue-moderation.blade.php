@@ -2,14 +2,8 @@
 
     <p>{{ __('titles.moderation.pendings') }}</p>
 
-    @auth
-        @can('publish-ressources')
-            @foreach ($ressources as $ressource)
-                @if ($ressource->status === \App\Enums\RessourceStatus::Pending->value)
-                    <x-ressource-preview :ressource="$ressource" />
-                @endif
-            @endforeach
-        @endcan
-    @endauth
+    @foreach ($ressources as $ressource)
+        <x-ressource-preview :ressource="$ressource" />
+    @endforeach
 
 </x-app-layout>

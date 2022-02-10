@@ -10,6 +10,7 @@ enum RessourceStatus: string {
     case Pending    = 'pending';
     case Published  = 'published';
     case Deleted    = 'deleted';
+    case Suspended  = 'suspended';
 }
 
 ?>

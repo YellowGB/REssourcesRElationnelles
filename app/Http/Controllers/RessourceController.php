@@ -17,6 +17,9 @@ use App\Enums\RessourceType;
 use Illuminate\Http\Request;
 use App\Enums\RessourceRestriction;
 use App\Enums\RessourceStatus;
+use App\Events\RessourceRejected;
+use App\Events\RessourceSuspended;
+use App\Events\RessourceValidated;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
@@ -35,24 +38,28 @@ class RessourceController extends Controller
         ]);
     }
 
-    public function index($manage = null) {
+    public function index() {
 
-        // dd($manage);
-
+        // dd($);
+        
         $ressources = Ressource::all();
 
-        if ($manage === null) {
             return view('catalogue', compact(
                 'ressources',
             ));
-        }
-        else {
-            return view('catalogue-moderation', compact(
-                'ressources',
-            ));
-        }
     }
 
+    public function moderation() {
+
+        // dd($);
+        
+        $ressources = Ressource::where('status', RessourceStatus::Pending->value)->get();
+        // dd($ressources);
+
+            return view('catalogue', compact(
+                'ressources',
+            ));
+    }
     public function show($id) {
 
         $ressource          = Ressource::findOrFail($id);
@@ -398,7 +405,21 @@ class RessourceController extends Controller
         $ressource->update();
         $ressource->delete();
         
+        
         return Redirect::to('catalogue')->with('success', 'Ressource supprimée avec succès.');
+    }
+
+    public function rejeter($id) {
+
+        $ressource = Ressource::findOrfail($id);
+
+        $ressource->status = RessourceStatus::Deleted;
+
+        $ressource->update();
+
+        event(new RessourceRejected($ressource));
+
+        return Redirect::to('catalogue/moderation')->with('success', 'Ressource rejetée avec succès.');
     }
 
     public function valider($id) {
@@ -409,7 +430,22 @@ class RessourceController extends Controller
 
         $ressource->update();
 
+        event(new RessourceValidated($ressource));
+
         return Redirect::to('catalogue/moderation')->with('success', 'Ressource validée avec succès.');
+    }
+
+    public function suspendre($id) {
+
+        $ressource = Ressource::findOrfail($id);
+
+        $ressource->status = RessourceStatus::Suspended;
+
+        $ressource->update();
+
+        event(new RessourceSuspended($ressource));
+
+        return Redirect::to('catalogue')->with('success', 'Ressource suspendue avec succès.');
     }
 
 }

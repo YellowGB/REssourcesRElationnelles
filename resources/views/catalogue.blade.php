@@ -1,11 +1,13 @@
 <x-app-layout>
 
     @can('publish-ressources')
-        <form action="{{ route('catalogue.moderation', $manage = 'true') }}">
+        <form action="{{ route('catalogue.moderation') }}">
             <input type="submit" value="{{ __('titles.moderation.ressource') }}">
         </form>
     @endcan
-
+        @php
+            // dd($manage);
+        @endphp
     @guest 
         @foreach ($ressources as $ressource)
             @if ($ressource->restriction === 'public')
@@ -14,7 +16,7 @@
         @endforeach
     @endguest
     @auth
-        @can('access-admin')
+        @can('publish-ressources')
             @foreach ($ressources as $ressource)
                 <x-ressource-preview :ressource="$ressource" />
             @endforeach

@@ -45,7 +45,7 @@ Route::get('commentaire/{id}/report', [CommentaireController::class, 'report'])
                 ->middleware('verified');
 
 //------------ Ressources ------------\\
-Route::get('catalogue/moderation', [RessourceController::class, 'index'])
+Route::get('catalogue/moderation', [RessourceController::class, 'moderation'])
                 ->name('catalogue.moderation')
                 ->middleware('moderator');
 
@@ -73,6 +73,10 @@ Route::post('ressources/{id}/edit', [RessourceController::class, 'update'])
 
 Route::post('ressources/{id}/validate', [RessourceController::class, 'valider'])
                 ->name('ressources.valider')
+                ->middleware('moderator');
+
+Route::get('ressources/{id}/rejeter', [RessourceController::class, 'rejeter'])
+                ->name('ressources.rejeter')
                 ->middleware('moderator');
 
 Route::get('ressources/{id}/delete', [RessourceController::class, 'destroy'])

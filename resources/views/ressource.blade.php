@@ -7,7 +7,7 @@
                     @csrf
                     <input type="submit" value="{{ __('titles.moderation.validate') }}" />
                 </form>
-                <form action="{{ route('ressources.destroy', $ressource->id) }}" method="GET">
+                <form action="{{ route('ressources.rejeter', $ressource->id) }}" method="GET">
                     <input type="submit" value="{{ __('titles.moderation.dismiss') }}" />
                 </form>
             @endif
