@@ -19,10 +19,10 @@ class RessourceTypePicker extends ModalComponent
         return view('livewire.ressource-type-picker');
     }
 
-    // public static function closeModalOnEscape(): bool
-    // {
-    //     return false;
-    // }
+    public static function closeModalOnEscape(): bool
+    {
+        return false;
+    }
 
     public static function closeModalOnClickAway(): bool
     {

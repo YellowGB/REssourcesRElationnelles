@@ -29,10 +29,13 @@ window.addEventListener('typePicked', event => {
     const change = new Event('change');
     select.dispatchEvent(change);
 
-    // Comme closeModal() ne fonctionne pas dans le contrôleur RessourceTypePicker, on simule la pression de la touche Esc
-    // window.dispatchEvent( new KeyboardEvent('keydown', {
-    //     'key': 'Escape'
-    // }));
+    // Comme closeModal() ne fonctionne pas dans le contrôleur RessourceTypePicker,
+    // on récupère le conteneur <div wire:id... de la modale et on le cache (10 div dans la modale + 7 wrappers préalables ajoutés par Livewire)
+    // /!\ si on ajoute des div dans la modale, il faudra augmenter nbDivModal d'autant de div
+    var nbDivModal = 17;
+    var wireId = document.getElementsByTagName('div');
+    wireId = wireId[wireId.length - nbDivModal];
+    wireId.style.display = 'none';
 });
 
 select.addEventListener("change", (e) => { displayContentFields(); });
