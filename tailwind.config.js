@@ -37,6 +37,7 @@ module.exports = {
                 gris: {
                     lightest: '#F2F0F0',
                     light:    '#F4F2EA',
+                    normal:   '#C4C4C4',
                     dark:     '#2E2E39',
                     darkest:  '#16150F',
                 },
@@ -54,6 +55,10 @@ module.exports = {
             },
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                heading: ['Raleway', 'sans-serif'],
+            },
+            spacing: {
+                '128': '32rem',
             },
         },
     },

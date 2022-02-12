@@ -131,6 +131,16 @@ return [
         'category'  => 'Create a new category',
         'role'      => 'Create a new role',
         'user'      => 'Create a new account',
+        //--------------------------------------------------------
+        RessourceType::Activite->value  => 'Create an activity',
+        RessourceType::Article->value   => 'Create an article',
+        RessourceType::Atelier->value   => 'Create a workshop',
+        RessourceType::Course->value    => 'Create a course',
+        RessourceType::Defi->value      => 'Create a challenge',
+        RessourceType::Jeu->value       => 'Create a game',
+        RessourceType::Lecture->value   => 'Create a synopsis',
+        RessourceType::Photo->value     => 'Create a photo',
+        RessourceType::Video->value     => 'Create a video',
     ],
     'edit' => [
         'ressource' => 'Edit the resource',

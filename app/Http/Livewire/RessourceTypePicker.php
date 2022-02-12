@@ -10,7 +10,7 @@ class RessourceTypePicker extends ModalComponent
 
     public function selectRessourceType(string $type) {
 
-        $this->dispatchBrowserEvent('typePicked', ['type' => $type]);
+        $this->dispatchBrowserEvent('typePicked', ['type' => $type, 'title' => __('titles.create.' . $type)]);
         // $this->closeModal();
     }
     

@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-heading;
+    }
     h1 {
         @apply font-bold;
         @apply text-2xl;
@@ -11,7 +14,44 @@
         @apply font-bold;
         @apply text-xl;
     }
+
     hr {
         @apply border-current;
+    }
+
+    [type='text'],
+    [type='email'],
+    [type='url'],
+    [type='password'],
+    [type='number'],
+    [type='date'],
+    [type='datetime-local'],
+    [type='month'],
+    [type='search'],
+    [type='tel'],
+    [type='time'],
+    [type='week'],
+    [multiple],
+    textarea,
+    select {
+        @apply border-gris-normal;
+        @apply focus:border-violet-light;
+        @apply rounded-2xl;
+        @apply bg-blanc;
+        @apply dark:bg-slate-700;
+    }
+
+    button,
+    [type='button'],
+    [type='reset'],
+    [type='submit'] {
+        @apply bg-primaire;
+        @apply my-2;
+        @apply py-2;
+        @apply px-3;
+        @apply rounded-2xl;
+        @apply font-heading;
+        @apply text-gris-light;
+        @apply hover:bg-bleu-normal;
     }
 }

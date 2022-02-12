@@ -32,14 +32,19 @@ window.addEventListener('typePicked', event => {
     // Comme closeModal() ne fonctionne pas dans le contrôleur RessourceTypePicker,
     // on récupère le conteneur <div wire:id... de la modale et on le cache (10 div dans la modale + 7 wrappers préalables ajoutés par Livewire)
     // /!\ si on ajoute des div dans la modale, il faudra augmenter nbDivModal d'autant de div
-    var nbDivModal = 17;
+    var nbDivModal = 18;
     var wireId = document.getElementsByTagName('div');
     wireId = wireId[wireId.length - nbDivModal];
     wireId.style.display = 'none';
 
     // On affiche le formulaire
-    const ressource_container = document.getElementById('ressource-container');
-    ressource_container.classList.remove('hidden');
+    const ressourceContainer = document.getElementById('ressource-container');
+    ressourceContainer.classList.remove('hidden');
+    ressourceContainer.classList.add('flex');
+
+    // On change le titre du header (Créer une ressource devient Créer xxxx)
+    const headerTitle = document.getElementById('header');
+    headerTitle.innerHTML = event.detail.title;
 });
 
 select.addEventListener("change", (e) => { displayContentFields(); });
