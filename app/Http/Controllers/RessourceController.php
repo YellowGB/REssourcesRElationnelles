@@ -56,7 +56,7 @@ class RessourceController extends Controller
         $ressources = Ressource::where('status', RessourceStatus::Pending->value)->get();
         // dd($ressources);
 
-            return view('catalogue', compact(
+            return view('catalogue-moderation', compact(
                 'ressources',
             ));
     }
@@ -409,24 +409,11 @@ class RessourceController extends Controller
         return Redirect::to('catalogue')->with('success', 'Ressource supprimée avec succès.');
     }
 
-    public function rejeter($id) {
-
-        $ressource = Ressource::findOrfail($id);
-
-        $ressource->status = RessourceStatus::Deleted;
-
-        $ressource->update();
-
-        event(new RessourceRejected($ressource));
-
-        return Redirect::to('catalogue/moderation')->with('success', 'Ressource rejetée avec succès.');
-    }
-
     public function valider($id) {
 
         $ressource = Ressource::findOrfail($id);
 
-        $ressource->status = RessourceStatus::Published;
+        $ressource->status = RessourceStatus::Published->value;
 
         $ressource->update();
 
@@ -434,12 +421,26 @@ class RessourceController extends Controller
 
         return Redirect::to('catalogue/moderation')->with('success', 'Ressource validée avec succès.');
     }
+    
+    public function rejeter($id) {
+
+        $ressource = Ressource::findOrfail($id);
+
+        $ressource->ressourceable()->delete();
+
+        $ressource->update();
+        $ressource->delete();
+
+        event(new RessourceRejected($ressource));
+
+        return Redirect::to('catalogue/moderation')->with('success', 'Ressource rejetée avec succès.');
+    }
 
     public function suspendre($id) {
 
         $ressource = Ressource::findOrfail($id);
 
-        $ressource->status = RessourceStatus::Suspended;
+        $ressource->status = RessourceStatus::Suspended->value;
 
         $ressource->update();
 

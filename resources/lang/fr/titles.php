@@ -50,9 +50,9 @@ return [
         RessourceType::Activite->name   => 'Activité',
         RessourceType::Article->name    => 'Article',
         RessourceType::Atelier->name    => 'Atelier',
-        RessourceType::Course->name     => 'cours',
+        RessourceType::Course->name     => 'Cours',
         RessourceType::Defi->name       => 'Défi',
-        RessourceType::Jeu->name        => 'jeu',
+        RessourceType::Jeu->name        => 'Jeu',
         RessourceType::Lecture->name    => 'Fiche de lecture',
         RessourceType::Photo->name      => 'Photo',
         RessourceType::Video->name      => 'Vidéo',
@@ -105,6 +105,8 @@ return [
         'register'  => 'Inscription',
         'users'     => 'Les utilisateurs',
         'comments'  => 'Commentaires',
+        'theme'     => 'Thème',
+        'lang'      => 'Langue',
     ],
     'content' => [
         'description'   => 'Description',
@@ -127,19 +129,19 @@ return [
     'create' => [
         'ressource' => 'Créer une ressource',
         'category'  => 'Créer une nouvelle catégorie',
-        'role'      => 'Créer un nouveau role',
+        'role'      => 'Créer un nouveau rôle',
         'user'      => 'Créer un nouveau compte',
     ],
     'edit' => [
         'ressource' => 'Éditer la ressource',
         'category'  => 'Éditer la catégorie',
-        'role'      => 'Éditer le role',
+        'role'      => 'Éditer le rôle',
         'user'      => 'Éditer le compte',
     ],
     'delete' => [
         'ressource' => 'Supprimer la ressource',
         'category'  => 'Supprimer la catégorie',
-        'role'      => 'Supprimer le role',
+        'role'      => 'Supprimer le rôle',
         'user'      => 'Supprimer le compte',
     ],
     'form' => [

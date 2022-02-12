@@ -5,9 +5,6 @@
             <input type="submit" value="{{ __('titles.moderation.ressource') }}">
         </form>
     @endcan
-        @php
-            // dd($manage);
-        @endphp
     @guest 
         @foreach ($ressources as $ressource)
             @if ($ressource->restriction === 'public')

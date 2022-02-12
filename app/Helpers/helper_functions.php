@@ -213,4 +213,13 @@ function get_user_display_name(User $user) {
     return $user->nickname ?? $user->firstname.' '.$user->name;
 }
 
+/**
+ * Récupère le thème de l'utilisateur
+ * 
+ * @since 0.7.3-alpha
+ */
+function get_user_theme() {
+    return $_COOKIE['theme'] ?? '';
+}
+
 ?>

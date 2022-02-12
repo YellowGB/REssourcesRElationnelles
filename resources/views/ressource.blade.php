@@ -1,5 +1,6 @@
 <x-app-layout>
 
+    {{-- Modération de ressource --}}
     @auth
         @can('publish-ressources')
             @if($ressource->status == \App\Enums\RessourceStatus::Pending->value)
@@ -7,16 +8,11 @@
                     @csrf
                     <input type="submit" value="{{ __('titles.moderation.validate') }}" />
                 </form>
-                <form action="{{ route('ressources.rejeter', $ressource->id) }}" method="GET">
+                <form action="{{ route('ressources.rejeter', $ressource->id) }}">
                     <input type="submit" value="{{ __('titles.moderation.dismiss') }}" />
                 </form>
-            @endif
-        @endcan
-    @endauth
-    @auth
-        @can('publish-ressources')
-            @if($ressource->status == \App\Enums\RessourceStatus::Published->value)
-                <form action="{{ route('ressources.destroy', $ressource->id) }}" method="GET">
+            @elseif($ressource->status == \App\Enums\RessourceStatus::Published->value)
+                <form action="{{ route('ressources.suspendre', $ressource->id) }}" method="POST">
                     @csrf
                     <input type="submit" value="{{ __('titles.moderation.suspend') }}" />
                 </form>

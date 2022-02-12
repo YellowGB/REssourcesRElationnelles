@@ -2,15 +2,21 @@
 
 namespace App\Providers;
 
-use App\Events\CommentReported;
-use App\Listeners\AuthorizeLogin;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Auth\Events\Registered;
-use App\Listeners\TriggerCommentReportNotification;
-use App\Listeners\UpdateLastConnexion;
 use App\Models\Ressource;
+use App\Events\CommentReported;
+use App\Events\RessourceRejected;
+use App\Listeners\AuthorizeLogin;
+use App\Events\RessourceSuspended;
+use App\Events\RessourceValidated;
 use App\Observers\RessourceObserver;
+use Illuminate\Support\Facades\Event;
+use App\Listeners\UpdateLastConnexion;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Events\Authenticated;
+use App\Listeners\TriggerCommentReportNotification;
+use App\Listeners\TriggerRessourceRejectionNotification;
+use App\Listeners\TriggerRessourceSuspensionNotification;
+use App\Listeners\TriggerRessourceValidationNotification;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -27,6 +33,15 @@ class EventServiceProvider extends ServiceProvider
         ],
         CommentReported::class => [
             TriggerCommentReportNotification::class,
+        ],
+        RessourceValidated::class => [
+            TriggerRessourceValidationNotification::class,
+        ],
+        RessourceRejected::class => [
+            TriggerRessourceRejectionNotification::class,
+        ],
+        RessourceSuspended::class => [
+            TriggerRessourceSuspensionNotification::class,
         ],
         Authenticated::class => [
             UpdateLastConnexion::class,

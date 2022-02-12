@@ -9,10 +9,16 @@ module.exports = {
         "./resources/**/*.vue",
     ],
 
+    darkMode: 'class',
+
     theme: {
         extend: {
+            colors: {
+                white: '#FCFCFC',
+                black: '#2E2E39',
+            },
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
             },
         },
     },

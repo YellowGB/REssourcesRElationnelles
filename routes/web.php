@@ -75,6 +75,10 @@ Route::post('ressources/{id}/validate', [RessourceController::class, 'valider'])
                 ->name('ressources.valider')
                 ->middleware('moderator');
 
+Route::post('ressource/{id}/suspendre', [RessourceController::class, 'suspendre'])
+                ->name('ressources.suspendre')
+                ->middleware('moderator');
+
 Route::get('ressources/{id}/rejeter', [RessourceController::class, 'rejeter'])
                 ->name('ressources.rejeter')
                 ->middleware('moderator');
@@ -85,3 +89,5 @@ Route::get('ressources/{id}/delete', [RessourceController::class, 'destroy'])
 
 Route::get('ressources/{id}', [RessourceController::class, 'show'])
                 ->name('ressources.show');
+
+//------------ Système ------------\\
