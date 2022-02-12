@@ -113,7 +113,7 @@ return [
         'bonus'         => 'Bonus',
         'starting'      => 'Démarre le',
         'duration'      => 'Durée',
-        'title'         => 'Titre',
+        'title'         => 'Titre du livre',
         'publication'   => 'Année de parution',
         'summary'       => 'Résumé',
         'analysis'      => 'Analyse',
@@ -131,6 +131,7 @@ return [
         'category'  => 'Créer une nouvelle catégorie',
         'role'      => 'Créer un nouveau rôle',
         'user'      => 'Créer un nouveau compte',
+        'link'      => 'Renseignez ici le lien vers la source',
         //--------------------------------------------------------
         RessourceType::Activite->value  => 'Créer une activité',
         RessourceType::Article->value   => 'Créer un article',

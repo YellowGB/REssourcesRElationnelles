@@ -14,14 +14,16 @@
     
     <form action="{{ isset($ressource) ? route('resources.update', ['id' => $ressource->id, 'ressourceable_id' => $ressource->ressourceable_id]) : route('resources.store') }}" method="post" enctype="multipart/form-data">
         @csrf
-        <div class="flex flex-col lg:w-2/3 place-items-center" id="ressource-container">
+        <div class="hidden flex-col lg:w-2/3 place-items-center" id="ressource-container">
             {{-- Partie commune --}}
             <x-ressource-creation-common :ressource="$ressource ?? null" />
+
+            <x-icons.chevron-double-down />
 
             {{-- Contenu --}}
             <x-ressource-creation-content-picker :content="$content ?? null" />
 
-            <button type="submit">{{ isset($ressource) ? __('titles.btn.edit') : __('titles.btn.create') }}</button>
+            <button type="submit" class="mt-4">{{ isset($ressource) ? __('titles.btn.edit') : __('titles.btn.create') }}</button>
         </div>
     </form>
 
@@ -37,11 +39,11 @@
 
     {{-- On charge la modale de sélection du type --}}
     @create($ressource)
-        {{-- <script>
+        <script>
             document.addEventListener("DOMContentLoaded", function() {
                 Livewire.emit('openModal', 'ressource-type-picker');
             });
-        </script> --}}
+        </script>
     @endcreate
 
 </x-app-layout>

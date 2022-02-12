@@ -1,5 +1,5 @@
 <div>
-    <h2 class="text-center my-3">@lang('titles.select.type')</h2>
+    <h2 class="dark:text-gris-dark text-center my-3">@lang('titles.select.type')</h2>
     <hr class="text-gris-dark dark:text-gris-light">
     <div class="bg-blanc dark:bg-slate-700 grid grid-cols-2 sm:grid-cols-3 gap-8 p-6 mb-4 justify-items-center">
         @foreach ($types as $kType => $vType)

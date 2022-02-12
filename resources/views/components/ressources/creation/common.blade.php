@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-1 mt-6 place-items-center">
+<div class="flex flex-col gap-1 mt-6 mb-4 place-items-center">
     <input
         type="text"
         name="title"

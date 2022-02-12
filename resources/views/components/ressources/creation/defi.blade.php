@@ -1,4 +1,17 @@
-<div id="defi" class="ressource-content" style="display: none;">
-    <textarea name="defi_description" cols="30" rows="10" placeholder="{{ __('titles.content.description') }}">{{ $content->description ?? '' }}</textarea>
-    <textarea name="defi_bonus" cols="30" rows="5" placeholder="{{ __('titles.content.bonus') }}">{{ $content->bonus ?? '' }}</textarea>
+<div
+    id="defi"
+    class="flex-col w-128 lg:w-screen lg:max-w-screen-sm ressource-content"
+    style="display: none;"
+>
+    <textarea
+        name="defi_description"
+        rows="10"
+        placeholder="{{ __('titles.content.description') }}"
+    >{{ $content->description ?? '' }}</textarea>
+    <textarea
+        name="defi_bonus"
+        rows="5"
+        placeholder="{{ __('titles.content.bonus') }}"
+        class="mt-1"
+    >{{ $content->bonus ?? '' }}</textarea>
 </div>

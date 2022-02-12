@@ -131,6 +131,7 @@ return [
         'category'  => 'Create a new category',
         'role'      => 'Create a new role',
         'user'      => 'Create a new account',
+        'link'      => 'Put here the link to the source',
         //--------------------------------------------------------
         RessourceType::Activite->value  => 'Create an activity',
         RessourceType::Article->value   => 'Create an article',
