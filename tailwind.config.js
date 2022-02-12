@@ -30,8 +30,27 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                white: '#FCFCFC',
-                black: '#2E2E39',
+                blanc: '#FCFCFC',
+                noir: '#2E2E39',
+                primaire: '#2E6DAA',
+                secondaire: '#F4F2EA',
+                gris: {
+                    lightest: '#F2F0F0',
+                    light:    '#F4F2EA',
+                    dark:     '#2E2E39',
+                    darkest:  '#16150F',
+                },
+                bleu: {
+                    normal: '#0768C6',
+                    dark:   '#2E6DAA',
+                },
+                violet: {
+                    lightest: '#E0E0F4',
+                    lighter:  '#9B9BD3',
+                    light:    '#696987',
+                    dark:     '#4B3666',
+                    darkest:  '#414172',
+                },
             },
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],

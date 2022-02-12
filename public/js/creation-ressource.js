@@ -36,6 +36,10 @@ window.addEventListener('typePicked', event => {
     var wireId = document.getElementsByTagName('div');
     wireId = wireId[wireId.length - nbDivModal];
     wireId.style.display = 'none';
+
+    // On affiche le formulaire
+    const ressource_container = document.getElementById('ressource-container');
+    ressource_container.classList.remove('hidden');
 });
 
 select.addEventListener("change", (e) => { displayContentFields(); });
