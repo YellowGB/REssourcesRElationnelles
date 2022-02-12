@@ -17,7 +17,6 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-        <script src="{{ asset('js/navigation.js') }}" defer></script>
         <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     </head>
     <body class="font-sans antialiased {{ get_user_theme() }}">
