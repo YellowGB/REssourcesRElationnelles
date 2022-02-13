@@ -1,4 +1,5 @@
 <x-app-layout>
+    <x-page-header heading="{{ __('titles.section.catalogue') }}" />
 
     @guest 
         @foreach ($ressources as $ressource)

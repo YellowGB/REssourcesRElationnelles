@@ -38,6 +38,18 @@ class AppServiceProvider extends ServiceProvider
             RessourceType::Photo->name      => RessourceType::Photo->value,
             RessourceType::Video->name      => RessourceType::Video->value,
         ]);
+
+        View::share('reverse_types', [
+            RessourceType::Activite->value   => RessourceType::Activite->name,
+            RessourceType::Article->value    => RessourceType::Article->name,
+            RessourceType::Atelier->value    => RessourceType::Atelier->name,
+            RessourceType::Course->value     => RessourceType::Course->name,
+            RessourceType::Defi->value       => RessourceType::Defi->name,
+            RessourceType::Jeu->value        => RessourceType::Jeu->name,
+            RessourceType::Lecture->value    => RessourceType::Lecture->name,
+            RessourceType::Photo->value      => RessourceType::Photo->name,
+            RessourceType::Video->value      => RessourceType::Video->name,
+        ]);
         
         View::share('relations', [
             RessourceRelation::Self->value,

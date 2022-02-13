@@ -1,10 +1,6 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-blanc leading-tight" id="header">
-            {{-- Si $ressource existe et n'est pas null, on est sur une édition et non une création --}}
-            {{ isset($ressource) ? __('titles.edit.ressource') : __('titles.create.ressource') }}
-        </h2>
-    </x-slot>
+    {{-- Si $ressource existe et n'est pas null, on est sur une édition et non une création --}}
+    <x-page-header heading="{{ isset($ressource) ? __('titles.edit.ressource') : __('titles.create.ressource') }}" />
     
     @if ($errors->any())
         @foreach ($errors->all() as $error)

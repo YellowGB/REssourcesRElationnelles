@@ -225,4 +225,13 @@ function get_user_theme() {
     return session('theme');
 }
 
+/**
+ * Retourne un extrait d'une chaîne
+ * 
+ * @since 0.7.6-alpha
+ */
+function get_excerpt(string $string, int $length = 80) {
+    return substr($string, 0, $length) . '...';
+}
+
 ?>
