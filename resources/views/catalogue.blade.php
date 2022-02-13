@@ -1,4 +1,5 @@
 <x-app-layout>
+    <x-page-header heading="{{ __('titles.section.catalogue') }}" />
 
     @can('publish-ressources')
         <form action="{{ route('catalogue.moderation') }}">

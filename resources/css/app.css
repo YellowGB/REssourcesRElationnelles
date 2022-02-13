@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body, p, span {
+        @apply dark:text-gris-normal;
+    }
+    label {
+        @apply dark:text-gris-light;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-heading;
+        @apply dark:text-gris-light;
+    }
+    h1 {
+        @apply font-bold;
+        @apply text-2xl;
+    }
+    h2 {
+        @apply font-bold;
+        @apply text-xl;
+    }
+    h2 {
+        @apply font-bold;
+        @apply text-lg;
+    }
+
+    hr {
+        @apply border-current;
+    }
+
+    [type='text'],
+    [type='email'],
+    [type='file'],
+    [type='url'],
+    [type='password'],
+    [type='number'],
+    [type='date'],
+    [type='datetime-local'],
+    [type='month'],
+    [type='search'],
+    [type='tel'],
+    [type='time'],
+    [type='week'],
+    [multiple],
+    textarea,
+    select {
+        @apply border-gris-normal;
+        @apply focus:border-violet-light;
+        @apply rounded-2xl;
+        @apply bg-blanc;
+        @apply dark:bg-slate-700;
+        @apply dark:text-gris-normal;
+    }
+
+    button,
+    [type='button'],
+    [type='reset'],
+    [type='submit'] {
+        @apply bg-primaire;
+        @apply my-2;
+        @apply py-2;
+        @apply px-3;
+        @apply rounded-2xl;
+        @apply font-heading;
+        @apply text-gris-light;
+        @apply hover:bg-bleu-normal;
+    }
+}

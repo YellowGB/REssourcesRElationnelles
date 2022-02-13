@@ -14,6 +14,39 @@ const select        = document.getElementById('select');
 // Au chargement de la page, charger les champs de contenu correspondant à la ressource à éditer
 displayContentFields();
 
+// On écoute l'évènement envoyé par la modale de sélection du type
+window.addEventListener('typePicked', event => {
+    // on récupère le type envoyé depuis RessourceTypePicker.php et on sélectionne l'index correspondant
+    options = select.options;
+    for (var i = 0; i < options.length; i++) {
+        if (options[i].value === event.detail.type) {
+            options[i].selected = true;
+            break;
+        }
+    }
+    
+    // On déclenche l'évènement 'change'
+    const change = new Event('change');
+    select.dispatchEvent(change);
+
+    // Comme closeModal() ne fonctionne pas dans le contrôleur RessourceTypePicker,
+    // on récupère le conteneur <div wire:id... de la modale et on le cache (10 div dans la modale + 7 wrappers préalables ajoutés par Livewire)
+    // /!\ si on ajoute des div dans la modale, il faudra augmenter nbDivModal d'autant de div
+    var nbDivModal = 18;
+    var wireId = document.getElementsByTagName('div');
+    wireId = wireId[wireId.length - nbDivModal];
+    wireId.style.display = 'none';
+
+    // On affiche le formulaire
+    const ressourceContainer = document.getElementById('ressource-container');
+    ressourceContainer.classList.remove('hidden');
+    ressourceContainer.classList.add('flex');
+
+    // On change le titre du header (Créer une ressource devient Créer xxxx)
+    const headerTitle = document.getElementById('header');
+    headerTitle.innerHTML = event.detail.title;
+});
+
 select.addEventListener("change", (e) => { displayContentFields(); });
 
 function displayContentFields() {
@@ -57,7 +90,7 @@ function displayContentFields() {
 
             course.style.display = "flex";
 
-            document.getElementsByName('course_file_uri')[0].required = true;
+            // document.getElementsByName('course_file_uri')[0].required = true;
             document.getElementsByName('course_file_name')[0].required = true;
 
             break;
@@ -93,7 +126,7 @@ function displayContentFields() {
 
             photo.style.display = "flex";
 
-            document.getElementsByName('photo_file_uri')[0].required = true;
+            // document.getElementsByName('photo_file_uri')[0].required = true;
 
             break;
         case 'App\\Models\\Video':

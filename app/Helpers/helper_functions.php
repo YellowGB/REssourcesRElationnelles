@@ -219,7 +219,19 @@ function get_user_display_name(User $user) {
  * @since 0.7.3-alpha
  */
 function get_user_theme() {
-    return $_COOKIE['theme'] ?? '';
+    if (! session()->has('theme')) {
+        session(['theme' => auth()->user()->preference->theme]);
+    }
+    return session('theme');
+}
+
+/**
+ * Retourne un extrait d'une chaîne
+ * 
+ * @since 0.7.6-alpha
+ */
+function get_excerpt(string $string, int $length = 80) {
+    return substr($string, 0, $length) . '...';
 }
 
 ?>

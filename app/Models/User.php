@@ -56,6 +56,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Commentaire::class);
     }
 
+    public function preference() {
+        return $this->hasOne(UserPreference::class);
+    }
+
     /**
      * Récupère une ou toutes les permissions d'un utilisateur
      * 

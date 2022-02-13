@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\CommentaireController;
-use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RessourceController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\RessourceController;
+use App\Http\Controllers\CommentaireController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,76 +19,90 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::group(
+    [
+        'prefix'     => LaravelLocalization::setLocale(),
+        'middleware' => ['localize', 'localeCookieRedirect', 'localizationRedirect', 'localeViewPath'],
+    ],
+    function () {
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('home');
+    
+    Route::get(LaravelLocalization::transRoute('routes.dashboard'), function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+    
+    //------------ Utilisateurs ------------\\
+    Route::group(
+        ['middleware' => ['auth', 'admin']],
+        function () {
+            Route::resource(LaravelLocalization::transRoute('routes.users'), UserController::class); // crée une route pour chaque CRUD + la page dédiée, users.index, users.show, users.create, users.store, users.edit, users.update, users.destroy
+            Route::resource(LaravelLocalization::transRoute('routes.roles'), RoleController::class)
+                            ->only('index');
+        }
+    );
+    
+    //------------ Commentaires ------------\\
+    Route::get(LaravelLocalization::transRoute('routes.comment.report'), [CommentaireController::class, 'report'])
+                    ->name('comment.report')
+                    ->middleware('verified');
+    
+    //------------ Ressources ------------\\
+    Route::get(LaravelLocalization::transRoute('routes.catalogue'), [RessourceController::class, 'index'])
+                    ->name('catalogue');
+
+    Route::get(LaravelLocalization::transRoute('routes.catalogue.moderation'), [RessourceController::class, 'moderation'])
+                    ->name('catalogue.moderation')
+                    ->middleware('moderator');
+    
+    Route::get(LaravelLocalization::transRoute('routes.resources.create'), [RessourceController::class, 'create'])
+                    ->name('resources.create')
+                    ->middleware('verified');
+    
+    Route::post(LaravelLocalization::transRoute('routes.resources.create'), [RessourceController::class, 'store'])
+                    ->name('resources.store')
+                    ->middleware('verified');
+    
+    Route::get(LaravelLocalization::transRoute('routes.courses.show'), [CourseController::class, 'show'])
+                    ->name('courses.show');
+    
+    Route::get(LaravelLocalization::transRoute('routes.resources.edit'), [RessourceController::class, 'edit'])
+                    ->name('resources.edit')
+                    ->middleware('verified');
+    
+    Route::post(LaravelLocalization::transRoute('routes.resources.edit'), [RessourceController::class, 'update'])
+                    ->name('resources.update')
+                    ->middleware('verified');
+
+    Route::post(LaravelLocalization::transRoute('routes.resources.valider'), [RessourceController::class, 'valider'])
+                    ->name('resources.valider')
+                    ->middleware('moderator');
+
+    Route::post(LaravelLocalization::transRoute('routes.resources.suspendre'), [RessourceController::class, 'suspendre'])
+                    ->name('resources.suspendre')
+                    ->middleware('moderator');
+
+    Route::get(LaravelLocalization::transRoute('routes.resources.rejeter'), [RessourceController::class, 'rejeter'])
+                    ->name('resources.rejeter')
+                    ->middleware('moderator');
+    
+    Route::get(LaravelLocalization::transRoute('routes.resources.destroy'), [RessourceController::class, 'destroy'])
+                    ->name('resources.destroy')
+                    ->middleware('moderator');
+    
+    Route::get(LaravelLocalization::transRoute('routes.resources.show'), [RessourceController::class, 'show'])
+                    ->name('resources.show');
+});
 
 require __DIR__.'/auth.php';
 
-//------------ Utilisateurs ------------\\
-Route::group(
-    ['middleware' => ['auth', 'admin']],
-    function () {
-        Route::resource('users', UserController::class); // crée une route pour chaque CRUD + la page dédiée, users.index, users.show, users.create, users.store, users.edit, users.update, users.destroy
-        Route::resource('roles', RoleController::class)
-                        ->only('index');
-    }
-);
-
-//------------ Commentaires ------------\\
-
-Route::get('commentaire/{id}/report', [CommentaireController::class, 'report'])
-                ->name('comment.report')
-                ->middleware('verified');
-
-//------------ Ressources ------------\\
-Route::get('catalogue/moderation', [RessourceController::class, 'moderation'])
-                ->name('catalogue.moderation')
-                ->middleware('moderator');
-
-Route::get('catalogue', [RessourceController::class, 'index'])
-                ->name('catalogue');
-
-Route::get('ressources/create', [RessourceController::class, 'create'])
-                ->name('ressources.create')
-                ->middleware('verified');
-
-Route::post('ressources/create', [RessourceController::class, 'store'])
-                ->name('ressources.store')
-                ->middleware('verified');
-
-Route::get('ressources/courses/{id}', [CourseController::class, 'show'])
-                ->name('courses.show');
-
-Route::get('ressources/{id}/edit', [RessourceController::class, 'edit'])
-                ->name('ressources.edit')
-                ->middleware('verified');
-
-Route::post('ressources/{id}/edit', [RessourceController::class, 'update'])
-                ->name('ressources.update')
-                ->middleware('verified');
-
-Route::post('ressources/{id}/validate', [RessourceController::class, 'valider'])
-                ->name('ressources.valider')
-                ->middleware('moderator');
-
-Route::post('ressource/{id}/suspendre', [RessourceController::class, 'suspendre'])
-                ->name('ressources.suspendre')
-                ->middleware('moderator');
-
-Route::get('ressources/{id}/rejeter', [RessourceController::class, 'rejeter'])
-                ->name('ressources.rejeter')
-                ->middleware('moderator');
-
-Route::get('ressources/{id}/delete', [RessourceController::class, 'destroy'])
-                ->name('ressources.destroy')
-                ->middleware('moderator');
-
-Route::get('ressources/{id}', [RessourceController::class, 'show'])
-                ->name('ressources.show');
-
 //------------ Système ------------\\
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect']
+], function () {
+    // some routes with livewire components...
+    Route::post('livewire/message/{name}', '\Livewire\Controllers\HttpConnectionHandler');   
+});

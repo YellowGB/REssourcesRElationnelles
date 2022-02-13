@@ -1,3 +1,11 @@
-<div id="atelier" class="ressource-content" style="display: none;">
-    <textarea name="atelier_description" cols="30" rows="10" placeholder="{{ __('titles.content.description') }}">{{ $content->description ?? '' }}</textarea>
+<div
+    id="atelier"
+    class="flex-col w-128 lg:w-screen lg:max-w-screen-sm ressource-content"
+    style="display: none;"
+>
+    <textarea
+        name="atelier_description"
+        rows="10"
+        placeholder="{{ __('titles.content.description') }}"
+    >{{ $content->description ?? '' }}</textarea>
 </div>

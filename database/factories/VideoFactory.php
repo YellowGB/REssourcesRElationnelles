@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Storage;
 
 class VideoFactory extends Factory
 {
@@ -14,8 +15,8 @@ class VideoFactory extends Factory
     public function definition()
     {
         return [
-            'file_uri'  => '',
-            'link'      => $this->faker->url(),
+            'file_uri'  => Storage::url('videos/c2O1WV6hVHa2AjPF1ly04HBy0f0RA1mv9nfbzhbz.mp4'),
+            'link'      => '',
             'legend'    => $this->faker->sentence(),
         ];
     }

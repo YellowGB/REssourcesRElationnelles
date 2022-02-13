@@ -113,7 +113,7 @@ return [
         'bonus'         => 'Bonus',
         'starting'      => 'Démarre le',
         'duration'      => 'Durée',
-        'title'         => 'Titre',
+        'title'         => 'Titre du livre',
         'publication'   => 'Année de parution',
         'summary'       => 'Résumé',
         'analysis'      => 'Analyse',
@@ -122,8 +122,8 @@ return [
         'none'          => "Aucun contenu n'a été trouvé pour cette ressource.",
     ],
     'select' => [
-        'relation'  => 'Sélectionnez un type de relation',
-        'category'  => 'Sélectionnez une catégorie',
+        'relation'  => 'Relation',
+        'category'  => 'Catégorie',
         'type'      => 'Sélectionnez le type de ressource',
     ],
     'create' => [
@@ -131,6 +131,17 @@ return [
         'category'  => 'Créer une nouvelle catégorie',
         'role'      => 'Créer un nouveau rôle',
         'user'      => 'Créer un nouveau compte',
+        'link'      => 'Renseignez ici le lien vers la source',
+        //--------------------------------------------------------
+        RessourceType::Activite->value  => 'Créer une activité',
+        RessourceType::Article->value   => 'Créer un article',
+        RessourceType::Atelier->value   => 'Créer un atelier',
+        RessourceType::Course->value    => 'Créer un cours',
+        RessourceType::Defi->value      => 'Créer un défi',
+        RessourceType::Jeu->value       => 'Créer un jeu',
+        RessourceType::Lecture->value   => 'Créer une fiche de lecture',
+        RessourceType::Photo->value     => 'Créer une photo',
+        RessourceType::Video->value     => 'Créer une vidéo',
     ],
     'edit' => [
         'ressource' => 'Éditer la ressource',

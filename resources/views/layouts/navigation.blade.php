@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-black border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-blanc dark:bg-noir border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -12,18 +12,18 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link class="dark:text-slate-300 dark:hover:text-blanc" :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('titles.section.dashboard') }}
                     </x-nav-link>
-                </div>
+                    <x-nav-link class="dark:text-slate-300 dark:hover:text-blanc" :href="route('catalogue')" :active="request()->routeIs('catalogue')">
+                        {{ __('titles.section.catalogue') }}
+                    </x-nav-link>
+                    <x-nav-link class="dark:text-slate-300 dark:hover:text-blanc" :href="route('resources.create')" :active="request()->routeIs('resources.create')">
+                        {{ __('titles.create.ressource') }}
+                    </x-nav-link>
 
-                {{-- Theme icon --}}
-                <div class="flex items-center ml-4">
-                    <x-button class="bg-black dark:bg-white text-white dark:text-black rounded-full hover:rounded-lg transition-all duration-100 ease-in-out" id="theme-toggler">
-                        <x-icons.sun />
-                        <x-icons.moon class="hidden" />
-                        <span class="ml-2">{{ __('titles.section.theme') }}</span>
-                    </x-button>
+                    {{-- Theme icon --}}
+                    <x-togglers.theme />
                 </div>
             </div>
 
@@ -32,14 +32,16 @@
                 @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                <div>{{ Auth::user()->name }}</div>
+                            <button class="flex items-center p-2 rounded-full border-2 border-noir hover:bg-slate-500 hover:border-gray-500 focus:outline-none focus:bg-slate-500 focus:border-gray-500 transition duration-150 ease-in-out">
+                                {{-- créer directive blade @avatar, corriger la valeur par défaut d'avatar --}}
+                                <x-icons.avatar />
+                                {{-- <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                     </svg>
-                                </div>
+                                </div> --}}
                             </button>
                         </x-slot>
 

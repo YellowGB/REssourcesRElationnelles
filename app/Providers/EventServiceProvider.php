@@ -8,10 +8,12 @@ use App\Events\RessourceRejected;
 use App\Listeners\AuthorizeLogin;
 use App\Events\RessourceSuspended;
 use App\Events\RessourceValidated;
-use App\Observers\RessourceObserver;
 use Illuminate\Support\Facades\Event;
 use App\Listeners\UpdateLastConnexion;
 use Illuminate\Auth\Events\Registered;
+use App\Models\User;
+use App\Observers\RessourceObserver;
+use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Authenticated;
 use App\Listeners\TriggerCommentReportNotification;
 use App\Listeners\TriggerRessourceRejectionNotification;
@@ -57,5 +59,6 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Ressource::observe(RessourceObserver::class);
+        User::observe(UserObserver::class);
     }
 }

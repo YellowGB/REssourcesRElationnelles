@@ -21,5 +21,13 @@
 	"A comment has been reported:": "Un commentaire a été signalé :",
 	"Look it up": "Le consulter",
 	"This account has been deleted. If you wish to restore it, please contact an administrator.": "Ce compte a été supprimé. Si vous souhaitez le restaurer, merci de contacter un administrateur.",
-	"This account has been suspended. For more information, please contact an administrator.": "Ce compte a été suspendu. Pour plus d'informations, merci de contacter un administrateur."
+	"This account has been suspended. For more information, please contact an administrator.": "Ce compte a été suspendu. Pour plus d'informations, merci de contacter un administrateur.",
+	"This is a secure area of the application. Please confirm your password before continuing.": "Ceci est une zone sécurisée de l'application. Merci de confirmer votre mot de passe avant de continuer.",
+	"Confirm": "Confirmer",
+	"Select the file you wish to upload": "Sélectionnez le fichier que vous souhaitez téléverser",
+	"Read more": "Lire plus",
+	"Discover": "Découvrir",
+	"Resource successfully created": "Ressource créée avec succès",
+	"Resource successfully updated": "Ressource mise à jour avec succès",
+	"Resource successfully deleted": "Ressource supprimée avec succès"
 }

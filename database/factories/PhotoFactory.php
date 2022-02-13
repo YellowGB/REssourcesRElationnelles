@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PhotoFactory extends Factory
@@ -14,8 +15,8 @@ class PhotoFactory extends Factory
     public function definition()
     {
         return [
-            'file_uri'      => 'var/www/public/images/' . rand(145672, 9999445332) . '.jpg',
-            'photo_author'  => $this->faker->name(),
+            'file_uri'      => Storage::url('photos/Depositphotos_320343344_XL.jpg'),
+            'photo_author'  => 'https://fr.depositphotos.com/stock-photos/business-finance.html',
             'legend'        => $this->faker->sentence(),
         ];
     }

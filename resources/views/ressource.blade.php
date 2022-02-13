@@ -4,15 +4,15 @@
     @auth
         @can('publish-ressources')
             @if($ressource->status == \App\Enums\RessourceStatus::Pending->value)
-                <form action="{{ route('ressources.valider', $ressource->id) }}" method="POST">
+                <form action="{{ route('resources.valider', $ressource->id) }}" method="POST">
                     @csrf
                     <input type="submit" value="{{ __('titles.moderation.validate') }}" />
                 </form>
-                <form action="{{ route('ressources.rejeter', $ressource->id) }}">
+                <form action="{{ route('resources.rejeter', $ressource->id) }}">
                     <input type="submit" value="{{ __('titles.moderation.dismiss') }}" />
                 </form>
             @elseif($ressource->status == \App\Enums\RessourceStatus::Published->value)
-                <form action="{{ route('ressources.suspendre', $ressource->id) }}" method="POST">
+                <form action="{{ route('resources.suspendre', $ressource->id) }}" method="POST">
                     @csrf
                     <input type="submit" value="{{ __('titles.moderation.suspend') }}" />
                 </form>
@@ -26,7 +26,7 @@
     
     {{-- Edition --}}
     @can('update-ressources', $ressource)
-        <form action="{{ route('ressources.edit', ['id' => $ressource->id]) }}">
+        <form action="{{ route('resources.edit', ['id' => $ressource->id]) }}">
             <input type="submit" value="{{ __('titles.edit.ressource') }}">
         </form>
     @endcan
