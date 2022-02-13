@@ -26,5 +26,8 @@
 	"Confirm": "Confirmer",
 	"Select the file you wish to upload": "Sélectionnez le fichier que vous souhaitez téléverser",
 	"Read more": "Lire plus",
-	"Discover": "Découvrir"
+	"Discover": "Découvrir",
+	"Resource successfully created": "Ressource créée avec succès",
+	"Resource successfully updated": "Ressource mise à jour avec succès",
+	"Resource successfully deleted": "Ressource supprimée avec succès"
 }
