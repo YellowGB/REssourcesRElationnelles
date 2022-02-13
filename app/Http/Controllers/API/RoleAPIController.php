@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
+/**
+ * @since 0.8.1-alpha
+ */
 class RoleAPIController extends Controller
 {
     /**
