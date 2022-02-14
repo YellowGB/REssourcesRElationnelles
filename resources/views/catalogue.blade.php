@@ -1,5 +1,6 @@
 <x-app-layout>
-    <x-page-header heading="{{ __('titles.section.catalogue') }}" />
+
+    @livewire('ressources-search')
 
     @livewire('ressources-loader')
 
