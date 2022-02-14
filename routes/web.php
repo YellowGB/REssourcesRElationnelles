@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RessourceController;
 use App\Http\Controllers\CommentaireController;
+use App\Http\Controllers\ProgressionController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -49,6 +50,11 @@ Route::group(
                     ->name('comment.report')
                     ->middleware('verified');
     
+    //------------ Progression ------------\\
+    Route::get(LaravelLocalization::transRoute('routes.progression.favorite'), [ProgressionController::class, 'favorite'])
+                    ->name('progression.favorite')
+                    ->middleware('verified');
+
     //------------ Ressources ------------\\
     Route::get(LaravelLocalization::transRoute('routes.catalogue'), [RessourceController::class, 'index'])
                     ->name('catalogue');
