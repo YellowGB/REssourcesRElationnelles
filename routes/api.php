@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\Api\RessourceAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\RoleAPIController;
+use App\Http\Controllers\API\UserAPIController;
+use App\Http\Controllers\Api\RessourceAPIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('resources', RessourceAPIController::class);
+Route::apiResource('users', UserAPIController::class);
+Route::apiResource('roles', RoleAPIController::class);

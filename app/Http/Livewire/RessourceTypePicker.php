@@ -16,7 +16,7 @@ class RessourceTypePicker extends ModalComponent
     
     public function render()
     {
-        return view('livewire.ressource-type-picker');
+        return view('livewire.ressources.type-picker');
     }
 
     public static function closeModalOnEscape(): bool

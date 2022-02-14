@@ -20,6 +20,7 @@ use App\Models\Progression;
 use App\Enums\RessourceType;
 use App\Enums\LocGenderNumber;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 /**
@@ -219,6 +220,8 @@ function get_user_display_name(User $user) {
  * @since 0.7.3-alpha
  */
 function get_user_theme() {
+    if (! Auth::check()) return; // guard clause, si l'utilisateur n'est pas connecté à un compte, il ne peut pas avoir de thème personnalisé
+
     if (! session()->has('theme')) {
         session(['theme' => auth()->user()->preference->theme]);
     }
