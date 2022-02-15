@@ -16,9 +16,9 @@
 
     x-init="checkScroll"
 >
-<div class="flex justify-center mb-4">
-    <div wire:loading.delay>
-        <x-icons.loading class="h-8 w-8" />
+    <div class="flex justify-center mb-4">
+        <div wire:loading.delay>
+            <x-icons.loading class="h-8 w-8" />
+        </div>
     </div>
-</div>
 </div>

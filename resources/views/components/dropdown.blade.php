@@ -1,4 +1,9 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-blanc'])
+@props([
+    'align'               => 'right',
+    'width'               => '48',
+    'contentClasses'      => 'py-1 bg-blanc',
+    'keepOpenClickInside' => 'false',
+])
 
 @php
 switch ($align) {
@@ -35,7 +40,7 @@ switch ($width) {
             x-transition:leave-end="transform opacity-0 scale-95"
             class="absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }}"
             style="display: none;"
-            @click="open = false">
+            @click="open = {{ $keepOpenClickInside }}">
         <div class="rounded-md ring-1 ring-noir ring-opacity-5 {{ $contentClasses }}">
             {{ $content }}
         </div>
