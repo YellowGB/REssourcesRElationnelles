@@ -56,6 +56,22 @@ Route::group(
     Route::get(LaravelLocalization::transRoute('routes.catalogue.moderation'), [RessourceController::class, 'moderation'])
                     ->name('catalogue.moderation')
                     ->middleware('moderator');
+
+    Route::get(LaravelLocalization::transRoute('routes.comments.moderation'), [CommentaireController::class, 'moderation'])
+                    ->name('comments.moderation')
+                    ->middleware('moderator');
+    
+    Route::get(LaravelLocalization::transRoute('routes.comment.moderation'), [CommentaireController::class, 'show'])
+                    ->name('comment.moderation')
+                    ->middleware('moderator');
+
+    Route::post(LaravelLocalization::transRoute('routes.comments.moderation.ignorer'), [CommentaireControler::class, 'ignorer'])
+                    ->name('comments.moderation.ignorer')
+                    ->middleware('moderator');
+
+    Route::post(LaravelLocalization::transRoute('routes.comments.moderation.supprimer'), [CommentaireControler::class, 'supprimer'])
+                    ->name('comments.moderation.supprimer')
+                    ->middleware('moderator');
     
     Route::get(LaravelLocalization::transRoute('routes.resources.create'), [RessourceController::class, 'create'])
                     ->name('resources.create')

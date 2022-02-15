@@ -29,4 +29,8 @@ return [
     "resources.suspendre"       => "ressources/{id}/suspendre",
     "resources.rejeter"         => "ressources/{id}/rejeter",
     "catalogue.moderation"      => "catalogue/moderation",
+    "comments.moderation"       => "commentaires/moderation",
+    "comment.moderation"        => "commentaire/moderation/{id}",
+    "comments.ignorer"          => "commentaires/moderation/{id}/ignorer",
+    "comments.supprimer"        => "commentaires/moderation/{id}/supprimer",
 ];

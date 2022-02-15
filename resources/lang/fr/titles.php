@@ -172,7 +172,10 @@ return [
         'logout'    => 'Se déconnecter',
     ],
     'comment' => [
-        'reports' => 'Signalement|Signalements',
+        'reports'   => 'Signalement|Signalements',
+        'reported'  => 'Signalés',
+        'ignore'    => 'Ignorer',
+        'delete'    => 'Supprmier',
     ],
     'response' =>  [
         'action'        => 'Répondre',
