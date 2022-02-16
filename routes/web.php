@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RessourceController;
 use App\Http\Controllers\CommentaireController;
+use App\Http\Controllers\CategorieController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -43,6 +44,11 @@ Route::group(
                             ->only('index');
         }
     );
+
+    //------------ Categories ------------\\
+    Route::get(LaravelLocalization::transRoute('routes.categories.index'), [CategorieController::class, 'index'])
+                    ->name('categories.index')
+                    ->middleware('verified');
     
     //------------ Commentaires ------------\\
     Route::get(LaravelLocalization::transRoute('routes.comment.report'), [CommentaireController::class, 'report'])
