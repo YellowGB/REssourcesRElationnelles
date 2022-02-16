@@ -65,12 +65,12 @@ Route::group(
                     ->name('comment.moderation')
                     ->middleware('moderator');
 
-    Route::post(LaravelLocalization::transRoute('routes.comments.moderation.ignorer'), [CommentaireControler::class, 'ignorer'])
-                    ->name('comments.moderation.ignorer')
+    Route::post(LaravelLocalization::transRoute('routes.comment.ignorer'), [CommentaireController::class, 'ignorer'])
+                    ->name('comment.ignorer')
                     ->middleware('moderator');
 
-    Route::post(LaravelLocalization::transRoute('routes.comments.moderation.supprimer'), [CommentaireControler::class, 'supprimer'])
-                    ->name('comments.moderation.supprimer')
+    Route::post(LaravelLocalization::transRoute('routes.comment.supprimer'), [CommentaireController::class, 'supprimer'])
+                    ->name('comment.supprimer')
                     ->middleware('moderator');
     
     Route::get(LaravelLocalization::transRoute('routes.resources.create'), [RessourceController::class, 'create'])

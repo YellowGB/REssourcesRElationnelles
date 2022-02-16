@@ -30,7 +30,7 @@ return [
     "resources.rejeter"         => "ressources/{id}/reject",
     "catalogue.moderation"      => "catalogue/moderation",
     "comments.moderation"       => "comments/moderation",
-    "comment.moderation"        => "comments/moderation/{id}",
-    "comments.ignorer"          => "comments/moderation/{id}/ignore",
-    "comments.supprimer"        => "comments/moderation/{id}/delete",
+    "comment.moderation"        => "comment/moderation/{id}",
+    "comment.ignorer"           => "comment/moderation/{id}/ignore",
+    "comment.supprimer"         => "comment/moderation/{id}/delete",
 ];

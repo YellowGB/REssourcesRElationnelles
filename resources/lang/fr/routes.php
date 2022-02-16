@@ -31,6 +31,6 @@ return [
     "catalogue.moderation"      => "catalogue/moderation",
     "comments.moderation"       => "commentaires/moderation",
     "comment.moderation"        => "commentaire/moderation/{id}",
-    "comments.ignorer"          => "commentaires/moderation/{id}/ignorer",
-    "comments.supprimer"        => "commentaires/moderation/{id}/supprimer",
+    "comment.ignorer"           => "commentaire/moderation/{id}/ignorer",
+    "comment.supprimer"         => "commentaire/moderation/{id}/supprimer",
 ];

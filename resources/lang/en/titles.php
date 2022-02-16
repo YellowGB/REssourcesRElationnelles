@@ -107,6 +107,7 @@ return [
         'comments'  => 'Comments',
         'theme'     => 'Theme',
         'lang'      => 'Language',
+        'resource'  => 'Resource',
     ],
     'content' => [
         'description'   => 'Description',

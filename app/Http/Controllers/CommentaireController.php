@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Commentaire;
 use Illuminate\Http\Request;
+use App\Events\CommentDeleted;
+use App\Events\CommentIgnored;
 use App\Events\CommentReported;
 use Illuminate\Support\Facades\Redirect;
 
@@ -36,8 +38,7 @@ class CommentaireController extends Controller
 
     public function moderation() {
 
-        $commentaires = Commentaire::where('reports', '>=','50')->get();
-        $user = User::where('id', 1)->get();
+        $commentaires = Commentaire::where('reports', '>=', '50')->get();
 
         return view('commentaires-moderation', compact(
             'commentaires',
@@ -48,13 +49,13 @@ class CommentaireController extends Controller
 
         $commentaire = Commentaire::findOrFail($id);
 
-        $commentaire->reports = 0;
+        $commentaire->reports = '0';
 
         $commentaire->update();
 
         event(new CommentIgnored($commentaire));
 
-        return Redirect::to('commentaire/moderation')->with('success', 'Ressource ignorée avec succès.');
+        return Redirect::to('commentaires/moderation')->with('success', 'Ressource ignorée avec succès.');
     }
 
     public function supprimer($id) {
@@ -66,6 +67,6 @@ class CommentaireController extends Controller
 
         event(new CommentDeleted($commentaire));
 
-        return Redirect::to('commentaire/moderation')->with('success', 'Ressource rejetée avec succès.');
+        return Redirect::to('commentaires/moderation')->with('success', 'Ressource rejetée avec succès.');
     }
 }

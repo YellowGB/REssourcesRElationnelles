@@ -16,6 +16,8 @@ use App\Observers\RessourceObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Authenticated;
 use App\Listeners\TriggerCommentReportNotification;
+use App\Listeners\TriggerCommentDeleteNotification;
+use App\Listeners\TriggerCommentIgnoreNotification;
 use App\Listeners\TriggerRessourceRejectionNotification;
 use App\Listeners\TriggerRessourceSuspensionNotification;
 use App\Listeners\TriggerRessourceValidationNotification;
@@ -44,6 +46,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         RessourceSuspended::class => [
             TriggerRessourceSuspensionNotification::class,
+        ],
+        CommentIgnored::class => [
+            TriggerCommentIgnoreNotification::class,
+        ],
+        CommentDeleted::class => [
+            TriggerCommentDeleteNotification::class,
         ],
         Authenticated::class => [
             UpdateLastConnexion::class,
