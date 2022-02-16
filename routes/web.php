@@ -49,7 +49,11 @@ Route::group(
     Route::get(LaravelLocalization::transRoute('routes.categories.index'), [CategorieController::class, 'index'])
                     ->name('categories.index')
                     ->middleware('verified');
-    
+               
+    Route::post(LaravelLocalization::transRoute('routes.categories.store'), [CategorieController::class, 'store'])
+                    ->name('categories.store')
+                    ->middleware('verified');
+
     //------------ Commentaires ------------\\
     Route::get(LaravelLocalization::transRoute('routes.comment.report'), [CommentaireController::class, 'report'])
                     ->name('comment.report')

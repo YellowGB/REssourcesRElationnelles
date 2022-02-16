@@ -24,7 +24,7 @@ return [
     "users.edit"                => "utilisateurs/{user}/edition",
     "categories"                => "categories",
     "categories.index"          => 'categories',
-    "categories.create"         => 'categories/creation',
+    "categories.store"          => 'categories/store',
     "verification.notice"       => "verification-email",
     "verification.verify"       => "verification-email/{id}/{hash}",
     "verification.send"         => "email/verification-notification",
