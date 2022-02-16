@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Models\Role;
 use App\Models\User;
 use App\Enums\UserRole;
+use App\Models\Ressource;
 use Illuminate\Bus\Queueable;
 use App\Events\RessourceSuspended;
 use Illuminate\Queue\SerializesModels;
@@ -37,9 +38,12 @@ class SendRessourceSuspensionNotification implements ShouldQueue
     {
         $role = Role::where('name', UserRole::Moderator->value)->firstOrFail();
         $moderators = User::where('role_id', $role->id)->get();
+        $creator = User::where('id', $this->ressource->user_id)->get();
 
         foreach ($moderators as $moderator) {
             $moderator->notify(new RessourceSuspendedNotification($this->ressource_suspended->ressource));
         }
+
+        $creator->notify(new RessourceSuspendedNotification($this->ressource_suspended->ressource));
     }
 }
