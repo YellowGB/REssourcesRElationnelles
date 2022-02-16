@@ -6,4 +6,6 @@
 
     @livewire('ressources-loader')
 
+    <script src="{{ asset('js/catalogue.js') }}" defer></script>
+    
 </x-app-layout>
