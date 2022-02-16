@@ -8,7 +8,7 @@ use Livewire\Component;
 /**
  * @since 0.8.2-alpha
  * @since 0.8.3-alpha $search_terms
- * @since 0.8.3-alpha $filter_options
+ * @since 0.8.4-alpha $filter_options
  */
 class RessourcesLoader extends Component
 {
@@ -20,7 +20,7 @@ class RessourcesLoader extends Component
     protected $listeners = [
         'refreshComponent' => '$refresh',
         'searchRessources' => 'search',
-        'filterRessources' => 'filter'
+        'filterRessources' => 'filter',
     ];
 
     public function mount($page = null, $per_page = null, $search_terms = null, $filter_options = null)

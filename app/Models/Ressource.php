@@ -46,9 +46,17 @@ class Ressource extends Model
 
     public function scopeFilter($query, $params) {
 
-        if (isset($params['ressourceable_type']) && trim($params['ressourceable_type'] !== '')) {
-            $query->where('ressourceable_type', 'like', '%' . $params['ressourceable_type']);
-            $query->orWhere('ressourceable_type', 'like', '%' . 'Activite');
+        if (isset($params['ressourceable_type']) && isset($params['ressourceable_type'][0])) {
+
+            // On initialise la recherche avec le premier type
+            $query->where('ressourceable_type', 'like', '%' . $params['ressourceable_type'][0]);
+            
+            // S'il y a plus d'un type
+            if (count($params['ressourceable_type']) > 1) {
+                for ($i = 1; $i < count($params['ressourceable_type']); $i++) {
+                    $query->orWhere('ressourceable_type', 'like', '%' . $params['ressourceable_type'][$i]);
+                }
+            }
         }
 
         if (isset($params['relation']) && trim($params['relation'] !== '')) {
