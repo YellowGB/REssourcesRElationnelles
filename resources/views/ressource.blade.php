@@ -11,6 +11,12 @@
         </form>
     @endcan
 
+    <div id="share">
+        <button onclick="copyToClipboard()">
+            <x-icons.share />
+        </button>
+    </div>
+
     {{-- Commentaires --}}
     <h2>{{ __('titles.section.comments') }}</h2>
     @foreach ($ressource->commentaires as $commentaire)
@@ -31,5 +37,7 @@
             </div>
         @endif
     @endforeach
+
+    <script src="{{ asset('js/ressource.js') }}" defer></script>
 
 </x-app-layout>
