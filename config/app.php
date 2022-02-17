@@ -25,7 +25,7 @@ return [
     | or any other location as required by the application or its packages.
     */
 
-    'version' => env('APP_VERSION', '0.8.3-alpha'),
+    'version' => env('APP_VERSION', '0.8.4-alpha'),
 
     /*
     |--------------------------------------------------------------------------
