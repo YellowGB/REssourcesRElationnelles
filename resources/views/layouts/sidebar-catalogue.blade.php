@@ -3,7 +3,8 @@
     <div>
         <div class=
             "
-            bg-gris-normal
+            bg-blanc
+            dark:bg-gris-normal
             {{-- La barre de navigation fait constamment 64px de hauteur + 104px pour le header --}}
             fixed
             top-44
