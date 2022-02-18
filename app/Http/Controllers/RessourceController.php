@@ -39,14 +39,7 @@ class RessourceController extends Controller
     }
 
     public function index() {
-
-        // dd($);
-        
-        $ressources = Ressource::all();
-
-            return view('catalogue', compact(
-                'ressources',
-            ));
+        return view('catalogue');
     }
 
     public function moderation() {
