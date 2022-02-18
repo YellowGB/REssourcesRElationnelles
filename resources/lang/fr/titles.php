@@ -107,6 +107,7 @@ return [
         'comments'  => 'Commentaires',
         'theme'     => 'Thème',
         'lang'      => 'Langue',
+        'resource'  => 'Ressource',
     ],
     'content' => [
         'description'   => 'Description',
@@ -175,6 +176,20 @@ return [
         'reports'   => 'Signalement|Signalements',
         'write'     => 'Écrire un commentaire',
         'add'       => 'Ajouter',
+        'reported'  => 'Signalés',
+        'ignore'    => 'Ignorer',
+        'delete'    => 'Supprimer',
     ],
-
+    'response' =>  [
+        'action'        => 'Répondre',
+        'add'           => 'Ajouter une réponse',
+    ],
+    'moderation' => [
+        'ressource'     => 'Modérer les ressources',
+        'pendings'      => 'Ressources en attente de modération',
+        'validate'      => 'Valider la ressource',
+        'dismiss'       => 'Rejeter la ressource',
+        'suspend'       => 'Suspendre la ressource',
+        'commentaire'   => 'Modérer le commentaire',
+    ],
 ];

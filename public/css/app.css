@@ -909,6 +909,16 @@ select {
 .w-4 {
   width: 1rem;
 }
+.w-fit {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.min-w-fit {
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
 .max-w-7xl {
   max-width: 80rem;
 }

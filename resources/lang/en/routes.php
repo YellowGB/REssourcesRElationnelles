@@ -26,4 +26,12 @@ return [
     "verification.notice"       => "verify-email",
     "verification.verify"       => "verify-email/{id}/{hash}",
     "verification.send"         => "email/verification-notification",
+    "resources.valider"         => "ressources/{id}/validate",
+    "resources.suspendre"       => "ressources/{id}/suspend",
+    "resources.rejeter"         => "ressources/{id}/reject",
+    "catalogue.moderation"      => "catalogue/moderation",
+    "comments.moderation"       => "comments/moderation",
+    "comment.moderation"        => "comment/moderation/{id}",
+    "comment.ignorer"           => "comment/moderation/{id}/ignore",
+    "comment.supprimer"         => "comment/moderation/{id}/delete",
 ];

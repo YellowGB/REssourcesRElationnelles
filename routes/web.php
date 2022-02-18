@@ -55,6 +55,26 @@ Route::group(
     //------------ Ressources ------------\\
     Route::get(LaravelLocalization::transRoute('routes.catalogue'), [RessourceController::class, 'index'])
                     ->name('catalogue');
+
+    Route::get(LaravelLocalization::transRoute('routes.catalogue.moderation'), [RessourceController::class, 'moderation'])
+                    ->name('catalogue.moderation')
+                    ->middleware('moderator');
+
+    Route::get(LaravelLocalization::transRoute('routes.comments.moderation'), [CommentaireController::class, 'moderation'])
+                    ->name('comments.moderation')
+                    ->middleware('moderator');
+    
+    Route::get(LaravelLocalization::transRoute('routes.comment.moderation'), [CommentaireController::class, 'show'])
+                    ->name('comment.moderation')
+                    ->middleware('moderator');
+
+    Route::post(LaravelLocalization::transRoute('routes.comment.ignorer'), [CommentaireController::class, 'ignorer'])
+                    ->name('comment.ignorer')
+                    ->middleware('moderator');
+
+    Route::post(LaravelLocalization::transRoute('routes.comment.supprimer'), [CommentaireController::class, 'supprimer'])
+                    ->name('comment.supprimer')
+                    ->middleware('moderator');
     
     Route::get(LaravelLocalization::transRoute('routes.resources.create'), [RessourceController::class, 'create'])
                     ->name('resources.create')
@@ -74,6 +94,18 @@ Route::group(
     Route::post(LaravelLocalization::transRoute('routes.resources.edit'), [RessourceController::class, 'update'])
                     ->name('resources.update')
                     ->middleware('verified');
+
+    Route::post(LaravelLocalization::transRoute('routes.resources.valider'), [RessourceController::class, 'valider'])
+                    ->name('resources.valider')
+                    ->middleware('moderator');
+
+    Route::post(LaravelLocalization::transRoute('routes.resources.suspendre'), [RessourceController::class, 'suspendre'])
+                    ->name('resources.suspendre')
+                    ->middleware('moderator');
+
+    Route::get(LaravelLocalization::transRoute('routes.resources.rejeter'), [RessourceController::class, 'rejeter'])
+                    ->name('resources.rejeter')
+                    ->middleware('moderator');
     
     Route::get(LaravelLocalization::transRoute('routes.resources.destroy'), [RessourceController::class, 'destroy'])
                     ->name('resources.destroy')

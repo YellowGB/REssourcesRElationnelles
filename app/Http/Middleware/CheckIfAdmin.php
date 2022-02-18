@@ -20,7 +20,7 @@ class CheckIfAdmin
     public function handle(Request $request, Closure $next)
     {
         if (! Auth::check()) abort(403);
-
+        
         if (User::getPermission(auth()->user(), UserPermission::AccessAdmin->value)) {
             return $next($request);
         }

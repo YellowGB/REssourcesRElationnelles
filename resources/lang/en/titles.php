@@ -107,6 +107,7 @@ return [
         'comments'  => 'Comments',
         'theme'     => 'Theme',
         'lang'      => 'Language',
+        'resource'  => 'Resource',
     ],
     'content' => [
         'description'   => 'Description',
@@ -175,6 +176,9 @@ return [
         'reports'   => 'Report|Reports',
         'write'     => 'Write a comment',
         'add'       => 'Add',
+        'reported'  => 'Reported',
+        'ignore'    => 'Ignore',
+        'delete'    => 'Delete',
     ],
 
 ];
