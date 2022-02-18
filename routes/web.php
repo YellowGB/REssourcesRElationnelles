@@ -50,6 +50,10 @@ Route::group(
                     ->name('citoyens')
                     ->middleware('admin');
 
+    Route::post(LaravelLocalization::transRoute('routes.users.update'), [UserController::class, 'update'])
+                    ->name('citoyens.update')
+                    ->middleware('admin');
+
     //------------ Categories ------------\\
     Route::get(LaravelLocalization::transRoute('routes.categories.index'), [CategorieController::class, 'index'])
                     ->name('categories.index')

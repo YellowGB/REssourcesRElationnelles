@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 /**
  * @since 0.7.1-alpha ajout de toutes les routes de base
@@ -88,9 +89,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $citoyen = User::find($request->id);
+        $citoyen->suspended_at = is_null($citoyen->suspended_at) ? now() : null;
+        $citoyen->update();
+
+        return Redirect::to( route('citoyens'))->with('success', 'Statut citoyen modifié avec succès.');
     }
 
     /**

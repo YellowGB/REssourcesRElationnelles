@@ -174,5 +174,9 @@ return [
     'comment' => [
         'reports' => 'Signalement|Signalements',
     ],
+    'user' => [
+        'suspend' => 'Suspendre',
+        'unsuspend' => 'Retirer la suspension',
+    ],
 
 ];
