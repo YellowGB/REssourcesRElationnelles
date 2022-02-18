@@ -18,3 +18,8 @@ function removeMessage() {
     var copyMessage = document.getElementById("copyMessage");
     copyMessage.remove();
 }
+
+function replyComment(id) {
+    comment = document.getElementById('comment-' + id);
+    comment.style.display = 'block';
+}

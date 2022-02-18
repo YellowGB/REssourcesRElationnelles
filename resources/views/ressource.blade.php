@@ -26,6 +26,7 @@
         @if (is_null($commentaire->replies_to))
             <div class="comment">
                <x-commentaire-display :commentaire="$commentaire"  />
+               <button onclick="replyComment({{ $commentaire->id }})">{{ __('Reply') }}</button>
                @auth
                     <form action="{{ route('comment.report', ['id' => $commentaire->id]) }}">
                         <input type="submit" value="{{ __('titles.btn.report') }}">
