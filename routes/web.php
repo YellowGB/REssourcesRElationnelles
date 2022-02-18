@@ -45,6 +45,11 @@ Route::group(
         }
     );
 
+    //------------ Citoyen ---------------\\
+    Route::get(LaravelLocalization::transRoute('routes.citoyens'), [UserController::class, 'citoyen'])
+                    ->name('citoyens')
+                    ->middleware('admin');
+
     //------------ Categories ------------\\
     Route::get(LaravelLocalization::transRoute('routes.categories.index'), [CategorieController::class, 'index'])
                     ->name('categories.index')

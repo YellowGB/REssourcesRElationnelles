@@ -22,6 +22,7 @@ return [
     "users.create"              => "utilisateurs/creation",
     "users.show"                => "utilisateurs/{user}",
     "users.edit"                => "utilisateurs/{user}/edition",
+    "citoyens"                  => "citoyens",
     "categories"                => "categories",
     "categories.index"          => 'categories',
     "categories.store"          => 'categories/store',

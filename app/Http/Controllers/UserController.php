@@ -23,6 +23,18 @@ class UserController extends Controller
     }
 
     /**
+     * Display verified citoyen
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function citoyen()
+    {
+        $citoyens = User::all()->where('role_id', 2);
+
+        return view('citoyens', compact('citoyens'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
