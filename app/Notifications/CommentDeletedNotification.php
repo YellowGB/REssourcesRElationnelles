@@ -46,7 +46,7 @@ class CommentDeletedNotification extends Notification
     {
         return (new MailMessage)
                     ->line(__('A reported comment has been deleted on the resource:'))
-                    ->action(__('Look it up'), url('/ressources/' . $this->ressource->id))
+                    ->action(__('Look it up'), url('/ressources/' . $this->commentaire->ressource_id))
                     ->line(__('Thank you for using our application!'));
     }
 

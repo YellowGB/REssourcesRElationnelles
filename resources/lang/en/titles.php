@@ -175,8 +175,8 @@ return [
     'comment' => [
         'reports'   => 'Report|Reports',
         'reported'  => 'Reported',
-        'ignore'  => 'Ignore',
-        'delete'  => 'Delete',
+        'ignore'    => 'Ignore',
+        'delete'    => 'Delete',
     ],
 
 ];

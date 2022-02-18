@@ -176,7 +176,7 @@ return [
         'reports'   => 'Signalement|Signalements',
         'reported'  => 'Signalés',
         'ignore'    => 'Ignorer',
-        'delete'    => 'Supprmier',
+        'delete'    => 'Supprimer',
     ],
     'response' =>  [
         'action'        => 'Répondre',

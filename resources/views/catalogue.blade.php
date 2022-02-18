@@ -2,14 +2,12 @@
 
     @livewire('ressources-search')
 
-    @auth
-        @can('publish-ressources')
-            <form action="{{ route('comments.moderation') }}">
-                <input type="submit" value="Moderer les commentaires" />
-            </form>
-        @endcan
-    @endauth
+    <x-ressources.filter />
 
-    @livewire('ressources-loader')
+    <x-sidebar-catalogue>
+        @livewire('ressources-loader')
+    </x-sidebar-catalogue>
 
+    <script src="{{ asset('js/catalogue.js') }}" defer></script>
+    
 </x-app-layout>

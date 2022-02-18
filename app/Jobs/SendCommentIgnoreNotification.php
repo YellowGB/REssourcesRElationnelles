@@ -35,11 +35,8 @@ class SendCommentIgnoreNotification implements ShouldQueue
      */
     public function handle()
     {
-        $role = Role::where('name', UserRole::Moderator->value)->firstOrFail();
-        $moderators = User::where('role_id', $role->id)->get();
+        $creator = User::where('id', $this->comment_ignored->commentaire->user_id)->firstOrFail();
 
-        foreach ($moderators as $moderator) {
-            $moderator->notify(new CommentIgnoredNotification($this->comment_ignored->commentaire));
-        }
+        $creator->notify(new CommentIgnoredNotification($this->comment_ignored->commentaire));
     }
 }

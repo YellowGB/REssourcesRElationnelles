@@ -13,6 +13,7 @@
                 <input type="submit" value="{{ __('titles.moderation.commentaire') }}" />
             </form>
         </div>
+        <x-sep-horizontal />
     @endforeach
 
 </x-app-layout>

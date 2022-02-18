@@ -2,22 +2,24 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use App\Models\Ressource;
+use App\Events\CommentDeleted;
+use App\Events\CommentIgnored;
 use App\Events\CommentReported;
+use App\Observers\UserObserver;
 use App\Events\RessourceRejected;
 use App\Listeners\AuthorizeLogin;
 use App\Events\RessourceSuspended;
 use App\Events\RessourceValidated;
+use App\Observers\RessourceObserver;
 use Illuminate\Support\Facades\Event;
 use App\Listeners\UpdateLastConnexion;
 use Illuminate\Auth\Events\Registered;
-use App\Models\User;
-use App\Observers\RessourceObserver;
-use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Authenticated;
-use App\Listeners\TriggerCommentReportNotification;
 use App\Listeners\TriggerCommentDeleteNotification;
 use App\Listeners\TriggerCommentIgnoreNotification;
+use App\Listeners\TriggerCommentReportNotification;
 use App\Listeners\TriggerRessourceRejectionNotification;
 use App\Listeners\TriggerRessourceSuspensionNotification;
 use App\Listeners\TriggerRessourceValidationNotification;

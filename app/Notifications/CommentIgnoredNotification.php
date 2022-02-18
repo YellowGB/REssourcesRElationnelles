@@ -47,7 +47,7 @@ class CommentIgnoredNotification extends Notification
         return (new MailMessage)
                     ->line(__('A comment report has been ignored:'))
                     ->line($this->commentaire->content)
-                    ->action(__('Look it up'), url('/ressources/' . $this->ressource->id))
+                    ->action(__('Look it up'), url('/ressources/' . $this->commentaire->ressource_id))
                     ->line(__('Thank you for using our application!'));
     }
 

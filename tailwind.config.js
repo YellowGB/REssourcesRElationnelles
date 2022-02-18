@@ -60,6 +60,10 @@ module.exports = {
             spacing: {
                 '128': '32rem',
             },
+            gridTemplateColumns: {
+                // Grid de la page catalogue
+                'catalogue': '20% 60% 1fr',
+            },        
         },
     },
 

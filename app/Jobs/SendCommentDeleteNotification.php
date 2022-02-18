@@ -35,11 +35,14 @@ class SendCommentDeleteNotification implements ShouldQueue
      */
     public function handle()
     {
-        $role = Role::where('name', UserRole::Moderator->value)->firstOrFail();
-        $moderators = User::where('role_id', $role->id)->get();
+        // $role = Role::where('name', UserRole::Moderator->value)->firstOrFail();
+        // $moderators = User::where('role_id', $role->id)->get();
+        $creator = User::where('id', $this->comment_deleted->commentaire->user_id)->firstOrFail();
 
-        foreach ($moderators as $moderator) {
-            $moderator->notify(new CommentDeletedNotification($this->comment_deleted->commentaire));
-        }
+        // foreach ($moderators as $moderator) {
+        //     $moderator->notify(new CommentDeletedNotification($this->comment_deleted->commentaire));
+        // }
+
+        $creator->notify(new CommentDeletedNotification($this->comment_deleted->commentaire));
     }
 }
