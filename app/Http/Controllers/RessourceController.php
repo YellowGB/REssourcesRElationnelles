@@ -12,12 +12,18 @@ use App\Models\Atelier;
 use App\Models\Lecture;
 use App\Models\Activite;
 use App\Models\Ressource;
+use App\Models\Commentaire;
 use App\Enums\RessourceType;
 use Illuminate\Http\Request;
 use App\Enums\RessourceRestriction;
+use App\Enums\RessourceStatus;
+use App\Events\RessourceRejected;
+use App\Events\RessourceSuspended;
+use App\Events\RessourceValidated;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
+use SebastianBergmann\Type\NullType;
 
 /**
  * @since 0.7.1-alpha Les statuts sont gérés dans RessourceObserver
@@ -33,17 +39,37 @@ class RessourceController extends Controller
     }
 
     public function index() {
-        return view('catalogue');
+
+        // dd($);
+        
+        $ressources = Ressource::all();
+
+            return view('catalogue', compact(
+                'ressources',
+            ));
     }
 
+    public function moderation() {
+
+        // dd($);
+        
+        $ressources = Ressource::where('status', RessourceStatus::Pending->value)->get();
+        // dd($ressources);
+
+            return view('catalogue-moderation', compact(
+                'ressources',
+            ));
+    }
     public function show($id) {
 
-        $ressource  = Ressource::findOrFail($id);
-        $content    = $ressource->ressourceable;
+        $ressource          = Ressource::findOrFail($id);
+        $content            = $ressource->ressourceable;
+        $commentaires       = Commentaire::where('ressource_id', $id)->get();
 
         return view('ressource', [
-            'ressource' => $ressource,
-            'content'   => $content,
+            'ressource'     => $ressource,
+            'content'       => $content,
+            'commentaires'  => $commentaires,
         ]);
     }
 
@@ -379,6 +405,48 @@ class RessourceController extends Controller
         $ressource->update();
         $ressource->delete();
         
+        
         return Redirect::to('catalogue')->with('success', 'Ressource supprimée avec succès.');
     }
+
+    public function valider($id) {
+
+        $ressource = Ressource::findOrfail($id);
+
+        $ressource->status = RessourceStatus::Published->value;
+
+        $ressource->update();
+
+        event(new RessourceValidated($ressource));
+
+        return Redirect::to('catalogue/moderation')->with('success', 'Ressource validée avec succès.');
+    }
+    
+    public function rejeter($id) {
+
+        $ressource = Ressource::findOrfail($id);
+
+        $ressource->ressourceable()->delete();
+
+        $ressource->update();
+        $ressource->delete();
+
+        event(new RessourceRejected($ressource));
+
+        return Redirect::to('catalogue/moderation')->with('success', 'Ressource rejetée avec succès.');
+    }
+
+    public function suspendre($id) {
+
+        $ressource = Ressource::findOrfail($id);
+
+        $ressource->status = RessourceStatus::Suspended->value;
+
+        $ressource->update();
+
+        event(new RessourceSuspended($ressource));
+
+        return Redirect::to('catalogue')->with('success', 'Ressource suspendue avec succès.');
+    }
+
 }

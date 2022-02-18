@@ -3,6 +3,7 @@
 return [
     "dashboard"                 => "tableau-de-bord",
     "comment.report"            => "commentaire/{id}/signalement",
+    "comment.store"             => "ressources/{id}/commentaire",
     "catalogue"                 => "catalogue",
     "password.confirm"          => "confirmation-mot-de-passe",
     "password.request"          => "oubli-mot-de-passe",
@@ -30,4 +31,12 @@ return [
     "verification.notice"       => "verification-email",
     "verification.verify"       => "verification-email/{id}/{hash}",
     "verification.send"         => "email/verification-notification",
+    "resources.valider"         => "ressources/{id}/valider",
+    "resources.suspendre"       => "ressources/{id}/suspendre",
+    "resources.rejeter"         => "ressources/{id}/rejeter",
+    "catalogue.moderation"      => "catalogue/moderation",
+    "comments.moderation"       => "commentaires/moderation",
+    "comment.moderation"        => "commentaire/moderation/{id}",
+    "comment.ignorer"           => "commentaire/moderation/{id}/ignorer",
+    "comment.supprimer"         => "commentaire/moderation/{id}/supprimer",
 ];
