@@ -35,11 +35,8 @@ class SendRessourceValidationNotification implements ShouldQueue
      */
     public function handle()
     {
-        $role = Role::where('name', UserRole::Moderator->value)->firstOrFail();
-        $moderators = User::where('role_id', $role->id)->get();
+        $creator = User::where('id', $this->ressource_validated->ressource->user_id)->firstOrfail();
 
-        foreach ($moderators as $moderator) {
-            $moderator->notify(new RessourceValidatedNotification($this->ressource_validated->ressource));
-        }
+        $creator->notify(new RessourceValidatedNotification($this->ressource_validated->ressource));
     }
 }

@@ -36,13 +36,7 @@ class SendRessourceSuspensionNotification implements ShouldQueue
      */
     public function handle()
     {
-        $role = Role::where('name', UserRole::Moderator->value)->firstOrFail();
-        $moderators = User::where('role_id', $role->id)->get();
-        $creator = User::where('id', $this->ressource->user_id)->get();
-
-        foreach ($moderators as $moderator) {
-            $moderator->notify(new RessourceSuspendedNotification($this->ressource_suspended->ressource));
-        }
+        $creator = User::where('id', $this->ressource_suspended->ressource->user_id)->firstOrfail();
 
         $creator->notify(new RessourceSuspendedNotification($this->ressource_suspended->ressource));
     }
