@@ -6,6 +6,7 @@ use Closure;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Enums\UserPermission;
+use Illuminate\Support\Facades\Auth;
 
 class CheckIfAdmin
 {
@@ -18,6 +19,8 @@ class CheckIfAdmin
      */
     public function handle(Request $request, Closure $next)
     {
+        if (! Auth::check()) abort(403);
+
         if (User::getPermission(auth()->user(), UserPermission::AccessAdmin->value)) {
             return $next($request);
         }

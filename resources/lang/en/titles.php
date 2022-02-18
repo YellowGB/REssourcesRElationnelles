@@ -172,7 +172,9 @@ return [
         'logout'    => 'Log out',
     ],
     'comment' => [
-        'reports' => 'Report|Reports',
+        'reports'   => 'Report|Reports',
+        'write'     => 'Write a comment',
+        'add'       => 'Add',
     ],
 
 ];

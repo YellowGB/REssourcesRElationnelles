@@ -48,6 +48,9 @@ Route::group(
     Route::get(LaravelLocalization::transRoute('routes.comment.report'), [CommentaireController::class, 'report'])
                     ->name('comment.report')
                     ->middleware('verified');
+    Route::post(LaravelLocalization::transRoute('routes.comment.store'), [CommentaireController::class, 'store'])
+                    ->name('comment.store')
+                    ->middleware('verified');
     
     //------------ Ressources ------------\\
     Route::get(LaravelLocalization::transRoute('routes.catalogue'), [RessourceController::class, 'index'])

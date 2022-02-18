@@ -19,10 +19,13 @@
 
     {{-- Commentaires --}}
     <h2>{{ __('titles.section.comments') }}</h2>
+
+    <x-commentaire-add :ressource="$ressource" />
+
     @foreach ($ressource->commentaires as $commentaire)
         @if (is_null($commentaire->replies_to))
             <div class="comment">
-               <x-commentaire-display :commentaire="$commentaire" />
+               <x-commentaire-display :commentaire="$commentaire"  />
                @auth
                     <form action="{{ route('comment.report', ['id' => $commentaire->id]) }}">
                         <input type="submit" value="{{ __('titles.btn.report') }}">
@@ -36,6 +39,7 @@
                 @endforeach
             </div>
         @endif
+        <x-commentaire-add :ressource="$ressource" :commentaire="$commentaire" />
     @endforeach
 
     <script src="{{ asset('js/ressource.js') }}" defer></script>

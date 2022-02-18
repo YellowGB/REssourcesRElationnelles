@@ -3,6 +3,7 @@
 return [
     "dashboard"                 => "tableau-de-bord",
     "comment.report"            => "commentaire/{id}/signalement",
+    "comment.store"             => "ressources/{id}/commentaire",
     "catalogue"                 => "catalogue",
     "password.confirm"          => "confirmation-mot-de-passe",
     "password.request"          => "oubli-mot-de-passe",
