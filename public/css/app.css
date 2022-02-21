@@ -911,15 +911,6 @@ select {
 }
 .max-w-6xl {
   max-width: 72rem;
-.w-fit {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-.min-w-fit {
-  min-width: -webkit-fit-content;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -1065,22 +1056,11 @@ select {
 .overflow-hidden {
   overflow: hidden;
 }
-.overflow-visible {
-  overflow: visible;
-}
 .overflow-y-auto {
   overflow-y: auto;
 }
 .overflow-x-hidden {
   overflow-x: hidden;
-}
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.text-ellipsis {
-  text-overflow: ellipsis;
 }
 .text-clip {
   text-overflow: clip;
@@ -1252,17 +1232,13 @@ select {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}
-.py-12 {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
 }
 .px-12 {
   padding-left: 3rem;
@@ -1941,10 +1917,6 @@ select {
   }
 }
 @media (min-width: 1024px) {
-
-  .lg\:mt-4 {
-    margin-top: 1rem;
-  }
 
   .lg\:mt-6 {
     margin-top: 1.5rem;
