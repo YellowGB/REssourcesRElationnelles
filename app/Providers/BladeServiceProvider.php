@@ -28,7 +28,6 @@ class BladeServiceProvider extends ServiceProvider
         Blade::directive('create', function ($expression) {
             return "<?php if (! isset($expression)) : ?>";
         });
-
         Blade::directive('endcreate', function () {
             return "<?php endif; ?>";
         });
@@ -37,8 +36,29 @@ class BladeServiceProvider extends ServiceProvider
         Blade::directive('edit', function ($expression) {
             return "<?php if (isset($expression)) : ?>";
         });
-
         Blade::directive('endedit', function () {
+            return "<?php endif; ?>";
+        });
+
+        // Roles
+        Blade::directive('modo', function() {
+            return "<?php if (\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Gate::allows('publish-ressources')) : ?>";
+        });
+        Blade::directive('endmodo', function () {
+            return "<?php endif; ?>";
+        });
+
+        Blade::directive('admin', function() {
+            return "<?php if (\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Gate::allows('access-admin')) : ?>";
+        });
+        Blade::directive('endadmin', function () {
+            return "<?php endif; ?>";
+        });
+
+        Blade::directive('superadmin', function() {
+            return "<?php if (\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Gate::allows('remove-user')) : ?>";
+        });
+        Blade::directive('endsuperadmin', function () {
             return "<?php endif; ?>";
         });
     }

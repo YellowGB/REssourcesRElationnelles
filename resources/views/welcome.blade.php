@@ -38,7 +38,7 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <h1>@lang('titles.site')</h1>
+                    <x-logos.app-main />
                 </div>
 
                 <div class="mt-8 bg-blanc dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
@@ -86,10 +86,13 @@
                     </div>
                 </div>
 
+                <a href="https://solidarites-sante.gouv.fr/"><x-logos.ministere /></a>
+
+                {{-- @modo --}}
                     <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
                         {{ config('app.name') }} v{{ config('app.version') }} - Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
-                </div>
+                {{-- @endmodo --}}
             </div>
         </div>
     </body>
