@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
+use App\Enums\UserRole;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 
 /**
  * @since 0.7.1-alpha ajout de toutes les routes de base
@@ -90,5 +97,39 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function create_admin() {
+
+        if (! Gate::allows('update-categories')) {
+            abort(403);
+        }
+
+        return view('creation-admin');
+    }
+
+    public function store_admin(Request $request)
+    {
+        $request->validate([
+            'name'          => ['required', 'string', 'max:255'],
+            'firstname'     => ['required', 'string', 'max:255'],
+            'email'         => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'      => ['required', 'confirmed', Rules\Password::defaults()],
+            'postcode'      => ['required', 'string', 'size:5'],
+        ]);
+
+        User::create([
+            'name'           => $request->name,
+            'firstname'      => $request->firstname,
+            'email'          => $request->email,
+            'password'       => Hash::make($request->password),
+            'postcode'       => $request->postcode,
+            'role_id'        => $request->role,
+            'last_connexion' => now(),
+        ]);
+
+        // event(new Registered($user));
+
+        return redirect(RouteServiceProvider::HOME);
     }
 }

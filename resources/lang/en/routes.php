@@ -33,4 +33,5 @@ return [
     "comment.moderation"        => "comment/moderation/{id}",
     "comment.ignorer"           => "comment/moderation/{id}/ignore",
     "comment.supprimer"         => "comment/moderation/{id}/delete",
+    "admin.create"              => "admin/create",
 ];

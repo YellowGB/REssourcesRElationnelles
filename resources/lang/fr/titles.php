@@ -166,6 +166,7 @@ return [
         'bio'           => 'Quelques mots à propos de vous',
         'postcode'      => 'Code postal',
         'avatar'        => 'Sélectionnez un avatar',
+        'role'          => "Type de compte",
     ],
     'auth' => [
         'resend'    => "Renvoyer l'email de vérification", // 'Resend Verification Email'
@@ -190,4 +191,7 @@ return [
         'suspend'       => 'Suspendre la ressource',
         'commentaire'   => 'Modérer le commentaire',
     ],
+    'admin' => [
+        'create'    => 'Créer un compte administrateur',
+    ]
 ];
