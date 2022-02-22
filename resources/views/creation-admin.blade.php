@@ -4,7 +4,7 @@
 
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form class="text-center relative" method="POST" action="{{ route('register') }}">
             @csrf
 
             <!-- Admin type -->
