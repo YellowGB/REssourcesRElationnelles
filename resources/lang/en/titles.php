@@ -163,6 +163,8 @@ return [
         'nickname'      => 'Nickname',
         'email'         => 'Email',
         'password'      => 'Password',
+        'pwdcurrent'    => 'Current Password',
+        'pwdnew'        => 'New Password',
         'pwdconfirm'    => 'Confirm password',
         'bio'           => 'A few words about yourself',
         'postcode'      => 'Postcode',
@@ -180,6 +182,32 @@ return [
         'reported'  => 'Reported',
         'ignore'    => 'Ignore',
         'delete'    => 'Delete',
+    ],
+    'response' =>  [
+        'action'        => 'Reply',
+        'add'           => 'Add a reply',
+    ],
+    'moderation' => [
+        'ressource'     => 'Moderate resources',
+        'pendings'      => 'Resources pending moderation',
+        'validate'      => 'Validate the resource',
+        'dismiss'       => 'Reject the resource',
+        'suspend'       => 'Suspend the resource',
+        'commentaire'   => 'Moderate the comment',
+    ],
+    'profile' => [
+        'title' => [
+            'information'   => 'Profile Information',
+            'password'      => 'Update Password',
+        ],
+        'desc' => [
+            'information'   => "Update your account's profile information and email address.",
+            'password'      => 'Ensure your account is using a long, random password to stay secure.',
+        ],
+    ],
+    'user' => [
+        'suspend'   => 'Suspend',
+        'unsuspend' => 'Unsuspend',
     ],
 
 ];

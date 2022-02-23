@@ -163,6 +163,8 @@ return [
         'nickname'      => 'Pseudonyme',
         'email'         => 'Email',
         'password'      => 'Mot de passe',
+        'pwdcurrent'    => 'Mot de passe actuel',
+        'pwdnew'        => 'Nouveau mot de passe',
         'pwdconfirm'    => 'Confirmez le mot de passe',
         'bio'           => 'Quelques mots à propos de vous',
         'postcode'      => 'Code postal',
@@ -194,11 +196,14 @@ return [
         'commentaire'   => 'Modérer le commentaire',
     ],
     'profile' => [
+        'avatar' => 'Avatar',
         'title' => [
-            'information'   => 'Profile Information',
+            'information'   => 'Informations du compte',
+            'password'      => 'Update Password',
         ],
         'desc' => [
-            'information'   => "Update your account's profile information and email address.",
+            'information'   => "Mettre à jour les informations de votre compte et votre adresse email.",
+            'password'      => 'Ensure your account is using a long, random password to stay secure.',
         ],
     ],
     'user' => [

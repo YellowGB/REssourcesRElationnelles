@@ -8,6 +8,8 @@
                 avatar
                 h-10
                 w-10
+                text-gris-dark
+                dark:text-gris-light
             ',
         ])
     }}
@@ -18,7 +20,7 @@
     <defs>
         <style>
             .cls-avatar {
-                fill:#333;
+                fill:currentColor;
             }
         </style>
     </defs>

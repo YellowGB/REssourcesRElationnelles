@@ -54,6 +54,10 @@ Route::group(
     Route::post(LaravelLocalization::transRoute('routes.profile'), [UserController::class, 'update'])
                     ->middleware(['auth', 'verified'])
                     ->name('profile.update');
+
+    Route::post(LaravelLocalization::transRoute('routes.profile.password'), [UserController::class, 'password'])
+                    ->middleware(['auth', 'verified'])
+                    ->name('profile.password');
     
 
     //------------ Citoyen ---------------\\

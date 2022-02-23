@@ -12,21 +12,27 @@
     >
 
     <x-slot name="form">
-        {{-- <div class="col-span-6 sm:col-span-4">
+        <div class="col-span-6 sm:col-span-4">
             <!-- Profile Photo File Input -->
-            <input type="file" class="hidden"
-                        ref="photo"
-                        @change="updatePhotoPreview">
+            {{-- <input
+                type="file"
+                class="hidden"
+                ref="avatar"
+            >
 
-            <x-label for="photo" value="Photo" />
+            <x-label for="avatar" value="{{ __('titles.profile.avatar') }}" /> --}}
 
             <!-- Current Profile Photo -->
             <div class="mt-2" x-show="! photoPreview">
-                <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-20 w-20 object-cover">
+                @if ($user->avatar === 'default')
+                    <x-icons.avatar class="rounded-full h-20 w-20 object-cover" />
+                @else
+                    <img src="{{ asset($user->avatar) }}" alt="{{ get_user_display_name($user) }}" class="rounded-full h-20 w-20 object-cover">
+                @endif
             </div>
 
             <!-- New Profile Photo Preview -->
-            <div class="mt-2" v-show="photoPreview">
+            {{-- <div class="mt-2" v-show="photoPreview">
                 <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
                       :style="'background-image: url(\'' + photoPreview + '\');'">
                 </span>
@@ -38,10 +44,9 @@
 
             <jet-secondary-button type="button" class="mt-2" @click.prevent="deletePhoto" v-if="user.profile_photo_path">
                 Remove Photo
-            </jet-secondary-button>
+            </jet-secondary-button> --}}
 
-            <x-input-error :message="form.errors.photo" class="mt-2" />
-        </div> --}}
+        </div>
 
         <!-- Nom -->
         <div class="col-span-6 sm:col-span-4">

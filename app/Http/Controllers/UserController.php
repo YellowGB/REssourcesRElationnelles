@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Redirect;
 
 /**
@@ -109,7 +110,6 @@ class UserController extends Controller
         // Il est possible d'avoir un pseudo et de l'effacer, c'est pourquoi nous devons seulement vérifier si $request->nickname existe mais pas s'il est vide
         $user->nickname     = isset($request->nickname) ? $user->nickname : $request->nickname;
         $user->email        = $request->email ?? $user->email;
-        $user->password     = $request->password ? Hash::make($request->password) : $user->password;
         // Il est possible de vider la description, c'est pourquoi nous devons seulement vérifier si $request->description existe mais pas s'il est vide
         $user->description  = isset($request->description) ? $user->description : $request->description;
         $user->postcode     = $request->postcode ?? $user->postcode;
@@ -117,6 +117,22 @@ class UserController extends Controller
         $user->update(); // ne pas tenir compte de l'erreur vscode, il n'arrive pas à faire correctement le lien en raison de trop nombreux rebons, mais l'update fonctionne bien
 
         return Redirect::to(route('profile'))->with('success', 'Profil modifié avec succès.');
+    }
+
+    /**
+     * Met à jour le mot de passe de l'utilisateur
+     */
+    public function password(Request $request)
+    {
+        $request->validate([
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user = auth()->user();
+        $user->password = Hash::make($request->password);
+        $user->update(); // ne pas tenir compte de l'erreur vscode, il n'arrive pas à faire correctement le lien en raison de trop nombreux rebons, mais l'update fonctionne bien
+
+        return Redirect::to(route('profile'))->with('success', 'Mot de passe modifié avec succès.');
     }
 
     /**
