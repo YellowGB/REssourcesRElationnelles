@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-page-header heading="{{ __('Dashboard') }}" />
+    <x-page-header heading="{{ __('titles.section.dashboard') }}" />
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

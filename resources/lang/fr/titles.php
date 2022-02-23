@@ -108,6 +108,7 @@ return [
         'theme'     => 'Thème',
         'lang'      => 'Langue',
         'resource'  => 'Ressource',
+        'profile'   => 'Profil',
     ],
     'content' => [
         'description'   => 'Description',
@@ -191,5 +192,13 @@ return [
         'dismiss'       => 'Rejeter la ressource',
         'suspend'       => 'Suspendre la ressource',
         'commentaire'   => 'Modérer le commentaire',
+    ],
+    'profile' => [
+        'title' => [
+            'information'   => 'Profile Information',
+        ],
+        'desc' => [
+            'information'   => "Update your account's profile information and email address.",
+        ],
     ],
 ];

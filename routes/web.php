@@ -44,6 +44,16 @@ Route::group(
         }
     );
     
+    Route::get(LaravelLocalization::transRoute('routes.profile'), function () {
+        return view('profile', [
+            'user' => auth()->user(),
+        ]);
+    })->middleware(['auth', 'verified'])->name('profile');
+
+    Route::post(LaravelLocalization::transRoute('routes.profile'), [UserController::class, 'update'])
+                    ->middleware(['auth', 'verified'])
+                    ->name('profile.update');
+    
     //------------ Commentaires ------------\\
     Route::get(LaravelLocalization::transRoute('routes.comment.report'), [CommentaireController::class, 'report'])
                     ->name('comment.report')

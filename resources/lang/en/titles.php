@@ -108,6 +108,7 @@ return [
         'theme'     => 'Theme',
         'lang'      => 'Language',
         'resource'  => 'Resource',
+        'profile'   => 'Profile',
     ],
     'content' => [
         'description'   => 'Description',
