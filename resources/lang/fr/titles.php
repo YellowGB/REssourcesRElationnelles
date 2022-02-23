@@ -201,4 +201,9 @@ return [
             'information'   => "Update your account's profile information and email address.",
         ],
     ],
+    'user' => [
+        'suspend'   => 'Suspendre',
+        'unsuspend' => 'Retirer la suspension',
+    ],
+
 ];

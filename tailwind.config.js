@@ -63,7 +63,7 @@ module.exports = {
             gridTemplateColumns: {
                 // Grid de la page catalogue
                 'catalogue': '20% 60% 1fr',
-            },        
+            },       
         },
     },
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RessourceController;
 use App\Http\Controllers\CommentaireController;
+use App\Http\Controllers\CategorieController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -54,6 +55,25 @@ Route::group(
                     ->middleware(['auth', 'verified'])
                     ->name('profile.update');
     
+
+    //------------ Citoyen ---------------\\
+    Route::get(LaravelLocalization::transRoute('routes.citoyens'), [UserController::class, 'citoyen'])
+                    ->name('citoyens')
+                    ->middleware('admin');
+
+    Route::post(LaravelLocalization::transRoute('routes.citoyens.suspend'), [UserController::class, 'suspend'])
+                    ->name('citoyens.suspend')
+                    ->middleware('admin');
+
+    //------------ Categories ------------\\
+    Route::get(LaravelLocalization::transRoute('routes.categories.index'), [CategorieController::class, 'index'])
+                    ->name('categories.index')
+                    ->middleware('verified');
+               
+    Route::post(LaravelLocalization::transRoute('routes.categories.store'), [CategorieController::class, 'store'])
+                    ->name('categories.store')
+                    ->middleware('verified');
+
     //------------ Commentaires ------------\\
     Route::get(LaravelLocalization::transRoute('routes.comment.report'), [CommentaireController::class, 'report'])
                     ->name('comment.report')

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
@@ -23,6 +22,18 @@ class UserController extends Controller
         $users = User::all();
 
         return view('users', compact('users'));
+    }
+
+    /**
+     * Display verified citoyen
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function citoyen()
+    {
+        $citoyens = User::all()->where('role_id', 2);
+
+        return view('citoyens', compact('citoyens'));
     }
 
     /**
@@ -106,6 +117,18 @@ class UserController extends Controller
         $user->update(); // ne pas tenir compte de l'erreur vscode, il n'arrive pas à faire correctement le lien en raison de trop nombreux rebons, mais l'update fonctionne bien
 
         return Redirect::to(route('profile'))->with('success', 'Profil modifié avec succès.');
+    }
+
+    /**
+     * Suspend / retire la suspension sur un compte
+     */
+    public function suspend(Request $request)
+    {
+        $citoyen = User::find($request->id);
+        $citoyen->suspended_at = is_null($citoyen->suspended_at) ? now() : null;
+        $citoyen->update();
+
+        return Redirect::to( route('citoyens'))->with('success', 'Statut citoyen modifié avec succès.');
     }
 
     /**
