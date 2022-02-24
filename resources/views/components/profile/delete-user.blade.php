@@ -19,8 +19,11 @@
                 @lang('titles.profile.title.delete')
             </x-danger-button>
 
+            {{-- Modal de confirmation --}}
+            <x-dialog-modal />
+
             <!-- Delete Account Confirmation Modal -->
-            <jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
+            {{-- <jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
                 <template #title>
                     Delete Account
                 </template>
@@ -47,7 +50,7 @@
                         Delete Account
                     </jet-danger-button>
                 </template>
-            </jet-dialog-modal>
+            </jet-dialog-modal> --}}
         </x-slot>
     </x-action-section>
 </div>
