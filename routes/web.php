@@ -58,6 +58,10 @@ Route::group(
     Route::post(LaravelLocalization::transRoute('routes.profile.password'), [UserController::class, 'password'])
                     ->middleware(['auth', 'verified'])
                     ->name('profile.password');
+
+    Route::post(LaravelLocalization::transRoute('routes.profile.delete'), [UserController::class, 'destroy'])
+                    ->middleware(['auth', 'verified'])
+                    ->name('profile.delete');
     
 
     //------------ Citoyen ---------------\\

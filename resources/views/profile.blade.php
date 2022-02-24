@@ -23,11 +23,9 @@
                 <x-sep-horizontal class="w-full lg:w-full" />
             </div>
 
-            <template>
-                <x-sep-horizontal class="w-full lg:w-full" />
-
-                <delete-user-form class="mt-10 sm:mt-0" />
-            </template>
+            <div>
+                <x-profile.delete-user class="mt-10 sm:mt-0" />
+            </div>
         </div>
     </div>
 

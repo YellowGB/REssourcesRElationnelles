@@ -42,4 +42,5 @@ return [
     "comment.supprimer"         => "comment/moderation/{id}/delete",
     "profile"                   => "profile",
     "profile.password"          => "profile/password",
+    "profile.delete"            => "profile/delete",
 ];

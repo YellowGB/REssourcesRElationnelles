@@ -199,11 +199,14 @@ return [
         'avatar' => 'Avatar',
         'title' => [
             'information'   => 'Informations du compte',
-            'password'      => 'Update Password',
+            'password'      => 'Mettre à jour le mot de passe',
+            'delete'        => 'Supprimer le compte',
         ],
         'desc' => [
             'information'   => "Mettre à jour les informations de votre compte et votre adresse email.",
-            'password'      => 'Ensure your account is using a long, random password to stay secure.',
+            'password'      => "Assurez-vous que votre compte utilise un mot de passe long et complexe afin d'en garantir sa sécurité.",
+            'delete'        => 'Supprimer votre compte ainsi que les informations liées',
+            'deldetail'     => 'Une fois votre compte supprimé, vous pouvez demander à un administrateur de le restaurer. Si vous souhaitez supprimer votre compte de manière définitive, contactez un administrateur.',
         ],
     ],
     'user' => [

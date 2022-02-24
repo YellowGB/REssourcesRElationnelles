@@ -121,6 +121,8 @@ class UserController extends Controller
 
     /**
      * Met à jour le mot de passe de l'utilisateur
+     * 
+     * @since 0.9.1-alpha
      */
     public function password(Request $request)
     {
@@ -137,6 +139,8 @@ class UserController extends Controller
 
     /**
      * Suspend / retire la suspension sur un compte
+     * 
+     * @since 0.9.2-alpha
      */
     public function suspend(Request $request)
     {
@@ -144,7 +148,7 @@ class UserController extends Controller
         $citoyen->suspended_at = is_null($citoyen->suspended_at) ? now() : null;
         $citoyen->update();
 
-        return Redirect::to( route('citoyens'))->with('success', 'Statut citoyen modifié avec succès.');
+        return Redirect::to(route('citoyens'))->with('success', 'Statut citoyen modifié avec succès.');
     }
 
     /**
@@ -155,6 +159,22 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+    }
+
+    /**
+     * Supprimer le compte actuellement authentifié
+     * 
+     * @since 0.9.4-alpha
+     */
+    public function selfDestroy()
+    {
+        auth()->logout();
+
+        $user = auth()->user();
+        $user->delete(); // ne pas tenir compte de l'erreur vscode, il n'arrive pas à faire correctement le lien en raison de trop nombreux rebons, mais l'update fonctionne bien
+
+        // return Redirect::to(route('dashboard'))->with('success', 'Utilisateur supprimé avec succès.');
     }
 }
