@@ -210,6 +210,7 @@ return [
             'password'      => 'Ensure your account is using a long, random password to stay secure.',
             'delete'        => 'Delete your account and all related data',
             'deldetail'     => 'Once your account is deleted, you can ask an administrator to restore it. If you wish to permanently delete your account, contact an administrator.',
+            'delconfirm'    => 'Are you sure you want to delete your account? Once your account is deleted, you can ask an administrator to restore it. If you wish to permanently delete your account, contact an administrator.',
         ],
     ],
     'user' => [

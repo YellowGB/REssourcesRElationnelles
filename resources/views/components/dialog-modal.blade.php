@@ -1,6 +1,7 @@
+{{-- x-cloak: https://alpinejs.dev/directives/cloak --}}
 <div
+    x-cloak
     x-data="{ showDialogModal: false }"
-    class="container flex justify-center mx-auto"
 >
     @props([
         'title'     => __('titles.title'),
@@ -9,12 +10,13 @@
         'ok'        => __('titles.btn.ok'),
         'confirm'   => 'showDialogModal = false',
     ])
+    {{ $slot }}
     <div
         x-show="showDialogModal"
         x-trap.noscroll="showDialogModal"
         class="fixed inset-0 flex items-center justify-center bg-gray-700 bg-opacity-50"
     >
-        <div class="max-w-sm p-6 bg-blanc dark:bg-slate-700 border-2">
+        <div class="max-w-md p-6 bg-blanc dark:bg-slate-700 border-2">
             <div class="flex items-center justify-between">
                 <h3 class="text-2xl">{{ $title }}</h3>
                 <x-icons.cross class="cursor-pointer" @click="showDialogModal = false" />

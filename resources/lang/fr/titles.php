@@ -211,6 +211,7 @@ return [
             'password'      => "Assurez-vous que votre compte utilise un mot de passe long et complexe afin d'en garantir sa sécurité.",
             'delete'        => 'Supprimer votre compte ainsi que les informations liées',
             'deldetail'     => 'Une fois votre compte supprimé, vous pouvez demander à un administrateur de le restaurer. Si vous souhaitez supprimer votre compte de manière définitive, contactez un administrateur.',
+            'delconfirm'    => 'Êtes-vous sûr de vouloir supprimer votre compte ? Une fois votre compte supprimé, vous pouvez demander à un administrateur de le restaurer. Si vous souhaitez supprimer votre compte de manière définitive, contactez un administrateur.',
         ],
     ],
     'user' => [
