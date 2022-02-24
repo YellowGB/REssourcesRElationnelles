@@ -122,7 +122,7 @@
 
         <x-slot name="actions">
             <x-button>
-                {{ __('Save') }}
+                @lang('titles.btn.save')
             </x-button>
         </x-slot>
     </x-form-section>

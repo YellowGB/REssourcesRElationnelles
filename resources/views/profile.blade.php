@@ -11,7 +11,6 @@
             @endif
 
             <div>
-                {{-- <update-profile-information-form :user="$page.props.user" /> --}}
                 <x-profile.update-information :user="$user" />
 
                 <x-sep-horizontal class="w-full lg:w-full" />

@@ -2,20 +2,29 @@
     x-data="{ showDialogModal: false }"
     class="container flex justify-center mx-auto"
 >
-    <div class="fixed inset-0 flex items-center justify-center bg-gray-700 bg-opacity-50">
+    @props([
+        'title'     => __('titles.title'),
+        'content'   => __('titles.content.content'),
+        'cancel'    => __('titles.btn.cancel'),
+        'ok'        => __('titles.btn.ok'),
+        'confirm'   => 'showDialogModal = false',
+    ])
+    <div
+        x-show="showDialogModal"
+        x-trap.noscroll="showDialogModal"
+        class="fixed inset-0 flex items-center justify-center bg-gray-700 bg-opacity-50"
+    >
         <div class="max-w-sm p-6 bg-blanc dark:bg-slate-700 border-2">
             <div class="flex items-center justify-between">
-                <h3 class="text-2xl">Modal Title</h3>
-                <x-icons.cross class="cursor-pointer" />
+                <h3 class="text-2xl">{{ $title }}</h3>
+                <x-icons.cross class="cursor-pointer" @click="showDialogModal = false" />
             </div>
             <div class="mt-4">
-                <p class="mb-4 text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
-                    qui
-                    nihil laborum
-                    quaerat blanditiis nemo explicabo voluptatum ea architecto corporis quo vitae, velit
-                    temporibus eaque quisquam in quis provident necessitatibus.</p>
-                <x-danger-button>Cancel</x-danger-button>
-                <x-safe-button>Save</x-safe-button>
+                <p class="mb-4 text-sm">
+                    {{ $content }}
+                </p>
+                <x-danger-button @click="showDialogModal = false">{{ $cancel }}</x-danger-button>
+                <x-safe-button @click="{{ $confirm }}">{{ $ok }}</x-safe-button>
             </div>
         </div>
     </div>

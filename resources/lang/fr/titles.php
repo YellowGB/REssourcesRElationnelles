@@ -92,7 +92,10 @@ return [
         'delete'    => 'Supprimer',
         'login'     => 'Se connecter',
         'register'  => "S'inscrire",
-        'report'    => "Signaler",
+        'report'    => 'Signaler',
+        'cancel'    => 'Annuler',
+        'save'      => 'Sauvegarder',
+        'ok'        => 'Ok',
     ],
     'section' => [
         'relation'  => 'Type de relation',
@@ -111,6 +114,7 @@ return [
         'profile'   => 'Profil',
     ],
     'content' => [
+        'content'       => 'Contenu',
         'description'   => 'Description',
         'bonus'         => 'Bonus',
         'starting'      => 'Démarre le',
