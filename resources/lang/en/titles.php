@@ -96,6 +96,7 @@ return [
         'cancel'    => 'Cancel',
         'save'      => 'Save',
         'ok'        => 'Ok',
+        'confirm'   => 'Confirm',
     ],
     'section' => [
         'relation'  => 'Relationship type',

@@ -5,7 +5,7 @@
         'title'     => __('titles.profile.title.delete'),
         'desc'      => __('titles.profile.desc.delete'),
         'content'   => __('titles.profile.desc.delconfirm'),
-        'ok'        => __('titles.btn.save'),
+        'ok'        => __('titles.btn.confirm'),
     ])
     <x-action-section
         :title="$title"
