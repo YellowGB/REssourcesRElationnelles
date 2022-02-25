@@ -23,6 +23,6 @@ class SidebarCatalogue extends Component
      */
     public function render()
     {
-        return view('layouts.sidebar-catalogue');
+        return view('components.catalogue-filter');
     }
 }
