@@ -4,18 +4,20 @@
 
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form class="text-center relative" method="POST" action="{{ route('register') }}">
+        <form class="text-center relative" method="POST" action="{{ route('admin.store') }}">
             @csrf
+
+                
 
             <!-- Admin type -->
             <div class="mt-4">
-                <select>
-                    <option value="" disabled selected> <x-label for="role" :value="__('titles.form.role')" required /> </option>
-                    <option value="{{ App\Models\Role::select('id')->where('name', 'moderateur')->first(); }}">{{ __('titles.role.' . App\Enums\UserRole::Moderator->value) }}</option>
-                    <option value="{{ App\Models\Role::select('id')->where('name', 'administrateur')->first(); }}">{{ __('titles.role.' . App\Enums\UserRole::Admin->value) }}</option>
+                <x-label value="{{ __('titles.form.role') }}"/>
+                <select name="role">
+                    <option value="{{ App\Models\Role::where('name', 'moderateur')->first()->id; }}">{{ __('titles.role.' . App\Enums\UserRole::Moderator->value) }}</option>
+                    <option value="{{ App\Models\Role::where('name', 'administrateur')->first()->id; }}">{{ __('titles.role.' . App\Enums\UserRole::Admin->value) }}</option>
                     @auth
                         @can('delete-users')
-                            <option value="{{ App\Models\Role::select('id')->where('name', 'superadministrateur')->first(); }}">{{ __('titles.role.' . App\Enums\UserRole::SuperAdmin->value) }}</option>
+                            <option value="{{ App\Models\Role::where('name', 'superadministrateur')->first()->id; }}">{{ __('titles.role.' . App\Enums\UserRole::SuperAdmin->value) }}</option>
                         @endcan
                     @endauth
                 </select>

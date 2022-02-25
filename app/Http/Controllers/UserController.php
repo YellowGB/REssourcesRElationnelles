@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use App\Enums\UserRole;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 
 /**
@@ -118,17 +120,18 @@ class UserController extends Controller
             'postcode'      => ['required', 'string', 'size:5'],
         ]);
 
-        User::create([
-            'name'           => $request->name,
-            'firstname'      => $request->firstname,
-            'email'          => $request->email,
-            'password'       => Hash::make($request->password),
-            'postcode'       => $request->postcode,
-            'role_id'        => $request->role,
-            'last_connexion' => now(),
+        $user = User::create([
+            'name'              => $request->name,
+            'firstname'         => $request->firstname,
+            'email'             => $request->email,
+            'email_verified_at' => now(),
+            'password'          => Hash::make($request->password),
+            'postcode'          => $request->postcode,
+            'role_id'           => $request->role,
+            'last_connexion'    => now(),
         ]);
 
-        // event(new Registered($user));
+        event(new Registered($user));
 
         return redirect(RouteServiceProvider::HOME);
     }
