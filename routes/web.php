@@ -44,25 +44,19 @@ Route::group(
                             ->only('index');
         }
     );
-    
-    Route::get(LaravelLocalization::transRoute('routes.profile'), function () {
-        return view('profile', [
-            'user' => auth()->user(),
-        ]);
-    })->middleware(['auth', 'verified'])->name('profile');
 
-    Route::post(LaravelLocalization::transRoute('routes.profile'), [UserController::class, 'update'])
-                    ->middleware(['auth', 'verified'])
-                    ->name('profile.update');
-    
+    //------------ Mentions Légales --------\\
+    Route::get(LaravelLocalization::transRoute('routes.legal'), function() {
+        return view('legal');
+    })->middleware(['auth', 'verified'])->name('legal');
 
     //------------ Citoyen ---------------\\
     Route::get(LaravelLocalization::transRoute('routes.citoyens'), [UserController::class, 'citoyen'])
                     ->name('citoyens')
                     ->middleware('admin');
 
-    Route::post(LaravelLocalization::transRoute('routes.citoyens.suspend'), [UserController::class, 'suspend'])
-                    ->name('citoyens.suspend')
+    Route::post(LaravelLocalization::transRoute('routes.users.update'), [UserController::class, 'update'])
+                    ->name('citoyegns.update')
                     ->middleware('admin');
 
     //------------ Categories ------------\\

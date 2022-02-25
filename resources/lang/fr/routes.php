@@ -29,6 +29,7 @@ return [
     "categories"                => "categories",
     "categories.index"          => 'categories',
     "categories.store"          => 'categories/store',
+    "legal"                     => 'mentions-legales',
     "verification.notice"       => "verification-email",
     "verification.verify"       => "verification-email/{id}/{hash}",
     "verification.send"         => "email/verification-notification",
