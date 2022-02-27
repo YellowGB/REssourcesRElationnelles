@@ -92,7 +92,11 @@ return [
         'delete'    => 'Supprimer',
         'login'     => 'Se connecter',
         'register'  => "S'inscrire",
-        'report'    => "Signaler",
+        'report'    => 'Signaler',
+        'cancel'    => 'Annuler',
+        'save'      => 'Sauvegarder',
+        'ok'        => 'Ok',
+        'confirm'   => 'Confirmer',
     ],
     'section' => [
         'relation'  => 'Type de relation',
@@ -108,8 +112,10 @@ return [
         'theme'     => 'Thème',
         'lang'      => 'Langue',
         'resource'  => 'Ressource',
+        'profile'   => 'Profil',
     ],
     'content' => [
+        'content'       => 'Contenu',
         'description'   => 'Description',
         'bonus'         => 'Bonus',
         'starting'      => 'Démarre le',
@@ -162,6 +168,8 @@ return [
         'nickname'      => 'Pseudonyme',
         'email'         => 'Email',
         'password'      => 'Mot de passe',
+        'pwdcurrent'    => 'Mot de passe actuel',
+        'pwdnew'        => 'Nouveau mot de passe',
         'pwdconfirm'    => 'Confirmez le mot de passe',
         'bio'           => 'Quelques mots à propos de vous',
         'postcode'      => 'Code postal',
@@ -192,4 +200,24 @@ return [
         'suspend'       => 'Suspendre la ressource',
         'commentaire'   => 'Modérer le commentaire',
     ],
+    'profile' => [
+        'avatar' => 'Avatar',
+        'title' => [
+            'information'   => 'Informations du compte',
+            'password'      => 'Mettre à jour le mot de passe',
+            'delete'        => 'Supprimer le compte',
+        ],
+        'desc' => [
+            'information'   => "Mettre à jour les informations de votre compte et votre adresse email.",
+            'password'      => "Assurez-vous que votre compte utilise un mot de passe long et complexe afin d'en garantir sa sécurité.",
+            'delete'        => 'Supprimer votre compte ainsi que les informations liées',
+            'deldetail'     => 'Une fois votre compte supprimé, vous pouvez demander à un administrateur de le restaurer. Si vous souhaitez supprimer votre compte de manière définitive, contactez un administrateur.',
+            'delconfirm'    => 'Êtes-vous sûr de vouloir supprimer votre compte ? Une fois votre compte supprimé, vous pouvez demander à un administrateur de le restaurer. Si vous souhaitez supprimer votre compte de manière définitive, contactez un administrateur.',
+        ],
+    ],
+    'user' => [
+        'suspend'   => 'Suspendre',
+        'unsuspend' => 'Retirer la suspension',
+    ],
+
 ];

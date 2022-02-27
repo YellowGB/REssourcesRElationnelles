@@ -30,5 +30,6 @@
 	"Resource successfully created": "Ressource créée avec succès",
 	"Resource successfully updated": "Ressource mise à jour avec succès",
 	"Resource successfully deleted": "Ressource supprimée avec succès",
-	"Reply": "Répondre"
+	"Reply": "Répondre",
+	"Save": "Sauvegarder"
 }

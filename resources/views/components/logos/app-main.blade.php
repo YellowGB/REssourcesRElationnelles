@@ -44,7 +44,7 @@
             }
             .let-sub{
                 font-size:6px;
-                fill:#3d3e3f;
+                fill:currentColor;
                 font-family:Inter-Thin, Inter;
                 font-weight:200;
             }
