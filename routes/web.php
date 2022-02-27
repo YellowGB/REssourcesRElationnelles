@@ -50,6 +50,11 @@ Route::group(
         return view('legal');
     })->middleware(['auth', 'verified'])->name('legal');
 
+    //------------------ RGPD ------------------\\
+    Route::get(LaravelLocalization::transRoute('routes.personal-data'), function(){
+        return view('personal-data');
+    })->middleware(['auth', 'verified'])->name('personal-data');
+
     //------------ Citoyen ---------------\\
     Route::get(LaravelLocalization::transRoute('routes.citoyens'), [UserController::class, 'citoyen'])
                     ->name('citoyens')

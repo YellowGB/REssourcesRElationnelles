@@ -30,6 +30,7 @@ return [
     "categories.index"          => 'categories',
     "categories.store"          => 'categories/store',
     "legal"                     => 'mentions-legales',
+    "personal-data"             => 'donnees-personnelles',
     "verification.notice"       => "verification-email",
     "verification.verify"       => "verification-email/{id}/{hash}",
     "verification.send"         => "email/verification-notification",
