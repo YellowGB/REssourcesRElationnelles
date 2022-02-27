@@ -3,6 +3,7 @@
 return [
     "dashboard"                 => "dashboard",
     "comment.report"            => "comment/{id}/report",
+    "comment.store"             => "resources/{id}/comment",
     "catalogue"                 => "catalogue",
     "password.confirm"          => "confirm-password",
     "password.request"          => "forgot-password",

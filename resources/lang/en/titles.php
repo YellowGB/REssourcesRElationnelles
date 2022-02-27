@@ -174,6 +174,8 @@ return [
     ],
     'comment' => [
         'reports'   => 'Report|Reports',
+        'write'     => 'Write a comment',
+        'add'       => 'Add',
         'reported'  => 'Reported',
         'ignore'    => 'Ignore',
         'delete'    => 'Delete',
