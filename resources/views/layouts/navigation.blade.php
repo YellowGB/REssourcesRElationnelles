@@ -21,9 +21,6 @@
                     <x-nav-link class="dark:text-slate-300 dark:hover:text-blanc" :href="route('resources.create')" :active="request()->routeIs('resources.create')">
                         {{ __('titles.create.ressource') }}
                     </x-nav-link>
-
-                    {{-- Theme icon --}}
-                    <x-togglers.theme />
                 </div>
             </div>
 

@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class SidebarCatalogue extends Component
+class CatalogueFilter extends Component
 {
     /**
      * Create a new component instance.

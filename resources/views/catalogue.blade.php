@@ -11,11 +11,13 @@
 
         @livewire('ressources-loader')
 
-        <x-slot name="right">
-            <x-sidebar-section>
-                Right
-            </x-sidebar-section>
-        </x-slot>
+        @auth
+            <x-slot name="right">
+                <x-sidebar-section>
+                    <x-profile-menu />
+                </x-sidebar-section>
+            </x-slot>
+        @endauth
     </x-triptyque>
 
     <script src="{{ asset('js/catalogue.js') }}" defer></script>

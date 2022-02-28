@@ -33,6 +33,12 @@
         @apply border-current;
     }
 
+    a {
+        @apply text-bleu-dark;
+        @apply hover:text-bleu-normal;
+        @apply hover:underline;
+    }
+
     [type='text'],
     [type='email'],
     [type='file'],

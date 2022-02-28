@@ -112,7 +112,7 @@ return [
         'theme'     => 'Thème',
         'lang'      => 'Langue',
         'resource'  => 'Ressource',
-        'profile'   => 'Profil',
+        'profile'   => 'Mon profil',
     ],
     'content' => [
         'content'       => 'Contenu',
