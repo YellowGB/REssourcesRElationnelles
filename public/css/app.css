@@ -745,10 +745,6 @@ select {
 .m-4 {
   margin: 1rem;
 }
-.my-8 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -785,6 +781,9 @@ select {
 .mb-4 {
   margin-bottom: 1rem;
 }
+.mt-2 {
+  margin-top: 0.5rem;
+}
 .ml-4 {
   margin-left: 1rem;
 }
@@ -793,9 +792,6 @@ select {
 }
 .mt-10 {
   margin-top: 2.5rem;
-}
-.mt-2 {
-  margin-top: 0.5rem;
 }
 .ml-2 {
   margin-left: 0.5rem;
@@ -841,9 +837,6 @@ select {
 }
 .-mr-2 {
   margin-right: -0.5rem;
-}
-.mb-8 {
-  margin-bottom: 2rem;
 }
 .block {
   display: block;
@@ -901,9 +894,6 @@ select {
 }
 .h-20 {
   height: 5rem;
-}
-.h-128 {
-  height: 32rem;
 }
 .h-4 {
   height: 1rem;
@@ -1198,6 +1188,10 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
 }
+.border-violet-light {
+  --tw-border-opacity: 1;
+  border-color: rgb(105 105 135 / var(--tw-border-opacity));
+}
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1257,6 +1251,22 @@ select {
 .bg-indigo-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
+}
+.bg-slate-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+.bg-gris-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 242 234 / var(--tw-bg-opacity));
+}
+.bg-violet-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(105 105 135 / var(--tw-bg-opacity));
+}
+.bg-violet-lighter {
+  --tw-bg-opacity: 1;
+  background-color: rgb(155 155 211 / var(--tw-bg-opacity));
 }
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
@@ -1516,6 +1526,14 @@ select {
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity));
 }
+.text-violet-dark {
+  --tw-text-opacity: 1;
+  color: rgb(75 54 102 / var(--tw-text-opacity));
+}
+.text-violet-light {
+  --tw-text-opacity: 1;
+  color: rgb(105 105 135 / var(--tw-text-opacity));
+}
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -1679,6 +1697,14 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
+.hover\:bg-slate-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+.hover\:bg-violet-lightest:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 224 244 / var(--tw-bg-opacity));
+}
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -1702,10 +1728,6 @@ select {
 .hover\:text-gray-800:hover {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
-}
-.hover\:text-bleu-normal:hover {
-  --tw-text-opacity: 1;
-  color: rgb(7 104 198 / var(--tw-text-opacity));
 }
 .hover\:underline:hover {
   -webkit-text-decoration-line: underline;
@@ -1742,6 +1764,14 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
+.focus\:border-violet-dark:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(75 54 102 / var(--tw-border-opacity));
+}
+.focus\:border-violet-light:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(105 105 135 / var(--tw-border-opacity));
+}
 .focus\:bg-slate-500:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(100 116 139 / var(--tw-bg-opacity));
@@ -1757,6 +1787,18 @@ select {
 .focus\:bg-gray-100:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+.focus\:bg-slate-600:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+}
+.focus\:bg-violet-lighter:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(155 155 211 / var(--tw-bg-opacity));
+}
+.focus\:bg-violet-light:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(105 105 135 / var(--tw-bg-opacity));
 }
 .focus\:text-gray-700:focus {
   --tw-text-opacity: 1;
@@ -1924,6 +1966,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
+.dark .dark\:hover\:bg-slate-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
 .dark .dark\:hover\:text-primaire:hover {
   --tw-text-opacity: 1;
   color: rgb(46 109 170 / var(--tw-text-opacity));
@@ -1931,6 +1977,10 @@ select {
 .dark .dark\:hover\:text-blanc:hover {
   --tw-text-opacity: 1;
   color: rgb(252 252 252 / var(--tw-text-opacity));
+}
+.dark .dark\:focus\:bg-slate-600:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
 }
 @media (min-width: 640px) {
 
