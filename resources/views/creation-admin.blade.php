@@ -4,13 +4,13 @@
 
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form class="text-center relative" method="POST" action="{{ route('admin.store') }}">
+        <form class="mt-4 flex flex-col sm:justify-center items-center" method="POST" action="{{ route('admin.store') }}">
             @csrf
 
                 
 
             <!-- Admin type -->
-            <div class="mt-4">
+            <div class="mt-4 mr-21">
                 <x-label value="{{ __('titles.form.role') }}"/>
                 <select name="role">
                     <option value="{{ App\Models\Role::where('name', 'moderateur')->first()->id; }}">{{ __('titles.role.' . App\Enums\UserRole::Moderator->value) }}</option>
@@ -65,7 +65,7 @@
                 <x-input type="text" name="postcode" required />
             </div>
 
-            <div class="mt-4">
+            <div class="mt-4 ml-43">
                 <x-button>
                     {{ __('titles.btn.create') }}
                 </x-button>
