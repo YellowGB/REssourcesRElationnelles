@@ -34,8 +34,8 @@
     }
 
     a {
-        @apply text-bleu-dark dark:text-violet-lighter;
-        @apply hover:text-bleu-normal dark:hover:text-violet-lightest;
+        @apply text-bleu-dark;
+        @apply hover:text-bleu-normal;
         @apply hover:underline;
     }
 
