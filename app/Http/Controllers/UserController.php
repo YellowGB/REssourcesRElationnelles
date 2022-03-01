@@ -124,14 +124,16 @@ class UserController extends Controller
             'name'              => $request->name,
             'firstname'         => $request->firstname,
             'email'             => $request->email,
-            'email_verified_at' => now(),
             'password'          => Hash::make($request->password),
             'postcode'          => $request->postcode,
             'role_id'           => $request->role,
             'last_connexion'    => now(),
         ]);
 
-        event(new Registered($user));
+        $user->email_verified_at = now();
+        $user->update();
+
+        // event(new Registered($user));
 
         return redirect(RouteServiceProvider::HOME);
     }
