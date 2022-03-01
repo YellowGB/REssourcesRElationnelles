@@ -13,13 +13,19 @@
             <div>
                 <x-profile.update-information :user="$user" />
 
-                <x-sep-horizontal class="w-full lg:w-full" />
+                <x-sep-horizontal class="w-full" />
             </div>
 
             <div>
                 <x-profile.update-password class="mt-10 sm:mt-0" />
 
-                <x-sep-horizontal class="w-full lg:w-full" />
+                <x-sep-horizontal class="w-full" />
+            </div>
+
+            <div>
+                <x-profile.update-preferences />
+
+                <x-sep-horizontal class="w-full" />
             </div>
 
             <div>

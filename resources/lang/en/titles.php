@@ -205,6 +205,7 @@ return [
             'information'   => 'Profile Information',
             'password'      => 'Update Password',
             'delete'        => 'Delete Account',
+            'preferences'   => 'Account preferences',
         ],
         'desc' => [
             'information'   => "Update your account's profile information and email address.",
@@ -212,6 +213,7 @@ return [
             'delete'        => 'Delete your account and all related data',
             'deldetail'     => 'Once your account is deleted, you can ask an administrator to restore it. If you wish to permanently delete your account, contact an administrator.',
             'delconfirm'    => 'Are you sure you want to delete your account? Once your account is deleted, you can ask an administrator to restore it. If you wish to permanently delete your account, contact an administrator.',
+            'preferences'   => 'Update your account preferences.',
         ],
     ],
     'user' => [

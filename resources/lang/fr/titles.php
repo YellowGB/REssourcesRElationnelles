@@ -206,6 +206,7 @@ return [
             'information'   => 'Informations du compte',
             'password'      => 'Mettre à jour le mot de passe',
             'delete'        => 'Supprimer le compte',
+            'preferences'   => 'Préférences du compte',
         ],
         'desc' => [
             'information'   => "Mettre à jour les informations de votre compte et votre adresse email.",
@@ -213,6 +214,7 @@ return [
             'delete'        => 'Supprimer votre compte ainsi que les informations liées',
             'deldetail'     => 'Une fois votre compte supprimé, vous pouvez demander à un administrateur de le restaurer. Si vous souhaitez supprimer votre compte de manière définitive, contactez un administrateur.',
             'delconfirm'    => 'Êtes-vous sûr de vouloir supprimer votre compte ? Une fois votre compte supprimé, vous pouvez demander à un administrateur de le restaurer. Si vous souhaitez supprimer votre compte de manière définitive, contactez un administrateur.',
+            'preferences'   => 'Mettre à jour les préférences de votre compte.',
         ],
     ],
     'user' => [
