@@ -4,9 +4,19 @@
 
     <x-ressources.filter />
 
-    <x-sidebar-catalogue>
+    <x-triptyque>
+        <x-slot name="left">
+            <x-catalogue-filter />
+        </x-slot>
+
         @livewire('ressources-loader')
-    </x-sidebar-catalogue>
+
+        <x-slot name="right">
+            <x-sidebar-section>
+                <x-profile-menu />
+            </x-sidebar-section>
+        </x-slot>
+    </x-triptyque>
 
     <script src="{{ asset('js/catalogue.js') }}" defer></script>
     

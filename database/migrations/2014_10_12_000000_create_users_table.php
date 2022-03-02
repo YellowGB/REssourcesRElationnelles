@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('description', 1000)->nullable();
             $table->string('postcode');  // string pour gérer plus facilement les codes commençant par un zero
             // Vérifier que le chemin fonctionne bien une fois le projet plus avancé :
-            $table->string('avatar', 2048)->default('storage/app/public/images/default_avatar.png');
+            $table->string('avatar', 2048)->default('default');
             // $table->string('status');
             $table->foreignId('role_id')->constrained();
             $table->rememberToken();
@@ -36,9 +36,6 @@ class CreateUsersTable extends Migration
             $table->softDeletes();
             $table->timestamp('suspended_at')->nullable();
         });
-
-        // Création des utilisateurs de tests transférée après la création de la table user_preferences
-        // (créer d'erreur lors des migrations à la création de la table users qui trigger l'event created() de l'observer UserObserver )
     }
 
     /**

@@ -31,10 +31,10 @@
             />
     </div>
 
-    <x-sep-horizontal />
+    <x-sep-horizontal class="w-40 lg:w-52" />
     <textarea name="lecture_summary" cols="30" rows="10" placeholder="{{ __('titles.content.summary') }}">{{ $content->summary ?? '' }}</textarea>
-    <x-sep-horizontal />
+    <x-sep-horizontal class="w-40 lg:w-52" />
     <textarea name="lecture_analysis" cols="30" rows="10" placeholder="{{ __('titles.content.analysis') }}">{{ $content->analysis ?? '' }}</textarea>
-    <x-sep-horizontal />
+    <x-sep-horizontal class="w-40 lg:w-52" />
     <textarea name="lecture_review" cols="30" rows="10" placeholder="{{ __('titles.content.review') }}">{{ $content->review ?? '' }}</textarea>
 </div>

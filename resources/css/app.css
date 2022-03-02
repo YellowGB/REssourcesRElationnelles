@@ -4,6 +4,7 @@
 
 @layer base {
     body, p, span {
+        @apply text-noir;
         @apply dark:text-gris-normal;
     }
     label {
@@ -12,6 +13,7 @@
 
     h1, h2, h3, h4, h5, h6 {
         @apply font-heading;
+        @apply text-gris-darkest;
         @apply dark:text-gris-light;
     }
     h1 {
@@ -29,6 +31,12 @@
 
     hr {
         @apply border-current;
+    }
+
+    a {
+        @apply text-bleu-dark;
+        @apply hover:text-bleu-normal;
+        @apply hover:underline;
     }
 
     [type='text'],

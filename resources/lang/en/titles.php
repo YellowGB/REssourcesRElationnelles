@@ -92,7 +92,11 @@ return [
         'delete'    => 'Delete',
         'login'     => 'Log in',
         'register'  => "Register",
-        'report'    => "Report",
+        'report'    => 'Report',
+        'cancel'    => 'Cancel',
+        'save'      => 'Save',
+        'ok'        => 'Ok',
+        'confirm'   => 'Confirm',
     ],
     'section' => [
         'relation'  => 'Relationship type',
@@ -111,6 +115,7 @@ return [
         'profile'   => 'Profile',
     ],
     'content' => [
+        'content'       => 'Content',
         'description'   => 'Description',
         'bonus'         => 'Bonus',
         'starting'      => 'Starting the',
@@ -163,6 +168,8 @@ return [
         'nickname'      => 'Nickname',
         'email'         => 'Email',
         'password'      => 'Password',
+        'pwdcurrent'    => 'Current Password',
+        'pwdnew'        => 'New Password',
         'pwdconfirm'    => 'Confirm password',
         'bio'           => 'A few words about yourself',
         'postcode'      => 'Postcode',
@@ -180,6 +187,38 @@ return [
         'reported'  => 'Reported',
         'ignore'    => 'Ignore',
         'delete'    => 'Delete',
+    ],
+    'response' =>  [
+        'action'        => 'Reply',
+        'add'           => 'Add a reply',
+    ],
+    'moderation' => [
+        'ressource'     => 'Moderate resources',
+        'pendings'      => 'Resources pending moderation',
+        'validate'      => 'Validate the resource',
+        'dismiss'       => 'Reject the resource',
+        'suspend'       => 'Suspend the resource',
+        'commentaire'   => 'Moderate the comment',
+    ],
+    'profile' => [
+        'title' => [
+            'information'   => 'Profile Information',
+            'password'      => 'Update Password',
+            'delete'        => 'Delete Account',
+            'preferences'   => 'Account preferences',
+        ],
+        'desc' => [
+            'information'   => "Update your account's profile information and email address.",
+            'password'      => 'Ensure your account is using a long, random password to stay secure.',
+            'delete'        => 'Delete your account and all related data',
+            'deldetail'     => 'Once your account is deleted, you can ask an administrator to restore it. If you wish to permanently delete your account, contact an administrator.',
+            'delconfirm'    => 'Are you sure you want to delete your account? Once your account is deleted, you can ask an administrator to restore it. If you wish to permanently delete your account, contact an administrator.',
+            'preferences'   => 'Update your account preferences.',
+        ],
+    ],
+    'user' => [
+        'suspend'   => 'Suspend',
+        'unsuspend' => 'Unsuspend',
     ],
 
 ];

@@ -1,4 +1,4 @@
-<ul class="px-4 py-2 text-sm leading-5 text-gris-dark transition duration-150 ease-in-out">
+<ul {{ $attributes->merge(['class' => 'text-sm leading-5 text-gris-dark transition duration-150 ease-in-out']) }}>
     @foreach ($reverse_types as $type)
         <li>
             <input

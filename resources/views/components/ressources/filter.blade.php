@@ -7,7 +7,7 @@
         </x-slot>
 
         <x-slot name="content">
-            <x-ressources.checklist-types />
+            <x-ressources.checklist-types class="px-4 py-2" />
         </x-slot>
     </x-dropdown>
 </div>

@@ -45,15 +45,18 @@ Route::group(
         }
     );
 
-    //------------ Mentions Légales --------\\
-    Route::get(LaravelLocalization::transRoute('routes.legal'), function() {
-        return view('legal');
-    })->middleware(['auth', 'verified'])->name('legal');
+    Route::post(LaravelLocalization::transRoute('routes.profile'), [UserController::class, 'update'])
+                    ->middleware(['auth', 'verified'])
+                    ->name('profile.update');
 
-    //------------------ RGPD ------------------\\
-    Route::get(LaravelLocalization::transRoute('routes.personal-data'), function(){
-        return view('personal-data');
-    })->middleware(['auth', 'verified'])->name('personal-data');
+    Route::post(LaravelLocalization::transRoute('routes.profile.password'), [UserController::class, 'password'])
+                    ->middleware(['auth', 'verified'])
+                    ->name('profile.password');
+
+    Route::post(LaravelLocalization::transRoute('routes.profile.delete'), [UserController::class, 'destroy'])
+                    ->middleware(['auth', 'verified'])
+                    ->name('profile.delete');
+    
 
     //------------ Citoyen ---------------\\
     Route::get(LaravelLocalization::transRoute('routes.citoyens'), [UserController::class, 'citoyen'])

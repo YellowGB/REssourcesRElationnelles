@@ -8,7 +8,6 @@
                     {{ __('auth.success') }}
                 </div>
             </div>
-            <x-togglers.lang />
         </div>
     </div>
 </x-app-layout>

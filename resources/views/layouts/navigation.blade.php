@@ -21,58 +21,17 @@
                     <x-nav-link class="dark:text-slate-300 dark:hover:text-blanc" :href="route('resources.create')" :active="request()->routeIs('resources.create')">
                         {{ __('titles.create.ressource') }}
                     </x-nav-link>
-
-                    {{-- Theme icon --}}
-                    <x-togglers.theme />
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                @auth
-                    <x-dropdown align="right" width="48">
-                        <x-slot name="trigger">
-                            <button class="flex items-center p-2 rounded-full border-2 border-noir hover:bg-slate-500 hover:border-gray-500 focus:outline-none focus:bg-slate-500 focus:border-gray-500 transition duration-150 ease-in-out">
-                                {{-- créer directive blade @avatar, corriger la valeur par défaut d'avatar --}}
-                                <x-icons.avatar />
-                                {{-- <div>{{ Auth::user()->name }}</div>
-
-                                <div class="ml-1">
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                                </div> --}}
-                            </button>
-                        </x-slot>
-
-                        <x-slot name="content">
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-
-                                <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </x-dropdown-link>
-                            </form>
-                        </x-slot>
-                    </x-dropdown>
-                @else
-                    @if (Route::has('login'))
-                        <div class="hidden sm:block">
-                            @auth
-                                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">{{ __('titles.section.dashboard') }}</a>
-                            @else
-                                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">{{ __('titles.section.login') }}</a>
-
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">{{ __('titles.section.register') }}</a>
-                                @endif
-                            @endauth
-                        </div>
-                    @endif
-                @endauth
+                <a href="{{ route('profile') }}">
+                    <button class="flex items-center p-2 rounded-full border-2 border-noir hover:bg-slate-500 hover:border-gray-500 focus:outline-none focus:bg-slate-500 focus:border-gray-500 transition duration-150 ease-in-out">
+                        {{-- créer directive blade @avatar, corriger la valeur par défaut d'avatar --}}
+                        <x-icons.avatar />
+                    </button>
+                </a> 
 
             </div>
 
@@ -94,14 +53,26 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('titles.section.dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('catalogue')" :active="request()->routeIs('catalogue')">
+                {{ __('titles.section.catalogue') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('resources.create')" :active="request()->routeIs('resources.create')">
+                {{ __('titles.create.ressource') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             @auth
                 <div class="px-4">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-gray-800 dark:text-gris-normal">{{ get_user_display_name(Auth::user()) }}</div>
+                    <div class="font-medium text-sm text-gray-500 dark:text-gris-light">{{ Auth::user()->email }}</div>
+                </div>
+
+                <div class="mt-3 space-y-1">
+                    <x-responsive-nav-link :href="route('profile')" :active="request()->routeIs('profile')">
+                        {{ __('titles.section.profile') }}
+                    </x-responsive-nav-link>
                 </div>
 
                 <div class="mt-3 space-y-1">
@@ -120,12 +91,18 @@
                 @if (Route::has('login'))
                     <div class="mt-3 space-y-1">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">{{ __('titles.section.dashboard') }}</a>
+                            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                                {{ __('titles.section.dashboard') }}
+                            </x-responsive-nav-link>
                         @else
-                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">{{ __('titles.section.login') }}</a>
+                            <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                                {{ __('titles.section.login') }}
+                            </x-responsive-nav-link>
 
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">{{ __('titles.section.register') }}</a>
+                                <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                                    {{ __('titles.section.register') }}
+                                </x-responsive-nav-link>
                             @endif
                         @endauth
                     </div>

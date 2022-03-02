@@ -43,4 +43,6 @@ return [
     "comment.ignorer"           => "commentaire/moderation/{id}/ignorer",
     "comment.supprimer"         => "commentaire/moderation/{id}/supprimer",
     "profile"                   => "profil",
+    "profile.password"          => "profil/mot-de-passe",
+    "profile.delete"            => "profil/suppression",
 ];
