@@ -43,6 +43,11 @@ Route::group(
                             ->only('index');
         }
     );
+
+    Route::get(LaravelLocalization::transRoute('routes.plan'), function()
+    {
+        return view('plan');
+    })->middleware(['auth', 'verified'])->name('plan');
     
     //------------ Commentaires ------------\\
     Route::get(LaravelLocalization::transRoute('routes.comment.report'), [CommentaireController::class, 'report'])

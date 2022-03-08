@@ -25,4 +25,5 @@ return [
     "verification.notice"       => "verify-email",
     "verification.verify"       => "verify-email/{id}/{hash}",
     "verification.send"         => "email/verification-notification",
+    "plan"                      => "site-plan",
 ];
