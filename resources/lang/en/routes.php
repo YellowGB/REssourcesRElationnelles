@@ -46,4 +46,5 @@ return [
     "privacy"                   => "privacy-policy",
     "map"                       => "site-map",
     "legal"                     => "legal-notices",
+    "admin.create"              => "admin/create",
 ];

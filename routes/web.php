@@ -63,6 +63,14 @@ Route::group(
                     ->middleware(['auth', 'verified'])
                     ->name('profile.delete');
 
+    Route::get(LaravelLocalization::transRoute('routes.admin.create'), [UserController::class, 'create_admin'])
+                    ->name('admin.create')
+                    ->middleware('admin');
+
+    Route::post(LaravelLocalization::transRoute('routes.admin.create'), [UserController::class, 'store_admin'])
+                    ->name('admin.store')
+                    ->middleware('admin');
+
     //------------------ RGPD ------------------\\
     Route::get(LaravelLocalization::transRoute('routes.privacy'), function() {
         return view('privacy-policy');

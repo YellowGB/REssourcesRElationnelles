@@ -46,4 +46,5 @@ return [
     "privacy"                   => "politique-de-confidentialite",
     "map"                       => "plan-du-site",
     "legal"                     => "mentions-legales",
+    "admin.create"              => "admin/creation",
 ];

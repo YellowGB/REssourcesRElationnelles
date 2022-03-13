@@ -144,6 +144,7 @@ return [
         'category'  => 'Créer une nouvelle catégorie',
         'role'      => 'Créer un nouveau rôle',
         'user'      => 'Créer un nouveau compte',
+        'admin'     => 'Créer un compte administrateur',
         'link'      => 'Renseignez ici le lien vers la source',
         //--------------------------------------------------------
         RessourceType::Activite->value  => 'Créer une activité',

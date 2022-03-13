@@ -144,6 +144,7 @@ return [
         'category'  => 'Create a new category',
         'role'      => 'Create a new role',
         'user'      => 'Create a new account',
+        'admin'     => 'Create an administrator account',
         'link'      => 'Put here the link to the source',
         //--------------------------------------------------------
         RessourceType::Activite->value  => 'Create an activity',
