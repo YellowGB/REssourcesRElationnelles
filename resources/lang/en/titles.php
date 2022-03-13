@@ -83,6 +83,7 @@ return [
     'link' => [
         'link'      => 'Link',
         'source'    => 'Source',
+        'follow'    => "Article available at the following URL:",
         'url'       => 'URL',
         'uri'       => 'URI',
         'current'   => 'Currently uploaded file',
