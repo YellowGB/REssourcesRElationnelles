@@ -49,7 +49,7 @@
             </p>
             <br>
 
-            <h2 class="text-center">Politique en entier</h2>
+            <h2 class="text-center">Politique complète</h2>
             <br>
 
             <h2>Propriétaire et Responsable du traitement</h2>
