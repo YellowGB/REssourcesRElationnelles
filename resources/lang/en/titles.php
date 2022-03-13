@@ -130,6 +130,7 @@ return [
         'description'   => 'Description',
         'bonus'         => 'Bonus',
         'starting'      => 'Starting the',
+        'simplestart'   => 'The',
         'duration'      => 'Duration',
         'title'         => 'Title',
         'publication'   => 'Publishing date',

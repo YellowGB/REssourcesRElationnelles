@@ -199,10 +199,11 @@ function format_horodatage(Model $element, string $qualifying = 'created', LocGe
  * @param Model $content Un modèle de contenu de ressource disposant de la colonne 'starting_date'
  * 
  * @since 0.6.9-alpha
+ * @since 1.2.0-alpha choix de formattage supplémentaire
  */
-function format_starting_date(Model $content) {
+function format_starting_date(Model $content, $qualifying = 'starting') {
 
-    return  __('titles.content.starting').' '.
+    return  __("titles.content.$qualifying").' '.
             Carbon::parse($content->starting_date)->format('d/m/Y').' '.
             __('titles.at').' '.
             Carbon::parse($content->starting_date)->format('H:i');

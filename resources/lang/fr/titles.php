@@ -130,6 +130,7 @@ return [
         'description'   => 'Description',
         'bonus'         => 'Bonus',
         'starting'      => 'Démarre le',
+        'simplestart'   => 'Le',
         'duration'      => 'Durée',
         'title'         => 'Titre du livre',
         'publication'   => 'Année de parution',
