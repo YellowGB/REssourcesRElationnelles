@@ -79,6 +79,22 @@
                     <a href="#"><x-logos.websh /></a>
                 </div>
 
+                <ul class="flex flex-col md:flex-row justify-around items-center text-sm">
+                    <li>
+                        <a href="{{ route('legal') }}">@lang('titles.section.legal')</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('privacy') }}">@lang('titles.section.privacy')</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('map') }}">@lang('titles.section.map')</a>
+                    </li>
+                </ul>
+
+                <p class="text-center my-2">
+                    &copy; {{ date('Y') }} {{ config('app.name') }}, @lang('All rights reserved.')
+                </p>
+
                 {{-- @modo --}}
                     <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
                         {{ config('app.name') }} v{{ config('app.version') }} - Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})

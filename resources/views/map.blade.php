@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-page-header heading="{{ __('titles.section.map') }}" />
     <x-triptyque>
-        <div class="text-clip overflow-hidden max-w-4xl px-10 py-6 ml-4 mr-4 mt-4 bg-violet-lightest dark:bg-violet-light rounded-lg shadow-md">
+        <div class="text-clip overflow-hidden max-w-4xl px-10 py-6 m-4 bg-violet-lightest dark:bg-violet-light rounded-lg shadow-md">
             <h2>
                 <div class="text-bleu-dark dark:text-violet-darkest">Accueil</div>
             <h2>

@@ -3,7 +3,7 @@
     <x-triptyque>
         <div class="px-2">
             <p class="mt-4 text-gray-500">
-                Cette Application collecte certaines Données personnelles de ses Utilisateurs, uniquement à des fins de fonctionnement global ou de statistiques.<br>
+                Cette Application collecte des Données de ses Utilisateurs, uniquement à des fins de fonctionnement global ou de statistiques.<br>
                 En aucun cas ces Données ne font l'objet d'une utilisation commerciale.
             </p>
             <br>
