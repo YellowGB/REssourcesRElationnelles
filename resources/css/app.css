@@ -76,4 +76,8 @@
         @apply text-gris-light;
         @apply hover:bg-bleu-normal;
     }
+
+    .resource-interactions {
+        @apply cursor-pointer dark:text-gris-normal hover:rotate-6 hover:text-primaire dark:hover:text-primaire;
+    }
 }

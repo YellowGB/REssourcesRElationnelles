@@ -25,6 +25,7 @@ return [
     'updated'   => '{1} Modifié le|{2} Modifiée le|{3} Modifiés le|{4} Modifiées le',
     'deleted'   => '{1} Supprimé le|{2} Supprimée le|{3} Supprimés le|{4} Supprimées le',
     'written'   => '{1} Écrit le|{2} Écrite le|{3} Écrits le|{4} Écrites le',
+    'simplehr'  => 'le', // horodatage simple
     'at'        => 'à',
     'by'        => 'Par',
     'readfile'  => 'Lire le fichier',
@@ -98,6 +99,10 @@ return [
         'ok'        => 'Ok',
         'confirm'   => 'Confirmer',
         'forgot'    => 'Mot de passe oublié',
+        'share'     => 'Partager',
+        'bookmark'  => 'Mettre de côté',
+        'favorite'  => 'Ajouter aux favorites',
+        'exploit'   => 'Indiquer comme exploitée',
     ],
     'section' => [
         'relation'  => 'Type de relation',
@@ -195,6 +200,8 @@ return [
         'reported'  => 'Signalés',
         'ignore'    => 'Ignorer',
         'delete'    => 'Supprimer',
+        'showrep'   => 'Voir les réponses',
+        'hiderep'   => 'Cacher les réponses',
     ],
     'response' =>  [
         'action'        => 'Répondre',

@@ -29,7 +29,7 @@ class CommentaireDisplay extends Component
     {
         return view('components.commentaires.display', [
             'commentateur'  => get_user_display_name($this->commentaire->user),
-            'horodatage'    => format_horodatage($this->commentaire, 'written'),
+            'horodatage'    => format_horodatage($this->commentaire, 'simplehr'),
             'reports'       => trans_choice('titles.comment.reports', $this->commentaire->reports) . ' : '. $this->commentaire->reports,
         ]);
     }

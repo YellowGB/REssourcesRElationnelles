@@ -2,7 +2,7 @@
     @auth
         @modo
             @if($ressource->status == \App\Enums\RessourceStatus::Pending->value)
-                <div class="flex justify-between">
+                <div class="flex justify-between mb-2">
                     <form
                         x-ref="validForm"
                         action="{{ route('resources.valider', $ressource->id) }}"
@@ -27,7 +27,7 @@
                     </form>
                 </div>
                 @elseif($ressource->status == \App\Enums\RessourceStatus::Published->value)
-                    <div class="flex justify-end">
+                    <div class="flex justify-end mb-2">
                         <form
                             x-ref="suspendForm"
                             action="{{ route('resources.suspendre', $ressource->id) }}"

@@ -25,6 +25,7 @@ return [
     'updated'   => 'Updated the',
     'deleted'   => 'Deleted the',
     'written'   => 'Written the',
+    'simplehr'  => 'the',
     'at'        => 'at',
     'by'        => 'By',
     'readfile'  => 'Read the file',
@@ -98,6 +99,10 @@ return [
         'ok'        => 'Ok',
         'confirm'   => 'Confirm',
         'forgot'    => 'Forgotten password',
+        'share'     => 'Share',
+        'bookmark'  => 'Bookmark',
+        'favorite'  => 'Add to favorites',
+        'exploit'   => 'Mark as used',
     ],
     'section' => [
         'relation'  => 'Relationship type',
@@ -195,6 +200,8 @@ return [
         'reported'  => 'Reported',
         'ignore'    => 'Ignore',
         'delete'    => 'Delete',
+        'showrep'   => 'View replies',
+        'hiderep'   => 'Hide replies',
     ],
     'response' =>  [
         'action'        => 'Reply',
