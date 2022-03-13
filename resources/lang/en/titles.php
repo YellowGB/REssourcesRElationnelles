@@ -97,6 +97,7 @@ return [
         'save'      => 'Save',
         'ok'        => 'Ok',
         'confirm'   => 'Confirm',
+        'forgot'    => 'Forgotten password',
     ],
     'section' => [
         'relation'  => 'Relationship type',
@@ -113,6 +114,11 @@ return [
         'lang'      => 'Language',
         'resource'  => 'Resource',
         'profile'   => 'Profile',
+        'privacy'   => 'Privacy Policy',
+        'map'       => 'Site map',
+        'progress'  => 'Progress board',
+        'stats'     => 'Statistics',
+        'legal'     => 'Legal notices',
     ],
     'content' => [
         'content'       => 'Content',

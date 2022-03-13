@@ -43,4 +43,7 @@ return [
     "profile"                   => "profil",
     "profile.password"          => "profil/mot-de-passe",
     "profile.delete"            => "profil/suppression",
+    "privacy"                   => "politique-de-confidentialite",
+    "map"                       => "plan-du-site",
+    "legal"                     => "mentions-legales",
 ];

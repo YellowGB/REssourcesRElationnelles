@@ -97,6 +97,7 @@ return [
         'save'      => 'Sauvegarder',
         'ok'        => 'Ok',
         'confirm'   => 'Confirmer',
+        'forgot'    => 'Mot de passe oublié',
     ],
     'section' => [
         'relation'  => 'Type de relation',
@@ -113,6 +114,11 @@ return [
         'lang'      => 'Langue',
         'resource'  => 'Ressource',
         'profile'   => 'Mon profil',
+        'privacy'   => 'Politique de confidentialité',
+        'map'       => 'Plan du site',
+        'progress'  => 'Tableau de progression',
+        'stats'     => 'Statistiques',
+        'legal'     => 'Mentions légales',
     ],
     'content' => [
         'content'       => 'Contenu',

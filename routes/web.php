@@ -62,7 +62,19 @@ Route::group(
     Route::post(LaravelLocalization::transRoute('routes.profile.delete'), [UserController::class, 'destroy'])
                     ->middleware(['auth', 'verified'])
                     ->name('profile.delete');
-    
+
+    //------------------ RGPD ------------------\\
+    Route::get(LaravelLocalization::transRoute('routes.privacy'), function() {
+        return view('privacy-policy');
+    })->name('privacy');
+
+    Route::get(LaravelLocalization::transRoute('routes.legal'), function() {
+        return view('legal');
+    })->name('legal');
+
+    Route::get(LaravelLocalization::transRoute('routes.map'), function() {
+        return view('map');
+    })->name('map');
 
     //------------ Citoyen ---------------\\
     Route::get(LaravelLocalization::transRoute('routes.citoyens'), [UserController::class, 'citoyen'])
