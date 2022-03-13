@@ -1,4 +1,4 @@
-<ul class="flex flex-col md:flex-row justify-around items-center text-sm">
+<ul class="flex flex-col md:flex-row justify-around items-center text-sm dark:text-gris-normal">
     <li class="mb-2 md:mb-0">
         <x-logos.small-ministere />
     </li>
