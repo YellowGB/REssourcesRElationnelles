@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 
 /**
  * @since 0.7.1-alpha ajout de toutes les routes de base
@@ -176,5 +178,42 @@ class UserController extends Controller
         $user->delete(); // ne pas tenir compte de l'erreur vscode, il n'arrive pas à faire correctement le lien en raison de trop nombreux rebons, mais l'update fonctionne bien
 
         // return Redirect::to(route('dashboard'))->with('success', 'Utilisateur supprimé avec succès.');
+    }
+
+    public function create_admin() {
+
+        if (! Gate::allows('update-categories')) {
+            abort(403);
+        }
+
+        return view('creation-admin');
+    }
+
+    public function store_admin(Request $request)
+    {
+        $request->validate([
+            'name'          => ['required', 'string', 'max:255'],
+            'firstname'     => ['required', 'string', 'max:255'],
+            'email'         => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'      => ['required', 'confirmed', Rules\Password::defaults()],
+            'postcode'      => ['required', 'string', 'size:5'],
+        ]);
+
+        $user = User::create([
+            'name'              => $request->name,
+            'firstname'         => $request->firstname,
+            'email'             => $request->email,
+            'password'          => Hash::make($request->password),
+            'postcode'          => $request->postcode,
+            'role_id'           => $request->role,
+            'last_connexion'    => now(),
+        ]);
+
+        $user->email_verified_at = now();
+        $user->update();
+
+        // event(new Registered($user));
+
+        return redirect(RouteServiceProvider::HOME);
     }
 }

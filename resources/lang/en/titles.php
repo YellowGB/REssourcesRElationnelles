@@ -181,6 +181,7 @@ return [
         'bio'           => 'A few words about yourself',
         'postcode'      => 'Postcode',
         'avatar'        => 'Select an avatar',
+        'role'          => 'Administrator type',
     ],
     'auth' => [
         'resend'    => "Resend Verification Email ",

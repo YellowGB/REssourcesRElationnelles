@@ -777,6 +777,9 @@ select {
 .ml-3 {
   margin-left: 0.75rem;
 }
+.ml-43 {
+  margin-left: 10.75rem;
+}
 .-ml-px {
   margin-left: -1px;
 }
@@ -1371,7 +1374,7 @@ select {
 .pb-1 {
   padding-bottom: 0.25rem;
 }
-.text-left {
+.-lefttext {
   text-align: left;
 }
 .text-center {
