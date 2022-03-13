@@ -12,7 +12,7 @@
     <x-dynamic-component :component="'excerpt-' . $reverse_types[$ressource->ressourceable_type]" :ressource="$ressource" />
 
     <div class="flex items-center justify-between mt-2">
-        <span class="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500">{{ __('titles.relation.' . $ressource->relation) }}</span>
-        <span class="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500">{{ __('titles.category.' . $ressource->categorie->name) }}</span>
+        <x-ressources.card-type :title="__('titles.relation.' . $ressource->relation)" />
+        <x-ressources.card-type :title="__('titles.category.' . $ressource->categorie->name)" />
     </div>
 </div>

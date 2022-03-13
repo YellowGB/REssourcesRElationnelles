@@ -77,7 +77,16 @@
         @apply hover:bg-bleu-normal;
     }
 
+    .resource-interactions,
+    .resource-interactions-side {
+        @apply cursor-pointer  hover:rotate-6 hover:text-primaire dark:hover:text-primaire;
+    }
+
     .resource-interactions {
-        @apply cursor-pointer dark:text-gris-normal hover:rotate-6 hover:text-primaire dark:hover:text-primaire;
+        @apply dark:text-gris-normal;
+    }
+
+    .resource-interactions-side {
+        @apply dark:text-gris-dark;
     }
 }

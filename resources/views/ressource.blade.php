@@ -1,6 +1,12 @@
 <x-app-layout>
     <x-page-header heading="{{ $ressource->title }}" />
     <x-triptyque>
+        <x-slot name="left">
+            <x-sidebar-section>
+                <x-ressources.detail :ressource="$ressource" />
+            </x-sidebar-section>
+        </x-slot>
+        
         <div class="my-4 mx-4 md:mx-0">
 
             <x-ressources.moderation :ressource="$ressource" />
