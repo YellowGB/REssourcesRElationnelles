@@ -663,12 +663,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(46 109 170 / var(--tw-text-opacity));
 }
-
     .dark .resource-interactions {
   --tw-text-opacity: 1;
   color: rgb(196 196 196 / var(--tw-text-opacity));
 }
-
     .dark .resource-interactions-side {
   --tw-text-opacity: 1;
   color: rgb(46 46 57 / var(--tw-text-opacity));

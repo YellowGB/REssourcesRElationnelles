@@ -82,11 +82,9 @@
     .resource-interactions-side {
         @apply cursor-pointer  hover:rotate-6 hover:text-primaire dark:hover:text-primaire;
     }
-
     .resource-interactions {
         @apply dark:text-gris-normal;
     }
-
     .resource-interactions-side {
         @apply dark:text-gris-dark;
     }
