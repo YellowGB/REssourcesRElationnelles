@@ -19,7 +19,8 @@ class RessourceFactory extends Factory
     {
         return [
             'title'                 => $this->faker->sentence(),
-            'ressourceable_type'    => $this->faker->unique()->randomElement([
+            // 'ressourceable_type'    => $this->faker->unique()->randomElement([
+            'ressourceable_type'    => $this->faker->randomElement([
                 RessourceType::Activite->value,
                 RessourceType::Article->value,
                 RessourceType::Atelier->value,

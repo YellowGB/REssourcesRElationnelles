@@ -19,9 +19,9 @@ use App\Models\Commentaire;
 use App\Models\Progression;
 use App\Enums\RessourceType;
 use App\Enums\LocGenderNumber;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Détermine le type d'une ressource
@@ -148,7 +148,10 @@ function is_superadmin() {
 /**
  * Remplit la base de données avec faker pour avoir une base complète rapidement pour effectuer des tests
  * 
+ * @deprecated
+ * 
  * @since 0.6.6-alpha
+ * @since 1.1.4-alpha deprecated
  */
 function dbfill_faker() {
 
