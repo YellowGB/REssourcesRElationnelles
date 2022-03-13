@@ -86,18 +86,22 @@ class DatabaseSeeder extends Seeder
         $user->markEmailAsVerified();
         
         User::factory()->count(10)->create();
-        for($i=1;$i<=13;$i++) Categorie::factory()->create();
-        // for($i=1;$i<=9;$i++) Ressource::factory()->create();
-        Ressource::factory()->count(50)->create();
-        Activite::factory()->count(1)->create();
-        Article::factory()->count(1)->create();
-        Atelier::factory()->count(1)->create();
-        Course::factory()->count(1)->create();
-        Defi::factory()->count(1)->create();
-        Jeu::factory()->count(1)->create();
-        Lecture::factory()->count(1)->create();
-        Photo::factory()->count(1)->create();
-        Video::factory()->count(1)->create();
+        for ($i = 1; $i <= 13; $i++) Categorie::factory()->create();
+
+        $this->call([
+            RessourceSeeder::class,
+        ]);
+
+        Activite::factory()->count(10)->create();
+        Article::factory()->count(10)->create();
+        Atelier::factory()->count(10)->create();
+        Course::factory()->count(10)->create();
+        Defi::factory()->count(10)->create();
+        Jeu::factory()->count(10)->create();
+        Lecture::factory()->count(10)->create();
+        Photo::factory()->count(10)->create();
+        Video::factory()->count(10)->create();
+
         Progression::factory()->count(40)->create();
         Groupe::factory()->count(7)->create();
         Commentaire::factory()->count(50)->create();
