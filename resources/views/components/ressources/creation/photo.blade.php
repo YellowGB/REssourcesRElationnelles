@@ -1,6 +1,6 @@
 <div
     id="photo"
-    class="flex-col w-128 lg:w-screen lg:max-w-screen-sm ressource-content"
+    class="flex-col w-11/12 lg:w-screen lg:max-w-screen-sm ressource-content"
     style="display: none;"
 >
     <input type="file" name="photo_file" accept="image/*" value="{{ $content->file_uri ?? '' }}">

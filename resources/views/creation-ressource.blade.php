@@ -9,10 +9,18 @@
                 @endforeach
             @endif
         </x-slot>
-        
-        <form action="{{ isset($ressource) ? route('resources.update', ['id' => $ressource->id, 'ressourceable_id' => $ressource->ressourceable_id]) : route('resources.store') }}" method="post" enctype="multipart/form-data">
+
+        <form
+            x-data="{ edition: {{ isset($ressource) ? 'true' : 'false' }} }"
+            action="{{ isset($ressource) ? route('resources.update', ['id' => $ressource->id, 'ressourceable_id' => $ressource->ressourceable_id]) : route('resources.store') }}"
+            method="post"
+            enctype="multipart/form-data"
+        >
             @csrf
-            <div class="hidden flex-col lg:w-2/3 place-items-center" id="ressource-container">
+            <div
+                class="hidden flex-col lg:w-2/3 place-items-center" id="ressource-container"
+                :class="{ 'hidden': !edition, 'flex': edition }"
+            >
                 {{-- Partie commune --}}
                 <x-ressource-creation-common :ressource="$ressource ?? null" />
     
@@ -27,8 +35,12 @@
     
         @edit($ressource)
             @can('delete-ressources', $ressource)
-                <form action="{{ route('resources.destroy', $ressource->id) }}" method="get">
-                    <button type="submit">{{ __('titles.btn.delete') }}</button>
+                <form x-ref="deleteForm" action="{{ route('resources.destroy', $ressource->id) }}" method="get">
+                    <x-icons.trash
+                        :title="__('titles.btn.delete')"
+                        @click="$refs.deleteForm.submit()"
+                        class="resource-interactions-base dark:text-gris-normal hover:text-red-700 dark:hover:text-red-700 h-8 w-8 m-4"
+                    />
                 </form>
             @endcan
         @endedit

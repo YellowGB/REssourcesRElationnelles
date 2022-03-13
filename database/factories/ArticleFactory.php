@@ -14,7 +14,7 @@ class ArticleFactory extends Factory
     public function definition()
     {
         return [
-            'source_url' => $this->faker->url(),
+            'source_url' => 'https://www.cairn.info/revue-sciences-du-design-2021-2-page-55.htm',
         ];
     }
 }

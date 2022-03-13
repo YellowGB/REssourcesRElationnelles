@@ -1,6 +1,6 @@
 <div
     id="course"
-    class="flex-col w-128 lg:w-screen lg:max-w-screen-sm ressource-content"
+    class="flex-col w-11/12 lg:w-screen lg:max-w-screen-sm ressource-content"
     style="display: none;"
 >
     <label for="course_file">{{ __('Select the file you wish to upload') }}</label>

@@ -4,7 +4,7 @@
         name="title"
         placeholder="{{ __('titles.title') }}"
         value="{{ isset($ressource) ? $ressource->title : '' }}"
-        class="w-128 lg:w-screen lg:max-w-screen-sm h-12"
+        class="w-11/12 lg:w-screen lg:max-w-screen-sm h-12"
         required
     />
     <div>

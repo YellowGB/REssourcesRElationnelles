@@ -78,6 +78,7 @@
     }
 
     .resource-interactions,
+    .resource-interactions-base,
     .resource-interactions-side {
         @apply cursor-pointer  hover:rotate-6 hover:text-primaire dark:hover:text-primaire;
     }
