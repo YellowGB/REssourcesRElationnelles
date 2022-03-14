@@ -7,5 +7,5 @@
 
     <x-sep-horizontal />
 
-    <li><div class="flex"><x-ressources.actions class="resource-interactions-side" /></div></li>
+    <li><div class="flex justify-between"><x-ressources.actions class="resource-interactions-side" /></div></li>
 </ul>

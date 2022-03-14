@@ -16,7 +16,7 @@ class JeuFactory extends Factory
         return [
             'description'   => $this->faker->paragraphs(3, true),
             'starting_date' => now(),
-            'link'          => $this->faker->url(),
+            'link'          => 'https://www.chess.com/fr/play/computer',
         ];
     }
 }
