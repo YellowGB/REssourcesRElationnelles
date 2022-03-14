@@ -1497,6 +1497,9 @@ select {
 .text-right {
   text-align: right;
 }
+.text-justify {
+  text-align: justify;
+}
 .align-bottom {
   vertical-align: bottom;
 }
