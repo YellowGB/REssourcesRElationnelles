@@ -1,10 +1,13 @@
 <div>
-    {{-- <p>{{ __('titles.link.uri') }} : {{ $content->file_uri }}</p> --}}
-    <img src="{{ asset('storage/' . $content->file_uri) }}" alt="{{ __('titles.type.photo') }}">
-    @if (! is_null($content->photo_author))
-        <p>{{ trans_choice('titles.author', 1) }} : {{ $content->photo_author }}</p>
-    @endif
+    <img
+        src="{{ asset($content->file_uri) }}"
+        alt="{{ __('titles.type.photo') }}"
+        class="rounded-lg"
+    >
     @if (! is_null($content->legend))
-        <p>{{ __('titles.content.legend') }} : {{ $content->legend }}</p>
+        <p class="flex justify-center"><i>{{ $content->legend }}</i></p>
+    @endif
+    @if (! is_null($content->photo_author))
+        <p class="m-4">{{ trans_choice('titles.author', 1) }} : {{ $content->photo_author }}</p>
     @endif
 </div>
