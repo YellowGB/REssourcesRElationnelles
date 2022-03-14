@@ -56,10 +56,5 @@
             </script>
         @endcreate
 
-        <x-slot name="right">
-            <x-sidebar-section>
-                <x-profile-menu />
-            </x-sidebar-section>
-        </x-slot>
     </x-triptyque>
 </x-app-layout>

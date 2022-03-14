@@ -4,6 +4,7 @@
         'route',
         'description'   => '',
         'aside'         => '',
+        'method'        => 'post',
     ])
 
     <x-title-section>
@@ -13,7 +14,7 @@
     </x-title-section>
 
     <div class="mt-5 md:mt-0 md:col-span-2">
-        <form action="{{ $route }}" method="post">
+        <form action="{{ $route }}" method="{{ $method }}">
             @csrf
             <div class="px-4 py-5 bg-white dark:bg-gray-700 sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
                 <div class="grid grid-cols-6 gap-6">

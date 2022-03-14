@@ -9,7 +9,7 @@
         placeholder="{{ __('titles.content.description') }}"
     >{{ $content->description ?? '' }}</textarea>
     
-    <div class="flex flex-row gap-1 self-center mt-1">
+    <div class="flex flex-col md:flex-row gap-2 self-center mt-1">
         <div class="flex flex-col place-items-center mb-1">
             <label for="activite_starting_date" class="dark:text-gris-light">{{ __('titles.content.starting') }}</label>
             <input type="datetime-local" id="activite_starting_date" name="activite_starting_date" value="{{ isset($content) ? substr(str_replace(' ', 'T', $content->starting_date), 0, strlen($content->starting_date) - 3) : '' }}"></input>

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-page-header heading="{{ __('titles.section.category') }}" />
+    <x-page-header heading="{{ trans_choice('titles.section.category', 2) }}" />
     <x-triptyque>
         <div class="grid grid-cols-1 sm:grid-cols-2 justify-between sm:justify-center md:grid-cols-3 items-center text-center">
 

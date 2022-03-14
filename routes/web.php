@@ -85,22 +85,22 @@ Route::group(
     })->name('map');
 
     //------------ Citoyen ---------------\\
-    Route::get(LaravelLocalization::transRoute('routes.citoyens'), [UserController::class, 'citoyen'])
-                    ->name('citoyens')
+    Route::get(LaravelLocalization::transRoute('routes.citizens'), [UserController::class, 'citoyen'])
+                    ->name('citizens')
                     ->middleware('admin');
 
-    Route::post(LaravelLocalization::transRoute('routes.citoyens.suspend'), [UserController::class, 'suspend'])
-                    ->name('citoyens.suspend')
+    Route::post(LaravelLocalization::transRoute('routes.citizens.suspend'), [UserController::class, 'suspend'])
+                    ->name('citizens.suspend')
                     ->middleware('admin');
 
     //------------ Categories ------------\\
     Route::get(LaravelLocalization::transRoute('routes.categories.index'), [CategorieController::class, 'index'])
                     ->name('categories.index')
-                    ->middleware('verified');
+                    ->middleware('admin');
                
     Route::post(LaravelLocalization::transRoute('routes.categories.store'), [CategorieController::class, 'store'])
                     ->name('categories.store')
-                    ->middleware('verified');
+                    ->middleware('admin');
 
     //------------ Commentaires ------------\\
     Route::get(LaravelLocalization::transRoute('routes.comment.report'), [CommentaireController::class, 'report'])

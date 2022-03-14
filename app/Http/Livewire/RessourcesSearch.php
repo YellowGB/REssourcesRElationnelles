@@ -13,7 +13,7 @@ class RessourcesSearch extends Component
 
     public function search()
     {
-        // On envoit les termes recherchés au loader principal
+        // On envoie les termes recherchés au loader principal
         $this->emitTo('ressources-loader', 'searchRessources', $this->search_terms);
     }
 

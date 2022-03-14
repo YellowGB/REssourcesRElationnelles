@@ -104,17 +104,19 @@ return [
         'bookmark'  => 'Bookmark',
         'favorite'  => 'Add to favorites',
         'exploit'   => 'Mark as used',
+        'access'    => 'Access',
     ],
     'section' => [
         'relation'  => 'Relationship type',
-        'category'  => 'Category',
-        'role'      => 'Role',
+        'category'  => 'Category|Categories',
+        'role'      => 'Role|Roles',
         'type'      => 'Resource type',
         'catalogue' => 'Catalogue',
         'dashboard' => 'Dashboard',
         'login'     => 'Connection',
         'register'  => 'Registration',
         'users'     => 'Users',
+        'citizens'  => 'Citizens',
         'comments'  => 'Comments',
         'theme'     => 'Theme',
         'lang'      => 'Language',
@@ -194,6 +196,7 @@ return [
         'resend'    => "Resend Verification Email ",
         'login'     => 'Log in',
         'logout'    => 'Log out',
+        'state'     => "You're connected as",
     ],
     'comment' => [
         'reports'   => 'Report|Reports',
@@ -215,7 +218,22 @@ return [
         'validate'      => 'Validate the resource',
         'dismiss'       => 'Reject the resource',
         'suspend'       => 'Suspend the resource',
-        'commentaire'   => 'Moderate the comment',
+        'comment'       => 'Moderate the comment|Moderate comments',
+        'desc'          => [
+            'ressource'     => "Access the pending resources' list, update them, validate their publication or deny it.",
+            'comment'       => 'Access the list of comments reported by citizens above a threshold, see them in context; delete or ignore them.',
+        ],
+    ],
+    'administration' => [
+        'citizens'  => 'Manage citizen accounts',
+        'category'  => 'Manage resources categories',
+        'roles'     => 'Manage user roles',
+        'desc'      => [
+            'citizens'  => 'Access the list of citizens accounts, suspend or unsuspend them.',
+            'category'  => 'List resources categories and add new ones.',
+            'admin'     => 'Create moderator and administrator accounts.',
+            'roles'     => 'List existing roles, update their rights and create new roles.',
+        ],
     ],
     'profile' => [
         'title' => [

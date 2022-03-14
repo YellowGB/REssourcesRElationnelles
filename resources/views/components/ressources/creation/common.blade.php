@@ -4,13 +4,13 @@
         name="title"
         placeholder="{{ __('titles.title') }}"
         value="{{ isset($ressource) ? $ressource->title : '' }}"
-        class="w-11/12 lg:w-screen lg:max-w-screen-sm h-12"
+        class="w-screen max-w-xs lg:max-w-screen-sm h-12"
         required
     />
-    <div>
+    <div class="flex flex-col sm:flex-row gap-2 mt-2 justify-center items-center">
         <select
             name="relation"
-            class="lg:w-72 h-9 text-sm"
+            class="w-full lg:w-72 h-9 text-sm"
         >
             <option {{ isset($ressource) ? '' : 'selected' }} disabled>{{ __('titles.select.relation') }}</option>
             @foreach ($relations as $relation)
@@ -23,7 +23,7 @@
         </select>
         <select
             name="categorie_id"
-            class="lg:w-72 h-9 text-sm"
+            class="w-full lg:w-72 h-9 text-sm"
         >
             <option {{ isset($ressource) ? '' : 'selected' }} disabled>{{ __('titles.select.category') }}</option>
             @foreach ($categories as $categorie)

@@ -150,7 +150,7 @@ class UserController extends Controller
         $citoyen->suspended_at = is_null($citoyen->suspended_at) ? now() : null;
         $citoyen->update();
 
-        return Redirect::to(route('citoyens'))->with('success', 'Statut citoyen modifié avec succès.');
+        return Redirect::to(route('citizens'))->with('success', 'Statut citoyen modifié avec succès.');
     }
 
     /**

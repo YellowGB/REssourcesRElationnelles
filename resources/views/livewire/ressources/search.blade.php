@@ -1,12 +1,12 @@
 <div class="bg-blanc dark:bg-noir shadow">
     <div
-        class="flex justify-between max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8"
+        class="flex justify-around items-center max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8"
         x-data="{ atTop: true }" 
-        :class="{ 'justify-between' : atTop, 'justify-center' : !atTop }"
+        :class="{ 'justify-around' : atTop, 'justify-center' : !atTop }"
         @scroll.window="atTop = (window.pageYOffset > 80) ? false : true"
     >
         <h2
-            class="font-semibold text-xl text-gray-800 dark:text-blanc leading-tight"
+            class="font-semibold text-xl md:text-2xl text-gray-800 dark:text-blanc leading-tight"
             id="header"
             x-data="{ atTop: true }" 
             :class="{ 'hidden' : !atTop }"
@@ -21,11 +21,11 @@
             @scroll.window="atTop = (window.pageYOffset > 80) ? false : true"
         >
 
-            <x-icons.search class="absolute text-gray-400 top-5 left-4" />
+            <x-icons.search class="absolute text-gray-400 top-2 left-4" />
             
             <input
                 type="text"
-                class="h-14 w-full px-12 rounded-full focus:outline-none"
+                class="h-10 w-full px-12 rounded-full focus:outline-none"
                 onclick="window.scrollTo({ top:0, left:0, behavior: 'smooth'})"
                 wire:model="search_terms"
                 wire:keydown.a="search"

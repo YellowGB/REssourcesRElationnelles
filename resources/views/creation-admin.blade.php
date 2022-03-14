@@ -1,13 +1,10 @@
 <x-app-layout>
-
     <x-page-header heading=" {{ __('titles.create.admin') }}" />
-
-    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <x-triptyque>
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
         <form class="mt-4 flex flex-col sm:justify-center items-center" method="POST" action="{{ route('admin.store') }}">
             @csrf
-
-                
 
             <!-- Admin type -->
             <div class="mt-4 mr-21">
@@ -72,4 +69,5 @@
             </div>
         </form>
 
+    </x-triptyque>
 </x-app-layout>

@@ -104,17 +104,19 @@ return [
         'bookmark'  => 'Mettre de côté',
         'favorite'  => 'Ajouter aux favorites',
         'exploit'   => 'Indiquer comme exploitée',
+        'access'    => 'Accéder',
     ],
     'section' => [
         'relation'  => 'Type de relation',
-        'category'  => 'Catégorie',
-        'role'      => 'Rôle',
+        'category'  => 'Catégorie|Catégories',
+        'role'      => 'Rôle|Rôles',
         'type'      => 'Type de ressource',
         'catalogue' => 'Catalogue',
         'dashboard' => 'Tableau de bord',
         'login'     => 'Connexion',
         'register'  => 'Inscription',
-        'users'     => 'Les utilisateurs',
+        'users'     => 'Utilisateurs',
+        'citizens'  => 'Citoyens',
         'comments'  => 'Commentaires',
         'theme'     => 'Thème',
         'lang'      => 'Langue',
@@ -151,7 +153,7 @@ return [
         'category'  => 'Créer une nouvelle catégorie',
         'role'      => 'Créer un nouveau rôle',
         'user'      => 'Créer un nouveau compte',
-        'admin'     => 'Créer un compte administrateur',
+        'admin'     => "Créer un compte d'administration",
         'link'      => 'Renseignez ici le lien vers la source',
         //--------------------------------------------------------
         RessourceType::Activite->value  => 'Créer une activité',
@@ -194,6 +196,7 @@ return [
         'resend'    => "Renvoyer l'email de vérification", // 'Resend Verification Email'
         'login'     => 'Se connecter',
         'logout'    => 'Se déconnecter',
+        'state'     => 'Vous êtes connecté·e en tant que',
     ],
     'comment' => [
         'reports'   => 'Signalement|Signalements',
@@ -215,7 +218,22 @@ return [
         'validate'      => 'Valider la ressource',
         'dismiss'       => 'Rejeter la ressource',
         'suspend'       => 'Suspendre la ressource',
-        'commentaire'   => 'Modérer le commentaire',
+        'comment'       => 'Modérer le commentaire|Modérer les commentaires',
+        'desc'          => [
+            'ressource'     => 'Consulter la liste des ressources en attente de modération, les modifier, en valider la publication ou la rejeter.',
+            'comment'       => 'Consulter la liste des commentaires signalés par les citoyens ayant dépassé un seuil de signalements, les voir dans leur contexte, les supprimer ou les ignorer.',
+        ],
+    ],
+    'administration' => [
+        'citizens'  => 'Administrer les comptes citoyens',
+        'category'  => 'Administrer les catégories de ressources',
+        'roles'     => 'Gérer les rôles utilisateur',
+        'desc'      => [
+            'citizens'  => 'Consulter la liste des comptes citoyens, les suspendre ou retirer leurs suspensions.',
+            'category'  => 'Lister les catégories de ressources et en ajouter de nouvelles.',
+            'admin'     => 'Créer des comptes modérateurs et administrateurs.',
+            'roles'     => 'Lister les rôles existants, modifier leurs droits et créer de nouveaux rôles.',
+        ],
     ],
     'profile' => [
         'avatar' => 'Avatar',
