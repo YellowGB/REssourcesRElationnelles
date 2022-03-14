@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-page-header heading="{{ __('titles.moderation.pendings') }}" />
+    <x-page-header heading="{{ trans_choice('titles.moderation.pending', 2) }}" />
     <x-triptyque>
         @foreach ($ressources as $ressource)
             @if ($ressource->status == App\Enums\RessourceStatus::Pending->value)

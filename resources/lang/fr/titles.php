@@ -127,6 +127,11 @@ return [
         'progress'  => 'Tableau de progression',
         'stats'     => 'Statistiques',
         'legal'     => 'Mentions légales',
+        'mypublish' => 'Mes ressources publiées',
+        'mypending' => 'Mes ressources en attente de validation',
+        'myfav'     => 'Mes ressources favorites',
+        'myexploit' => 'Mes ressources exploitées',
+        'mybookmark'=> 'Mes ressources mises de côté',
     ],
     'content' => [
         'content'       => 'Contenu',
@@ -214,7 +219,7 @@ return [
     ],
     'moderation' => [
         'ressource'     => 'Modérer les ressources',
-        'pendings'      => 'Ressources en attente de modération',
+        'pending'       => 'Ressource en attente de modération|Ressources en attente de modération',
         'validate'      => 'Valider la ressource',
         'dismiss'       => 'Rejeter la ressource',
         'suspend'       => 'Suspendre la ressource',

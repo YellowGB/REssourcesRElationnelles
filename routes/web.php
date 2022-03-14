@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RessourceController;
 use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\CategorieController;
+use App\Models\Ressource;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -32,7 +33,8 @@ Route::group(
     })->name('home');
     
     Route::get(LaravelLocalization::transRoute('routes.dashboard'), function () {
-        return view('dashboard');
+        $ressources = Ressource::where('user_id', auth()->user()->id)->get();
+        return view('dashboard', compact('ressources'));
     })->middleware(['auth', 'verified'])->name('dashboard');
     
     //------------ Utilisateurs ------------\\

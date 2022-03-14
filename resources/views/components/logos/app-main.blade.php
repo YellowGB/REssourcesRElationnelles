@@ -1,7 +1,7 @@
 <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 159.35 88"
-    {{ $attributes->merge(['class' => 'w-40 h-40 fill-current text-gray-500 dark:text-gris-normal']) }}
+    {{ $attributes->merge(['class' => 'fill-current text-gray-500 dark:text-gris-normal']) }}
 >
     <defs>
         <style>

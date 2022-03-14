@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-logos.app-main />
+                <x-logos.app-main class="w-60 h-60" />
             </a>
         </x-slot>
 
@@ -30,7 +30,7 @@
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
 
-                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <button type="submit" class="ml-2 bg-red-700 hover:bg-red-600 text-sm text-gray-100">
                     {{ __('titles.auth.logout') }}
                 </button>
             </form>

@@ -127,6 +127,11 @@ return [
         'progress'  => 'Progress board',
         'stats'     => 'Statistics',
         'legal'     => 'Legal notices',
+        'mypublish' => 'My published resources',
+        'mypending' => 'My resources pending validation',
+        'myfav'     => 'My favorite resources',
+        'myexploit' => 'My used resources',
+        'mybookmark'=> 'My bookmarked resources',
     ],
     'content' => [
         'content'       => 'Content',
@@ -214,7 +219,7 @@ return [
     ],
     'moderation' => [
         'ressource'     => 'Moderate resources',
-        'pendings'      => 'Resources pending moderation',
+        'pending'      => 'Resources pending moderation',
         'validate'      => 'Validate the resource',
         'dismiss'       => 'Reject the resource',
         'suspend'       => 'Suspend the resource',

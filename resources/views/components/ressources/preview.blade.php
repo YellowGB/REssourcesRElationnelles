@@ -1,6 +1,6 @@
 <div 
     onclick="location.href='{{ route('resources.show', ['id' => $ressource->id]) }}'"
-    class="max-w-md lg:max-w-4xl px-10 py-6 mx-auto my-4 bg-violet-lightest dark:bg-violet-light rounded-lg shadow-md cursor-pointer"
+    class="max-w-md lg:max-w-4xl px-10 py-6 mx-2 sm:mx-auto my-4 bg-violet-lightest dark:bg-violet-light rounded-lg shadow-md cursor-pointer"
 >
 
     <x-ressource-header :ressource="$ressource" />
