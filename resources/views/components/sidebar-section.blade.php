@@ -9,7 +9,7 @@
         lg:flex
         flex-col
         mt-2
-        ml-4
+        mx-4
         xl:ml-8
         px-4
         py-2

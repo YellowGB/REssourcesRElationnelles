@@ -11,7 +11,7 @@
 
     <x-dynamic-component :component="'excerpt-' . $reverse_types[$ressource->ressourceable_type]" :ressource="$ressource" />
 
-    <div class="flex items-center justify-between mt-2">
+    <div class="flex items-center justify-between gap-8 mt-2">
         <x-ressources.card-type :title="__('titles.relation.' . $ressource->relation)" />
         <x-ressources.card-type :title="__('titles.category.' . $ressource->categorie->name)" />
     </div>

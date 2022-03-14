@@ -3,7 +3,7 @@
         <span class="flex items-center">
             {{-- class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block" --}}
             <x-user-portrait />
-            <h2>{{ get_user_display_name($ressource->user) }}</h2>
+            <h2 class="text-base sm:text-xl">{{ get_user_display_name($ressource->user) }}</h2>
         </span>
         {{-- <span class="font-light text-gray-600">{{ format_horodatage($ressource) }}</span> --}}
     </div>
