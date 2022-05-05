@@ -3,7 +3,7 @@
     <x-triptyque>
         <x-slot name="left">
             <x-sidebar-section>
-                <x-ressources.detail :ressource="$ressource" />
+                <x-ressources.detail :ressource="$ressource" :progress="$progress" />
             </x-sidebar-section>
         </x-slot>
         
@@ -19,7 +19,7 @@
 
             <x-content-display :ressource="$ressource" :content="$content" />
 
-            <x-ressources.footer :ressource="$ressource" />
+            <x-ressources.footer :ressource="$ressource" :progress="$progress" />
 
 
             <x-sep-horizontal />

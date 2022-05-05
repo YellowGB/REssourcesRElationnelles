@@ -102,8 +102,11 @@ return [
         'forgot'    => 'Mot de passe oublié',
         'share'     => 'Partager',
         'bookmark'  => 'Mettre de côté',
+        'bookmarked'=> 'De côté',
         'favorite'  => 'Ajouter aux favorites',
+        'favorited' => 'Favorite',
         'exploit'   => 'Indiquer comme exploitée',
+        'exploited' => 'Exploitée',
         'access'    => 'Accéder',
     ],
     'section' => [

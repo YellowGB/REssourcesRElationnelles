@@ -7,5 +7,9 @@
 
     <x-sep-horizontal />
 
-    <li><div class="flex justify-between"><x-ressources.actions class="resource-interactions-side" /></div></li>
+    <li>
+        <div class="flex justify-between">
+            <x-ressources.actions :favorite="$progress['is_favorite']" :used="$progress['is_used']" :saved="$progress['is_saved']" class="resource-interactions-side" />
+        </div>
+    </li>
 </ul>
