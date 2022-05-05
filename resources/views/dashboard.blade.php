@@ -12,10 +12,11 @@
                     </div>
                 @else
                     {{-- Dashboard citoyen --}}
+                    {{-- Publiées --}}
                     <h2 class="ml-4">@lang('titles.section.mypublish')</h2>
                     @forelse ($ressources as $ressource)
                         @if ($ressource->status == App\Enums\RessourceStatus::Published->value)
-                            <x-ressource-preview :ressource="$ressource" /> 
+                            <x-ressource-preview :ressource="$ressource" />
                         @endif
                     @empty
                         <p class="ml-12">@lang('None.')</p>
@@ -25,10 +26,11 @@
                         <x-sep-horizontal class="w-40" />
                     </div>
 
+                    {{-- En attente de modération --}}
                     <h2 class="ml-4">@lang('titles.section.mypending')</h2>
                     @forelse ($ressources as $ressource)
                         @if ($ressource->status == App\Enums\RessourceStatus::Pending->value)
-                            <x-ressource-preview :ressource="$ressource" /> 
+                            <x-ressource-preview :ressource="$ressource" />
                         @endif
                     @empty
                         <p class="ml-12">@lang('None.')</p>
@@ -38,22 +40,22 @@
                         <x-sep-horizontal class="w-40" />
                     </div>
 
-                    <h2 class="ml-4">@lang('titles.section.myfav')</h2>
-                    <p class="ml-12">@lang('None.')</p>
+                    {{-- Favorites --}}
+                    <x-ressources.progress :section="'myfav'" :progressions="$progressions" />
 
                     <div class="flex justify-center">
                         <x-sep-horizontal class="w-40" />
                     </div>
 
-                    <h2 class="ml-4">@lang('titles.section.myexploit')</h2>
-                    <p class="ml-12">@lang('None.')</p>
+                    {{-- Exploitées --}}
+                    <x-ressources.progress :section="'myexploit'" :progressions="$progressions" />
 
                     <div class="flex justify-center">
                         <x-sep-horizontal class="w-40" />
                     </div>
 
-                    <h2 class="ml-4">@lang('titles.section.mybookmark')</h2>
-                    <p class="ml-12">@lang('None.')</p>
+                    {{-- Mises de côté --}}
+                    <x-ressources.progress :section="'mybookmark'" :progressions="$progressions" />
                 @endmodo
     
                 @superadmin

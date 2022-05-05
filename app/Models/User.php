@@ -60,6 +60,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(UserPreference::class);
     }
 
+    public function progressions() {
+        return $this->hasMany(Progression::class);
+    }
+
     /**
      * Récupère une ou toutes les permissions d'un utilisateur
      * 

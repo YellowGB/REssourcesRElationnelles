@@ -33,8 +33,9 @@ Route::group(
     })->name('home');
     
     Route::get(LaravelLocalization::transRoute('routes.dashboard'), function () {
-        $ressources = Ressource::where('user_id', auth()->user()->id)->get();
-        return view('dashboard', compact('ressources'));
+        $ressources     = Ressource::where('user_id', auth()->user()->id)->get();
+        $progressions   = auth()->user()->progressions;
+        return view('dashboard', compact('ressources', 'progressions'));
     })->middleware(['auth', 'verified'])->name('dashboard');
     
     //------------ Utilisateurs ------------\\
