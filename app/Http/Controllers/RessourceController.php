@@ -452,4 +452,40 @@ class RessourceController extends Controller
         return Redirect::to('catalogue')->with('success', 'Ressource suspendue avec succès.');
     }
 
+    /**
+     * @since 1.4.0-alpha
+     */
+    public function favorite($id) {
+
+        $progression = Progression::where(['user_id' => auth()->user()->id, 'ressource_id' => $id])->first();
+
+        $progression->is_favorite = ! $progression->is_favorite;
+
+        $progression->update();
+
+        return Redirect::to('ressources/' . $id)->with('success', 'Progression modifiée avec succès.');
+    }
+
+    public function use($id) {
+
+        $progression = Progression::where(['user_id' => auth()->user()->id, 'ressource_id' => $id])->first();
+
+        $progression->is_used = ! $progression->is_used;
+
+        $progression->update();
+
+        return Redirect::to('ressources/' . $id)->with('success', 'Progression modifiée avec succès.');
+    }
+
+    public function save($id) {
+
+        $progression = Progression::where(['user_id' => auth()->user()->id, 'ressource_id' => $id])->first();
+
+        $progression->is_saved = ! $progression->is_saved;
+
+        $progression->update();
+
+        return Redirect::to('ressources/' . $id)->with('success', 'Progression modifiée avec succès.');
+    }
+
 }

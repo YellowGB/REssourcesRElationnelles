@@ -174,6 +174,18 @@ Route::group(
     
     Route::get(LaravelLocalization::transRoute('routes.resources.show'), [RessourceController::class, 'show'])
                     ->name('resources.show');
+
+    Route::get(LaravelLocalization::transRoute('routes.resources.favorite'), [RessourceController::class, 'favorite'])
+                    ->name('resources.favorite')
+                    ->middleware(['auth', 'verified']);
+
+    Route::get(LaravelLocalization::transRoute('routes.resources.save'), [RessourceController::class, 'save'])
+                    ->name('resources.save')
+                    ->middleware(['auth', 'verified']);
+
+    Route::get(LaravelLocalization::transRoute('routes.resources.use'), [RessourceController::class, 'use'])
+                    ->name('resources.use')
+                    ->middleware(['auth', 'verified']);
 });
 
 require __DIR__.'/auth.php';
