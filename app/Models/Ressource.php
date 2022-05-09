@@ -69,4 +69,9 @@ class Ressource extends Model
 
         return $query;
     }
+
+    public function incrementVisistsCount() {
+        $this->count++;
+        return $this->save();
+    }
 }

@@ -20,9 +20,11 @@ use App\Enums\RessourceStatus;
 use App\Events\RessourceRejected;
 use App\Events\RessourceSuspended;
 use App\Events\RessourceValidated;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
+use phpDocumentor\Reflection\Types\Resource_;
 use SebastianBergmann\Type\NullType;
 
 /**
@@ -61,15 +63,16 @@ class RessourceController extends Controller
             ));
     }
     public function show($id) {
-
         $ressource          = Ressource::findOrFail($id);
         $content            = $ressource->ressourceable;
         $commentaires       = Commentaire::where('ressource_id', $id)->get();
+        $count = $ressource->incrementVisistsCount();
 
         return view('ressource', [
             'ressource'     => $ressource,
             'content'       => $content,
             'commentaires'  => $commentaires,
+            'count'         => $count,
         ]);
     }
 
@@ -447,6 +450,6 @@ class RessourceController extends Controller
         event(new RessourceSuspended($ressource));
 
         return Redirect::to('catalogue')->with('success', 'Ressource suspendue avec succès.');
-    }
+    }    
 
 }

@@ -25,6 +25,7 @@ class CreateRessourcesTable extends Migration
             $table->foreignId('categorie_id')->constrained();
             $table->string('status')->default(RessourceStatus::Pending->value);
             $table->string('restriction')->default(RessourceRestriction::Public->value);
+            $table->integer('count')->unsigned()->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
