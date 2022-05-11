@@ -1,5 +1,3 @@
-window.addEventListener('sentMessage', event => {
+window.addEventListener('messageSent', event => {
 
-    alert('Name updated to: ' + event.detail.newName);
-    
 })
