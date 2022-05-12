@@ -12,6 +12,7 @@
         @else
             <x-sidebar-section>
                 <x-profile-menu />
+                </br>
                 @livewire('chat-message')
             </x-sidebar-section>
         @endif
