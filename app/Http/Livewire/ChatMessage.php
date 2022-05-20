@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class ChatMessage extends Component
 {
 
-    protected $listeners = ['messageSent' => '$refresh',
-                            'refreshComponent' => '$refresh',
-                        ];
+    protected $listeners = ['messageSent' => '$refresh'];
     
     public $message;
     public $user_id;
@@ -30,7 +28,6 @@ class ChatMessage extends Component
             'groupe_id' => $this->group_id,
         ]);
         $this->emitSelf('messageSent');
-        $this->mount();
     }
 
     public function render()
