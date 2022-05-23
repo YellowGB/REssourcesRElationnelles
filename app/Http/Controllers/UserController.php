@@ -216,4 +216,5 @@ class UserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
 }

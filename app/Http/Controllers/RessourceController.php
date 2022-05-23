@@ -66,7 +66,7 @@ class RessourceController extends Controller
         $ressource          = Ressource::findOrFail($id);
         $content            = $ressource->ressourceable;
         $commentaires       = Commentaire::where('ressource_id', $id)->get();
-        $count = $ressource->incrementVisistsCount();
+        $count              = $ressource->incrementVisistsCount();
 
         return view('ressource', [
             'ressource'     => $ressource,
