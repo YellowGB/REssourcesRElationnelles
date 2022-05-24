@@ -28,6 +28,7 @@ class ChatMessage extends Component
             'groupe_id' => $this->group_id,
         ]);
         $this->emitSelf('messageSent');
+        $this->message = null;
     }
 
     public function render()

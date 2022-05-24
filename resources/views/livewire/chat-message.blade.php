@@ -9,12 +9,9 @@
             <div class="h-20 scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100">
                 <div class="border-2 p-2 m-2" id="message-list">
                     @foreach ($messages as $message)
-                        <p class="bg-slate-200 mb-3 ml-2 mr-2 p-3 rounded-2xl rounded-tl-none place-self-end">
-                            {{$message->content}}
-                        </p>
-                        <p class="bg-slate-200 mb-3 ml-2 mr-2 p-3 rounded-2xl rounded-tl-none place-self-end">
-                            {{$message->user->name}}
-                        </p>
+                        <div class="bg-sky-200 mb-3 ml-2 mr-2 p-3 rounded-2xl rounded-tl-none place-self-end">
+                            <p>{{$message->content}} <p class="italic text-neutral-400">de {{$message->user->name}}</p></p>
+                        </div>
                     @endforeach
                 </div>
                 <div class="message-send">
