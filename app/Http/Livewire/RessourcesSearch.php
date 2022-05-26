@@ -31,7 +31,7 @@ class RessourcesSearch extends Component
             // On parcours la blacklist pour chaque terme
             for($i = 0; $i < count($terms_array); $i++) {
     
-                if(strlen($terms_array[$i] > '3')) {
+                if(strlen($terms_array[$i]) > 3) {
     
                     if(!in_array($terms_array[$i], $blacklist)) {
                         // On insère le terme actuel dans la base ou on incrémente le count s'il existe déjà
@@ -56,7 +56,7 @@ class RessourcesSearch extends Component
         }
         else {
             // On check s'il y a plus de 3 caractères
-            if (strlen($this->search_terms > '3' )) {
+            if (strlen($this->search_terms) > 3) {
                 // On vérifie la blacklist
                 if(!in_array($this->search_terms, $blacklist)) {
                     // On insère le terme actuel dans la base ou on incrémente le count s'il existe déjà
@@ -77,7 +77,7 @@ class RessourcesSearch extends Component
             }
     
         }
-        if (strlen($this->search_terms > '3' )) {
+        if (strlen($this->search_terms) > 3 ) {
 
             $user = auth()->user();
             $user->search_count++;
