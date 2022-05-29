@@ -19,10 +19,12 @@ class RessourcesSearch extends Component
         // Blacklist de mots
         $blacklist = ['mais', 'donc', 'elle', 'nous', 'vous', 'elles', 'leur'];
     
-        // On supprime les espaces en début/fin et tous les chiffres
+        // On enlève les accents puis on supprime les espaces en début/fin, tous les chiffres et les caractères spéciaux
+        $this->search_terms = htmlentities($this->search_terms, ENT_NOQUOTES);
+        $this->search_terms = preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $this->search_terms);
         $this->search_terms = trim($this->search_terms);
-        $this->search_terms = preg_replace('/[[:digit:]]/', '', $this->search_terms);
         $this->search_terms = strtolower($this->search_terms);
+        $this->search_terms = preg_replace('/[\d]|[^a-zA-Z ]/', '', $this->search_terms);
     
         // On check s'il y a des espaces dans la chaine
         if (str_contains($this->search_terms, ' ')) {
