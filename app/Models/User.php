@@ -61,7 +61,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function groupes() {
-        return $this->hasMany(Groupe::class);
+        return $this->belongsToMany(Groupe::class);
     }
 
     /**
