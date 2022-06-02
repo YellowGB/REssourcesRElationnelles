@@ -5,9 +5,9 @@
     @auth
         @if($groupes)
             <div class="container">
-                <div class="flex flex-row border-2 p-2 m-2">
-                    @foreach (auth()->user()->groupes as $groupe)
-                        <button> {{$groupe->name}} </button>
+                <div class="flex flex-row border-2 p-2">
+                    @foreach ($groupes as $group)
+                        <button wire:click="switchgroup({{$group->id}})" type="button" class="btn btn-blue"> {{$group->name}} </button>
                     @endforeach
                 </div>
                 <h2>Chat Message</h1>
