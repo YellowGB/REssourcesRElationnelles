@@ -16,4 +16,8 @@ class Progression extends Model
         'is_used',
         'is_saved',
     ];
+
+    public function ressource() {
+        return $this->belongsTo(Ressource::class);
+    }
 }

@@ -102,8 +102,11 @@ return [
         'forgot'    => 'Forgotten password',
         'share'     => 'Share',
         'bookmark'  => 'Bookmark',
+        'bookmarked'=> 'Bookmarked',
         'favorite'  => 'Add to favorites',
+        'favorited' => 'Favorited',
         'exploit'   => 'Mark as used',
+        'exploited' => 'Used',
         'access'    => 'Access',
     ],
     'section' => [

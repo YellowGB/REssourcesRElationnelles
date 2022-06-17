@@ -20,6 +20,8 @@ use App\Enums\RessourceStatus;
 use App\Events\RessourceRejected;
 use App\Events\RessourceSuspended;
 use App\Events\RessourceValidated;
+use App\Models\Progression;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
@@ -39,8 +41,6 @@ class RessourceController extends Controller
     }
 
     public function index() {
-
-        // dd($);
         
         $ressources = Ressource::all();
 
@@ -50,11 +50,8 @@ class RessourceController extends Controller
     }
 
     public function moderation() {
-
-        // dd($);
         
         $ressources = Ressource::where('status', RessourceStatus::Pending->value)->get();
-        // dd($ressources);
 
             return view('catalogue-moderation', compact(
                 'ressources',
@@ -65,11 +62,17 @@ class RessourceController extends Controller
         $ressource          = Ressource::findOrFail($id);
         $content            = $ressource->ressourceable;
         $commentaires       = Commentaire::where('ressource_id', $id)->get();
+        $progression        = Auth::check() ? Progression::where('ressource_id', $id)->where('user_id', auth()->user()->id)->first() : '';
 
         return view('ressource', [
             'ressource'     => $ressource,
             'content'       => $content,
             'commentaires'  => $commentaires,
+            'progress'      => [
+                'is_favorite'   => $progression->is_favorite ?? 0,
+                'is_used'       => $progression->is_used ?? 0,
+                'is_saved'      => $progression->is_saved ?? 0,
+            ],
         ]);
     }
 
@@ -447,6 +450,42 @@ class RessourceController extends Controller
         event(new RessourceSuspended($ressource));
 
         return Redirect::to('catalogue')->with('success', 'Ressource suspendue avec succès.');
+    }
+
+    /**
+     * @since 1.4.0-alpha
+     */
+    public function favorite($id) {
+
+        $progression = Progression::where(['user_id' => auth()->user()->id, 'ressource_id' => $id])->first();
+
+        $progression->is_favorite = ! $progression->is_favorite;
+
+        $progression->update();
+
+        return Redirect::to('ressources/' . $id)->with('success', 'Progression modifiée avec succès.');
+    }
+
+    public function use($id) {
+
+        $progression = Progression::where(['user_id' => auth()->user()->id, 'ressource_id' => $id])->first();
+
+        $progression->is_used = ! $progression->is_used;
+
+        $progression->update();
+
+        return Redirect::to('ressources/' . $id)->with('success', 'Progression modifiée avec succès.');
+    }
+
+    public function save($id) {
+
+        $progression = Progression::where(['user_id' => auth()->user()->id, 'ressource_id' => $id])->first();
+
+        $progression->is_saved = ! $progression->is_saved;
+
+        $progression->update();
+
+        return Redirect::to('ressources/' . $id)->with('success', 'Progression modifiée avec succès.');
     }
 
 }

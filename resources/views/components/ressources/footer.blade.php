@@ -14,6 +14,6 @@
                 />
             </form>
         @endcan
-        <x-ressources.actions class="resource-interactions sm:hidden" />
+        <x-ressources.actions :favorite="$progress['is_favorite']" :used="$progress['is_used']" :saved="$progress['is_saved']" class="resource-interactions sm:hidden" />
     </div>
 </div>

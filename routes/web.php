@@ -33,8 +33,9 @@ Route::group(
     })->name('home');
     
     Route::get(LaravelLocalization::transRoute('routes.dashboard'), function () {
-        $ressources = Ressource::where('user_id', auth()->user()->id)->get();
-        return view('dashboard', compact('ressources'));
+        $ressources     = Ressource::where('user_id', auth()->user()->id)->get();
+        $progressions   = auth()->user()->progressions;
+        return view('dashboard', compact('ressources', 'progressions'));
     })->middleware(['auth', 'verified'])->name('dashboard');
     
     //------------ Utilisateurs ------------\\
@@ -173,6 +174,18 @@ Route::group(
     
     Route::get(LaravelLocalization::transRoute('routes.resources.show'), [RessourceController::class, 'show'])
                     ->name('resources.show');
+
+    Route::get(LaravelLocalization::transRoute('routes.resources.favorite'), [RessourceController::class, 'favorite'])
+                    ->name('resources.favorite')
+                    ->middleware(['auth', 'verified']);
+
+    Route::get(LaravelLocalization::transRoute('routes.resources.save'), [RessourceController::class, 'save'])
+                    ->name('resources.save')
+                    ->middleware(['auth', 'verified']);
+
+    Route::get(LaravelLocalization::transRoute('routes.resources.use'), [RessourceController::class, 'use'])
+                    ->name('resources.use')
+                    ->middleware(['auth', 'verified']);
 });
 
 require __DIR__.'/auth.php';
