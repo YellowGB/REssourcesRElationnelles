@@ -1,7 +1,4 @@
 <div id="text-right">
-    {{-- @php
-        dd($messages)
-    @endphp --}}
     @auth
         @if($groupes)
             <div class="container">
@@ -28,7 +25,6 @@
                         </form>
                     </div>
                 </div>
-                {{-- <script src="{{ asset('js/chat-message.js') }}" defer></script> --}}
             </div>
         @endif
     @endauth
