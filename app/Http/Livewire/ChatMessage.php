@@ -21,7 +21,6 @@ class ChatMessage extends Component
     public function mount()
     {
         $this->groupe = auth()->user()->groupes->first();
-        // dd($this->groupe->id);
     }
     public function submit()    
     { 
@@ -40,12 +39,11 @@ class ChatMessage extends Component
     public function switchgroup($id)
     {
         $this->groupe = Groupe::find($id);
-        
     }
 
     public function render()
     {
-        if(!is_null($this->groupe))
+        if (! is_null($this->groupe))
         {
             return view('livewire.chat-message', [
                 'messages' => $this->groupe->messages, 
