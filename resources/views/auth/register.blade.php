@@ -14,14 +14,14 @@
 
             <!-- Name -->
             <div>
-                <x-label for="name" :value="__('titles.form.name')" />
+                <x-label for="name" :value="__('titles.form.name') . ' *'" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
 
             <!-- Firstname -->
             <div class="mt-2">
-                <x-label for="firstname" :value="__('titles.form.firstname')" />
+                <x-label for="firstname" :value="__('titles.form.firstname') . ' *'" />
 
                 <x-input id="firstname" class="block mt-1 w-full" type="text" name="firstname" :value="old('firstname')" required />
             </div>
@@ -35,14 +35,14 @@
 
             <!-- Email Address -->
             <div class="mt-4">
-                <x-label for="email" :value="__('titles.form.email')" />
+                <x-label for="email" :value="__('titles.form.email') . ' *'" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('titles.form.password')" />
+                <x-label for="password" :value="__('titles.form.password') . ' *'" />
 
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"
@@ -52,7 +52,7 @@
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('titles.form.pwdconfirm')" />
+                <x-label for="password_confirmation" :value="__('titles.form.pwdconfirm') . ' *'" />
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
@@ -68,7 +68,7 @@
 
             <!-- Postcode -->
             <div class="mt-4">
-                <x-label for="postcode" :value="__('titles.form.postcode')" />
+                <x-label for="postcode" :value="__('titles.form.postcode') . ' *'" />
 
                 <x-input id="postcode" class="block mt-1 w-full" type="text" name="postcode" :value="old('postcode')" required />
             </div>
