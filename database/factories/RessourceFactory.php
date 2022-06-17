@@ -51,6 +51,7 @@ class RessourceFactory extends Factory
                 RessourceRestriction::Private,
                 RessourceRestriction::Public,
                 ]),
+            'count'                 => rand(0, 500),
         ];
     }
 }

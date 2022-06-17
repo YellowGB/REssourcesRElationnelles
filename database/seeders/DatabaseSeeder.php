@@ -17,9 +17,9 @@ use App\Models\Lecture;
 use App\Models\Message;
 use App\Models\Activite;
 use App\Models\Categorie;
-use App\Models\Ressource;
 use App\Models\Commentaire;
 use App\Models\Progression;
+use App\Models\Statistique;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -106,5 +106,6 @@ class DatabaseSeeder extends Seeder
         Groupe::factory()->count(7)->create();
         Commentaire::factory()->count(50)->create();
         Message::factory()->count(80)->create();
+        Statistique::factory()->count(18)->create();
     }
 }

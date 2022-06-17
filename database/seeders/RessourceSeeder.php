@@ -59,6 +59,7 @@ class RessourceSeeder extends Seeder
                         RessourceRestriction::Private,
                         RessourceRestriction::Public,
                         ]),
+                    'count'                 => rand(0, 500),
                 ]);
             }
             $faker->unique(true);

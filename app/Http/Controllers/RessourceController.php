@@ -25,10 +25,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
-use SebastianBergmann\Type\NullType;
 
 /**
  * @since 0.7.1-alpha Les statuts sont gérés dans RessourceObserver
+ * @since 1.4.0-alpha Progression et Count (statistiques)
  */
 class RessourceController extends Controller
 {
@@ -58,11 +58,13 @@ class RessourceController extends Controller
             ));
     }
     public function show($id) {
-
         $ressource          = Ressource::findOrFail($id);
         $content            = $ressource->ressourceable;
         $commentaires       = Commentaire::where('ressource_id', $id)->get();
         $progression        = Auth::check() ? Progression::where('ressource_id', $id)->where('user_id', auth()->user()->id)->first() : '';
+        
+        // Il s'agit d'une nouvelle consultation, on incrémente le nombre de visite
+        $ressource->incrementVisistsCount();
 
         return view('ressource', [
             'ressource'     => $ressource,
@@ -450,7 +452,7 @@ class RessourceController extends Controller
         event(new RessourceSuspended($ressource));
 
         return Redirect::to('catalogue')->with('success', 'Ressource suspendue avec succès.');
-    }
+    }    
 
     /**
      * @since 1.4.0-alpha

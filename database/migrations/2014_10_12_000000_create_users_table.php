@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar', 2048)->default('default');
             // $table->string('status');
             $table->foreignId('role_id')->constrained();
+            $table->integer('search_count')->unsigned()->default(0);
             $table->rememberToken();
             $table->timestamp('last_connexion');
             $table->timestamps();

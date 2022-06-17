@@ -29,6 +29,7 @@ class UserFactory extends Factory
             //     UserStatus::Deleted,
             //     ]),
             'role_id'           => rand(1, 5),
+            'search_count'      => rand(0, 1000),
             'last_connexion'    => now(),
         ];
     }

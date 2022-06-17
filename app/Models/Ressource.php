@@ -69,4 +69,13 @@ class Ressource extends Model
 
         return $query;
     }
+
+    /**
+     * Incrémente le nombre de visite d'une ressource à chaque consultation (statistiques)
+     * @since 1.4.0-alpha
+     */
+    public function incrementVisistsCount() {
+        $this->count++;
+        return $this->save();
+    }
 }
