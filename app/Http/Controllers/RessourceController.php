@@ -461,9 +461,15 @@ class RessourceController extends Controller
 
         $progression = Progression::where(['user_id' => auth()->user()->id, 'ressource_id' => $id])->first();
 
-        $progression->is_favorite = ! $progression->is_favorite;
-
-        $progression->update();
+        if (is_null($progression)) Progression::create([
+            'user_id'       => auth()->user()->id,
+            'ressource_id'  => $id,
+            'is_favorite'   => true,
+        ]);
+        else {
+            $progression->is_favorite = ! $progression->is_favorite;
+            $progression->update();
+        }
 
         return Redirect::to('ressources/' . $id)->with('success', 'Progression modifiée avec succès.');
     }
@@ -472,9 +478,16 @@ class RessourceController extends Controller
 
         $progression = Progression::where(['user_id' => auth()->user()->id, 'ressource_id' => $id])->first();
 
-        $progression->is_used = ! $progression->is_used;
+        if (is_null($progression)) Progression::create([
+            'user_id'       => auth()->user()->id,
+            'ressource_id'  => $id,
+            'is_used'       => true,
+        ]);
+        else {
+            $progression->is_used = ! $progression->is_used;
+            $progression->update();
+        }
 
-        $progression->update();
 
         return Redirect::to('ressources/' . $id)->with('success', 'Progression modifiée avec succès.');
     }
@@ -483,9 +496,15 @@ class RessourceController extends Controller
 
         $progression = Progression::where(['user_id' => auth()->user()->id, 'ressource_id' => $id])->first();
 
-        $progression->is_saved = ! $progression->is_saved;
-
-        $progression->update();
+        if (is_null($progression)) Progression::create([
+            'user_id'       => auth()->user()->id,
+            'ressource_id'  => $id,
+            'is_saved'      => true,
+        ]);
+        else {
+            $progression->is_saved = ! $progression->is_saved;
+            $progression->update();
+        }
 
         return Redirect::to('ressources/' . $id)->with('success', 'Progression modifiée avec succès.');
     }
