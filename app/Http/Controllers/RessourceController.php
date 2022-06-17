@@ -57,6 +57,7 @@ class RessourceController extends Controller
                 'ressources',
             ));
     }
+
     public function show($id) {
         $ressource          = Ressource::findOrFail($id);
         $content            = $ressource->ressourceable;
@@ -64,7 +65,7 @@ class RessourceController extends Controller
         $progression        = Auth::check() ? Progression::where('ressource_id', $id)->where('user_id', auth()->user()->id)->first() : '';
         
         // Il s'agit d'une nouvelle consultation, on incrémente le nombre de visite
-        $ressource->incrementVisistsCount();
+        if ($ressource->status === 'published') $ressource->incrementVisitsCount();
 
         return view('ressource', [
             'ressource'     => $ressource,

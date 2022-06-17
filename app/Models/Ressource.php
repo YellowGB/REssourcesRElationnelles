@@ -22,6 +22,7 @@ class Ressource extends Model
         'categorie_id',
         'status',
         'restriction',
+        'count',
     ];
 
     /**
@@ -74,8 +75,8 @@ class Ressource extends Model
      * Incrémente le nombre de visite d'une ressource à chaque consultation (statistiques)
      * @since 1.4.0-alpha
      */
-    public function incrementVisistsCount() {
+    public function incrementVisitsCount() {
         $this->count++;
-        return $this->save();
+        $this->update();
     }
 }
