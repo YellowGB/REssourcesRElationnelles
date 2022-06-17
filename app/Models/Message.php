@@ -14,4 +14,14 @@ class Message extends Model
         'user_id',
         'groupe_id',
     ];
+
+    public function groupe()
+    {
+        return $this->belongsTo(Groupe::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
