@@ -57,6 +57,16 @@ return [
         RessourceType::Lecture->name    => 'Fiche de lecture',
         RessourceType::Photo->name      => 'Photo',
         RessourceType::Video->name      => 'Vidéo',
+        //--------------------------------------------------------
+        strtolower(RessourceType::Activite->name)   => 'Activité',
+        strtolower(RessourceType::Article->name)    => 'Article',
+        strtolower(RessourceType::Atelier->name)    => 'Atelier',
+        strtolower(RessourceType::Course->name)     => 'Cours',
+        strtolower(RessourceType::Defi->name)       => 'Défi',
+        strtolower(RessourceType::Jeu->name)        => 'Jeu',
+        strtolower(RessourceType::Lecture->name)    => 'Fiche de lecture',
+        strtolower(RessourceType::Photo->name)      => 'Photo',
+        strtolower(RessourceType::Video->name)      => 'Vidéo',
     ],
     'category' => [
         RessourceCategory::Communication->value => 'Communication',
