@@ -24,7 +24,7 @@ class RessourcesLoader extends Component
         'filterRessources' => 'filter',
     ];
 
-    public function mount($page = null, $per_page = null, $search_terms = null, $filter_options = null)
+    public function mount($page = null, $per_page = null, $search_terms = '', $filter_options = null)
     {
         $this->page           = $page ?? 1;
         $this->per_page       = $per_page ?? 10;

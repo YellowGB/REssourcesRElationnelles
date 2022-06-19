@@ -11,7 +11,7 @@ use App\Models\Statistique;
  */
 class RessourcesSearch extends Component
 {
-    public $search_terms = '';
+    public $search_terms;
 
     public function mount() {
         $this->search_terms = '';
