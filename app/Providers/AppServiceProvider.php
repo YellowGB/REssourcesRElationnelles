@@ -40,15 +40,15 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         View::share('reverse_types', [
-            RessourceType::Activite->value   => RessourceType::Activite->name,
-            RessourceType::Article->value    => RessourceType::Article->name,
-            RessourceType::Atelier->value    => RessourceType::Atelier->name,
-            RessourceType::Course->value     => RessourceType::Course->name,
-            RessourceType::Defi->value       => RessourceType::Defi->name,
-            RessourceType::Jeu->value        => RessourceType::Jeu->name,
-            RessourceType::Lecture->value    => RessourceType::Lecture->name,
-            RessourceType::Photo->value      => RessourceType::Photo->name,
-            RessourceType::Video->value      => RessourceType::Video->name,
+            RessourceType::Activite->value   => strtolower(RessourceType::Activite->name),
+            RessourceType::Article->value    => strtolower(RessourceType::Article->name),
+            RessourceType::Atelier->value    => strtolower(RessourceType::Atelier->name),
+            RessourceType::Course->value     => strtolower(RessourceType::Course->name),
+            RessourceType::Defi->value       => strtolower(RessourceType::Defi->name),
+            RessourceType::Jeu->value        => strtolower(RessourceType::Jeu->name),
+            RessourceType::Lecture->value    => strtolower(RessourceType::Lecture->name),
+            RessourceType::Photo->value      => strtolower(RessourceType::Photo->name),
+            RessourceType::Video->value      => strtolower(RessourceType::Video->name),
         ]);
         
         View::share('relations', [

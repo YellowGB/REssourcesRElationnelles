@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->foreignId('role_id')->constrained();
             $table->integer('search_count')->unsigned()->default(0);
             $table->rememberToken();
-            $table->timestamp('last_connexion');
+            $table->timestamp('last_connexion')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->timestamp('suspended_at')->nullable();

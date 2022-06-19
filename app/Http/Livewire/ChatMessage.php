@@ -36,7 +36,7 @@ class ChatMessage extends Component
         }
         else
         {
-            return view('livewire.chat-message', [
+            return view('livewire.chat', [
                 'messages'  => null, 
                 'groupes'   => null,
             ]);
