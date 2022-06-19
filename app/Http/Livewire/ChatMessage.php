@@ -10,22 +10,27 @@ class ChatMessage extends Component
 {
 
     public $message;
-    public $groupe;
+    public $selected_group;
 
-    protected $listeners = ['messageSent' => '$refresh'];
+    protected $listeners = [
+        'messageSent'   => '$refresh',
+        'autoRefresh'   => '$refresh',
+    ];
+
+    protected $rules = ['message' => 'required|string|min:1'];
     
 
     public function mount()
     {
-        $this->groupe = auth()->user() ? auth()->user()->groupes->first() : null;
+        $this->selected_group = auth()->user() ? auth()->user()->groupes->first() : null;
     }
 
     public function render()
     {
-        if (! is_null($this->groupe))
+        if (! is_null($this->selected_group))
         {
-            return view('livewire.chat-message', [
-                'messages'  => $this->groupe->messages,
+            return view('livewire.chat', [
+                'messages'  => $this->selected_group->messages,
                 'groupes'   => auth()->user()->groupes,
             ]);
         }
@@ -40,15 +45,17 @@ class ChatMessage extends Component
     
     public function switchgroup($id)
     {
-        $this->groupe = Groupe::find($id);
+        $this->selected_group = Groupe::find($id);
     }
 
     public function submit()    
-    { 
+    {
+        $this->validate();
+
         Message::create([
             'content'   => $this->message,
             'user_id'   => auth()->user()->id,
-            'groupe_id' => $this->groupe->id,
+            'groupe_id' => $this->selected_group->id,
         ]);
 
         $this->emitSelf('messageSent');

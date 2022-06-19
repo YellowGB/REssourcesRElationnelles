@@ -2,6 +2,7 @@
     {{-- Le premier div sert uniquement à conserver l'espace de la première colonne de la grid, donnant la possibilité au prochain div d'être fixed sans casser le layout de la page --}}
     <div>
         {{ $left ?? '' }}
+        @livewire('chat-message')
     </div>
     <div>
         {{ $slot }}
@@ -12,7 +13,6 @@
         @else
             <x-sidebar-section>
                 <x-profile-menu />
-                @livewire('chat-message')
             </x-sidebar-section>
         @endif
     </div>

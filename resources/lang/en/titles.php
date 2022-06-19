@@ -263,5 +263,10 @@ return [
         'suspend'   => 'Suspend',
         'unsuspend' => 'Unsuspend',
     ],
+    'chat' => [
+        'messages'  => ":group's messages",
+        'send'      => 'Send',
+        'groups'    => 'Chat groups',
+    ],
 
 ];

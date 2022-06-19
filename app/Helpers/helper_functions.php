@@ -146,35 +146,6 @@ function is_superadmin() {
 }
 
 /**
- * Remplit la base de données avec faker pour avoir une base complète rapidement pour effectuer des tests
- * 
- * @deprecated
- * 
- * @since 0.6.6-alpha
- * @since 1.1.4-alpha deprecated
- */
-function dbfill_faker() {
-
-    User::factory()->count(10)->create();
-    for($i=1;$i<=13;$i++) Categorie::factory()->create();
-    for($i=1;$i<=9;$i++) Ressource::factory()->create();
-    Activite::factory()->count(1)->create();
-    Article::factory()->count(1)->create();
-    Atelier::factory()->count(1)->create();
-    Course::factory()->count(1)->create();
-    Defi::factory()->count(1)->create();
-    Jeu::factory()->count(1)->create();
-    Lecture::factory()->count(1)->create();
-    Photo::factory()->count(1)->create();
-    Video::factory()->count(1)->create();
-    Progression::factory()->count(40)->create();
-    Groupe::factory()->count(7)->create();
-    Commentaire::factory()->count(50)->create();
-    Message::factory()->count(80)->create();
-
-}
-
-/**
  * Formatte la date de création d'un élément de la base de données
  * en une chaîne de type Créé le xx/xx/xxx à xx:xx
  * 

@@ -34,7 +34,7 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="min-h-80">
                 {{ $slot ?? '' }}
             </main>
 
