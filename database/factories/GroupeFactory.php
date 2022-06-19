@@ -14,7 +14,7 @@ class GroupeFactory extends Factory
     public function definition()
     {
         return [
-            'name'          => $this->faker->sentence(),
+            'name'          => $this->faker->words(3),
             'user_id'       => rand(1, 10),
             'invitations'   => $this->faker->boolean(),
             'ressource_id'  => null,
