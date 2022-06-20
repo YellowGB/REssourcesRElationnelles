@@ -26,8 +26,7 @@ class RessourceObserver
      */
     public function updating(Ressource $ressource)
     {
-
-        if (!$ressource->isDirty('status')) {
+        if (! $ressource->isDirty('status') && $ressource->isClean('count')) {
             $ressource->status = is_moderator() ? RessourceStatus::Published : RessourceStatus::Pending;
         }
     }

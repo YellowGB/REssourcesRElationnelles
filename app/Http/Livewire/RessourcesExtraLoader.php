@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Ressource;
 use Livewire\Component;
+use App\Models\Ressource;
+use App\Enums\RessourceStatus;
 
 /**
  * @since 0.8.2-alpha
@@ -60,6 +61,7 @@ class RessourcesExtraLoader extends Component
         elseif (! is_null($this->search_terms)) {
             $ressources = Ressource::filter($this->filter_options)
                                     ->where('title', 'like', '%'.$this->search_terms.'%')
+                                    ->where('status', RessourceStatus::Published->value)
                                     ->orderBy('id', 'desc')
                                     ->paginate(
                                         $this->per_page,
@@ -69,6 +71,7 @@ class RessourcesExtraLoader extends Component
         }
         else {
             $ressources = Ressource::filter($this->filter_options)
+                                    ->where('status', RessourceStatus::Published->value)
                                     ->orderBy('id', 'desc')
                                     ->paginate(
                                         $this->per_page,

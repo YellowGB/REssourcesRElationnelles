@@ -21,6 +21,7 @@ use App\Models\Commentaire;
 use App\Models\Progression;
 use App\Models\Statistique;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -104,6 +105,10 @@ class DatabaseSeeder extends Seeder
 
         Progression::factory()->count(40)->create();
         Groupe::factory()->count(7)->create();
+        DB::insert("INSERT INTO groupe_user (groupe_id, user_id) VALUES (1, 1)");
+        DB::insert("INSERT INTO groupe_user (groupe_id, user_id) VALUES (1, 2)");
+        DB::insert("INSERT INTO groupe_user (groupe_id, user_id) VALUES (2, 1)");
+        DB::insert("INSERT INTO groupe_user (groupe_id, user_id) VALUES (2, 3)");
         Commentaire::factory()->count(50)->create();
         Message::factory()->count(80)->create();
         Statistique::factory()->count(18)->create();

@@ -57,7 +57,7 @@ class RessourcesLoader extends Component
         if (! is_null($this->search_terms)) {
             $ressources = Ressource::filter($this->filter_options)
                                     ->where('title', 'like', '%'.$this->search_terms.'%')
-                                    ->orWhere('status', RessourceStatus::Published->value)
+                                    ->where('status', RessourceStatus::Published->value)
                                     ->orderBy('id', 'desc')
                                     ->paginate(
                                         $this->per_page,
