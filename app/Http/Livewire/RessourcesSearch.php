@@ -85,8 +85,10 @@ class RessourcesSearch extends Component
         if (strlen($this->search_terms) > 3 ) {
 
             $user = auth()->user();
-            $user->search_count++;
-            $user->update();
+            if (! is_null($user)) {
+                $user->search_count++;
+                $user->update();
+            }
 
         }
         // On envoie les termes recherchés au loader principal

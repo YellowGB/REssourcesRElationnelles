@@ -5,6 +5,11 @@ https://trello.com/b/qEJGzBTO/resources-relationnelles
 ---
 ## Changelog
 
+### 1.4.94-alpha
+
+*Hotfix*
+- Attempt to increment/decrement property "search_count" on null during a search in the catalogue
+
 ### 1.4.93-alpha
 
 *Added*
