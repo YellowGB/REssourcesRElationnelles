@@ -280,5 +280,13 @@ return [
         'send'      => 'Envoyer',
         'groups'    => 'Groupes de chat',
     ],
+    'chart' => [
+        'name'    => [
+            'terms' => ':number termes les plus recherchés',
+        ],
+        'dataset' => [
+            'terms' => 'Nombre de recherches',
+        ],
+    ],
 
 ];

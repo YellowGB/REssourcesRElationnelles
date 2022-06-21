@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Enums\RessourceType;
 use App\Enums\RessourceRelation;
 use App\Models\Categorie;
+use ConsoleTVs\Charts\Registrar as Charts;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Charts $charts)
     {
         View::share('types', [
             RessourceType::Activite->name   => RessourceType::Activite->value,
@@ -61,5 +62,9 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         View::share('categories', Categorie::all());
+
+        $charts->register([
+            \App\Charts\SearchTermsChart::class,
+        ]);
     }
 }

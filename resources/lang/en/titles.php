@@ -279,5 +279,13 @@ return [
         'send'      => 'Send',
         'groups'    => 'Chat groups',
     ],
+    'chart' => [
+        'name'    => [
+            'terms' => ':number most search terms',
+        ],
+        'dataset' => [
+            'terms' => 'Searches count',
+        ],
+    ],
 
 ];
