@@ -88,6 +88,13 @@
                         :title="__('titles.administration.category')"
                         :desc="__('titles.administration.desc.category')"
                     />
+        
+                    {{-- Statistiques --}}
+                    <x-admin.section
+                        :route="route('stats.index')"
+                        :title="__('titles.section.stats')"
+                        :desc="__('titles.administration.desc.stats')"
+                    />
                 @endadmin
     
                 @modo

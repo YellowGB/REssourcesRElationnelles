@@ -251,6 +251,7 @@ return [
             'category'  => 'Lister les catégories de ressources et en ajouter de nouvelles.',
             'admin'     => 'Créer des comptes modérateurs et administrateurs.',
             'roles'     => 'Lister les rôles existants, modifier leurs droits et créer de nouveaux rôles.',
+            'stats'     => 'Consulter différentes statistiques au sujet de la plateforme et de ses utilisateurs et exportez-les.',
         ],
     ],
     'profile' => [

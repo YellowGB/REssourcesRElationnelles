@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RessourceController;
 use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\StatistiqueController;
 use App\Models\Ressource;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -44,6 +45,8 @@ Route::group(
         function () {
             Route::resource(LaravelLocalization::transRoute('routes.users'), UserController::class); // crée une route pour chaque CRUD + la page dédiée, users.index, users.show, users.create, users.store, users.edit, users.update, users.destroy
             Route::resource(LaravelLocalization::transRoute('routes.roles'), RoleController::class)
+                            ->only('index');
+            Route::resource(LaravelLocalization::transRoute('routes.stats'), StatistiqueController::class)
                             ->only('index');
         }
     );

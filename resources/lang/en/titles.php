@@ -251,6 +251,7 @@ return [
             'category'  => 'List resources categories and add new ones.',
             'admin'     => 'Create moderator and administrator accounts.',
             'roles'     => 'List existing roles, update their rights and create new roles.',
+            'stats'     => 'View various statistics about the application and its users and export them.',
         ],
     ],
     'profile' => [

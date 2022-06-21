@@ -50,4 +50,6 @@ return [
     "map"                       => "site-map",
     "legal"                     => "legal-notices",
     "admin.create"              => "admin/create",
+    "stats"                     => "stats",
+    "stats.index"               => "statistics",
 ];
