@@ -30,7 +30,7 @@ class MostViewedChart extends BaseChart
 
         return Chartisan::build()
             ->labels($labels)
-            ->dataset('Nombre de vues', $countsHigh) // la localization ne fonctionne pas lorsqu'il y a plus d'un dataset
-            ->dataset('Nombre de vues', $countsLow);
+            ->dataset('Les plus consultées', $countsHigh) // la localization ne fonctionne pas lorsqu'il y a plus d'un dataset
+            ->dataset('Les moins consultées', $countsLow);
     }
 }
