@@ -281,11 +281,13 @@ return [
         'groups'    => 'Groupes de chat',
     ],
     'chart' => [
-        'name'    => [
+        'loading'   => 'Chargement en cours...',
+        'error'     => 'Une erreur est survenue...',
+        'name'      => [
             'terms'     => ':number termes les plus recherchés',
             'viewed'    => ':number ressources les plus et les moins consultées',
         ],
-        'dataset' => [
+        'dataset'   => [
             'terms'     => 'Nombre de recherches',
             'viewed'    => 'Nombre de vues',
         ],

@@ -280,11 +280,13 @@ return [
         'groups'    => 'Chat groups',
     ],
     'chart' => [
-        'name'    => [
+        'loading'   => 'Loading data...',
+        'error'     => 'An error was encountered...',
+        'name'      => [
             'terms'     => ':number most search terms',
             'viewed'    => ':number most and least viewed resources',
         ],
-        'dataset' => [
+        'dataset'   => [
             'terms'     => 'Searches count',
             'viewed'    => 'Number of views',
         ],
