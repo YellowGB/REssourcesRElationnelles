@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-page-header heading="{{ __('titles.section.stats') }}" />
 
-    <label for="search-terms">@lang('titles.chart.name.terms', ['number' => 10])</label>
+    <label>@lang('titles.chart.name.terms', ['number' => 10])</label>
     <div
         x-data="{
             chart: null,
@@ -32,6 +32,38 @@
             }
         }"
         x-init="chart = setChart()"
+    ></div>
+
+    <label>@lang('titles.chart.name.viewed', ['number' => 10])</label>
+    <div
+        x-data="{
+            chart: null,
+            setChart() {
+                new Chartisan({
+                    el: $el,
+                    url: &quot;@chart('most_viewed_chart', ['number' => 10])&quot;,
+                    hooks: new ChartisanHooks()
+                        .tooltip(),
+                    loader: {
+                        color: '#2E6DAA',
+                        size: [30, 30],
+                        type: 'bar',
+                        textColor: '#2E2E39',
+                        text: 'Chargement en cours...',
+                    },
+                    error: {
+                        color: '#2E6DAA',
+                        size: [30, 30],
+                        text: 'Une erreur est survenue...',
+                        textColor: '#2E2E39',
+                        type: 'general',
+                        debug: true,
+                    },
+                });
+            }
+        }"
+        x-init="chart = setChart()"
+        class="h-[40vh]"
     ></div>
 
     {{-- Charting + Chartisan --}}

@@ -281,10 +281,12 @@ return [
     ],
     'chart' => [
         'name'    => [
-            'terms' => ':number most search terms',
+            'terms'     => ':number most search terms',
+            'viewed'    => ':number most and least viewed resources',
         ],
         'dataset' => [
-            'terms' => 'Searches count',
+            'terms'     => 'Searches count',
+            'viewed'    => 'Number of views',
         ],
     ],
 

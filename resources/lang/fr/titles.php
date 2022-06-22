@@ -282,10 +282,12 @@ return [
     ],
     'chart' => [
         'name'    => [
-            'terms' => ':number termes les plus recherchés',
+            'terms'     => ':number termes les plus recherchés',
+            'viewed'    => ':number ressources les plus et les moins consultées',
         ],
         'dataset' => [
-            'terms' => 'Nombre de recherches',
+            'terms'     => 'Nombre de recherches',
+            'viewed'    => 'Nombre de vues',
         ],
     ],
 

@@ -1019,11 +1019,11 @@ select {
 .mt-6 {
   margin-top: 1.5rem;
 }
-.ml-4 {
-  margin-left: 1rem;
-}
 .mt-2 {
   margin-top: 0.5rem;
+}
+.ml-4 {
+  margin-left: 1rem;
 }
 .mt-4 {
   margin-top: 1rem;
@@ -1118,6 +1118,9 @@ select {
 .h-\[60vh\] {
   height: 60vh;
 }
+.h-10 {
+  height: 2.5rem;
+}
 .h-12 {
   height: 3rem;
 }
@@ -1126,9 +1129,6 @@ select {
 }
 .h-8 {
   height: 2rem;
-}
-.h-10 {
-  height: 2.5rem;
 }
 .h-1\/3 {
   height: 33.333333%;
@@ -1139,23 +1139,23 @@ select {
 .h-9 {
   height: 2.25rem;
 }
+.h-96 {
+  height: 24rem;
+}
 .h-20 {
   height: 5rem;
 }
+.h-\[40vh\] {
+  height: 40vh;
+}
 .h-16 {
   height: 4rem;
-}
-.h-96 {
-  height: 24rem;
 }
 .min-h-screen {
   min-height: 100vh;
 }
 .min-h-40 {
   min-height: 40vh;
-}
-.min-h-75 {
-  min-height: 75vh;
 }
 .min-h-80 {
   min-height: 80vh;
@@ -1169,11 +1169,14 @@ select {
 .w-6 {
   width: 1.5rem;
 }
-.w-1\/5 {
-  width: 20%;
+.w-4\/6 {
+  width: 66.666667%;
 }
-.w-\[90vw\] {
-  width: 90vw;
+.w-3\/4 {
+  width: 75%;
+}
+.w-\[95vw\] {
+  width: 95vw;
 }
 .w-12 {
   width: 3rem;
@@ -1199,50 +1202,29 @@ select {
 .w-40 {
   width: 10rem;
 }
+.w-1\/5 {
+  width: 20%;
+}
 .w-48 {
   width: 12rem;
 }
 .w-screen {
   width: 100vw;
 }
+.w-10\/12 {
+  width: 83.333333%;
+}
 .w-20 {
   width: 5rem;
-}
-.w-auto {
-  width: auto;
 }
 .w-8\/12 {
   width: 66.666667%;
 }
+.w-auto {
+  width: auto;
+}
 .w-1\/2 {
   width: 50%;
-}
-.w-10\/12 {
-  width: 83.333333%;
-}
-.w-\[100vw\] {
-  width: 100vw;
-}
-.w-\[95vw\] {
-  width: 95vw;
-}
-.w-4\/5 {
-  width: 80%;
-}
-.w-3\/5 {
-  width: 60%;
-}
-.w-4\/6 {
-  width: 66.666667%;
-}
-.w-5\/6 {
-  width: 83.333333%;
-}
-.w-9\/12 {
-  width: 75%;
-}
-.w-3\/4 {
-  width: 75%;
 }
 .max-w-4xl {
   max-width: 56rem;
@@ -1259,11 +1241,11 @@ select {
 .max-w-6xl {
   max-width: 72rem;
 }
-.max-w-\[75\%\] {
-  max-width: 75%;
-}
 .max-w-md {
   max-width: 28rem;
+}
+.max-w-\[75\%\] {
+  max-width: 75%;
 }
 .max-w-xs {
   max-width: 20rem;
@@ -1384,11 +1366,11 @@ select {
 .justify-items-stretch {
   justify-items: stretch;
 }
-.gap-2 {
-  gap: 0.5rem;
-}
 .gap-1 {
   gap: 0.25rem;
+}
+.gap-2 {
+  gap: 0.5rem;
 }
 .gap-4 {
   gap: 1rem;
@@ -1512,6 +1494,10 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
+.border-gris-dark {
+  --tw-border-opacity: 1;
+  border-color: rgb(46 46 57 / var(--tw-border-opacity));
+}
 .border-indigo-400 {
   --tw-border-opacity: 1;
   border-color: rgb(129 140 248 / var(--tw-border-opacity));
@@ -1523,10 +1509,6 @@ select {
 .border-gray-400 {
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
-}
-.border-gris-dark {
-  --tw-border-opacity: 1;
-  border-color: rgb(46 46 57 / var(--tw-border-opacity));
 }
 .bg-white {
   --tw-bg-opacity: 1;
@@ -1604,6 +1586,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(46 46 57 / var(--tw-bg-opacity));
 }
+.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
@@ -1611,10 +1597,6 @@ select {
 .bg-red-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(185 28 28 / var(--tw-bg-opacity));
-}
-.bg-blue-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
@@ -1644,11 +1626,11 @@ select {
 .p-3 {
   padding: 0.75rem;
 }
-.p-5 {
-  padding: 1.25rem;
-}
 .p-4 {
   padding: 1rem;
+}
+.p-5 {
+  padding: 1.25rem;
 }
 .px-4 {
   padding-left: 1rem;
@@ -1901,13 +1883,13 @@ select {
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity));
 }
-.text-primaire {
-  --tw-text-opacity: 1;
-  color: rgb(46 109 170 / var(--tw-text-opacity));
-}
 .text-gris-normal {
   --tw-text-opacity: 1;
   color: rgb(196 196 196 / var(--tw-text-opacity));
+}
+.text-primaire {
+  --tw-text-opacity: 1;
+  color: rgb(46 109 170 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
@@ -2690,12 +2672,12 @@ select {
     width: 18rem;
   }
 
-  .lg\:w-full {
-    width: 100%;
-  }
-
   .lg\:w-1\/2 {
     width: 50%;
+  }
+
+  .lg\:w-full {
+    width: 100%;
   }
 
   .lg\:max-w-screen-sm {
