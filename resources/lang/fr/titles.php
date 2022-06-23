@@ -283,14 +283,18 @@ return [
     'chart' => [
         'loading'   => 'Chargement en cours...',
         'error'     => 'Une erreur est survenue...',
+        'dataset'   => [
+            'terms'     => 'Nombre de recherches',
+            'viewed'    => 'Nombre de vues',
+        ],
         'name'      => [
             'terms'     => ':number termes les plus recherchés',
             'viewed'    => ':number ressources les plus et les moins consultées',
             'searchers' => ':number utilisateurs ayant effectué le plus de recherches',
         ],
-        'dataset'   => [
-            'terms'     => 'Nombre de recherches',
-            'viewed'    => 'Nombre de vues',
+        'section'   => [
+            'menu'      => 'Sections',
+            'searches'  => 'Recherches',
         ],
     ],
 

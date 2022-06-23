@@ -282,14 +282,18 @@ return [
     'chart' => [
         'loading'   => 'Loading data...',
         'error'     => 'An error was encountered...',
+        'dataset'   => [
+            'terms'     => 'Searches count',
+            'viewed'    => 'Number of views',
+        ],
         'name'      => [
             'terms'     => ':number most search terms',
             'viewed'    => ':number most and least viewed resources',
             'searchers' => ':number biggest searchers',
         ],
-        'dataset'   => [
-            'terms'     => 'Searches count',
-            'viewed'    => 'Number of views',
+        'section'   => [
+            'menu'      => 'Sections',
+            'searches'  => 'Searches',
         ],
     ],
 

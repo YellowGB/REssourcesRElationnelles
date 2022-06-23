@@ -1,29 +1,53 @@
-<div id="stats-dashboard" class="w-full">
-
-    <x-charts.bar
-        :chartSettings="$chartSettings"
-        :title="__('titles.chart.name.searchers', ['number' => 10])"
-        :route="'top_searchers_chart'"
-        :request="['number' => 10]"
-        class="h-80 w-full md:w-3/5"
-    />
-
-    <div class="flex flex-col md:flex-row md:h-60 md:w-3/5">
-        <x-charts.pie
+<div
+    x-data="{
+        showSearches: true,
+        showTest: false,
+        hideAll() {
+            console.log('test');
+        },
+    }"
+    id="stats-dashboard"
+    class="w-full"
+>
+    <div x-data="{ showSections: false }" class="w-full select-none">
+        <div class="bg-primaire text-blanc border-y-2 border-y-primaire hover:border-y-slate-700 flex flex-col items-center justify-center">
+            <div @click="showSections = ! showSections" class="flex flex-col justify-center items-center">
+                <span class="text-blanc font-medium">@lang('titles.chart.section.menu')</span>
+                <x-icons.chevron-down class="w-6 h-6" />
+            </div>
+        </div>
+        <div x-show="showSections" class="bg-blanc flex flex-col items-center justify-center border border-primaire">
+            <x-charts.section :section="'showSearches'">@lang('titles.chart.section.searches')</x-charts.section>
+            <x-charts.section :section="'showTest'">test</x-charts.section>
+        </div>
+    </div>
+    <div x-show="showTest">test</div>
+    <div x-show="showSearches" class="mt-4">
+        <x-charts.bar
             :chartSettings="$chartSettings"
-            :title="__('titles.chart.name.terms', ['number' => 10])"
-            :route="'search_terms_chart'"
+            :title="__('titles.chart.name.searchers', ['number' => 10])"
+            :route="'top_searchers_chart'"
             :request="['number' => 10]"
-            class="h-44 w-full"
+            class="h-80 w-full md:w-3/5"
         />
-
-        <x-charts.doughnut-double
-            :chartSettings="$chartSettings"
-            :title="__('titles.chart.name.viewed', ['number' => 10])"
-            :route="'most_viewed_chart'"
-            :request="['number' => 10]"
-            class="h-60 w-full"
-        />
+    
+        <div class="flex flex-col md:flex-row md:h-60 md:w-3/5">
+            <x-charts.pie
+                :chartSettings="$chartSettings"
+                :title="__('titles.chart.name.terms', ['number' => 10])"
+                :route="'search_terms_chart'"
+                :request="['number' => 10]"
+                class="h-44 w-full"
+            />
+    
+            <x-charts.doughnut-double
+                :chartSettings="$chartSettings"
+                :title="__('titles.chart.name.viewed', ['number' => 10])"
+                :route="'most_viewed_chart'"
+                :request="['number' => 10]"
+                class="h-60 w-full"
+            />
+        </div>
     </div>
 
     {{-- Charting + Chartisan --}}
