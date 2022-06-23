@@ -66,6 +66,7 @@ class AppServiceProvider extends ServiceProvider
         $charts->register([
             \App\Charts\SearchTermsChart::class,
             \App\Charts\MostViewedChart::class,
+            \App\Charts\TopSearchersChart::class,
         ]);
     }
 }

@@ -88,4 +88,9 @@
     .resource-interactions-side {
         @apply dark:text-gris-dark;
     }
+
+    #stats-dashboard label {
+        @apply font-extrabold;
+        @apply text-lg;
+    }
 }

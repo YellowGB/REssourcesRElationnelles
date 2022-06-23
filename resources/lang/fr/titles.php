@@ -286,6 +286,7 @@ return [
         'name'      => [
             'terms'     => ':number termes les plus recherchés',
             'viewed'    => ':number ressources les plus et les moins consultées',
+            'searchers' => ':number utilisateurs ayant effectué le plus de recherches',
         ],
         'dataset'   => [
             'terms'     => 'Nombre de recherches',

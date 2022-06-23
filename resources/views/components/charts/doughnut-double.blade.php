@@ -16,9 +16,12 @@
                     el: $el,
                     url: &quot;@chart($route, $request)&quot;,
                     hooks: new ChartisanHooks()
-                        .axis(false)
                         .tooltip()
-                        .datasets('pie'),
+                        .axis(false)
+                        .datasets([
+                            { type: 'pie', radius: ['40%', '60%'] },
+                            { type: 'pie', radius: ['10%', '30%'] },
+                        ]),
                     {{ $chartSettings }}
                 });
             }

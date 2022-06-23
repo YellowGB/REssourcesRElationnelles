@@ -737,6 +737,12 @@ select {
   color: rgb(46 46 57 / var(--tw-text-opacity));
 }
 
+    #stats-dashboard label {
+  font-weight: 800;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -1124,6 +1130,12 @@ select {
 .h-12 {
   height: 3rem;
 }
+.h-80 {
+  height: 20rem;
+}
+.h-44 {
+  height: 11rem;
+}
 .h-60 {
   height: 15rem;
 }
@@ -1144,9 +1156,6 @@ select {
 }
 .h-20 {
   height: 5rem;
-}
-.h-\[40vh\] {
-  height: 40vh;
 }
 .h-16 {
   height: 4rem;
@@ -1225,6 +1234,12 @@ select {
 }
 .w-1\/2 {
   width: 50%;
+}
+.w-\[100vw\] {
+  width: 100vw;
+}
+.w-\[60vw\] {
+  width: 60vw;
 }
 .max-w-4xl {
   max-width: 56rem;
@@ -2596,8 +2611,16 @@ select {
     display: none;
   }
 
+  .md\:h-60 {
+    height: 15rem;
+  }
+
   .md\:w-1\/5 {
     width: 20%;
+  }
+
+  .md\:w-3\/5 {
+    width: 60%;
   }
 
   .md\:grid-cols-2 {

@@ -16,9 +16,8 @@
                     el: $el,
                     url: &quot;@chart($route, $request)&quot;,
                     hooks: new ChartisanHooks()
-                        .axis(false)
                         .tooltip()
-                        .datasets('pie'),
+                        .datasets('bar'),
                     {{ $chartSettings }}
                 });
             }

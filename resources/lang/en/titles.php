@@ -285,6 +285,7 @@ return [
         'name'      => [
             'terms'     => ':number most search terms',
             'viewed'    => ':number most and least viewed resources',
+            'searchers' => ':number biggest searchers',
         ],
         'dataset'   => [
             'terms'     => 'Searches count',
