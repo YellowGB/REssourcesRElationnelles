@@ -9,6 +9,7 @@ use App\Enums\RessourceStatus;
 use Illuminate\Database\Seeder;
 use App\Enums\RessourceRelation;
 use App\Enums\RessourceRestriction;
+use Carbon\Carbon;
 
 class RessourceSeeder extends Seeder
 {
@@ -59,6 +60,8 @@ class RessourceSeeder extends Seeder
                         RessourceRestriction::Private,
                         RessourceRestriction::Public,
                         ]),
+                    'created_at'            => Carbon::today()->subDays(rand(0, 90)),
+                    'updated_at'            => now(),
                     'count'                 => rand(0, 500),
                 ]);
             }

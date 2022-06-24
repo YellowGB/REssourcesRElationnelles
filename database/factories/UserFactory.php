@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -22,12 +23,7 @@ class UserFactory extends Factory
             'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token'    => Str::random(10),
             'postcode'          => $this->faker->postcode(),
-            // 'status'            => $this->faker->randomElement([
-            //     UserStatus::Pending,
-            //     UserStatus::Verified,
-            //     UserStatus::Suspended,
-            //     UserStatus::Deleted,
-            //     ]),
+            'created_at'        => Carbon::today()->subDays(rand(0, 90)),
             'role_id'           => rand(1, 5),
             'search_count'      => rand(0, 1000),
             'last_connexion'    => now(),

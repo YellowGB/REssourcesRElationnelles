@@ -1,14 +1,20 @@
 <div
     x-data="{
         showSearches: true,
-        showTest: false,
+        showProgress: false,
+        showUsers: false,
+        showResources: false,
         hideAll() {
-            console.log('test');
+            this.showSearches   =
+            this.showProgress   =
+            this.showUsers      =
+            this.showResources  = false;
         },
     }"
     id="stats-dashboard"
     class="w-full"
 >
+    {{-- Menu --}}
     <div x-data="{ showSections: false }" class="w-full select-none">
         <div class="bg-primaire text-blanc border-y-2 border-y-primaire hover:border-y-slate-700 flex flex-col items-center justify-center">
             <div @click="showSections = ! showSections" class="flex flex-col justify-center items-center">
@@ -18,10 +24,16 @@
         </div>
         <div x-show="showSections" class="bg-blanc flex flex-col items-center justify-center border border-primaire">
             <x-charts.section :section="'showSearches'">@lang('titles.chart.section.searches')</x-charts.section>
-            <x-charts.section :section="'showTest'">test</x-charts.section>
+            <x-charts.section :section="'showProgress'">@lang('titles.chart.section.progress')</x-charts.section>
+            <x-charts.section :section="'showUsers'">@lang('titles.chart.section.users')</x-charts.section>
+            <x-charts.section :section="'showResources'">@lang('titles.chart.section.resources')</x-charts.section>
         </div>
     </div>
-    <div x-show="showTest">test</div>
+
+    {{-- Charts --}}
+    <div x-show="showProgress">Progress</div>
+    <div x-show="showUsers">Users</div>
+    <div x-show="showResources">Resources</div>
     <div x-show="showSearches" class="mt-4">
         <x-charts.bar
             :chartSettings="$chartSettings"

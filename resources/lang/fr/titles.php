@@ -295,6 +295,9 @@ return [
         'section'   => [
             'menu'      => 'Sections',
             'searches'  => 'Recherches',
+            'progress'  => 'Progression',
+            'users'     => 'Utilisateurs',
+            'resources' => 'Ressources',
         ],
     ],
 
