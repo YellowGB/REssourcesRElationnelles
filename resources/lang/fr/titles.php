@@ -286,11 +286,13 @@ return [
         'dataset'   => [
             'terms'     => 'Nombre de recherches',
             'viewed'    => 'Nombre de vues',
+            'accounts'  => 'Comptes créés',
         ],
         'name'      => [
             'terms'     => ':number termes les plus recherchés',
             'viewed'    => ':number ressources les plus et les moins consultées',
             'searchers' => ':number utilisateurs ayant effectué le plus de recherches',
+            'accounts'  => 'Comptes créés dans les :number derniers mois',
         ],
         'section'   => [
             'menu'      => 'Sections',

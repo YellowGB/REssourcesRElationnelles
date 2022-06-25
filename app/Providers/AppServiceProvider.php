@@ -67,6 +67,7 @@ class AppServiceProvider extends ServiceProvider
             \App\Charts\SearchTermsChart::class,
             \App\Charts\MostViewedChart::class,
             \App\Charts\TopSearchersChart::class,
+            \App\Charts\AccountCreationChart::class,
         ]);
     }
 }

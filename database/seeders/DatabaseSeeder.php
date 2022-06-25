@@ -86,22 +86,22 @@ class DatabaseSeeder extends Seeder
         ]);
         $user->markEmailAsVerified();
         
-        User::factory()->count(10)->create();
+        User::factory()->count(400)->create();
         for ($i = 1; $i <= 13; $i++) Categorie::factory()->create();
 
         $this->call([
             RessourceSeeder::class,
         ]);
 
-        Activite::factory()->count(10)->create();
-        Article::factory()->count(10)->create();
-        Atelier::factory()->count(10)->create();
-        Course::factory()->count(10)->create();
-        Defi::factory()->count(10)->create();
-        Jeu::factory()->count(10)->create();
-        Lecture::factory()->count(10)->create();
-        Photo::factory()->count(10)->create();
-        Video::factory()->count(10)->create();
+        Activite::factory()->count(100)->create();
+        Article::factory()->count(100)->create();
+        Atelier::factory()->count(100)->create();
+        Course::factory()->count(100)->create();
+        Defi::factory()->count(100)->create();
+        Jeu::factory()->count(100)->create();
+        Lecture::factory()->count(100)->create();
+        Photo::factory()->count(100)->create();
+        Video::factory()->count(100)->create();
 
         Progression::factory()->count(40)->create();
         Groupe::factory()->count(7)->create();

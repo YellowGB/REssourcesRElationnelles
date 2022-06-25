@@ -34,7 +34,7 @@ class RessourceSeeder extends Seeder
             RessourceType::Video->value,
         ];
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 100; $i++) {
             for ($j = 0; $j < count($types); $j++) {
                 Ressource::create([
                     'title'                 => $faker->sentence(),
@@ -61,8 +61,7 @@ class RessourceSeeder extends Seeder
                         RessourceRestriction::Public,
                         ]),
                     'created_at'            => Carbon::today()->subDays(rand(0, 90)),
-                    'updated_at'            => now(),
-                    'count'                 => rand(0, 500),
+                    'count'                 => rand_prob(3000, 99, 5000), // 99% de chance de générer un nombre entre 0 et 3000, 20% entre 3001 et 5000
                 ]);
             }
             $faker->unique(true);

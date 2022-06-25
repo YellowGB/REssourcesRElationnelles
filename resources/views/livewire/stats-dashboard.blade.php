@@ -1,8 +1,8 @@
 <div
     x-data="{
-        showSearches: true,
+        showSearches: false,
         showProgress: false,
-        showUsers: false,
+        showUsers: true,
         showResources: false,
         hideAll() {
             this.showSearches   =
@@ -32,7 +32,15 @@
 
     {{-- Charts --}}
     <div x-show="showProgress">Progress</div>
-    <div x-show="showUsers">Users</div>
+    <div x-show="showUsers">
+        <x-charts.line
+            :chartSettings="$chartSettings"
+            :title="__('titles.chart.name.accounts', ['number' => 3])"
+            :route="'account_creation_chart'"
+            :request="['number' => 3]"
+            class="h-80 w-full md:w-3/5"
+        />
+    </div>
     <div x-show="showResources">Resources</div>
     <div x-show="showSearches" class="mt-4">
         <x-charts.bar
@@ -42,7 +50,7 @@
             :request="['number' => 10]"
             class="h-80 w-full md:w-3/5"
         />
-    
+
         <div class="flex flex-col md:flex-row md:h-60 md:w-3/5">
             <x-charts.pie
                 :chartSettings="$chartSettings"
@@ -51,7 +59,7 @@
                 :request="['number' => 10]"
                 class="h-44 w-full"
             />
-    
+
             <x-charts.doughnut-double
                 :chartSettings="$chartSettings"
                 :title="__('titles.chart.name.viewed', ['number' => 10])"

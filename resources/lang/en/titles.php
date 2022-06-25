@@ -284,12 +284,14 @@ return [
         'error'     => 'An error was encountered...',
         'dataset'   => [
             'terms'     => 'Searches count',
-            'viewed'    => 'Number of views',
+            'viewed'    => 'Views count',
+            'accounts'  => 'Accounts created',
         ],
         'name'      => [
             'terms'     => ':number most search terms',
             'viewed'    => ':number most and least viewed resources',
             'searchers' => ':number biggest searchers',
+            'accounts'  => 'Account creations in the last :number months',
         ],
         'section'   => [
             'menu'      => 'Sections',

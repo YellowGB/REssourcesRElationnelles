@@ -212,4 +212,19 @@ function get_excerpt(string $string, int $length = 80) {
     return substr($string, 0, $length) . '...';
 }
 
+/**
+ * Génère des nombres aléatoires avec une probabilité précisée pour les nombres élevés.
+ * Ex: rand_prob(10, 60, 20) = 60% de chance de générer un nombre entre 0 et 10 et 40% de chance entre 11 et 20
+ * Ex: rand_prob(300, 20, 500) = 20% de chance de générer un nombre entre 0 et 300 et 80% de chance entre 301 et 500
+ * 
+ * @param int $max_prob Le maximum le plus probable
+ * 
+ * @since 1.5.0-alpha
+ */
+function rand_prob(int $max_prob, int $percentage, int $max_total):int {
+    if (rand(0, 100) <= $percentage)    $number = rand(0, $max_prob);
+    else                                $number = rand($max_prob + 1, $max_total);
+    return $number;
+}
+
 ?>
