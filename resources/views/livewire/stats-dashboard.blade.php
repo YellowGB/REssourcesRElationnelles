@@ -40,6 +40,14 @@
             :request="['number' => 3]"
             class="h-80 w-full md:w-3/5"
         />
+
+        <x-charts.pie
+            :chartSettings="$chartSettings"
+            :title="__('titles.chart.name.postcodes', ['number' => 10])"
+            :route="'users_geo_chart'"
+            :request="['number' => 10]"
+            class="h-44 w-full"
+        />
     </div>
     <div x-show="showResources">Resources</div>
     <div x-show="showSearches" class="mt-4">

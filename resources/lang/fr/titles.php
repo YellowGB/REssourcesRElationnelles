@@ -293,6 +293,7 @@ return [
             'viewed'    => ':number ressources les plus et les moins consultées',
             'searchers' => ':number utilisateurs ayant effectué le plus de recherches',
             'accounts'  => 'Comptes créés dans les :number derniers mois',
+            'postcodes' => ':number codes postaux les plus représentés',
         ],
         'section'   => [
             'menu'      => 'Sections',

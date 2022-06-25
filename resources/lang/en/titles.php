@@ -292,6 +292,7 @@ return [
             'viewed'    => ':number most and least viewed resources',
             'searchers' => ':number biggest searchers',
             'accounts'  => 'Account creations in the last :number months',
+            'postcodes' => ':number most represented post codes',
         ],
         'section'   => [
             'menu'      => 'Sections',
