@@ -15,9 +15,9 @@
     class="w-full"
 >
     {{-- Menu --}}
-    <div x-data="{ showSections: false }" class="w-full select-none">
-        <div class="bg-primaire text-blanc border-y-2 border-y-primaire hover:border-y-slate-700 flex flex-col items-center justify-center">
-            <div @click="showSections = ! showSections" class="flex flex-col justify-center items-center">
+    <div x-data="{ showSections: false }" @click.away="showSections = false" class="w-full select-none">
+        <div @click="showSections = ! showSections" class="bg-primaire text-blanc border-y-2 border-y-primaire hover:border-y-slate-700 flex flex-col items-center justify-center">
+            <div class="flex flex-col justify-center items-center">
                 <span class="text-blanc font-medium">@lang('titles.chart.section.menu')</span>
                 <x-icons.chevron-down class="w-6 h-6" />
             </div>
@@ -31,8 +31,8 @@
     </div>
 
     {{-- Charts --}}
-    <div x-show="showProgress">Progress</div>
-    <div x-show="showUsers">
+    <x-charts.container :show="'showProgress'">Progress</x-charts.container>
+    <x-charts.container :show="'showUsers'">
         <x-charts.line
             :chartSettings="$chartSettings"
             :title="__('titles.chart.name.accounts', ['number' => 3])"
@@ -41,16 +41,26 @@
             class="h-80 w-full md:w-3/5"
         />
 
-        <x-charts.pie
-            :chartSettings="$chartSettings"
-            :title="__('titles.chart.name.postcodes', ['number' => 10])"
-            :route="'users_geo_chart'"
-            :request="['number' => 10]"
-            class="h-44 w-full"
-        />
-    </div>
-    <div x-show="showResources">Resources</div>
-    <div x-show="showSearches" class="mt-4">
+        <x-charts.side-by-side>
+            <x-charts.pie
+                :chartSettings="$chartSettings"
+                :title="__('titles.chart.name.postcodes', ['number' => 10])"
+                :route="'users_geo_chart'"
+                :request="['number' => 10]"
+                class="h-44 w-full"
+            />
+
+            <x-charts.pie
+                :chartSettings="$chartSettings"
+                :title="__('titles.chart.name.contrib', ['number' => 10])"
+                :route="'user_resources_chart'"
+                :request="['number' => 10]"
+                class="h-44 w-full"
+            />
+        </x-charts.side-by-side>
+    </x-charts.container>
+    <x-charts.container :show="'showResources'">Resources</x-charts.container>
+    <x-charts.container :show="'showSearches'" class="mt-4">
         <x-charts.bar
             :chartSettings="$chartSettings"
             :title="__('titles.chart.name.searchers', ['number' => 10])"
@@ -59,7 +69,7 @@
             class="h-80 w-full md:w-3/5"
         />
 
-        <div class="flex flex-col md:flex-row md:h-60 md:w-3/5">
+        <x-charts.side-by-side>
             <x-charts.pie
                 :chartSettings="$chartSettings"
                 :title="__('titles.chart.name.terms', ['number' => 10])"
@@ -75,8 +85,8 @@
                 :request="['number' => 10]"
                 class="h-60 w-full"
             />
-        </div>
-    </div>
+        </x-charts.side-by-side>
+    </x-charts.container>
 
     {{-- Charting + Chartisan --}}
     <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>

@@ -287,6 +287,7 @@ return [
             'terms'     => 'Nombre de recherches',
             'viewed'    => 'Nombre de vues',
             'accounts'  => 'Comptes créés',
+            'contrib'   => 'Ressources créées',
         ],
         'name'      => [
             'terms'     => ':number termes les plus recherchés',
@@ -294,6 +295,7 @@ return [
             'searchers' => ':number utilisateurs ayant effectué le plus de recherches',
             'accounts'  => 'Comptes créés dans les :number derniers mois',
             'postcodes' => ':number codes postaux les plus représentés',
+            'contrib'   => ':number plus importants contributeurs',
         ],
         'section'   => [
             'menu'      => 'Sections',

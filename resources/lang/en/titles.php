@@ -286,6 +286,7 @@ return [
             'terms'     => 'Searches count',
             'viewed'    => 'Views count',
             'accounts'  => 'Accounts created',
+            'contrib'   => 'Resources created',
         ],
         'name'      => [
             'terms'     => ':number most search terms',
@@ -293,6 +294,7 @@ return [
             'searchers' => ':number biggest searchers',
             'accounts'  => 'Account creations in the last :number months',
             'postcodes' => ':number most represented post codes',
+            'contrib'   => ':number biggest contributors',
         ],
         'section'   => [
             'menu'      => 'Sections',

@@ -2673,6 +2673,10 @@ select {
     gap: 1.5rem;
   }
 
+  .md\:gap-0 {
+    gap: 0px;
+  }
+
   .md\:py-0 {
     padding-top: 0px;
     padding-bottom: 0px;

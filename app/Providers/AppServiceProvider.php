@@ -69,6 +69,7 @@ class AppServiceProvider extends ServiceProvider
             \App\Charts\TopSearchersChart::class,
             \App\Charts\AccountCreationChart::class,
             \App\Charts\UsersGeoChart::class,
+            \App\Charts\UserResourcesChart::class,
         ]);
     }
 }
