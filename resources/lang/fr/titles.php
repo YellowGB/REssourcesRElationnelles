@@ -298,6 +298,9 @@ return [
             'postcodes' => ':number codes postaux les plus représentés',
             'contrib'   => ':number plus importants contributeurs',
             'type'      => 'Répartition des ressources par type',
+            'total' => [
+                'resources' => 'Ressources totales',
+            ],
         ],
         'section'   => [
             'menu'      => 'Sections',

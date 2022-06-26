@@ -76,6 +76,8 @@
                 class="h-60 w-full"
             />
 
+            <x-charts.countup :target="$total['resources']" :title="__('titles.chart.name.total.resources')" :show="'showResources'" />
+
             <x-charts.doughnut-double
                 :chartSettings="$chartSettings"
                 :title="__('titles.chart.name.viewed', ['number' => 10])"

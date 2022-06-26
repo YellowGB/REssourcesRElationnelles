@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Ressource;
 use Livewire\Component;
 
 class StatsDashboard extends Component
 {
     public $chartSettings;
+    public $total;
 
     public function mount() {
         $this->chartSettings = "
@@ -26,6 +28,10 @@ class StatsDashboard extends Component
                 debug: true,
             },
         ";
+
+        $this->total = [
+            'resources'  => Ressource::all()->count(),
+        ];
     }
 
     public function render()

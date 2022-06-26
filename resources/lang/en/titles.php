@@ -297,6 +297,9 @@ return [
             'postcodes' => ':number most represented post codes',
             'contrib'   => ':number biggest contributors',
             'type'      => 'Resources distribution by type',
+            'total' => [
+                'resources' => 'Total resources',
+            ],
         ],
         'section'   => [
             'menu'      => 'Sections',
