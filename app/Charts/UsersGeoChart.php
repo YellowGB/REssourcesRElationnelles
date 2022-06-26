@@ -33,6 +33,7 @@ class UsersGeoChart extends BaseChart
 
         return Chartisan::build()
             ->labels($labels)
+            ->extra(['colors' => config('charts.colors.pie.default')])
             ->dataset('', $counts);
     }
 }

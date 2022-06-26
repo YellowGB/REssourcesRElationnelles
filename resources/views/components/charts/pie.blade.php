@@ -18,6 +18,13 @@
                     hooks: new ChartisanHooks()
                         .axis(false)
                         .tooltip()
+                        // S'il y en a, on récupère les couleurs passées en paramètre et on les applique au graphique
+                        .custom(({ data, merge, server }) => {
+                            if (server.chart.extra !== null && typeof server.chart.extra.colors !== 'undefined') {
+                                data.color = server.chart.extra.colors;
+                            }
+                            return data;
+                        })
                         .datasets('pie'),
                     {{ $chartSettings }}
                 });

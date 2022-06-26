@@ -2669,12 +2669,12 @@ select {
     flex-direction: row;
   }
 
-  .md\:gap-6 {
-    gap: 1.5rem;
-  }
-
   .md\:gap-0 {
     gap: 0px;
+  }
+
+  .md\:gap-6 {
+    gap: 1.5rem;
   }
 
   .md\:py-0 {

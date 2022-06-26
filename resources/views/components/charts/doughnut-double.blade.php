@@ -16,8 +16,15 @@
                     el: $el,
                     url: &quot;@chart($route, $request)&quot;,
                     hooks: new ChartisanHooks()
-                        .tooltip()
                         .axis(false)
+                        .tooltip()
+                        // S'il y en a, on récupère les couleurs passées en paramètre et on les applique au graphique
+                        .custom(({ data, merge, server }) => {
+                            if (server.chart.extra !== null && typeof server.chart.extra.colors1 !== 'undefined') {
+                                data.color = server.chart.extra.colors1;
+                            }
+                            return data;
+                        })
                         .datasets([
                             { type: 'pie', radius: ['40%', '60%'] },
                             { type: 'pie', radius: ['10%', '30%'] },

@@ -29,6 +29,7 @@ class SearchTermsChart extends BaseChart
 
         return Chartisan::build()
             ->labels($labels)
+            ->extra(['colors' => config('charts.colors.shading.blue')])
             ->dataset(__('titles.chart.dataset.terms'), $counts);
     }
 }

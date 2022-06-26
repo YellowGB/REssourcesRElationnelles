@@ -30,6 +30,10 @@ class MostViewedChart extends BaseChart
 
         return Chartisan::build()
             ->labels($labels)
+            ->extra([
+                'colors1' => config('charts.colors.pie.revert'),
+                'colors2' => config('charts.colors.pie.default'),
+            ])
             ->dataset('Les plus consultées', $countsHigh) // la localization ne fonctionne pas lorsqu'il y a plus d'un dataset
             ->dataset('Les moins consultées', $countsLow);
     }

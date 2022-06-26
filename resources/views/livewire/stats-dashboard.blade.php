@@ -75,7 +75,7 @@
                 :title="__('titles.chart.name.terms', ['number' => 10])"
                 :route="'search_terms_chart'"
                 :request="['number' => 10]"
-                class="h-44 w-full"
+                class="h-60 w-full"
             />
 
             <x-charts.doughnut-double
