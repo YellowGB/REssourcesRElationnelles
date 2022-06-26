@@ -1,5 +1,6 @@
 @props(['show', 'target', 'title'])
 <div
+    {{ $attributes->merge(['class' => 'flex flex-col items-center justify-center text-center gap-4']) }}
     x-data="{
         current: 0,
         target: {{ $target }},
@@ -28,7 +29,6 @@
             // else current = 0; // si l'on souhaite relancer l'animation à chaque fois que l'on réaffiche le composant
         });
     "
-    class="flex flex-col items-center justify-center text-center gap-4"
 >
     <label>{{ $title }}</label>
     <div class="font-bold text-xl" x-text="Math.round(current)"></div>

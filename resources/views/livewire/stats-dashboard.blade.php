@@ -76,7 +76,11 @@
                 class="h-60 w-full"
             />
 
-            <x-charts.countup :target="$total['resources']" :title="__('titles.chart.name.total.resources')" :show="'showResources'" />
+            <x-charts.countup
+                :target="$total['resources']"
+                :title="__('titles.chart.name.total.resources')"
+                :show="'showResources'"
+            />
 
             <x-charts.doughnut-double
                 :chartSettings="$chartSettings"
@@ -97,14 +101,21 @@
         />
 
         <x-charts.side-by-side>
+
+            <x-charts.countup
+                :target="$total['searches']"
+                :title="__('titles.chart.name.total.searches')"
+                :show="'showSearches'"
+                class="w-1/2"
+            />
+
             <x-charts.pie
                 :chartSettings="$chartSettings"
                 :title="__('titles.chart.name.terms', ['number' => 10])"
                 :route="'search_terms_chart'"
                 :request="['number' => 10]"
-                class="h-60 w-full"
+                class="h-60 w-1/2"
             />
-
 
         </x-charts.side-by-side>
     </x-charts.container>

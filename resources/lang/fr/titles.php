@@ -300,6 +300,7 @@ return [
             'type'      => 'Répartition des ressources par type',
             'total' => [
                 'resources' => 'Ressources totales',
+                'searches'  => 'Recherches totales',
             ],
         ],
         'section'   => [

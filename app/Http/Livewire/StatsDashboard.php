@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Ressource;
+use App\Models\User;
 use Livewire\Component;
 
 class StatsDashboard extends Component
@@ -30,7 +31,8 @@ class StatsDashboard extends Component
         ";
 
         $this->total = [
-            'resources'  => Ressource::all()->count(),
+            'resources' => Ressource::all()->count(),
+            'searches'  => User::all()->sum('search_count'),
         ];
     }
 

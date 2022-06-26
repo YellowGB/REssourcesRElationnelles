@@ -299,6 +299,7 @@ return [
             'type'      => 'Resources distribution by type',
             'total' => [
                 'resources' => 'Total resources',
+                'searches'  => 'Total searches',
             ],
         ],
         'section'   => [
