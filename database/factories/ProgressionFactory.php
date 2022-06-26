@@ -14,8 +14,8 @@ class ProgressionFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'       => rand(1, 10),
-            'ressource_id'  => rand(1, 9),
+            'user_id'       => rand(1, 400),
+            'ressource_id'  => rand(1, 900),
             'is_favorite'   => $this->faker->boolean(),
             'is_used'       => $this->faker->boolean(),
             'is_saved'      => $this->faker->boolean(),

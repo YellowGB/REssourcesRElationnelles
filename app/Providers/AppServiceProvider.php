@@ -72,6 +72,9 @@ class AppServiceProvider extends ServiceProvider
             \App\Charts\UserResourcesChart::class,
             \App\Charts\ResourceCreationChart::class,
             \App\Charts\ResourceTypeChart::class,
+            \App\Charts\FavoritesChart::class,
+            \App\Charts\UsedChart::class,
+            \App\Charts\SavedChart::class,
         ]);
     }
 }

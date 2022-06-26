@@ -297,9 +297,15 @@ return [
             'postcodes' => ':number most represented post codes',
             'contrib'   => ':number biggest contributors',
             'type'      => 'Resources distribution by type',
+            'favorites' => ':number most favorited resources',
+            'used'      => ':number most used resources',
+            'saved'     => ':number most saved resources',
             'total' => [
                 'resources' => 'Total resources',
                 'searches'  => 'Total searches',
+                'favorites' => 'Resources favorited',
+                'used'      => 'Resources used',
+                'saved'     => 'Resources saved',
             ],
         ],
         'section'   => [

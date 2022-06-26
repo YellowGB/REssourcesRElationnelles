@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Progression;
 use App\Models\Ressource;
 use App\Models\User;
 use Livewire\Component;
@@ -33,6 +34,9 @@ class StatsDashboard extends Component
         $this->total = [
             'resources' => Ressource::all()->count(),
             'searches'  => User::all()->sum('search_count'),
+            'favorites' => Progression::all()->sum('is_favorite'),
+            'used'      => Progression::all()->sum('is_used'),
+            'saved'     => Progression::all()->sum('is_saved'),
         ];
     }
 

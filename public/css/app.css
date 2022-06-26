@@ -1016,6 +1016,10 @@ select {
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -2655,6 +2659,10 @@ select {
 
   .md\:w-3\/5 {
     width: 60%;
+  }
+
+  .md\:w-1\/2 {
+    width: 50%;
   }
 
   .md\:grid-cols-2 {

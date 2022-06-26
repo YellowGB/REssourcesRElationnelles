@@ -103,7 +103,7 @@ class DatabaseSeeder extends Seeder
         Photo::factory()->count(100)->create();
         Video::factory()->count(100)->create();
 
-        Progression::factory()->count(40)->create();
+        Progression::factory()->count(1000)->create();
         Groupe::factory()->count(7)->create();
         DB::insert("INSERT INTO groupe_user (groupe_id, user_id) VALUES (1, 1)");
         DB::insert("INSERT INTO groupe_user (groupe_id, user_id) VALUES (1, 2)");
