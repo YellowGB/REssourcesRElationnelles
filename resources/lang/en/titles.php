@@ -286,15 +286,17 @@ return [
             'terms'     => 'Searches count',
             'viewed'    => 'Views count',
             'accounts'  => 'Accounts created',
-            'contrib'   => 'Resources created',
+            'resources' => 'Resources created',
         ],
         'name'      => [
             'terms'     => ':number most search terms',
             'viewed'    => ':number most and least viewed resources',
             'searchers' => ':number biggest searchers',
             'accounts'  => 'Account creations in the last :number months',
+            'resources' => 'Resources creations in the last :number months',
             'postcodes' => ':number most represented post codes',
             'contrib'   => ':number biggest contributors',
+            'type'      => 'Resources distribution by type',
         ],
         'section'   => [
             'menu'      => 'Sections',

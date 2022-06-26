@@ -2,8 +2,8 @@
     x-data="{
         showSearches: false,
         showProgress: false,
-        showUsers: true,
-        showResources: false,
+        showUsers: false,
+        showResources: true,
         hideAll() {
             this.showSearches   =
             this.showProgress   =
@@ -59,7 +59,32 @@
             />
         </x-charts.side-by-side>
     </x-charts.container>
-    <x-charts.container :show="'showResources'">Resources</x-charts.container>
+    <x-charts.container :show="'showResources'">
+        <x-charts.line
+            :chartSettings="$chartSettings"
+            :title="__('titles.chart.name.resources', ['number' => 3])"
+            :route="'resource_creation_chart'"
+            :request="['number' => 3]"
+            class="h-80 w-full md:w-3/5"
+        />
+
+        <x-charts.side-by-side>
+            <x-charts.pie
+                :chartSettings="$chartSettings"
+                :title="__('titles.chart.name.type')"
+                :route="'resource_type_chart'"
+                class="h-60 w-full"
+            />
+
+            <x-charts.doughnut-double
+                :chartSettings="$chartSettings"
+                :title="__('titles.chart.name.viewed', ['number' => 10])"
+                :route="'most_viewed_chart'"
+                :request="['number' => 10]"
+                class="h-60 w-full"
+            />
+        </x-charts.side-by-side>
+    </x-charts.container>
     <x-charts.container :show="'showSearches'" class="mt-4">
         <x-charts.bar
             :chartSettings="$chartSettings"
@@ -78,13 +103,7 @@
                 class="h-60 w-full"
             />
 
-            <x-charts.doughnut-double
-                :chartSettings="$chartSettings"
-                :title="__('titles.chart.name.viewed', ['number' => 10])"
-                :route="'most_viewed_chart'"
-                :request="['number' => 10]"
-                class="h-60 w-full"
-            />
+
         </x-charts.side-by-side>
     </x-charts.container>
 
