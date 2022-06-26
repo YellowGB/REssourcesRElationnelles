@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Progression;
 use App\Models\Ressource;
 use App\Models\User;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class StatsDashboard extends Component
@@ -37,6 +38,8 @@ class StatsDashboard extends Component
             'favorites' => Progression::all()->sum('is_favorite'),
             'used'      => Progression::all()->sum('is_used'),
             'saved'     => Progression::all()->sum('is_saved'),
+            'users'     => User::all()->count(),
+            'connexions'=> User::where('last_connexion', '>=', Carbon::now()->subDays(1))->count(),
         ];
     }
 

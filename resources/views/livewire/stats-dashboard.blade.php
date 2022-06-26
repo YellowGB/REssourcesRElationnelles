@@ -1,7 +1,7 @@
 <div
     x-data="{
-        showSearches: false,
-        showProgress: true,
+        showSearches: true,
+        showProgress: false,
         showUsers: false,
         showResources: false,
         hideAll() {
@@ -31,136 +31,10 @@
     </div>
 
     {{-- Charts --}}
-    <x-charts.container :show="'showProgress'">
-        <x-charts.side-by-side>
-            <x-charts.countup
-                :target="$total['favorites']"
-                :title="__('titles.chart.name.total.favorites')"
-                :show="'showProgress'"
-            />
-            <x-charts.countup
-                :target="$total['used']"
-                :title="__('titles.chart.name.total.used')"
-                :show="'showProgress'"
-                class="mx-8"
-            />
-            <x-charts.countup
-                :target="$total['saved']"
-                :title="__('titles.chart.name.total.saved')"
-                :show="'showProgress'"
-            />
-        </x-charts.side-by-side>
-        <x-charts.side-by-side>
-            <x-charts.pie
-                :chartSettings="$chartSettings"
-                :title="__('titles.chart.name.favorites', ['number' => 10])"
-                :route="'favorites_chart'"
-                :request="['number' => 10]"
-                class="h-44 w-full"
-            />
-            <x-charts.pie
-                :chartSettings="$chartSettings"
-                :title="__('titles.chart.name.used', ['number' => 10])"
-                :route="'used_chart'"
-                :request="['number' => 10]"
-                class="h-44 w-full"
-            />
-            <x-charts.pie
-                :chartSettings="$chartSettings"
-                :title="__('titles.chart.name.saved', ['number' => 10])"
-                :route="'saved_chart'"
-                :request="['number' => 10]"
-                class="h-44 w-full"
-            />
-        </x-charts.side-by-side>
-    </x-charts.container>
-    <x-charts.container :show="'showUsers'">
-        <x-charts.line
-            :chartSettings="$chartSettings"
-            :title="__('titles.chart.name.accounts', ['number' => 3])"
-            :route="'account_creation_chart'"
-            :request="['number' => 3]"
-            class="h-80 w-full md:w-3/5"
-        />
-
-        <x-charts.side-by-side>
-            <x-charts.pie
-                :chartSettings="$chartSettings"
-                :title="__('titles.chart.name.postcodes', ['number' => 10])"
-                :route="'users_geo_chart'"
-                :request="['number' => 10]"
-                class="h-44 w-full"
-            />
-
-            <x-charts.pie
-                :chartSettings="$chartSettings"
-                :title="__('titles.chart.name.contrib', ['number' => 10])"
-                :route="'user_resources_chart'"
-                :request="['number' => 10]"
-                class="h-44 w-full"
-            />
-        </x-charts.side-by-side>
-    </x-charts.container>
-    <x-charts.container :show="'showResources'">
-        <x-charts.line
-            :chartSettings="$chartSettings"
-            :title="__('titles.chart.name.resources', ['number' => 3])"
-            :route="'resource_creation_chart'"
-            :request="['number' => 3]"
-            class="h-80 w-full md:w-3/5"
-        />
-
-        <x-charts.side-by-side>
-            <x-charts.pie
-                :chartSettings="$chartSettings"
-                :title="__('titles.chart.name.type')"
-                :route="'resource_type_chart'"
-                class="h-60 w-full"
-            />
-
-            <x-charts.countup
-                :target="$total['resources']"
-                :title="__('titles.chart.name.total.resources')"
-                :show="'showResources'"
-            />
-
-            <x-charts.doughnut-double
-                :chartSettings="$chartSettings"
-                :title="__('titles.chart.name.viewed', ['number' => 10])"
-                :route="'most_viewed_chart'"
-                :request="['number' => 10]"
-                class="h-60 w-full"
-            />
-        </x-charts.side-by-side>
-    </x-charts.container>
-    <x-charts.container :show="'showSearches'" class="mt-4">
-        <x-charts.bar
-            :chartSettings="$chartSettings"
-            :title="__('titles.chart.name.searchers', ['number' => 10])"
-            :route="'top_searchers_chart'"
-            :request="['number' => 10]"
-            class="h-80 w-full md:w-3/5"
-        />
-
-        <x-charts.side-by-side>
-
-            <x-charts.countup
-                :target="$total['searches']"
-                :title="__('titles.chart.name.total.searches')"
-                :show="'showSearches'"
-                class="w-full md:w-1/2"
-            />
-
-            <x-charts.pie
-                :chartSettings="$chartSettings"
-                :title="__('titles.chart.name.terms', ['number' => 10])"
-                :route="'search_terms_chart'"
-                :request="['number' => 10]"
-                class="h-60 w-full md:w-1/2"
-            />
-
-        </x-charts.side-by-side>
-    </x-charts.container>
+    <x-charts.sections.progress :total="$total" :chartSettings="$chartSettings" />
+    <x-charts.sections.users :total="$total" :chartSettings="$chartSettings" />
+    <x-charts.sections.resources :total="$total" :chartSettings="$chartSettings" />
+    <x-charts.sections.searches :total="$total" :chartSettings="$chartSettings" />
 
     {{-- Charting + Chartisan --}}
     <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>

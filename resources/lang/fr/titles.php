@@ -307,6 +307,8 @@ return [
                 'favorites' => 'Ressources favorisées',
                 'used'      => 'Ressources utilisées',
                 'saved'     => 'Ressources mises de côté',
+                'users'     => 'Total de comptes',
+                'connexions'=> 'Connexions dernières 24h',
             ],
         ],
         'section'   => [

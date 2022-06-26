@@ -33,7 +33,7 @@ class UsedChart extends BaseChart
 
         return Chartisan::build()
             ->labels($labels)
-            ->extra(['colors' => config('charts.colors.pie.default')])
+            ->extra(['colors' => config('charts.colors.shading.yellow')])
             ->dataset('Sample 2', $counts);
     }
 }

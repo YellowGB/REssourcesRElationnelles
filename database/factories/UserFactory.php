@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'created_at'        => Carbon::today()->subDays(rand(0, 90)),
             'role_id'           => rand(1, 5),
             'search_count'      => rand_prob(5000, 99, 10000),
-            'last_connexion'    => now(),
+            'last_connexion'    => Carbon::now()->subSeconds(rand(0, 60 * 60 * 24 * 3)), // 3 derniers jours
         ];
     }
 

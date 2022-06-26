@@ -31,5 +31,5 @@
     "
 >
     <label>{{ $title }}</label>
-    <div class="font-bold text-xl" x-text="Math.round(current)"></div>
+    <div class="font-bold text-2xl font-heading text-primaire dark:text-secondaire" x-text="Math.round(current)"></div>
 </div>

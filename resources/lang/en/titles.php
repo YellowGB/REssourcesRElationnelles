@@ -306,6 +306,8 @@ return [
                 'favorites' => 'Resources favorited',
                 'used'      => 'Resources used',
                 'saved'     => 'Resources saved',
+                'users'     => 'Total accounts',
+                'connexions'=> 'Last 24h connections',
             ],
         ],
         'section'   => [
