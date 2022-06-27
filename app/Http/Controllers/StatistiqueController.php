@@ -90,7 +90,7 @@ class StatistiqueController extends Controller
      * 
      * @since 1.5.0-alpha
      */
-    public function exportTopSearchers() {
-        return Excel::download(new TopSearchersExport, 'topsearchers.csv');
+    public function exportTopSearchers(Request $request) {
+        return Excel::download(new TopSearchersExport, "topsearchers.$request->format");
     }
 }

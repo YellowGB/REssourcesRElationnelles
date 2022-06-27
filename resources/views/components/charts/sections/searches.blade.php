@@ -5,6 +5,7 @@
         :title="__('titles.chart.name.searchers', ['number' => 10])"
         :route="'top_searchers_chart'"
         :request="['number' => 10]"
+        :export="'exports.searchers'"
         class="h-80 w-full md:w-3/5"
     />
 
