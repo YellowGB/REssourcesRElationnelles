@@ -5,6 +5,7 @@
         :title="__('titles.chart.name.accounts', ['number' => 3])"
         :route="'account_creation_chart'"
         :request="['number' => 3]"
+        :export="'exports.account.creation'"
         class="h-80 w-full md:w-3/5"
     />
 

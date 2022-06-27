@@ -9,7 +9,9 @@
     <div class="flex gap-1 items-center">
         <label>{{ $title }}</label>
         @if ($export)
-            <a href="{{ route($export, ['format' => 'csv']) }}"><x-icons.document-download /></a>
+            <label for="export-format-modal-{{ $route }}" class="cursor-pointer text-primaire dark:text-secondaire">
+                <x-icons.document-download />
+            </label>
         @endif
     </div>
     <div
@@ -31,3 +33,7 @@
         x-init="chart = setChart()"
     ></div>
 </div>
+{{-- La modale pour l'export des données --}}
+@if ($export)
+    <x-export-format-modal :route="$route" :export="$export" />
+@endif

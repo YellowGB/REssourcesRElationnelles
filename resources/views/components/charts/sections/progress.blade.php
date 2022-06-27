@@ -25,6 +25,7 @@
             :title="__('titles.chart.name.favorites', ['number' => 10])"
             :route="'favorites_chart'"
             :request="['number' => 10]"
+            :export="'exports.favorites'"
             class="h-44 w-full"
         />
         <x-charts.pie
@@ -32,6 +33,7 @@
             :title="__('titles.chart.name.used', ['number' => 10])"
             :route="'used_chart'"
             :request="['number' => 10]"
+            :export="'exports.used'"
             class="h-44 w-full"
         />
         <x-charts.pie
@@ -39,6 +41,7 @@
             :title="__('titles.chart.name.saved', ['number' => 10])"
             :route="'saved_chart'"
             :request="['number' => 10]"
+            :export="'exports.saved'"
             class="h-44 w-full"
         />
     </x-charts.side-by-side>

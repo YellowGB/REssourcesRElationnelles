@@ -23,6 +23,7 @@
             :title="__('titles.chart.name.terms', ['number' => 10])"
             :route="'search_terms_chart'"
             :request="['number' => 10]"
+            :export="'exports.terms'"
             class="h-60 w-full md:w-1/2"
         />
 

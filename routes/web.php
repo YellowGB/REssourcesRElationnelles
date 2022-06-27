@@ -208,4 +208,14 @@ Route::group([
 ], function () {
     Route::get('exports/searchers', [StatistiqueController::class, 'exportTopSearchers'])
                     ->name('exports.searchers');
+    Route::get('exports/terms', [StatistiqueController::class, 'exportSearchTerms'])
+                    ->name('exports.terms');
+    Route::get('exports/favorites', [StatistiqueController::class, 'exportFavorites'])
+                    ->name('exports.favorites');
+    Route::get('exports/saved', [StatistiqueController::class, 'exportSaved'])
+                    ->name('exports.saved');
+    Route::get('exports/used', [StatistiqueController::class, 'exportUsed'])
+                    ->name('exports.used');
+    Route::get('exports/account-creation', [StatistiqueController::class, 'exportAccountCreation'])
+                    ->name('exports.account.creation');
 });
