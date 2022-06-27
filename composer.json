@@ -13,6 +13,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.10",
+        "maatwebsite/excel": "^3.1",
         "mcamara/laravel-localization": "^1.7",
         "wire-elements/modal": "^1.0"
     },

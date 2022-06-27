@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TopSearchersExport;
 use App\Models\Statistique;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StatistiqueController extends Controller
 {
@@ -81,5 +83,14 @@ class StatistiqueController extends Controller
     public function destroy(Statistique $statistique)
     {
         //
+    }
+
+    /**
+     * Exporte les utilisateurs ayant effectué le plus de recherches
+     * 
+     * @since 1.5.0-alpha
+     */
+    public function exportTopSearchers() {
+        return Excel::download(new TopSearchersExport, 'topsearchers.csv');
     }
 }

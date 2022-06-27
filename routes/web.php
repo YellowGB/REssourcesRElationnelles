@@ -201,3 +201,11 @@ Route::group([
     // some routes with livewire components...
     Route::post('livewire/message/{name}', '\Livewire\Controllers\HttpConnectionHandler');   
 });
+
+//------------ Exports ------------\\
+Route::group([
+    'middleware' => ['auth', 'admin']
+], function () {
+    Route::get('exports/searchers', [StatistiqueController::class, 'exportTopSearchers'])
+                    ->name('exports.searchers');
+});
