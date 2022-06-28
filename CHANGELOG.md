@@ -1,5 +1,34 @@
 # Changelog
 
+### 1.5.68-alpha
+
+*Added*
+- `StatistiqueController` with 18 functions
+- New localizations
+- **Statistics** dashboard
+- *Statistics* access in the main dashboard for a user with administrator rights
+- [Laravel Charts (Chartisan + echarts)](https://charts.erik.cat/)
+- [Laravel Excel for CSV/XLSX exports](https://docs.laravel-excel.com/3.1/getting-started/installation.html)
+- [Daisy UI modals](https://daisyui.com/components/modal/)
+- **11 statistics charts** with their exports
+- **5 statistics counts**
+- Statistics export format picker
+- Livewire `StatsDashboard` component
+- `bar`, `doughnut-double`, `line` and `pie` and 4 other chart related components
+- 4 chart sections
+- `charts` config file containing sets of colors for charts
+- Statistics menu animations
+
+*Updated*
+- **Seeders and factories for both number and relevance of data**
+- `GroupeFactory` generated name
+
+*Fixed*
+- Progression not working if no previous progression interaction with the resource
+- Resource status staying in `pending` after aproving moderation
+- Fatal error when connecting to an account without any chat group
+- *Livewire assets are out of date*
+
 ### 1.4.94-alpha
 
 *Hotfix*
@@ -8,7 +37,7 @@
 ### 1.4.93-alpha
 
 *Added*
-- Seeder : groupe_user pivot table now seeded with two groups of both two members
+- Seeder : `groupe_user` pivot table now seeded with two groups of both two members
 
 *Fixed*
 - Catalogue search showing non published resources
