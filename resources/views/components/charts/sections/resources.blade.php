@@ -5,6 +5,7 @@
         :title="__('titles.chart.name.resources', ['number' => 3])"
         :route="'resource_creation_chart'"
         :request="['number' => 3]"
+        :export="'exports.resource.creation'"
         class="h-80 w-full md:w-3/5"
     />
 
@@ -13,6 +14,7 @@
             :chartSettings="$chartSettings"
             :title="__('titles.chart.name.type')"
             :route="'resource_type_chart'"
+            :export="'exports.types'"
             class="h-60 w-full"
         />
 
@@ -27,6 +29,7 @@
             :title="__('titles.chart.name.viewed', ['number' => 10])"
             :route="'most_viewed_chart'"
             :request="['number' => 10]"
+            :export="'exports.views'"
             class="h-60 w-full"
         />
     </x-charts.side-by-side>

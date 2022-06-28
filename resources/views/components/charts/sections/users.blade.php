@@ -15,6 +15,7 @@
             :title="__('titles.chart.name.postcodes', ['number' => 10])"
             :route="'users_geo_chart'"
             :request="['number' => 10]"
+            :export="'exports.geo'"
             class="h-44 w-full"
         />
 
@@ -36,6 +37,7 @@
             :title="__('titles.chart.name.contrib', ['number' => 10])"
             :route="'user_resources_chart'"
             :request="['number' => 10]"
+            :export="'exports.contributors'"
             class="h-44 w-full"
         />
     </x-charts.side-by-side>

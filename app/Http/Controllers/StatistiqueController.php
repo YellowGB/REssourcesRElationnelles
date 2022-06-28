@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\AccountCreationExport;
-use App\Exports\FavoritesExport;
-use App\Exports\SavedExport;
-use App\Exports\SearchTermsExport;
-use App\Exports\TopSearchersExport;
 use App\Exports\UsedExport;
 use App\Models\Statistique;
+use App\Exports\SavedExport;
 use Illuminate\Http\Request;
+use App\Exports\UsersGeoExport;
+use App\Exports\FavoritesExport;
+use App\Exports\SearchTermsExport;
+use App\Exports\ResourceTypeExport;
+use App\Exports\TopSearchersExport;
+use App\Exports\ResourceViewsExport;
+use App\Exports\UserResourcesExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AccountCreationExport;
+use App\Exports\ResourceCreationExport;
 
 class StatistiqueController extends Controller
 {
@@ -142,5 +147,50 @@ class StatistiqueController extends Controller
      */
     public function exportAccountCreation(Request $request) {
         return Excel::download(new AccountCreationExport, "creations_comptes.$request->format");
+    }
+
+    /**
+     * Exporte les statistiques des ressources créés sur les derniers mois
+     * 
+     * @since 1.5.0-alpha
+     */
+    public function exportResourceCreation(Request $request) {
+        return Excel::download(new ResourceCreationExport, "creations_ressources.$request->format");
+    }
+
+    /**
+     * Exporte les codes postaux les plus représentés parmi les utilisateurs
+     * 
+     * @since 1.5.0-alpha
+     */
+    public function exportUsersGeo(Request $request) {
+        return Excel::download(new UsersGeoExport, "codes_postaux.$request->format");
+    }
+
+    /**
+     * Exporte les utilisateurs ayant créé le plus de ressources
+     * 
+     * @since 1.5.0-alpha
+     */
+    public function exportContributors(Request $request) {
+        return Excel::download(new UserResourcesExport, "contributeurs.$request->format");
+    }
+
+    /**
+     * Exporte le nombre de ressources créées par type
+     * 
+     * @since 1.5.0-alpha
+     */
+    public function exportResourceType(Request $request) {
+        return Excel::download(new ResourceTypeExport, "type.$request->format");
+    }
+
+    /**
+     * Exporte les statistiques du nombre de vues des ressources
+     * 
+     * @since 1.5.0-alpha
+     */
+    public function exportResourceViews(Request $request) {
+        return Excel::download(new ResourceViewsExport, "vues.$request->format");
     }
 }

@@ -218,4 +218,14 @@ Route::group([
                     ->name('exports.used');
     Route::get('exports/account-creation', [StatistiqueController::class, 'exportAccountCreation'])
                     ->name('exports.account.creation');
+    Route::get('exports/resource-creation', [StatistiqueController::class, 'exportResourceCreation'])
+                    ->name('exports.resource.creation');
+    Route::get('exports/geo', [StatistiqueController::class, 'exportUsersGeo'])
+                    ->name('exports.geo');
+    Route::get('exports/contributors', [StatistiqueController::class, 'exportContributors'])
+                    ->name('exports.contributors');
+    Route::get('exports/types', [StatistiqueController::class, 'exportResourceType'])
+                    ->name('exports.types');
+    Route::get('exports/views', [StatistiqueController::class, 'exportResourceViews'])
+                    ->name('exports.views');
 });
