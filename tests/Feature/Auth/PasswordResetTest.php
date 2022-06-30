@@ -2,11 +2,12 @@
 
 namespace Tests\Feature\Auth;
 
+use Tests\TestCase;
 use App\Models\User;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Notification;
-use Tests\TestCase;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class PasswordResetTest extends TestCase
 {
@@ -14,9 +15,9 @@ class PasswordResetTest extends TestCase
 
     public function test_reset_password_link_screen_can_be_rendered()
     {
-        $response = $this->get('/forgot-password');
+        $response = $this->get(LaravelLocalization::transRoute('routes.password.request'));
 
-        $response->assertStatus(200);
+        $response->assertStatus(302);
     }
 
     public function test_reset_password_link_can_be_requested()
@@ -25,7 +26,7 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->post('/forgot-password', ['email' => $user->email]);
+        $this->post(LaravelLocalization::transRoute('routes.password.request'), ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class);
     }
@@ -36,12 +37,12 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->post('/forgot-password', ['email' => $user->email]);
+        $this->post(LaravelLocalization::transRoute('routes.password.request'), ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) {
-            $response = $this->get('/reset-password/'.$notification->token);
+            $response = $this->get(LaravelLocalization::transRoute('routes.password.reset'), ['token' => $notification->token]);
 
-            $response->assertStatus(200);
+            $response->assertStatus(302);
 
             return true;
         });
@@ -53,10 +54,10 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->post('/forgot-password', ['email' => $user->email]);
+        $this->post(LaravelLocalization::transRoute('routes.password.request'), ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) use ($user) {
-            $response = $this->post('/reset-password', [
+            $response = $this->post(LaravelLocalization::transRoute('routes.password.update'), [
                 'token' => $notification->token,
                 'email' => $user->email,
                 'password' => 'password',

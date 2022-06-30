@@ -2,10 +2,11 @@
 
 namespace Tests\Feature\Auth;
 
+use Tests\TestCase;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class AuthenticationTest extends TestCase
 {
@@ -13,16 +14,16 @@ class AuthenticationTest extends TestCase
 
     public function test_login_screen_can_be_rendered()
     {
-        $response = $this->get('/login');
+        $response = $this->get(LaravelLocalization::transRoute('routes.login'));
 
-        $response->assertStatus(200);
+        $response->assertStatus(302);
     }
 
     public function test_users_can_authenticate_using_the_login_screen()
     {
         $user = User::factory()->create();
 
-        $response = $this->post('/login', [
+        $response = $this->post(LaravelLocalization::transRoute('routes.login'), [
             'email' => $user->email,
             'password' => 'password',
         ]);
@@ -35,7 +36,7 @@ class AuthenticationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $this->post('/login', [
+        $this->post(LaravelLocalization::transRoute('routes.login'), [
             'email' => $user->email,
             'password' => 'wrong-password',
         ]);

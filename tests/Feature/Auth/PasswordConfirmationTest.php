@@ -2,9 +2,10 @@
 
 namespace Tests\Feature\Auth;
 
+use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class PasswordConfirmationTest extends TestCase
 {
@@ -14,16 +15,16 @@ class PasswordConfirmationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->get('/confirm-password');
+        $response = $this->actingAs($user)->get(LaravelLocalization::transRoute('routes.password.confirm'));
 
-        $response->assertStatus(200);
+        $response->assertStatus(302);
     }
 
     public function test_password_can_be_confirmed()
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->post('/confirm-password', [
+        $response = $this->actingAs($user)->post(LaravelLocalization::transRoute('routes.password.confirm'), [
             'password' => 'password',
         ]);
 
@@ -35,7 +36,7 @@ class PasswordConfirmationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->post('/confirm-password', [
+        $response = $this->actingAs($user)->post(LaravelLocalization::transRoute('routes.password.confirm'), [
             'password' => 'wrong-password',
         ]);
 
