@@ -1,5 +1,14 @@
 # Changelog
 
+### 1.5.71-alpha
+
+*Updated*
+- Drastically reduced the time for tests completion (approx. divided by 7)
+- Tests no longer leave data in the database after completion
+
+*Fixed*
+- All data is erased from database when running tests
+
 ### 1.5.68-alpha
 
 *Added*

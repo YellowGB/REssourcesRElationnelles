@@ -2,25 +2,22 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\User;
 use Tests\TestCase;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class RegistrationTest extends TestCase
 {
-    use RefreshDatabase;
-
     public function test_registration_screen_can_be_rendered()
     {
-        $response = $this->get(LaravelLocalization::transRoute('routes.register'));
+        $response = $this->get(route('register'));
 
         $response->assertStatus(302);
     }
 
     public function test_new_users_can_register()
     {
-        $response = $this->post(LaravelLocalization::transRoute('routes.register'), [
+        $response = $this->post(route('register'), [
             'name'                  => 'Test',
             'firstname'             => 'User',
             'email'                 => 'test@example.com',
@@ -31,5 +28,7 @@ class RegistrationTest extends TestCase
 
         $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::HOME);
+
+        User::where('email', 'test@example.com')->delete();
     }
 }
