@@ -39,7 +39,7 @@ class CommentaireController extends Controller
             'commentaire',
         ));
     }
-    
+
     public function report($id) {
 
         $commentaire = Commentaire::findOrFail($id);

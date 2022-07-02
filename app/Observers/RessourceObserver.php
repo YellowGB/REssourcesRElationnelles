@@ -62,7 +62,7 @@ class RessourceObserver
      */
     public function deleted(Ressource $ressource)
     {
-        //
+        $ressource->ressourceable->forceDelete();
     }
 
     /**

@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.5.84-alpha
+
+*Added*
+- **74 Feature tests**
+
+*Updated*
+- `verifiedCitizen`, `moderator`, `administrator` and `superAdministrator` functions in `UserFactory`
+
+*Fixed*
+- User profile nickname update not taken into account
+- Fatal error when updating user email to an already used email
+- Cannot remove a user's nickname once set
+- Cannot remove a user's description once set
+- Authenticated user can't delete his account
+- When *force deleting* a resource, the deletion is not cascading to the ressourceable
+- Authentification tests constantly failing
+
 ### 1.5.71-alpha
 
 *Updated*
