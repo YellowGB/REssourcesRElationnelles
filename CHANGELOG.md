@@ -1,5 +1,34 @@
 # Changelog
 
+## 1.5.84-alpha
+
+*Added*
+- **74 Feature tests**
+- New .env.example
+- `laravel.yml` github workflow
+
+*Updated*
+- `verifiedCitizen`, `moderator`, `administrator` and `superAdministrator` functions in `UserFactory`
+- Removed unused imports in `helper_functions`
+
+*Fixed*
+- User profile nickname update not taken into account
+- Fatal error when updating user email to an already used email
+- Cannot remove a user's nickname once set
+- Cannot remove a user's description once set
+- Authenticated user can't delete his account
+- When *force deleting* a resource, the deletion is not cascading to the ressourceable
+- Authentification tests constantly failing
+
+### 1.5.71-alpha
+
+*Updated*
+- Drastically reduced the time for tests completion (approx. divided by 7)
+- Tests no longer leave data in the database after completion
+
+*Fixed*
+- All data is erased from database when running tests
+
 ### 1.5.68-alpha
 
 *Added*

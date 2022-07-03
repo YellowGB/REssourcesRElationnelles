@@ -1,22 +1,8 @@
 <?php
 
 use Carbon\Carbon;
-use App\Models\Jeu;
-use App\Models\Defi;
 use App\Models\User;
-use App\Models\Photo;
-use App\Models\Video;
-use App\Models\Course;
-use App\Models\Groupe;
-use App\Models\Article;
-use App\Models\Atelier;
-use App\Models\Lecture;
-use App\Models\Message;
-use App\Models\Activite;
-use App\Models\Categorie;
 use App\Models\Ressource;
-use App\Models\Commentaire;
-use App\Models\Progression;
 use App\Enums\RessourceType;
 use App\Enums\LocGenderNumber;
 use Illuminate\Support\Facades\Auth;

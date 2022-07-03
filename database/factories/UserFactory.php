@@ -36,6 +36,62 @@ class UserFactory extends Factory
     }
 
     /**
+     * Un utilisateur avec le rôle citoyenverifie
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function verifiedCitizen()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'role_id' => 2,
+            ];
+        });
+    }
+
+    /**
+     * Un utilisateur avec le rôle moderateur
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function moderator()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'role_id' => 3,
+            ];
+        });
+    }
+
+    /**
+     * Un utilisateur avec le rôle administrateur
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function administrator()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'role_id' => 4,
+            ];
+        });
+    }
+
+    /**
+     * Un utilisateur avec le rôle superadministrateur
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function superAdministrator()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'role_id' => 5,
+            ];
+        });
+    }
+
+    /**
      * Indicate that the model's email address should be unverified.
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory

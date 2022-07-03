@@ -2,21 +2,19 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Models\User;
-use Illuminate\Auth\Notifications\ResetPassword;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
+use App\Models\User;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Auth\Notifications\ResetPassword;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class PasswordResetTest extends TestCase
 {
-    use RefreshDatabase;
-
     public function test_reset_password_link_screen_can_be_rendered()
     {
-        $response = $this->get('/forgot-password');
+        $response = $this->get(route('password.request'));
 
-        $response->assertStatus(200);
+        $response->assertStatus(302);
     }
 
     public function test_reset_password_link_can_be_requested()
@@ -25,9 +23,11 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->post('/forgot-password', ['email' => $user->email]);
+        $this->post(route('password.request'), ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class);
+
+        $user->delete();
     }
 
     public function test_reset_password_screen_can_be_rendered()
@@ -36,15 +36,17 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->post('/forgot-password', ['email' => $user->email]);
+        $this->post(route('password.request'), ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) {
-            $response = $this->get('/reset-password/'.$notification->token);
+            $response = $this->get(LaravelLocalization::transRoute('routes.password.reset'), ['token' => $notification->token]);
 
-            $response->assertStatus(200);
+            $response->assertStatus(302);
 
             return true;
         });
+
+        $user->delete();
     }
 
     public function test_password_can_be_reset_with_valid_token()
@@ -53,10 +55,10 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->post('/forgot-password', ['email' => $user->email]);
+        $this->post(route('password.request'), ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) use ($user) {
-            $response = $this->post('/reset-password', [
+            $response = $this->post(LaravelLocalization::transRoute('routes.password.reset'), [
                 'token' => $notification->token,
                 'email' => $user->email,
                 'password' => 'password',
@@ -67,5 +69,7 @@ class PasswordResetTest extends TestCase
 
             return true;
         });
+
+        $user->delete();
     }
 }

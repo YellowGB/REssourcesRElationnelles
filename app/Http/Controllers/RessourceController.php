@@ -427,7 +427,7 @@ class RessourceController extends Controller
 
         return Redirect::to('catalogue/moderation')->with('success', 'Ressource validée avec succès.');
     }
-    
+
     public function rejeter($id) {
 
         $ressource = Ressource::findOrfail($id);

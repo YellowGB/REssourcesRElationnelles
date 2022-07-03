@@ -100,21 +100,24 @@ class UserController extends Controller
         //     'firstname'     => ['required', 'string', 'max:255'],
         //     'nickname'      => ['nullable', 'string', 'max:255'],
         //     'email'         => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password'      => ['required', 'confirmed', Rules\Password::defaults()],
         //     'description'   => ['nullable', 'string', 'max:1000'],
         //     'postcode'      => ['required', 'string', 'size:5'],
         // ]);
 
-        $user = auth()->user();
+        $user           = auth()->user();
+        $currentEmail   = $user->email;
 
         $user->name         = $request->name ?? $user->name;
         $user->firstname    = $request->firstname ?? $user->firstname;
         // Il est possible d'avoir un pseudo et de l'effacer, c'est pourquoi nous devons seulement vérifier si $request->nickname existe mais pas s'il est vide
-        $user->nickname     = isset($request->nickname) ? $user->nickname : $request->nickname;
+        $user->nickname     = isset($request->nickname) || empty($request->nickname) ? $request->nickname : $user->nickname;
         $user->email        = $request->email ?? $user->email;
         // Il est possible de vider la description, c'est pourquoi nous devons seulement vérifier si $request->description existe mais pas s'il est vide
-        $user->description  = isset($request->description) ? $user->description : $request->description;
+        $user->description  = isset($request->description) || empty($request->description) ? $request->description : $user->description;
         $user->postcode     = $request->postcode ?? $user->postcode;
+
+        $emailCheck = User::where('email', $request->email)->get()->count();
+        if ($emailCheck) $user->email = $currentEmail;
 
         $user->update(); // ne pas tenir compte de l'erreur vscode, il n'arrive pas à faire correctement le lien en raison de trop nombreux rebons, mais l'update fonctionne bien
 
