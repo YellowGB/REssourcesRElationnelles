@@ -1,6 +1,11 @@
 # Changelog
 
-## 1.5.84-alpha
+### 1.5.85-alpha
+
+*Added*
+- `dependency-review.yml` github workflow
+
+### 1.5.84-alpha
 
 *Added*
 - **74 Feature tests**
