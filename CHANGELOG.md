@@ -4,9 +4,12 @@
 
 *Added*
 - **74 Feature tests**
+- New .env.example
+- `laravel.yml` github workflow
 
 *Updated*
 - `verifiedCitizen`, `moderator`, `administrator` and `superAdministrator` functions in `UserFactory`
+- Removed unused imports in `helper_functions`
 
 *Fixed*
 - User profile nickname update not taken into account
