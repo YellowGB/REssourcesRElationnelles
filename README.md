@@ -1,9 +1,7 @@
-<h1 align="center">(RE)Sources Relationnelles</h1>
+![example workflow](https://github.com/YellowGB/REssourcesRElationnelles/actions/workflows/laravel.yml/badge.svg)
+![example workflow](https://github.com/YellowGB/REssourcesRElationnelles/actions/workflows/dependency-review.yml/badge.svg)
 
-<p align="center">
-    ![example workflow](https://github.com/YellowGB/REssourcesRElationnelles/actions/workflows/laravel.yml/badge.svg)
-    ![example workflow](https://github.com/YellowGB/REssourcesRElationnelles/actions/workflows/dependency-review.yml/badge.svg)
-</p>
+<h1 align="center">(RE)Sources Relationnelles</h1>
 
 <p align="center">
     <img width="150" src="https://i.postimg.cc/KzQGs84n/rr.png" alt="Logo Ressource Relationnelles (https://postimg.cc/)">
@@ -13,11 +11,6 @@
 <p align="center">
     https://trello.com/b/qEJGzBTO/resources-relationnelles
 </p>
-
-# (RE)Sources Relationnelles
-
-![example workflow](https://github.com/YellowGB/REssourcesRElationnelles/actions/workflows/laravel.yml/badge.svg)
-![example workflow](https://github.com/YellowGB/REssourcesRElationnelles/actions/workflows/dependency-review.yml/badge.svg)
 
 ---
 ## [Changelog](CHANGELOG.md)
