@@ -61,8 +61,8 @@ class PasswordResetTest extends TestCase
             $response = $this->post(LaravelLocalization::transRoute('routes.password.reset'), [
                 'token' => $notification->token,
                 'email' => $user->email,
-                'password' => 'password',
-                'password_confirmation' => 'password',
+                'password' => 'p@ssWORD1234',
+                'password_confirmation' => 'p@ssWORD1234',
             ]);
 
             $response->assertSessionHasNoErrors();

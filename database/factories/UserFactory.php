@@ -25,7 +25,7 @@ class UserFactory extends Factory
             'firstname'         => $this->faker->firstname(),
             'email'             => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password'          => '$2y$10$WfIERGRGk6wbf03gfjf/lerBm96QkkM0YCvHnKtXgrvptqVevukF.', // p@ssWORD1234
             'remember_token'    => Str::random(10),
             'postcode'          => $this->faker->randomElement($codes),
             'created_at'        => Carbon::today()->subDays(rand(0, 90)),
