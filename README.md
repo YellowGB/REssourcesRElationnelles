@@ -1,11 +1,23 @@
+<h1 align="center">(RE)Sources Relationnelles</h1>
+
+<p align="center">
+    ![example workflow](https://github.com/YellowGB/REssourcesRElationnelles/actions/workflows/laravel.yml/badge.svg)
+    ![example workflow](https://github.com/YellowGB/REssourcesRElationnelles/actions/workflows/dependency-review.yml/badge.svg)
+</p>
+
+<p align="center">
+    <img width="150" src="https://i.postimg.cc/KzQGs84n/rr.png" alt="Logo Ressource Relationnelles (https://postimg.cc/)">
+    <img width="150" src="https://i.postimg.cc/90C4DQNS/websh.png" alt="Logo WeBSH (https://postimg.cc/)">
+</p>
+
+<p align="center">
+    https://trello.com/b/qEJGzBTO/resources-relationnelles
+</p>
+
 # (RE)Sources Relationnelles
 
 ![example workflow](https://github.com/YellowGB/REssourcesRElationnelles/actions/workflows/laravel.yml/badge.svg)
 ![example workflow](https://github.com/YellowGB/REssourcesRElationnelles/actions/workflows/dependency-review.yml/badge.svg)
-
-[![ressource relationnelles](https://i.postimg.cc/KzQGs84n/rr.png)](https://postimg.cc/xJJVXYvC)
-
-https://trello.com/b/qEJGzBTO/resources-relationnelles
 
 ---
 ## [Changelog](CHANGELOG.md)
