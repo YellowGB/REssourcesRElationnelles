@@ -23,7 +23,7 @@ class PasswordConfirmationTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)->post(route('password.confirm'), [
-            'password' => 'password',
+            'password' => 'p@ssWORD1234',
         ]);
 
         $response->assertRedirect();

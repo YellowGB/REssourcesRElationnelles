@@ -1,5 +1,13 @@
 # Changelog
 
+### 1.5.90-alpha
+
+*Updated*
+- Password acceptance rules
+- User seeder to fit new password acceptance rules
+- Auth tests to fit new password acceptance rules
+- `DatabaseSeeder` now generates 4 password appropriate demo accounts
+
 ### 1.5.87-alpha
 
 *Added*

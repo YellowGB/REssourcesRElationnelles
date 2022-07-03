@@ -2,12 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\Categorie;
 use App\Enums\RessourceType;
 use App\Enums\RessourceRelation;
-use App\Models\Categorie;
-use ConsoleTVs\Charts\Registrar as Charts;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Validation\Rules\Password;
+use ConsoleTVs\Charts\Registrar as Charts;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Charts $charts)
     {
+        Password::defaults(function () {
+            return Password::min(12)
+                           ->mixedCase()
+                           ->numbers()
+                           ->symbols()
+                           ->uncompromised();
+        });
+
         View::share('types', [
             RessourceType::Activite->name   => RessourceType::Activite->value,
             RessourceType::Article->name    => RessourceType::Article->value,

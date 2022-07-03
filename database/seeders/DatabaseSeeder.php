@@ -36,12 +36,11 @@ class DatabaseSeeder extends Seeder
         $user = User::create([
             'name'              => 'Dupont',
             'firstname'         => 'Germaine',
-            'email'             => 'cit@a',
+            'email'             => 'cit@websh.fr',
             'email_verified_at' => now(),
-            'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
+            'password'          => '$2y$10$WfIERGRGk6wbf03gfjf/lerBm96QkkM0YCvHnKtXgrvptqVevukF.', // p@ssWORD1234
             'remember_token'    => 'adcountdcp',
             'postcode'          => '69100',
-            // 'status'            => UserStatus::Verified,
             'role_id'           => Role::findId(UserRole::VerifCitizen),
             'last_connexion'    => now(),
         ]);
@@ -49,12 +48,11 @@ class DatabaseSeeder extends Seeder
         $user = User::create([
             'name'              => 'Durand',
             'firstname'         => 'André',
-            'email'             => 'modo@a',
+            'email'             => 'modo@websh.fr',
             'email_verified_at' => now(),
-            'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
+            'password'          => '$2y$10$WfIERGRGk6wbf03gfjf/lerBm96QkkM0YCvHnKtXgrvptqVevukF.', // p@ssWORD1234
             'remember_token'    => 'adcountdcp',
             'postcode'          => '71340',
-            // 'status'            => UserStatus::Verified,
             'role_id'           => Role::findId(UserRole::Moderator),
             'last_connexion'    => now(),
         ]);
@@ -62,12 +60,11 @@ class DatabaseSeeder extends Seeder
         $user = User::create([
             'name'              => 'Fichter',
             'firstname'         => 'Cindy',
-            'email'             => 'admin@a',
+            'email'             => 'admin@websh.fr',
             'email_verified_at' => now(),
-            'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
+            'password'          => '$2y$10$WfIERGRGk6wbf03gfjf/lerBm96QkkM0YCvHnKtXgrvptqVevukF.', // p@ssWORD1234
             'remember_token'    => 'adcountdcp',
             'postcode'          => '42300',
-            // 'status'            => UserStatus::Verified,
             'role_id'           => Role::findId(UserRole::Admin),
             'last_connexion'    => now(),
         ]);
@@ -75,12 +72,11 @@ class DatabaseSeeder extends Seeder
         $user = User::create([
             'name'              => 'Elba',
             'firstname'         => 'Karim',
-            'email'             => 'superadmin@a',
+            'email'             => 'superadmin@websh.fr',
             'email_verified_at' => now(),
-            'password'          => '$2y$10$Yi9q3k8RA6Nuuj0G3RzD7uxcMdEuy/6T2rB.INfT88KqfGTcFOYIC', // a
+            'password'          => '$2y$10$WfIERGRGk6wbf03gfjf/lerBm96QkkM0YCvHnKtXgrvptqVevukF.', // p@ssWORD1234
             'remember_token'    => 'adcountdcp',
             'postcode'          => '75001',
-            // 'status'            => UserStatus::Verified,
             'role_id'           => Role::findId(UserRole::SuperAdmin),
             'last_connexion'    => now(),
         ]);

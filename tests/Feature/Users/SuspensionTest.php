@@ -57,7 +57,7 @@ class SuspensionTest extends TestCase
 
         $response = $this->post(route('login'), [
             'email' => $user->email,
-            'password' => 'password',
+            'password' => 'p@ssWORD1234',
         ]);
         $response->assertStatus(403);
 
