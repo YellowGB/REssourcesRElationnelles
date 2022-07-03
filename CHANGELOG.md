@@ -1,9 +1,11 @@
 # Changelog
 
-### 1.5.85-alpha
+### 1.5.87-alpha
 
 *Added*
 - `dependency-review.yml` github workflow
+- `build.yml` github workflow
+- `deploy.yml` github workflow
 
 ### 1.5.84-alpha
 
