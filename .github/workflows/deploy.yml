@@ -7,36 +7,36 @@ on:
 jobs:
   deploy:
 
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-  steps:
+    steps:
 
-    - name: Checkout
+      - name: Checkout
 
-      uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
-    - name: Deployment
+      - name: Deployment
 
-      uses: appleboy/ssh-action@main
+        uses: appleboy/ssh-action@main
 
-      with:
+        with:
 
-        host: ${{ secrets.SSH_HOST }}
+          host: ${{ secrets.SSH_HOST }}
 
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-        username: ${{ secrets.SSH_USERNAME }}
+          username: ${{ secrets.SSH_USERNAME }}
 
-        script: |
+          script: |
 
-          cd /var/www/html/ressources-relationnelles/
+            cd /var/www/html/ressources-relationnelles/
 
-          git checkout -f
-          
-          git stash -u
+            git checkout -f
 
-          git pull origin main
-          
-          composer install
-          
-          npm install
+            git stash -u
+
+            git pull origin main
+
+            composer install
+
+            npm install
