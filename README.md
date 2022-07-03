@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-    https://trello.com/b/qEJGzBTO/resources-relationnelles
+    <a href="https://trello.com/b/qEJGzBTO/resources-relationnelles">Trello</a>
 </p>
 
 ---
