@@ -42,16 +42,6 @@ jobs:
         php artisan migrate:fresh
     - name: Seed
       run: |
-        php artisan tinker
-        Activite::factory()->create();
-        Article::factory()->create();
-        Atelier::factory()->create();
-        Course::factory()->create();
-        Defi::factory()->create();
-        Jeu::factory()->create();
-        Lecture::factory()->create();
-        Photo::factory()->create();
-        Video::factory()->create();
-        exit
+        php artisan db:seed
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       run: vendor/bin/phpunit
